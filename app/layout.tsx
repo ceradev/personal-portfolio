@@ -1,20 +1,19 @@
 import type React from "react"
 import type { Metadata } from "next"
-import { Inter, Playfair_Display, Space_Grotesk } from "next/font/google"
+import { Inter, Space_Grotesk } from "next/font/google"
 import "./globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
-import { DJModeProvider } from "@/components/dj-mode-context"
-import { DJModeToggle } from "@/components/dj-mode-toggle"
-import { AudioVisualizer } from "@/components/audio-visualizer"
-import { HomeButton } from "@/components/home-button"
 
-const inter = Inter({ subsets: ["latin"], variable: "--font-inter" })
-const playfair = Playfair_Display({ subsets: ["latin"], variable: "--font-playfair" })
-const spaceGrotesk = Space_Grotesk({ subsets: ["latin"], variable: "--font-space-grotesk" })
+const inter = Inter({ subsets: ["latin"], variable: "--font-sans" })
+const spaceGrotesk = Space_Grotesk({
+  subsets: ["latin"],
+  variable: "--font-space-grotesk",
+})
 
 export const metadata: Metadata = {
-  title: "César A. Suárez - Portfolio",
-  description: "Full Stack Developer Portfolio",
+  title: "César Suárez | Desarrollador Full Stack",
+  description:
+    "Portfolio profesional de César Suárez, Desarrollador Full Stack con experiencia en React, Next.js y más.",
     generator: 'v0.dev'
 }
 
@@ -25,16 +24,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es" suppressHydrationWarning>
-      <body className={`${inter.variable} ${playfair.variable} ${spaceGrotesk.variable} ${inter.className}`}>
-        <ThemeProvider defaultTheme="dark">
-          <DJModeProvider>
-            <AudioVisualizer />
-            <div className="fixed top-4 right-4 z-50 flex items-center space-x-2">
-              <DJModeToggle />
-            </div>
-            <HomeButton />
-            {children}
-          </DJModeProvider>
+      <body className={`${inter.variable} ${spaceGrotesk.variable} font-sans`}>
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange={false}>
+          {children}
         </ThemeProvider>
       </body>
     </html>

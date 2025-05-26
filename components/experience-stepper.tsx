@@ -8,7 +8,6 @@ import { Briefcase, Calendar, Building, MapPin, ExternalLink, ChevronDown, Chevr
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { useMobile } from "@/hooks/use-mobile"
-import { useDJMode } from "@/components/dj-mode-context"
 
 interface Experience {
   id: string
@@ -27,7 +26,6 @@ interface Experience {
 
 export function ExperienceStepper() {
   const isMobile = useMobile()
-  const { isDJMode } = useDJMode()
 
   const [experiences, setExperiences] = useState<Experience[]>([
     {
@@ -125,11 +123,9 @@ export function ExperienceStepper() {
     <div className="relative w-full">
       <div className="relative">
         {/* Línea vertical conectora - ajustada para móvil */}
-        {!isDJMode && (
-          <div
-            className={`absolute ${isMobile ? "left-4" : "left-6"} top-8 bottom-0 w-0.5 bg-gradient-to-b from-green-500 via-primary to-gray-400 dark:from-green-600 dark:via-primary dark:to-gray-600`}
-          ></div>
-        )}
+        <div
+          className={`absolute ${isMobile ? "left-4" : "left-6"} top-8 bottom-0 w-0.5 bg-gradient-to-b from-green-500 via-primary to-gray-400 dark:from-green-600 dark:via-primary dark:to-gray-600`}
+        ></div>
 
         {/* Experiencias como pasos */}
         <div className="space-y-8">
@@ -273,7 +269,7 @@ export function ExperienceStepper() {
               </motion.div>
 
               {/* Línea de conexión al siguiente paso (excepto el último) */}
-              {!isDJMode && index < experiences.length - 1 && (
+              {index < experiences.length - 1 && (
                 <div
                   className={`absolute ${isMobile ? "left-4" : "left-6"} top-8 bottom-0 w-0.5 bg-gradient-to-b from-current to-next h-full`}
                 ></div>

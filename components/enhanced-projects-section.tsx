@@ -1,7 +1,5 @@
 "use client"
 
-import type React from "react"
-
 import { useState, useEffect, useRef } from "react"
 import { motion } from "framer-motion"
 import Image from "next/image"
@@ -27,6 +25,8 @@ import {
   Monitor,
   Smartphone,
   Cloud,
+  Users,
+  Clock,
 } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
@@ -54,7 +54,6 @@ import { Input } from "@/components/ui/input"
 import { Checkbox } from "@/components/ui/checkbox"
 import { Label } from "@/components/ui/label"
 import { ScrollArea } from "@/components/ui/scroll-area"
-import { useDJMode } from "@/components/dj-mode-context"
 import { useMobile } from "@/hooks/use-mobile"
 
 // Tipos
@@ -85,7 +84,6 @@ type SortOption = "newest" | "oldest" | "alphabetical" | "featured"
 
 // Componente principal
 export function EnhancedProjectsSection() {
-  const { isDJMode } = useDJMode()
   const isMobile = useMobile()
 
   // Estados
@@ -679,13 +677,7 @@ export function EnhancedProjectsSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.3, delay: index * 0.05 }}
-            className={`group relative overflow-hidden rounded-lg border ${
-              isDJMode
-                ? "border-purple-500/20 hover:border-purple-500/40 bg-background/60"
-                : "border-border hover:border-primary/30 bg-background/60"
-            } backdrop-blur-sm transition-all duration-300 hover:shadow-lg ${
-              isDJMode ? "hover:shadow-purple-500/10" : "hover:shadow-primary/10"
-            } flex flex-col h-full`}
+            className="group relative overflow-hidden rounded-lg border border-border hover:border-primary/30 bg-background/60 backdrop-blur-sm transition-all duration-300 hover:shadow-lg hover:shadow-primary/10 flex flex-col h-full"
           >
             {/* Imagen con overlay */}
             <div className="relative aspect-video overflow-hidden">
@@ -701,13 +693,7 @@ export function EnhancedProjectsSection() {
               <div className="absolute top-2 left-2 flex gap-2">
                 {renderStatusBadge(project.status)}
                 {project.featured && (
-                  <Badge
-                    className={`${
-                      isDJMode
-                        ? "bg-purple-600/20 text-purple-400 border-purple-600/30"
-                        : "bg-primary/20 text-primary border-primary/30"
-                    }`}
-                  >
+                  <Badge className="bg-primary/20 text-primary border-primary/30">
                     <Star className="h-3 w-3 mr-1" /> Destacado
                   </Badge>
                 )}
@@ -715,7 +701,7 @@ export function EnhancedProjectsSection() {
 
               {/* Título y descripción */}
               <div className="absolute bottom-0 left-0 right-0 p-4">
-                <h3 className="text-lg font-semibold text-white mb-1 line-clamp-1">{project.title}</h3>
+                <h3 className="text-lg font-bold text-white mb-1 line-clamp-1">{project.title}</h3>
                 <p className="text-sm text-zinc-300 line-clamp-2">{project.description}</p>
               </div>
             </div>
@@ -770,9 +756,7 @@ export function EnhancedProjectsSection() {
               <div className="mt-auto flex gap-2">
                 <Button
                   size="sm"
-                  className={`flex-1 ${
-                    isDJMode ? "bg-purple-600 hover:bg-purple-700" : "bg-primary hover:bg-primary/90"
-                  }`}
+                  className="flex-1 bg-primary hover:bg-primary/90"
                   onClick={() => setSelectedProject(project)}
                 >
                   <Info className="h-4 w-4 mr-2" />
@@ -838,13 +822,7 @@ export function EnhancedProjectsSection() {
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.3, delay: index * 0.05 }}
-            className={`group flex flex-col md:flex-row gap-4 p-4 rounded-lg border ${
-              isDJMode
-                ? "border-purple-500/20 hover:border-purple-500/40 bg-background/60"
-                : "border-border hover:border-primary/30 bg-background/60"
-            } backdrop-blur-sm transition-all duration-300 hover:shadow-lg ${
-              isDJMode ? "hover:shadow-purple-500/10" : "hover:shadow-primary/10"
-            }`}
+            className="group flex flex-col md:flex-row gap-4 p-4 rounded-lg border border-border hover:border-primary/30 bg-background/60 backdrop-blur-sm transition-all duration-300 hover:shadow-lg hover:shadow-primary/10"
           >
             {/* Imagen */}
             <div className="relative w-full md:w-48 h-32 rounded-md overflow-hidden flex-shrink-0">
@@ -862,13 +840,7 @@ export function EnhancedProjectsSection() {
               {/* Badge de destacado */}
               {project.featured && (
                 <div className="absolute bottom-2 left-2">
-                  <Badge
-                    className={`${
-                      isDJMode
-                        ? "bg-purple-600/20 text-purple-400 border-purple-600/30"
-                        : "bg-primary/20 text-primary border-primary/30"
-                    }`}
-                  >
+                  <Badge className="bg-primary/20 text-primary border-primary/30">
                     <Star className="h-3 w-3 mr-1" /> Destacado
                   </Badge>
                 </div>
@@ -997,9 +969,7 @@ export function EnhancedProjectsSection() {
             initial={{ opacity: 0, y: 5 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.2, delay: index * 0.03 }}
-            className={`group flex items-center gap-3 p-2 rounded-md ${
-              isDJMode ? "hover:bg-purple-500/5" : "hover:bg-primary/5"
-            } transition-colors duration-200`}
+            className="group flex items-center gap-3 p-2 rounded-md hover:bg-primary/5 transition-colors duration-200"
           >
             {/* Miniatura */}
             <div className="relative w-10 h-10 rounded overflow-hidden flex-shrink-0">
@@ -1010,9 +980,7 @@ export function EnhancedProjectsSection() {
             <div className="flex-grow min-w-0">
               <div className="flex items-center">
                 <h3 className="text-sm font-medium truncate">{project.title}</h3>
-                {project.featured && (
-                  <Star className={`h-3 w-3 ml-1 ${isDJMode ? "text-purple-500" : "text-primary"}`} />
-                )}
+                {project.featured && <Star className="h-3 w-3 ml-1 text-primary" />}
               </div>
               <div className="flex items-center text-xs text-foreground/60">
                 <span className="truncate">
@@ -1078,13 +1046,7 @@ export function EnhancedProjectsSection() {
                   <div className="absolute top-4 left-4 flex gap-2">
                     {renderStatusBadge(project.status)}
                     {project.featured && (
-                      <Badge
-                        className={`${
-                          isDJMode
-                            ? "bg-purple-600/20 text-purple-400 border-purple-600/30"
-                            : "bg-primary/20 text-primary-foreground border-primary/30"
-                        }`}
-                      >
+                      <Badge className="bg-primary/20 text-primary-foreground border-primary/30">
                         <Star className="h-3 w-3 mr-1" /> Destacado
                       </Badge>
                     )}
@@ -1105,9 +1067,7 @@ export function EnhancedProjectsSection() {
                         {project.technologies.map((tech, i) => (
                           <Badge
                             key={i}
-                            className={`${
-                              isDJMode ? "bg-purple-900/50 hover:bg-purple-800/50" : "bg-red-900/50 hover:bg-red-800/50"
-                            } text-zinc-200 border-none text-xs sm:text-sm`}
+                            className="bg-red-900/50 hover:bg-red-800/50 text-zinc-200 border-none text-xs sm:text-sm"
                           >
                             {tech}
                           </Badge>
@@ -1117,9 +1077,7 @@ export function EnhancedProjectsSection() {
                       <div className="flex gap-2 sm:gap-3">
                         <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                           <Button
-                            className={`${
-                              isDJMode ? "bg-purple-600 hover:bg-purple-700" : "bg-red-600 hover:bg-red-700"
-                            } text-white`}
+                            className="bg-red-600 hover:bg-red-700 text-white"
                             size={isMobile ? "sm" : "default"}
                             onClick={() => setSelectedProject(project)}
                           >
@@ -1131,9 +1089,7 @@ export function EnhancedProjectsSection() {
                         {project.demoUrl && (
                           <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                             <Button
-                              className={`${
-                                isDJMode ? "bg-purple-600 hover:bg-purple-700" : "bg-red-600 hover:bg-red-700"
-                              } text-white`}
+                              className="bg-red-600 hover:bg-red-700 text-white"
                               size={isMobile ? "sm" : "default"}
                               onClick={() => window.open(project.demoUrl, "_blank")}
                             >
@@ -1147,11 +1103,7 @@ export function EnhancedProjectsSection() {
                           <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                             <Button
                               variant="outline"
-                              className={`${
-                                isDJMode
-                                  ? "border-purple-500/50 text-zinc-200 hover:bg-zinc-800/50"
-                                  : "border-red-500/50 text-zinc-200 hover:bg-zinc-800/50"
-                              }`}
+                              className="border-red-500/50 text-zinc-200 hover:bg-zinc-800/50"
                               size={isMobile ? "sm" : "default"}
                               onClick={() => window.open(project.githubUrl, "_blank")}
                             >
@@ -1211,11 +1163,7 @@ export function EnhancedProjectsSection() {
               <motion.button
                 key={index}
                 className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${
-                  index === currentCarouselIndex
-                    ? isDJMode
-                      ? "bg-purple-500 w-6"
-                      : "bg-red-500 w-6"
-                    : "bg-zinc-600 hover:bg-zinc-500"
+                  index === currentCarouselIndex ? "bg-red-500 w-6" : "bg-zinc-600 hover:bg-zinc-500"
                 }`}
                 onClick={() => handleCarouselDotClick(index)}
                 whileHover={{ scale: 1.2 }}
@@ -1239,10 +1187,7 @@ export function EnhancedProjectsSection() {
         <p className="text-foreground/70 max-w-md mb-6">
           No hay proyectos que coincidan con los filtros seleccionados. Prueba con otros criterios de búsqueda.
         </p>
-        <Button
-          className={isDJMode ? "bg-purple-600 hover:bg-purple-700" : "bg-primary hover:bg-primary/90"}
-          onClick={clearAllFilters}
-        >
+        <Button className="bg-primary hover:bg-primary/90" onClick={clearAllFilters}>
           Limpiar filtros
         </Button>
       </div>
@@ -1275,7 +1220,7 @@ export function EnhancedProjectsSection() {
                 key={page}
                 variant={currentPage === page ? "default" : "outline"}
                 size="sm"
-                className={`h-8 w-8 ${currentPage === page && isDJMode ? "bg-purple-600 hover:bg-purple-700" : ""}`}
+                className="h-8 w-8"
                 onClick={() => handlePageChange(page)}
               >
                 {page}
@@ -1320,17 +1265,11 @@ export function EnhancedProjectsSection() {
         <DialogContent className="max-w-4xl max-h-[90vh] overflow-hidden flex flex-col">
           <DialogHeader>
             <div className="flex items-center justify-between">
-              <DialogTitle className="text-xl">{selectedProject.title}</DialogTitle>
+              <DialogTitle className="text-xl font-bold">{selectedProject.title}</DialogTitle>
               <div className="flex items-center gap-2">
                 {renderStatusBadge(selectedProject.status)}
                 {selectedProject.featured && (
-                  <Badge
-                    className={`${
-                      isDJMode
-                        ? "bg-purple-600/20 text-purple-400 border-purple-600/30"
-                        : "bg-primary/20 text-primary border-primary/30"
-                    }`}
-                  >
+                  <Badge className="bg-primary/20 text-primary border-primary/30">
                     <Star className="h-3 w-3 mr-1" /> Destacado
                   </Badge>
                 )}
@@ -1354,20 +1293,20 @@ export function EnhancedProjectsSection() {
 
             <div className="space-y-6">
               <div>
-                <h4 className="text-lg font-medium mb-2">Descripción</h4>
+                <h4 className="text-lg font-bold mb-2">Descripción</h4>
                 <p className="text-foreground/80">{selectedProject.longDescription || selectedProject.description}</p>
               </div>
 
               {selectedProject.impact && (
-                <div className={`p-4 rounded-lg ${isDJMode ? "bg-purple-500/10" : "bg-primary/10"}`}>
-                  <h4 className="text-lg font-medium mb-2">Impacto</h4>
+                <div className="p-4 rounded-lg bg-primary/10">
+                  <h4 className="text-lg font-bold mb-2">Impacto</h4>
                   <p className="text-foreground/80">{selectedProject.impact}</p>
                 </div>
               )}
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
-                  <h4 className="text-lg font-medium mb-2">Detalles</h4>
+                  <h4 className="text-lg font-bold mb-2">Detalles</h4>
                   <ul className="space-y-2">
                     <li className="flex items-start gap-2">
                       <Calendar className="h-4 w-4 mt-0.5 text-foreground/70" />
@@ -1425,17 +1364,10 @@ export function EnhancedProjectsSection() {
                 </div>
 
                 <div>
-                  <h4 className="text-lg font-medium mb-2">Tecnologías</h4>
+                  <h4 className="text-lg font-bold mb-2">Tecnologías</h4>
                   <div className="flex flex-wrap gap-2">
                     {selectedProject.technologies.map((tech, i) => (
-                      <Badge
-                        key={i}
-                        className={`${
-                          isDJMode
-                            ? "bg-purple-600/20 text-purple-400 border-purple-600/30"
-                            : "bg-primary/20 text-primary border-primary/30"
-                        }`}
-                      >
+                      <Badge key={i} className="bg-primary/20 text-primary border-primary/30">
                         {tech}
                       </Badge>
                     ))}
@@ -1443,13 +1375,11 @@ export function EnhancedProjectsSection() {
 
                   {selectedProject.highlights && (
                     <div className="mt-6">
-                      <h4 className="text-lg font-medium mb-2">Aspectos destacados</h4>
+                      <h4 className="text-lg font-bold mb-2">Aspectos destacados</h4>
                       <ul className="space-y-1">
                         {selectedProject.highlights.map((highlight, i) => (
                           <li key={i} className="flex items-start gap-2">
-                            <div
-                              className={`h-1.5 w-1.5 rounded-full mt-1.5 ${isDJMode ? "bg-purple-500" : "bg-primary"}`}
-                            />
+                            <div className="h-1.5 w-1.5 rounded-full mt-1.5 bg-primary" />
                             <span>{highlight}</span>
                           </li>
                         ))}
@@ -1501,11 +1431,7 @@ export function EnhancedProjectsSection() {
               <TabsTrigger
                 key={category}
                 value={category}
-                className={`data-[state=active]:${
-                  isDJMode ? "bg-purple-900/50" : "bg-primary/20"
-                } data-[state=active]:${
-                  isDJMode ? "text-purple-100" : "text-primary"
-                } text-foreground/70 text-xs rounded-md px-3 py-1.5`}
+                className="data-[state=active]:bg-primary/20 data-[state=active]:text-primary text-foreground/70 text-xs rounded-md px-3 py-1.5"
               >
                 {category === "all" ? "Todos" : category}
               </TabsTrigger>
@@ -1526,7 +1452,7 @@ export function EnhancedProjectsSection() {
             />
             <Search
               className={`absolute left-2.5 top-1/2 -translate-y-1/2 h-4 w-4 ${
-                isSearchFocused ? (isDJMode ? "text-purple-500" : "text-primary") : "text-foreground/50"
+                isSearchFocused ? "text-primary" : "text-foreground/50"
               } transition-colors duration-200`}
             />
             {searchQuery && (
@@ -1554,19 +1480,13 @@ export function EnhancedProjectsSection() {
                   variant="outline"
                   size="sm"
                   className={`h-9 ${
-                    Object.values(selectedFilters).some((arr) => arr.length > 0)
-                      ? isDJMode
-                        ? "border-purple-500 text-purple-500"
-                        : "border-primary text-primary"
-                      : ""
+                    Object.values(selectedFilters).some((arr) => arr.length > 0) ? "border-primary text-primary" : ""
                   }`}
                 >
                   <Filter className="h-4 w-4 mr-2" />
                   Filtros
                   {Object.values(selectedFilters).some((arr) => arr.length > 0) && (
-                    <Badge
-                      className={`ml-2 ${isDJMode ? "bg-purple-600 text-white" : "bg-primary text-primary-foreground"}`}
-                    >
+                    <Badge className="ml-2 bg-primary text-primary-foreground">
                       {selectedFilters.types.length +
                         selectedFilters.technologies.length +
                         selectedFilters.status.length}
@@ -1591,7 +1511,6 @@ export function EnhancedProjectsSection() {
                             id={`type-${type}`}
                             checked={selectedFilters.types.includes(type)}
                             onCheckedChange={() => handleFilterChange("types", type)}
-                            className={isDJMode ? "text-purple-600" : ""}
                           />
                           <Label htmlFor={`type-${type}`} className="text-sm cursor-pointer">
                             {type}
@@ -1611,7 +1530,6 @@ export function EnhancedProjectsSection() {
                             id={`tech-${tech}`}
                             checked={selectedFilters.technologies.includes(tech)}
                             onCheckedChange={() => handleFilterChange("technologies", tech)}
-                            className={isDJMode ? "text-purple-600" : ""}
                           />
                           <Label htmlFor={`tech-${tech}`} className="text-sm cursor-pointer">
                             {tech}
@@ -1631,7 +1549,6 @@ export function EnhancedProjectsSection() {
                             id={`status-${status}`}
                             checked={selectedFilters.status.includes(status)}
                             onCheckedChange={() => handleFilterChange("status", status)}
-                            className={isDJMode ? "text-purple-600" : ""}
                           />
                           <Label htmlFor={`status-${status}`} className="text-sm cursor-pointer">
                             {status === "completed"
@@ -1651,7 +1568,7 @@ export function EnhancedProjectsSection() {
                     Limpiar filtros
                   </Button>
                   <DialogClose asChild>
-                    <Button className={isDJMode ? "bg-purple-600 hover:bg-purple-700" : ""}>Aplicar filtros</Button>
+                    <Button>Aplicar filtros</Button>
                   </DialogClose>
                 </DialogFooter>
               </DialogContent>
@@ -1799,12 +1716,8 @@ export function EnhancedProjectsSection() {
 
           {selectedFilters.status.map((status) => (
             <Badge key={`status-${status}`} variant="outline" className="flex items-center gap-1 bg-background/60">
-              <div
-                className={`h-2 w-2 rounded-full ${
-                  status === "completed" ? "bg-green-500" : status === "in-progress" ? "bg-blue-500" : "bg-amber-500"
-                }`}
-              />
-              {status === "completed" ? "Completado" : status === "in-progress" ? "En progreso" : "Planificado"}
+              <Tag className="h-3 w-3" />
+              {status}
               <Button
                 variant="ghost"
                 size="icon"
@@ -1815,82 +1728,25 @@ export function EnhancedProjectsSection() {
               </Button>
             </Badge>
           ))}
-
-          {(Object.values(selectedFilters).some((arr) => arr.length > 0) || searchQuery) && (
-            <Button variant="ghost" size="sm" className="h-7 text-xs" onClick={clearAllFilters}>
-              Limpiar todos
-            </Button>
-          )}
         </div>
       )}
 
-      {/* Contador de resultados */}
-      <div className="text-sm text-foreground/70">
-        Mostrando {totalFilteredProjects} {totalFilteredProjects === 1 ? "proyecto" : "proyectos"}
-        {activeTab !== "all" && ` en la categoría "${activeTab}"`}
-      </div>
+      {/* Renderizar vista según el modo seleccionado */}
+      {totalFilteredProjects === 0
+        ? renderNoResults()
+        : viewMode === "grid"
+          ? renderGridView()
+          : viewMode === "list"
+            ? renderListView()
+            : viewMode === "compact"
+              ? renderCompactView()
+              : renderCarouselView()}
 
-      {/* Contenido principal */}
-      {totalFilteredProjects === 0 ? (
-        renderNoResults()
-      ) : (
-        <>
-          {viewMode === "grid" && renderGridView()}
-          {viewMode === "list" && renderListView()}
-          {viewMode === "compact" && renderCompactView()}
-          {viewMode === "carousel" && renderCarouselView()}
-        </>
-      )}
-
-      {/* Paginación */}
+      {/* Renderizar paginación */}
       {renderPagination()}
 
-      {/* Diálogo de detalles del proyecto */}
+      {/* Renderizar diálogo de detalles del proyecto */}
       {renderProjectDetailsDialog()}
     </div>
-  )
-}
-
-// Componente auxiliar para el icono de usuarios
-function Users(props: React.SVGProps<SVGSVGElement>) {
-  return (
-    <svg
-      {...props}
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
-      <circle cx="9" cy="7" r="4" />
-      <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
-      <path d="M16 3.13a4 4 0 0 1 0 7.75" />
-    </svg>
-  )
-}
-
-// Componente auxiliar para el icono de reloj
-function Clock(props: React.SVGProps<SVGSVGElement>) {
-  return (
-    <svg
-      {...props}
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <circle cx="12" cy="12" r="10" />
-      <polyline points="12 6 12 12 16 14" />
-    </svg>
   )
 }

@@ -35,9 +35,6 @@
     --input: 240 5.9% 90%;
     --ring: 0 72.2% 50.6%;
     --radius: 0.5rem;
-    --font-inter: var(--font-inter);
-    --font-space: var(--font-space);
-    --font-orbitron: var(--font-orbitron);
   }
 
   .dark {
@@ -80,33 +77,39 @@
   }
   body {
     @apply bg-background text-foreground antialiased;
+    font-family: Arial, Helvetica, sans-serif;
     font-feature-settings: "rlig" 1, "calt" 1;
   }
 
   h1 {
     @apply text-foreground font-bold tracking-tight text-4xl md:text-5xl lg:text-6xl;
+    font-family: Arial, Helvetica, sans-serif;
     letter-spacing: -0.02em;
   }
 
   h2 {
     @apply text-foreground font-semibold tracking-tight text-3xl md:text-4xl;
+    font-family: Arial, Helvetica, sans-serif;
     letter-spacing: -0.01em;
   }
 
   h3 {
     @apply text-foreground font-semibold tracking-tight text-2xl md:text-3xl;
+    font-family: Arial, Helvetica, sans-serif;
   }
 
   h4,
   h5,
   h6 {
     @apply text-foreground font-medium tracking-tight;
+    font-family: Arial, Helvetica, sans-serif;
   }
 
   p {
     @apply text-foreground/90 dark:text-foreground/95 leading-relaxed;
+    font-family: Arial, Helvetica, sans-serif;
     font-size: 1.05rem;
-    line-height: 1.8; /* Aumentado el espaciado entre líneas */
+    line-height: 1.8;
   }
 
   /* Mejorar espaciado en textos generales */
@@ -116,14 +119,14 @@
   h4,
   h5,
   h6 {
-    @apply tracking-wide; /* Aumentar ligeramente el espaciado entre letras */
-    line-height: 1.4; /* Aumentar el espaciado entre líneas en títulos */
+    @apply tracking-wide;
+    line-height: 1.4;
   }
 
   /* Mejorar espaciado en listas */
   ul:not(.reset) li,
   ol:not(.reset) li {
-    @apply mb-3; /* Aumentar el espaciado entre elementos de listas */
+    @apply mb-3;
   }
 
   /* Improve text readability over complex backgrounds */
@@ -156,7 +159,8 @@
 
   /* Improve code readability */
   code {
-    @apply bg-muted px-1.5 py-0.5 rounded text-sm font-mono;
+    @apply bg-muted px-1.5 py-0.5 rounded text-sm;
+    font-family: "Courier New", Courier, monospace;
   }
 }
 
@@ -170,12 +174,14 @@
 /* Estilos para títulos de sección destacados */
 .section-title-highlight {
   @apply font-extrabold uppercase tracking-wider;
+  font-family: Arial, Helvetica, sans-serif;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
   letter-spacing: 0.05em;
 }
 
 .section-title {
   @apply text-3xl md:text-4xl font-bold mb-12 flex items-center drop-shadow-sm relative;
+  font-family: Arial, Helvetica, sans-serif;
   letter-spacing: -0.01em;
 }
 
@@ -358,6 +364,18 @@
 }
 
 /* Enhanced section title with animation */
+/* Enhanced section titles with prominent gradient */
+.section-title-prominent {
+  @apply text-center font-extrabold text-3xl md:text-4xl lg:text-5xl;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  letter-spacing: -0.01em;
+}
+
+.section-title-gradient {
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-red-500 via-red-600 to-red-700;
+  background-size: 200% 200%;
+  animation: gradient-shift 8s ease infinite;
+}
 
 /* Add responsive typography improvements */
 @media (max-width: 640px) {
@@ -426,7 +444,8 @@
 }
 
 .dj-mode .section-title-text {
-  @apply font-orbitron font-bold uppercase tracking-wider;
+  @apply font-bold uppercase tracking-wider;
+  font-family: Arial, Helvetica, sans-serif;
   text-shadow: 0 0 10px rgba(147, 51, 234, 0.7);
   letter-spacing: 0.1em;
 }
@@ -489,4 +508,9 @@ section > div.container,
 footer > div.container,
 main > div.container {
   @apply px-4 md:px-8;
+}
+
+/* Asegurar que todos los elementos usen Arial */
+* {
+  font-family: Arial, Helvetica, sans-serif;
 }

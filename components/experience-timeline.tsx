@@ -7,7 +7,6 @@ import { motion } from "framer-motion"
 import { ChevronDown, ChevronUp, Briefcase, Calendar, Building, MapPin, ExternalLink } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
-import { useDJMode } from "@/components/dj-mode-context"
 
 interface Experience {
   id: string
@@ -88,8 +87,6 @@ export function ExperienceTimeline() {
   const toggleExpand = (id: string) => {
     setExperiences(experiences.map((exp) => (exp.id === id ? { ...exp, expanded: !exp.expanded } : exp)))
   }
-
-  const { isDJMode } = useDJMode()
 
   return (
     <div className="relative w-full">
@@ -215,8 +212,8 @@ export function ExperienceTimeline() {
           </motion.div>
         ))}
       </div>
-      {/* Timeline vertical line - hidden in DJ Mode */}
-      {!isDJMode && <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-px bg-primary/20 z-0"></div>}
+      {/* Timeline vertical line */}
+      <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-px bg-primary/20 z-0"></div>
     </div>
   )
 }

@@ -3,7 +3,6 @@ import { motion } from "framer-motion"
 import Image from "next/image"
 import { Calendar, MapPin } from "lucide-react"
 import { Badge } from "@/components/ui/badge"
-import { useDJMode } from "@/components/dj-mode-context"
 
 interface Education {
   id: string
@@ -20,7 +19,6 @@ interface Education {
 }
 
 export function EducationTimeline() {
-  const { isDJMode } = useDJMode()
   // Actualizar el array educationData con la información correcta
   const educationData: Education[] = [
     {
@@ -67,7 +65,7 @@ export function EducationTimeline() {
   return (
     <div className="relative py-8 w-full">
       {/* Timeline central line */}
-      {!isDJMode && <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-px bg-primary/20 z-0"></div>}
+      <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-px bg-primary/20 z-0"></div>
 
       {/* Education items */}
       <div className="relative z-10">
@@ -162,7 +160,7 @@ export function EducationTimeline() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: index * 0.1 }}
             viewport={{ once: true, margin: "-100px" }}
-            className={`relative pl-8 ${!isDJMode ? "border-l-2 border-primary/20" : ""}`}
+            className="relative pl-8 border-l-2 border-primary/20"
           >
             {/* Timeline dot */}
             <div className="absolute left-0 top-0 transform -translate-x-1/2 w-3 h-3 rounded-full bg-primary/80 shadow-md shadow-primary/20"></div>

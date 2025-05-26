@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
-import { User, Briefcase, Code, GraduationCap, Mail } from 'lucide-react'
+import { User, Briefcase, Code, GraduationCap, Mail } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { SmoothScrollLink } from "@/components/smooth-scroll-link"
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip"
@@ -64,7 +64,9 @@ export function TopNavigation({ activeSection }: TopNavigationProps) {
               <TooltipProvider>
                 <motion.div
                   className={`flex items-center space-x-1 backdrop-blur-md ${
-                    scrolled ? "bg-background/70 dark:bg-background/80 shadow-md" : "bg-background/20 dark:bg-background/30"
+                    scrolled
+                      ? "bg-background/70 dark:bg-background/80 shadow-md"
+                      : "bg-background/20 dark:bg-background/30"
                   } py-2 px-3 rounded-full border border-border shadow-lg transition-all duration-300`}
                 >
                   {navItems.map((item) => (
@@ -126,7 +128,9 @@ export function TopNavigation({ activeSection }: TopNavigationProps) {
                             : "text-foreground/70 hover:bg-background/30 dark:hover:bg-background/40 hover:text-foreground"
                         }`}
                       >
-                        <div className={`${activeSection === item.id ? "text-primary-foreground" : "text-foreground/70"}`}>
+                        <div
+                          className={`${activeSection === item.id ? "text-primary-foreground" : "text-foreground/70"}`}
+                        >
                           {item.icon}
                         </div>
                         <span className="sr-only">{item.label}</span>
