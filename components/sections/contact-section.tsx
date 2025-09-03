@@ -2,8 +2,8 @@
 
 import { motion } from "framer-motion"
 import { Mail, Github, Linkedin, Twitter, Briefcase, Code, Users, ArrowRight, Copy } from "lucide-react"
-import { ContactForm } from "./contact-form"
-import { TextReveal } from "./text-reveal"
+import { ContactForm } from "@/components/contact/contact-form"
+import { TextReveal } from "@/components/utils/text-reveal"
 
 export function ContactSection() {
   // Animation variants

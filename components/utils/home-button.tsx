@@ -4,7 +4,7 @@ import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { Home } from "lucide-react"
 import { Button } from "@/components/ui/button"
-import { useDJMode } from "@/components/dj-mode-context"
+import { useDJMode } from "@/components/layout/dj-mode-context"
 
 export function HomeButton() {
   const [activeSection, setActiveSection] = useState("home")

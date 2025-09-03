@@ -2,7 +2,7 @@
 
 import { useRef } from "react"
 import { motion, useScroll, useTransform, useSpring } from "framer-motion"
-import { LanguageProficiency } from "@/components/language-proficiency"
+import { LanguageProficiency } from "@/components/skills/language-proficiency"
 import { Badge } from "@/components/ui/badge"
 import {
   Briefcase,

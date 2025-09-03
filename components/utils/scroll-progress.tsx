@@ -1,7 +1,7 @@
 "use client"
 
 import { useScroll, motion, useSpring } from "framer-motion"
-import { useTheme } from "@/components/theme-provider"
+import { useTheme } from "@/components/layout/theme-provider"
 
 export function ScrollProgress() {
   const { scrollYProgress } = useScroll()

@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
-import { useTheme } from "@/components/theme-provider"
+import { useTheme } from "@/components/layout/theme-provider"
 
 export function EnhancedThemeTransition() {
   const { theme } = useTheme()

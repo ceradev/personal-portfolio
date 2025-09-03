@@ -1,6 +1,6 @@
 "use client"
 
-import { ProjectsSpotifyList } from "@/components/projects-spotify-list"
+import { ProjectsSpotifyList } from "@/components/projects/projects-spotify-list"
 
 export function ProjectsSpotifyRows() {
   return (

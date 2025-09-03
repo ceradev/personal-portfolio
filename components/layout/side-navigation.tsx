@@ -4,7 +4,7 @@ import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { Menu, X, Home, User, Briefcase, Code, GraduationCap, Mail, MapPin } from "lucide-react"
 import { Button } from "@/components/ui/button"
-import { SmoothScrollLink } from "@/components/smooth-scroll-link"
+import { SmoothScrollLink } from "@/components/utils/smooth-scroll-link"
 
 interface SideNavigationProps {
   activeSection: string

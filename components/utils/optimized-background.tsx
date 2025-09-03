@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from "react"
 import { motion } from "framer-motion"
-import { useTheme } from "@/components/theme-provider"
+import { useTheme } from "@/components/layout/theme-provider"
 
 export function OptimizedBackground() {
   const canvasRef = useRef<HTMLCanvasElement>(null)
