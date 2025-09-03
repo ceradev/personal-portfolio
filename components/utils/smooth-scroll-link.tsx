@@ -1,36 +1,38 @@
 "use client"
 
-import type React from "react"
-
-import type { ReactNode } from "react"
+import { ReactNode } from "react"
+import { cn } from "@/lib/utils"
 
 interface SmoothScrollLinkProps {
   href: string
   children: ReactNode
+  className?: string
   onClick?: () => void
 }
 
-export function SmoothScrollLink({ href, children, onClick }: SmoothScrollLinkProps) {
+export function SmoothScrollLink({ href, children, className, onClick }: SmoothScrollLinkProps) {
   const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault()
-
+    
     const targetId = href.replace("#", "")
-    const element = document.getElementById(targetId)
-
-    if (element) {
-      window.scrollTo({
-        top: element.offsetTop,
+    const targetElement = document.getElementById(targetId)
+    
+    if (targetElement) {
+      targetElement.scrollIntoView({
         behavior: "smooth",
+        block: "start",
       })
     }
-
-    if (onClick) {
-      onClick()
-    }
+    
+    onClick?.()
   }
 
   return (
-    <a href={href} onClick={handleClick}>
+    <a
+      href={href}
+      onClick={handleClick}
+      className={cn("transition-colors duration-200", className)}
+    >
       {children}
     </a>
   )

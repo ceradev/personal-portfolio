@@ -1,3 +1,3 @@
-export { default as AboutSection } from './about-section';
-export { default as EnhancedProjectsSection } from './enhanced-projects-section';
-export { default as ContactSection } from './contact-section';
+export { AboutSection } from './about-section';
+export { EnhancedProjectsSection } from './enhanced-projects-section';
+export { ContactSection } from './contact-section';

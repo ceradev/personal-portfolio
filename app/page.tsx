@@ -30,7 +30,7 @@ export default function Home() {
 
   const ref = useRef(null)
   const { scrollYProgress } = useScroll({
-    target: ref,
+    target: mounted ? ref : undefined,
     offset: ["start start", "end end"],
   })
 

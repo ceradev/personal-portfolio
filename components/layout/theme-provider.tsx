@@ -9,6 +9,9 @@ type Theme = "dark" | "light" | "system"
 type ThemeProviderProps = {
   children: React.ReactNode
   defaultTheme?: Theme
+  attribute?: string
+  enableSystem?: boolean
+  disableTransitionOnChange?: boolean
 }
 
 type ThemeProviderState = {
@@ -23,10 +26,18 @@ const initialState: ThemeProviderState = {
 
 const ThemeProviderContext = createContext<ThemeProviderState>(initialState)
 
-export function ThemeProvider({ children, defaultTheme = "dark" }: ThemeProviderProps) {
+export function ThemeProvider({ 
+  children, 
+  defaultTheme = "dark",
+  attribute = "class",
+  enableSystem = true,
+  disableTransitionOnChange = false
+}: ThemeProviderProps) {
   const [theme, setTheme] = useState<Theme>(defaultTheme)
+  const [mounted, setMounted] = useState(false)
 
   useEffect(() => {
+    setMounted(true)
     const savedTheme = localStorage.getItem("theme") as Theme | null
 
     if (savedTheme) {
@@ -38,10 +49,12 @@ export function ThemeProvider({ children, defaultTheme = "dark" }: ThemeProvider
   }, [defaultTheme])
 
   useEffect(() => {
+    if (!mounted) return
+
     const root = window.document.documentElement
     root.classList.remove("light", "dark")
 
-    if (theme === "system") {
+    if (theme === "system" && enableSystem) {
       const systemTheme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light"
       root.classList.add(systemTheme)
     } else {
@@ -49,11 +62,15 @@ export function ThemeProvider({ children, defaultTheme = "dark" }: ThemeProvider
     }
 
     localStorage.setItem("theme", theme)
-  }, [theme])
+  }, [theme, mounted, enableSystem])
 
   const value = {
     theme,
     setTheme,
+  }
+
+  if (!mounted) {
+    return <div style={{ visibility: 'hidden' }}>{children}</div>
   }
 
   return <ThemeProviderContext.Provider value={value}>{children}</ThemeProviderContext.Provider>

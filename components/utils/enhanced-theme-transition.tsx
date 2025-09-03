@@ -8,8 +8,15 @@ export function EnhancedThemeTransition() {
   const { theme } = useTheme()
   const [prevTheme, setPrevTheme] = useState<string | null>(null)
   const [isTransitioning, setIsTransitioning] = useState(false)
+  const [mounted, setMounted] = useState(false)
 
   useEffect(() => {
+    setMounted(true)
+  }, [])
+
+  useEffect(() => {
+    if (!mounted) return
+
     // Initialize theme
     if (!prevTheme) {
       setPrevTheme(theme)
@@ -26,10 +33,10 @@ export function EnhancedThemeTransition() {
         setIsTransitioning(false)
       }, 1000)
     }
-  }, [theme, prevTheme])
+  }, [theme, prevTheme, mounted])
 
-  // Don't render until we have both current and previous theme
-  if (!theme || !prevTheme) return null
+  // Don't render until we have both current and previous theme and component is mounted
+  if (!mounted || !theme || !prevTheme) return null
 
   return (
     <AnimatePresence>
