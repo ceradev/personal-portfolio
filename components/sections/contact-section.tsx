@@ -4,6 +4,8 @@ import { motion } from "framer-motion"
 import { Mail, Github, Linkedin, Twitter, Briefcase, Code, Users, ArrowRight, Copy } from "lucide-react"
 import { ContactForm } from "@/components/contact/contact-form"
 import { TextReveal } from "@/components/utils/text-reveal"
+import { SectionTitle } from "@/components/utils/section-title"
+import { SectionTransition } from "@/components/utils/section-transition"
 
 export function ContactSection() {
   // Animation variants
@@ -27,7 +29,9 @@ export function ContactSection() {
   }
 
   return (
-    <div className="space-y-10">
+    <SectionTransition id="contact" className="py-20 my-8">
+      <SectionTitle title="Contáctame" />
+      <div className="space-y-10">
       {/* Sección de introducción */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
@@ -229,5 +233,6 @@ export function ContactSection() {
         </div>
       </div>
     </div>
+  </SectionTransition>
   )
 }

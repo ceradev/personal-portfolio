@@ -2,11 +2,9 @@
 
 import { useEffect, useState } from "react"
 import { motion, useSpring } from "framer-motion"
-import { useTheme } from "@/components/layout/theme-provider"
 
 export function ScrollProgress() {
   const [scrollProgress, setScrollProgress] = useState(0)
-  const { theme } = useTheme()
 
   useEffect(() => {
     const updateScrollProgress = () => {
@@ -27,7 +25,10 @@ export function ScrollProgress() {
   return (
     <motion.div
       className={`fixed top-0 left-0 right-0 h-1 bg-gradient-to-r from-primary/70 via-primary/60 to-primary/50 z-50 origin-left`}
-      style={{ scaleX }}
+      style={{ 
+        scaleX,
+        opacity: scrollProgress > 0.01 ? 1 : 0
+      }}
     />
   )
 }
