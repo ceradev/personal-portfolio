@@ -28,8 +28,12 @@ Components related to the overall layout and navigation:
 ### Section Components (`/sections`)
 Main page sections that compose the portfolio:
 - `AboutSection` - About me section
-- `EnhancedProjectsSection` - Projects showcase section
+- `ProjectsSection` - Projects showcase section
 - `ContactSection` - Contact information section
+- `ExperienceSection` - Experience section
+- `EducationSection` - Education section
+- `HeroSection` - Hero section
+- `SkillsSection` - Skills section
 
 ### Skills Components (`/skills`)
 Components for displaying technical and personal skills:

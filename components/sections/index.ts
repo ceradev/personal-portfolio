@@ -1,5 +1,4 @@
 export { AboutSection } from './about-section';
-export { EnhancedProjectsSection } from './enhanced-projects-section';
 export { ContactSection } from './contact-section';
 export { HeroSection } from './hero-section';
 export { SkillsSection } from './skills-section';
