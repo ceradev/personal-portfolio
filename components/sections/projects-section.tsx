@@ -397,21 +397,24 @@ export function ProjectsSection() {
           <div className="absolute inset-0 bg-gradient-to-r from-primary/10 via-transparent to-primary/10 blur-3xl -z-10" />
 
           <div className="relative">
-            <p className="text-xl text-foreground/90 max-w-3xl mx-auto leading-relaxed font-medium">
-            Una selección de mis{" "}
+            <div className="flex items-center justify-center gap-3 mb-6">
+            </div>
+            
+            <div className="text-xl text-gray-800 max-w-3xl mx-auto leading-relaxed font-medium">
+              Una selección de mis{" "}
               <span className="relative">
-                <span className="bg-gradient-to-r from-primary to-primary/80 bg-clip-text text-transparent font-bold">
-              proyectos más destacados
+                <span className="text-red-600 font-bold">
+                  proyectos más destacados
                 </span>
                 <motion.div
                   initial={{ width: 0 }}
                   whileInView={{ width: "100%" }}
                   transition={{ duration: 0.8, delay: 0.5 }}
-                  className="absolute -bottom-1 left-0 h-0.5 bg-gradient-to-r from-primary to-primary/60"
+                  className="absolute -bottom-1 left-0 h-0.5 bg-gradient-to-r from-red-500 to-red-400"
                 />
-            </span>{" "}
-            y desarrollos técnicos
-          </p>
+              </span>{" "}
+              y desarrollos técnicos
+            </div>
           </div>
         </motion.div>
 

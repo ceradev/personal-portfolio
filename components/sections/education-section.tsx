@@ -5,7 +5,7 @@ import { AcademicTimeline } from "@/components/education/academic-timeline";
 import { CertificatesGrid } from "@/components/education/certificates-grid";
 import { SectionTitle } from "@/components/utils/section-title";
 import { SectionTransition } from "@/components/utils/section-transition";
-import { GraduationCap, Award, Star, BookOpen } from "lucide-react";
+import { GraduationCap, Award } from "lucide-react";
 
 export function EducationSection() {
   return (
@@ -57,21 +57,24 @@ export function EducationSection() {
           <div className="absolute inset-0 bg-gradient-to-r from-primary/10 via-transparent to-primary/10 blur-3xl -z-10" />
 
           <div className="relative">
-            <p className="text-xl text-foreground/90 max-w-3xl mx-auto leading-relaxed font-medium">
+            <div className="flex items-center justify-center gap-3 mb-6">
+            </div>
+            
+            <div className="text-xl text-gray-800 max-w-3xl mx-auto leading-relaxed font-medium">
               Mi trayectoria académica y{" "}
               <span className="relative">
-                <span className="bg-gradient-to-r from-primary to-primary/80 bg-clip-text text-transparent font-bold">
+                <span className="text-red-600 font-bold">
                   certificaciones profesionales
                 </span>
                 <motion.div
                   initial={{ width: 0 }}
                   whileInView={{ width: "100%" }}
                   transition={{ duration: 0.8, delay: 0.5 }}
-                  className="absolute -bottom-1 left-0 h-0.5 bg-gradient-to-r from-primary to-primary/60"
+                  className="absolute -bottom-1 left-0 h-0.5 bg-gradient-to-r from-red-500 to-red-400"
                 />
               </span>{" "}
               que respaldan mi experiencia técnica
-            </p>
+            </div>
           </div>
         </motion.div>
 

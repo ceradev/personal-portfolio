@@ -1,0 +1,57 @@
+[
+  {
+    "id": "current",
+    "title": "Desarrollador Freelancer",
+    "company": "Freelancer",
+    "location": "Remoto",
+    "period": "Actualidad",
+    "description": "Desarrollador Full Stack independiente especializado en crear soluciones web personalizadas para clientes diversos. Trabajo de forma autónoma gestionando proyectos completos desde la conceptualización hasta el despliegue, con enfoque en tecnologías modernas y mejores prácticas de desarrollo.",
+    "achievements": [
+      "Desarrollo de más de 15 aplicaciones web completas para diferentes sectores empresariales",
+      "Implementación de arquitecturas serverless y microservicios en AWS que redujeron costos operativos en 50%",
+      "Creación de sistemas de gestión empresarial que automatizaron procesos manuales para PyMEs",
+      "Optimización de aplicaciones existentes mejorando el rendimiento hasta un 60%",
+      "Gestión completa de proyectos incluyendo análisis de requisitos, diseño UX/UI y mantenimiento post-lanzamiento",
+      "Integración de APIs REST y GraphQL para conectar múltiples servicios y plataformas de terceros"
+    ],
+    "skills": ["React", "Next.js", "TypeScript", "Node.js", "MongoDB", "AWS", "PostgreSQL", "Docker", "Git", "Figma"],
+    "status": "current",
+    "logo": "/placeholder-logo.png"
+  },
+  {
+    "id": "eviden-dev",
+    "title": "Desarrollador de Software",
+    "company": "Eviden",
+    "location": "Santa Cruz de Tenerife",
+    "period": "Nov 2024 - Abr 2025",
+    "description": "Junior Full-Stack Developer especializado en desarrollo de aplicaciones web usando Angular, Spring Boot y PostgreSQL, con enfoque en herramientas internas y automatización.",
+    "achievements": [
+      "Desarrollo de herramientas internas que redujeron el tiempo de procesamiento en 30%",
+      "Implementación de pipelines CI/CD con GitLab para automatización de despliegues",
+      "Creación de microservicios con Spring Boot para arquitectura distribuida",
+      "Integración de soluciones de IA para automatización de procesos"
+    ],
+    "skills": ["Angular", "Spring Boot", "PostgreSQL", "GitLab", "Kubernetes", "IA"],
+    "url": "https://eviden.com",
+    "status": "completed",
+    "logo": "/eviden-logo.png"
+  },
+  {
+    "id": "atos-intern",
+    "title": "Desarrollador Full Stack",
+    "company": "ATOS Consulting Canarias S.A.",
+    "location": "Santa Cruz de Tenerife",
+    "period": "Mar 2024 - May 2024",
+    "description": "Becario de Desarrollo Full Stack con formación intensiva en tecnologías web y experiencia práctica en proyectos simulados con metodologías Agile.",
+    "achievements": [
+      "Completación exitosa de 3 proyectos simulados usando metodologías Agile",
+      "Desarrollo de una aplicación web completa con Java y Angular",
+      "Participación activa en ceremonias Scrum y revisiones de código",
+      "Aprendizaje acelerado de tecnologías enterprise en entorno profesional"
+    ],
+    "skills": ["Java", "JavaScript", "Angular", "Spring Boot", "GIT", "Agile"],
+    "url": "https://eviden.com",
+    "status": "completed",
+    "logo": "/atos-logo.png"
+  }
+]

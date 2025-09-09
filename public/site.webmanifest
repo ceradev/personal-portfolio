@@ -1,0 +1,27 @@
+{
+  "name": "César Suárez | Desarrollador Full Stack",
+  "short_name": "César Suárez",
+  "description": "Portfolio profesional de César Suárez, Desarrollador Full Stack",
+  "icons": [
+    {
+      "src": "/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable any"
+    }
+  ],
+  "theme_color": "#dc2626",
+  "background_color": "#ffffff",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "start_url": "/",
+  "lang": "es",
+  "categories": ["portfolio", "developer", "business"]
+}
