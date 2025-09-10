@@ -1,0 +1,1 @@
+export { AboutSubtitle, ProfessionalGoal } from './about-components';

@@ -3,15 +3,15 @@
 import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { User, Briefcase, Code, GraduationCap, Mail } from "lucide-react"
-import { Button } from "@/components/ui/button"
-import { SmoothScrollLink } from "@/components/utils/smooth-scroll-link"
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip"
+import { Button } from "@/components/ui/display/button"
+import { SmoothScrollLink } from "@/utils/smooth-scroll-link"
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/feedback/tooltip"
 
 interface TopNavigationProps {
   activeSection: string
 }
 
-export function TopNavigation({ activeSection }: TopNavigationProps) {
+export function TopNavigation({ activeSection }: Readonly<TopNavigationProps>) {
   const [isMobile, setIsMobile] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const isHomeActive = activeSection === "home"

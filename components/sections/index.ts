@@ -1,7 +1,7 @@
-export { AboutSection } from './about-section';
-export { ContactSection } from './contact-section';
-export { HeroSection } from './hero-section';
-export { SkillsSection } from './skills-section';
-export { ExperienceSection } from './experience-section';
-export { EducationSection } from './education-section';
-export { ProjectsSection } from './projects-section';
+export { AboutSection } from './about/about-section';
+export { ContactSection } from './contact/contact-section';
+export { HeroSection } from './hero/hero-section';
+export { SkillsSection } from './skills/skills-section';
+export { ExperienceSection } from './experience/experience-section';
+export { EducationSection } from './education/education-section';
+export { ProjectsSection } from './projects/projects-section';

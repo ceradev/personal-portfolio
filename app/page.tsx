@@ -1,10 +1,10 @@
 "use client"
 
 import { useEffect, useRef, useState } from "react"
-import { useScroll, useTransform } from "framer-motion"
+import { useScroll } from "framer-motion"
 import { TopNavigation, GlobalBackground, Footer, ThemeToggle } from "@/components/layout"
-import { ScrollProgress } from "@/components/utils/scroll-progress"
-import { EnhancedThemeTransition } from "@/components/utils/enhanced-theme-transition"
+import { ScrollProgress } from "@/utils/scroll-progress"
+import { EnhancedThemeTransition } from "@/utils/enhanced-theme-transition"
 import { 
   AboutSection, 
   ContactSection, 
@@ -21,7 +21,7 @@ export default function Home() {
   const [isMobile, setIsMobile] = useState(false)
 
   const ref = useRef(null)
-  const { scrollYProgress } = useScroll({
+  useScroll({
     target: mounted ? ref : undefined,
     offset: ["start start", "end end"],
   })

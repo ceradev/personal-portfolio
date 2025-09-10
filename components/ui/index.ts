@@ -1,12 +1,14 @@
-export * from './badge';
-export * from './button';
-export * from './card';
-export * from './checkbox';
-export * from './dialog';
-export * from './dropdown-menu';
-export * from './input';
-export * from './label';
-export * from './scroll-area';
-export * from './tabs';
-export * from './textarea';
-export * from './tooltip';
+// Form components
+export * from './form';
+
+// Layout components
+export * from './layout';
+
+// Feedback components
+export * from './feedback';
+
+// Navigation components
+export * from './navigation';
+
+// Display components
+export * from './display';
