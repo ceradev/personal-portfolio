@@ -13,7 +13,7 @@ import {
   CheckCircle2
 } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/layout/card";
-import { ExperienceDetailsProps } from "@/data/experiences";
+import { ExperienceDetailsProps } from "@/types/experiences";
 
 export function ExperienceDetails({ experience }: Readonly<ExperienceDetailsProps>) {
   return (

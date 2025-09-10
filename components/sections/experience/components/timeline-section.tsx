@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { TimelineNode } from "./timeline-node";
-import { Experience } from "@/data/experiences";
+import { Experience } from "@/types/experiences";
 
 interface TimelineSectionProps {
   readonly experiences: Experience[];

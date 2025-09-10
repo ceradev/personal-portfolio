@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
-import { TypeWriterProps } from "@/data/hero";
+import { TypeWriterProps } from "@/types/hero";
 
 export function TypeWriter({ words }: Readonly<TypeWriterProps>) {
   const [displayedText, setDisplayedText] = useState("");

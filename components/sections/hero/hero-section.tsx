@@ -6,9 +6,8 @@ import {
   HeroText,
   HeroButtons,
   HeroProfile,
-  TechBadges,
 } from "@/components/sections/hero/components";
-import { HeroSectionProps } from "@/data/hero";
+import { HeroSectionProps } from "@/types/hero";
 
 export function HeroSection({ isMobile }: Readonly<HeroSectionProps>) {
   return (
@@ -23,7 +22,6 @@ export function HeroSection({ isMobile }: Readonly<HeroSectionProps>) {
           transition={{ duration: 0.8, delay: 0.2 }}
         >
           <HeroText />
-          <TechBadges />
           <HeroButtons />
         </motion.div>
 

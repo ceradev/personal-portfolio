@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { TimelineNodeProps } from "@/data/experiences";
+import { TimelineNodeProps } from "@/types/experiences";
 
 export function TimelineNode({ experience, index, isActive, onClick }: Readonly<TimelineNodeProps>) {
   return (

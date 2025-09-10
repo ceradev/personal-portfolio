@@ -11,7 +11,7 @@ import {
   ExperienceDetails,
   MobileHint
 } from "@/components/sections/experience/components";
-import { Experience } from "@/data/experiences";
+import { Experience } from "@/types/experiences";
 import experiencesData from "@/data/experiences.json";
 
 const EXPERIENCES: Experience[] = experiencesData as Experience[];

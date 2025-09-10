@@ -44,7 +44,7 @@ import {
 import { ScrollArea } from "@/components/ui/layout/scroll-area";
 import { SectionTitle } from "@/utils/section-title";
 import { SectionTransition } from "@/utils/section-transition";
-import { projects, type Project } from "@/data/types";
+import { projects, type Project } from "@/types/projects";
 
 export function ProjectsSection() {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);

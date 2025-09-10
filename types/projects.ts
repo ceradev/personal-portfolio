@@ -22,7 +22,7 @@ export interface Project {
 }
 
 // Importar los datos de proyectos
-import projectsData from './projects.json';
+import projectsData from '../data/projects.json';
 
 // Exportar los proyectos con el tipo correcto
 export const projects: Project[] = projectsData as Project[];
