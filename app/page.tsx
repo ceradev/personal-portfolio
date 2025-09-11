@@ -1,70 +1,77 @@
-"use client"
+"use client";
 
-import { useEffect, useRef, useState } from "react"
-import { useScroll } from "framer-motion"
-import { TopNavigation, GlobalBackground, Footer, ThemeToggle } from "@/components/layout"
-import { ScrollProgress } from "@/utils/scroll-progress"
-import { EnhancedThemeTransition } from "@/utils/enhanced-theme-transition"
-import { 
-  AboutSection, 
-  ContactSection, 
+import { useEffect, useRef, useState } from "react";
+import { useScroll } from "framer-motion";
+import {
+  TopNavigation,
+  GlobalBackground,
+  Footer,
+  ThemeToggle,
+} from "@/components/layout";
+import { ScrollProgress } from "@/utils/scroll-progress";
+import { EnhancedThemeTransition } from "@/utils/enhanced-theme-transition";
+import {
+  AboutSection,
+  ContactSection,
   HeroSection,
-  SkillsSection,
-  ExperienceSection,
   EducationSection,
-  ProjectsSection
-} from "@/components/sections"
+  ProjectsSection,
+  ServicesSection,
+  TestimonialsSection,
+} from "@/components/sections";
 
 export default function Home() {
-  const [mounted, setMounted] = useState(false)
-  const [activeSection, setActiveSection] = useState("home")
-  const [isMobile, setIsMobile] = useState(false)
+  const [mounted, setMounted] = useState(false);
+  const [activeSection, setActiveSection] = useState("home");
+  const [isMobile, setIsMobile] = useState(false);
 
-  const ref = useRef(null)
+  const ref = useRef(null);
   useScroll({
     target: mounted ? ref : undefined,
     offset: ["start start", "end end"],
-  })
-
+  });
 
   useEffect(() => {
-    setMounted(true)
+    setMounted(true);
 
     const checkMobile = () => {
-      setIsMobile(window.innerWidth < 768)
-    }
+      setIsMobile(window.innerWidth < 768);
+    };
 
-    checkMobile()
-    window.addEventListener("resize", checkMobile)
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
 
     const handleScroll = () => {
-      const sections = document.querySelectorAll("section[id], div[id]")
-      const scrollPosition = window.scrollY + 100
+      const sections = document.querySelectorAll("section[id], div[id]");
+      const scrollPosition = window.scrollY + 100;
 
-      let currentSection = "home"
+      let currentSection = "home";
 
       sections.forEach((section) => {
-        const sectionTop = (section as HTMLElement).offsetTop
-        const sectionHeight = (section as HTMLElement).offsetHeight
-        const sectionId = section.getAttribute("id") || ""
+        const sectionTop = (section as HTMLElement).offsetTop;
+        const sectionHeight = (section as HTMLElement).offsetHeight;
+        const sectionId = section.getAttribute("id") || "";
 
-        if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
-          currentSection = sectionId
+        if (
+          scrollPosition >= sectionTop &&
+          scrollPosition < sectionTop + sectionHeight
+        ) {
+          currentSection = sectionId;
         }
-      })
+      });
 
-      setActiveSection(currentSection)
-    }
+      setActiveSection(currentSection);
+    };
 
-    window.addEventListener("scroll", handleScroll)
+    window.addEventListener("scroll", handleScroll);
 
     return () => {
-      window.removeEventListener("resize", checkMobile)
-      window.removeEventListener("scroll", handleScroll)
-    }
-  }, [])
+      window.removeEventListener("resize", checkMobile);
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
-  if (!mounted) return null
+  if (!mounted) return null;
 
   return (
     <main ref={ref} className="min-h-screen relative pt-16">
@@ -85,20 +92,20 @@ export default function Home() {
         {/* Hero Section */}
         <HeroSection isMobile={isMobile} />
 
-        {/* About Section */}
-        <AboutSection />
-
-        {/* Skills Section */}
-        <SkillsSection />
-
-        {/* Experience Section */}
-        <ExperienceSection />
-
-        {/* Education Section */}
-        <EducationSection />
+        {/* Services Section */}
+        <ServicesSection />
 
         {/* Projects Section */}
         <ProjectsSection />
+
+        {/* Testimonials Section */}
+        <TestimonialsSection />
+
+        {/* About Section */}
+        <AboutSection />
+
+        {/* Education Section */}
+        <EducationSection />
 
         {/* Contact Section */}
         <ContactSection />
@@ -107,5 +114,5 @@ export default function Home() {
         <Footer />
       </div>
     </main>
-  )
+  );
 }

@@ -30,7 +30,7 @@ export function HeroSection({ isMobile }: Readonly<HeroSectionProps>) {
       </div>
 
       {/* Scroll Down Arrow */}
-      <ScrollDownArrow targetSection="about" />
+      <ScrollDownArrow targetSection="services" />
     </section>
   );
 }

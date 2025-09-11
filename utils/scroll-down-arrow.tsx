@@ -19,19 +19,17 @@ export function ScrollDownArrow({ targetSection = "about" }: ScrollDownArrowProp
   }
 
   return (
-    <motion.div
-      className="w-full flex justify-center mt-8 sm:mt-12 md:mt-16 lg:mt-20 cursor-pointer z-10"
-      initial={{ opacity: 0, y: -20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ delay: 1, duration: 0.5 }}
-    >
+    <div className="w-full flex justify-center mt-8 sm:mt-12 md:mt-16 lg:mt-20 z-10">
       <motion.div
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 1, duration: 0.5 }}
         onClick={handleClick}
-        className="flex flex-col items-center justify-center text-primary hover:scale-110 transition-transform duration-300"
+        className="inline-flex items-center justify-center text-primary cursor-pointer"
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.95 }}
       >
-        <div className="p-3 sm:p-4 rounded-full bg-primary/10 border border-primary/30 hover:border-primary/50 backdrop-blur-sm shadow-md mb-4 sm:mb-0">
+        <div className="p-3 sm:p-4 rounded-full bg-primary/10 border border-primary/30 hover:border-primary/50 backdrop-blur-sm shadow-md">
           <motion.div
             animate={{ y: [0, 8, 0] }}
             transition={{
@@ -45,6 +43,6 @@ export function ScrollDownArrow({ targetSection = "about" }: ScrollDownArrowProp
           </motion.div>
         </div>
       </motion.div>
-    </motion.div>
+    </div>
   )
 }

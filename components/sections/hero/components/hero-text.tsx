@@ -44,23 +44,23 @@ export function HeroText() {
           className=""
         />
         <AnimatedText 
-          text="Full Stack " 
+          text="Freelancer " 
           delay={1.9} 
           className="text-red-600 font-medium"
         />
         <AnimatedText 
-          text="con pasión por" 
+          text="con pasión por la" 
           delay={2.4} 
           className=""
         />
         <br />
         <AnimatedText 
-          text="crear " 
+          text="creación de " 
           delay={2.6} 
           className=""
         />
         <AnimatedText 
-          text="experiencias digitales excepcionales" 
+          text="aplicaciones rápidas y escalables." 
           delay={2.8} 
           className="text-red-600 font-medium"
         />

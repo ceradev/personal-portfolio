@@ -5,3 +5,5 @@ export { SkillsSection } from './skills/skills-section';
 export { ExperienceSection } from './experience/experience-section';
 export { EducationSection } from './education/education-section';
 export { ProjectsSection } from './projects/projects-section';
+export { ServicesSection } from './services/services-section';
+export { TestimonialsSection } from './testimonials/testimonials-section';

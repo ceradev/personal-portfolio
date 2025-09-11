@@ -17,16 +17,13 @@ export function HeroButtons() {
   };
 
   return (
-    <motion.div 
+    <motion.div
       className="flex flex-wrap items-center gap-4"
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8, delay: 3 }}
     >
-      <motion.div
-        whileHover={{ scale: 1.05 }}
-        whileTap={{ scale: 0.95 }}
-      >
+      <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
         <Button
           onClick={() => {
             const projectsSection = document.getElementById("projects");
@@ -41,7 +38,7 @@ export function HeroButtons() {
         >
           <span className="relative z-10 flex items-center gap-2 font-medium">
             <FolderOpen className="h-4 w-4" />
-             Mis proyectos
+            Mis proyectos
           </span>
           <motion.span
             className="absolute inset-0 bg-white/20 rounded-full"
@@ -58,10 +55,7 @@ export function HeroButtons() {
         </Button>
       </motion.div>
 
-      <motion.div
-        whileHover={{ scale: 1.05 }}
-        whileTap={{ scale: 0.95 }}
-      >
+      <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
         <Button
           variant="outline"
           onClick={handleDownloadCV}
@@ -86,13 +80,17 @@ export function HeroButtons() {
         </Button>
       </motion.div>
 
-      <motion.div 
+      <motion.div
         className="flex items-center gap-3 ml-2"
         initial={{ opacity: 0, x: -20 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.8, delay: 3.2 }}
       >
-        <Link href={SOCIAL_LINKS.linkedin} target="_blank" className="group relative">
+        <Link
+          href={SOCIAL_LINKS.linkedin}
+          target="_blank"
+          className="group relative"
+        >
           <motion.div
             className="p-3 rounded-full backdrop-blur-sm bg-background/30 dark:bg-background/40 border border-border hover:border-blue-500/50 hover:bg-blue-500/10 transition-all duration-300 shadow-md hover:shadow-lg"
             whileHover={{ scale: 1.15, rotate: 10 }}
@@ -107,8 +105,12 @@ export function HeroButtons() {
             />
           </motion.div>
         </Link>
-        
-        <Link href={SOCIAL_LINKS.github} target="_blank" className="group relative">
+
+        <Link
+          href={SOCIAL_LINKS.github}
+          target="_blank"
+          className="group relative"
+        >
           <motion.div
             className="p-3 rounded-full backdrop-blur-sm bg-background/30 dark:bg-background/40 border border-border hover:border-gray-600/50 hover:bg-gray-600/10 transition-all duration-300 shadow-md hover:shadow-lg"
             whileHover={{ scale: 1.15, rotate: -10 }}
@@ -123,7 +125,7 @@ export function HeroButtons() {
             />
           </motion.div>
         </Link>
-        
+
         <Link href={SOCIAL_LINKS.email} className="group relative">
           <motion.div
             className="p-3 rounded-full backdrop-blur-sm bg-background/30 dark:bg-background/40 border border-border hover:border-red-500/50 hover:bg-red-500/10 transition-all duration-300 shadow-md hover:shadow-lg"

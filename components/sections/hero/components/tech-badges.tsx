@@ -89,6 +89,7 @@ const TECH_BADGES: TechBadgeProps[] = [
 function TechBadge({ badge, index }: Readonly<{ badge: TechBadgeProps; index: number }>) {
   const IconComponent = badge.icon;
   const [isVisible, setIsVisible] = useState(false);
+  const [isClicked, setIsClicked] = useState(false);
   
   useEffect(() => {
     // Staggered fade-in animation for each badge
@@ -98,6 +99,12 @@ function TechBadge({ badge, index }: Readonly<{ badge: TechBadgeProps; index: nu
 
     return () => clearTimeout(timer);
   }, [index]);
+
+  const handleTap = () => {
+    setIsClicked(true);
+    // Reset after animation completes
+    setTimeout(() => setIsClicked(false), 600);
+  };
   
   const getAnimationProps = () => {
     const baseTransition = {
@@ -136,9 +143,47 @@ function TechBadge({ badge, index }: Readonly<{ badge: TechBadgeProps; index: nu
     }
   };
 
+  const getHoverColor = () => {
+    // Convertir las clases de Tailwind a colores RGB para el boxShadow
+    const colorMap: Record<string, string> = {
+      'text-blue-400': 'rgba(96, 165, 250, 0.8)', // blue-400
+      'text-blue-600': 'rgba(37, 99, 235, 0.8)', // blue-600
+      'text-foreground': 'rgba(156, 163, 175, 0.8)', // gray-500 para foreground
+      'text-yellow-500': 'rgba(234, 179, 8, 0.8)', // yellow-500
+      'text-green-500': 'rgba(34, 197, 94, 0.8)', // green-500
+      'text-green-600': 'rgba(22, 163, 74, 0.8)', // green-600
+      'text-cyan-500': 'rgba(6, 182, 212, 0.8)', // cyan-500
+      'text-green-700': 'rgba(21, 128, 61, 0.8)', // green-700
+      'text-orange-500': 'rgba(249, 115, 22, 0.8)', // orange-500
+      'text-blue-500': 'rgba(59, 130, 246, 0.8)', // blue-500
+      'text-red-600': 'rgba(220, 38, 38, 0.8)' // red-600
+    };
+    
+    return colorMap[badge.color] || 'rgba(59, 130, 246, 0.8)'; // fallback azul
+  };
+
+  const getBorderColor = () => {
+    // Convertir las clases de Tailwind a colores RGB para el borderColor
+    const colorMap: Record<string, string> = {
+      'text-blue-400': 'rgba(96, 165, 250, 0.6)', // blue-400
+      'text-blue-600': 'rgba(37, 99, 235, 0.6)', // blue-600
+      'text-foreground': 'rgba(156, 163, 175, 0.6)', // gray-500 para foreground
+      'text-yellow-500': 'rgba(234, 179, 8, 0.6)', // yellow-500
+      'text-green-500': 'rgba(34, 197, 94, 0.6)', // green-500
+      'text-green-600': 'rgba(22, 163, 74, 0.6)', // green-600
+      'text-cyan-500': 'rgba(6, 182, 212, 0.6)', // cyan-500
+      'text-green-700': 'rgba(21, 128, 61, 0.6)', // green-700
+      'text-orange-500': 'rgba(249, 115, 22, 0.6)', // orange-500
+      'text-blue-500': 'rgba(59, 130, 246, 0.6)', // blue-500
+      'text-red-600': 'rgba(220, 38, 38, 0.6)' // red-600
+    };
+    
+    return colorMap[badge.color] || 'rgba(59, 130, 246, 0.6)'; // fallback azul
+  };
+
   return (
     <motion.div
-      className={`absolute ${Object.values(badge.position).join(' ')} backdrop-blur-sm bg-background/30 dark:bg-background/40 shadow-md rounded-full p-2 md:p-3 border border-border group`}
+      className={`absolute ${Object.values(badge.position).join(' ')} backdrop-blur-sm bg-background/30 dark:bg-background/40 shadow-md rounded-full p-2 md:p-3 border border-border group cursor-pointer`}
       initial={{ 
         opacity: 0, 
         scale: 0.3,
@@ -147,25 +192,27 @@ function TechBadge({ badge, index }: Readonly<{ badge: TechBadgeProps; index: nu
       }}
       animate={{ 
         opacity: isVisible ? 1 : 0,
-        scale: isVisible ? 1 : 0.3,
+        scale: isVisible ? (isClicked ? 1.4 : 1) : 0.3,
         y: isVisible ? 0 : 20,
         rotate: isVisible ? 0 : -180,
+        boxShadow: isClicked ? `0 0 25px ${getHoverColor()}` : '0 4px 6px -1px rgba(0, 0, 0, 0.1)',
+        borderColor: isClicked ? getBorderColor() : 'hsl(var(--border))',
         ...getAnimationProps().animate
       }}
       transition={{
         opacity: { duration: 0.6, ease: "easeOut" },
-        scale: { duration: 0.6, ease: "easeOut" },
+        scale: { duration: isClicked ? 0.3 : 0.6, ease: "easeOut" },
         y: { duration: 0.6, ease: "easeOut" },
         rotate: { duration: 0.8, ease: "easeOut" },
+        boxShadow: { duration: 0.3, ease: "easeOut" },
+        borderColor: { duration: 0.3, ease: "easeOut" },
         ...getAnimationProps().transition
       }}
-      whileHover={{ 
-        scale: 1.4, 
-        boxShadow: "0 0 25px rgba(59, 130, 246, 0.8)",
-        borderColor: "rgba(59, 130, 246, 0.6)"
-      }}
+      onTap={handleTap}
     >
-      <IconComponent className={`h-4 w-4 md:h-5 md:w-5 ${badge.color} group-hover:${badge.hoverColor} transition-colors duration-300`} />
+      <div className="group-hover:scale-110 transition-transform duration-300">
+        <IconComponent className={`h-4 w-4 md:h-5 md:w-5 transition-colors duration-300 ${badge.color} group-hover:opacity-80`} />
+      </div>
     </motion.div>
   );
 }
