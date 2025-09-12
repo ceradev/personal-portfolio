@@ -4,6 +4,7 @@ export * from './badge';
 export * from './dialog';
 export * from './gradient-text';
 export * from './info-badge';
+export * from './all-in-one-frame';
 export * from './personal-info-item';
 export * from './soft-skill-item';
 export * from './status-badge';

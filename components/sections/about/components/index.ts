@@ -1,1 +1,2 @@
-export { AboutSubtitle, ProfessionalGoal } from './about-components';
+export { AboutSubtitle, ProfessionalGoal, EssentialInfo, EducationCertSummary, ProfessionalSoftSkills, LanguagesInfo, PracticalInfo } from './about-components';
+export { CompactTechSkills } from './compact-tech-skills';

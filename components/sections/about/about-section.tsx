@@ -1,20 +1,21 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { LanguageProficiency } from "@/components/sections/skills/components/language-proficiency";
 import { SectionTitle } from "@/utils/section-title";
 import { SectionTransition } from "@/utils/section-transition";
 import { 
   AboutSubtitle,
-  ProfessionalGoal
+  EssentialInfo,
+  EducationCertSummary,
+  ProfessionalSoftSkills,
+  LanguagesInfo,
+  PracticalInfo
 } from "@/components/sections/about/components/about-components";
+import { CompactTechSkills } from "@/components/sections/about/components/compact-tech-skills";
 import { InfoCard } from "@/components/ui/layout/info-card";
-import { PersonalInfoItem } from "@/components/ui/display/personal-info-item";
-import { InfoBadge } from "@/components/ui/display/info-badge";
-import { SoftSkillItem } from "@/components/ui/display/soft-skill-item";
 import { TextParagraph } from "@/components/ui/display/text-paragraph";
 import { aboutData } from "@/data/about-data";
-import { Briefcase, User, Car, Globe, Brain, Target } from "lucide-react";
+import { Briefcase } from "lucide-react";
 
 export function AboutSection() {
   return (
@@ -53,12 +54,16 @@ export function AboutSection() {
         
         <AboutSubtitle />
 
-        <div className="grid md:grid-cols-2 gap-8 items-start">
-          {/* Columna izquierda */}
-          <div className="space-y-8">
-            {/* Información personal */}
+        {/* Información esencial */}
+        <EssentialInfo />
+
+        {/* Contenido principal */}
+        <div className="space-y-8">
+          {/* Primera fila - Propuesta de valor y formación */}
+          <div className="grid lg:grid-cols-2 gap-8 items-start">
+            {/* Columna izquierda - Propuesta de valor */}
             <InfoCard
-              title="Sobre Mí"
+              title="Mi Propuesta de Valor"
               icon={<Briefcase className="h-5 w-5 text-primary" />}
             >
               <div className="space-y-4">
@@ -72,85 +77,22 @@ export function AboutSection() {
               </div>
             </InfoCard>
 
-            {/* Datos personales */}
-            <InfoCard 
-              title="Información Personal" 
-              icon={<User className="h-5 w-5 text-primary" />} 
-              delay={0.1}
-            >
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                {aboutData.personalInfo.map((item) => (
-                  <PersonalInfoItem
-                    key={item.label}
-                    icon={item.icon}
-                    label={item.label}
-                    value={item.value}
-                  />
-                ))}
-              </div>
-            </InfoCard>
-
-            {/* Información adicional */}
-            <InfoCard
-              title="Información Adicional"
-              icon={<Car className="h-5 w-5 text-primary" />}
-              delay={0.2}
-            >
-              <div className="flex flex-wrap gap-3">
-                {aboutData.additionalInfo.map((info, index) => (
-                  <InfoBadge
-                    key={info.label}
-                    icon={info.icon}
-                    label={info.label}
-                    index={index}
-                  />
-                ))}
-              </div>
-            </InfoCard>
+            {/* Columna derecha - Formación */}
+            <EducationCertSummary />
           </div>
 
-          {/* Columna derecha */}
-          <div className="space-y-8">
-            {/* Idiomas */}
-            <InfoCard 
-              title="Idiomas" 
-              icon={<Globe className="h-5 w-5 text-primary" />}
-            >
-              <LanguageProficiency />
-            </InfoCard>
+          {/* Segunda fila - Tech Skills y Habilidades profesionales */}
+          <div className="grid lg:grid-cols-2 gap-8 items-start">
+            <CompactTechSkills />
+            <ProfessionalSoftSkills />
+          </div>
 
-            {/* Habilidades Sociales */}
-            <InfoCard
-              title="Habilidades Sociales"
-              icon={<Brain className="h-5 w-5 text-primary" />}
-              delay={0.1}
-            >
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                {aboutData.softSkills.map((skill, index) => (
-                  <SoftSkillItem
-                    key={skill.label}
-                    icon={skill.icon}
-                    label={skill.label}
-                    index={index}
-                  />
-                ))}
-              </div>
-            </InfoCard>
-
-            {/* Objetivos profesionales */}
-            <InfoCard
-              title="Objetivos Profesionales"
-              icon={<Target className="h-5 w-5 text-primary" />}
-              delay={0.2}
-            >
-              <div className="space-y-3">
-                {aboutData.professionalGoals.map((goal, index) => (
-                  <ProfessionalGoal key={goal.slice(0, 30)} goal={goal} index={index} />
-                ))}
-              </div>
-            </InfoCard>
+          {/* Tercera fila - Idiomas e Información práctica */}
+          <div className="grid lg:grid-cols-2 gap-8 items-start">
+            <LanguagesInfo />
+            <PracticalInfo />
+          </div>
         </div>
-      </div>
       </div>
     </SectionTransition>
   );

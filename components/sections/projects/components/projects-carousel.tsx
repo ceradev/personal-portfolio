@@ -85,7 +85,6 @@ export function ProjectsCarousel({ projects, onViewDetails }: ProjectsCarouselPr
   }
 
   // Get visible projects
-  const visibleProjects = projects.slice(currentIndex, currentIndex + projectsPerView);
   const maxIndex = projects.length - projectsPerView;
 
   return (

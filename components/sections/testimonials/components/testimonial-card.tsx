@@ -5,6 +5,7 @@ import { Star } from "lucide-react";
 
 interface TestimonialCardProps {
   readonly testimonial: Testimonial;
+  readonly isActive?: boolean;
 }
 
 function renderStars(rating: number) {
@@ -18,43 +19,60 @@ function renderStars(rating: number) {
   ));
 }
 
-export function TestimonialCard({ testimonial }: TestimonialCardProps) {
+export function TestimonialCard({ testimonial, isActive = true }: TestimonialCardProps) {
   return (
-    <Card className="group relative overflow-hidden border-2 border-transparent bg-gradient-to-br from-background to-muted/20 p-6 transition-all duration-300 hover:border-primary/20 hover:shadow-lg hover:shadow-primary/10 h-full">
-      {/* Rating */}
-      <div className="flex items-center mb-4">
-        <div className="flex space-x-1">
-          {renderStars(testimonial.rating)}
+    <Card className={`relative overflow-hidden border border-border/30 bg-background shadow-lg transition-all duration-500 h-[320px] flex flex-col max-w-sm mx-auto ${
+      isActive ? 'scale-100 opacity-100' : 'scale-90 opacity-60'
+    }`}>
+      {/* Avatar at top */}
+      <div className="flex justify-center pt-4 pb-3">
+        <div className="w-14 h-14 rounded-full bg-gradient-to-br from-primary/15 to-secondary/15 flex items-center justify-center text-primary font-bold text-base border-2 border-primary/10">
+          {testimonial.avatar ? (
+            <img
+              src={testimonial.avatar}
+              alt={testimonial.name}
+              className="w-full h-full rounded-full object-cover"
+            />
+          ) : (
+            testimonial.name.split(' ').map(n => n[0]).join('')
+          )}
         </div>
+      </div>
+
+      {/* Name */}
+      <div className="text-center px-4 pb-1">
+        <h4 className="font-bold text-foreground text-base">{testimonial.name}</h4>
+      </div>
+
+      {/* Role */}
+      <div className="text-center px-4 pb-3">
+        <p className="text-muted-foreground font-medium text-xs">
+          {testimonial.role}
+        </p>
       </div>
       
       {/* Content */}
-      <blockquote className="mb-6 text-muted-foreground leading-relaxed italic">
-        "{testimonial.content}"
-      </blockquote>
+      <div className="flex-1 px-4 pb-3">
+        <blockquote className="text-foreground/80 leading-relaxed text-xs italic text-center line-clamp-4">
+          "{testimonial.content}"
+        </blockquote>
+      </div>
       
       {/* Project Badge */}
       {testimonial.project && (
-        <div className="mb-4">
-          <Badge variant="outline" className="text-xs">
-            {testimonial.project}
-          </Badge>
+        <div className="px-4 pb-2">
+          <div className="flex justify-center">
+            <Badge variant="outline" className="text-xs px-2 py-1">
+              {testimonial.project}
+            </Badge>
+          </div>
         </div>
       )}
-      
-      {/* Author Info */}
-      <div className="mt-auto pt-4 border-t border-border">
-        <div className="flex items-center space-x-3">
-          {/* Avatar placeholder */}
-          <div className="w-12 h-12 rounded-full bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center text-primary font-semibold">
-            {testimonial.name.split(' ').map(n => n[0]).join('')}
-          </div>
-          <div>
-            <h4 className="font-semibold text-foreground">{testimonial.name}</h4>
-            <p className="text-sm text-muted-foreground">
-              {testimonial.role} en {testimonial.company}
-            </p>
-          </div>
+
+      {/* Rating at bottom */}
+      <div className="flex justify-center pb-4">
+        <div className="flex space-x-1">
+          {renderStars(testimonial.rating)}
         </div>
       </div>
     </Card>

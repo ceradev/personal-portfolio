@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
-import { User, Briefcase, GraduationCap, Mail, Users, FolderOpenDot } from "lucide-react"
+import { User, Briefcase, Mail, Settings, Quote, FolderKanban } from "lucide-react"
 import { Button } from "@/components/ui/display/button"
 import { SmoothScrollLink } from "@/utils/smooth-scroll-link"
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/feedback/tooltip"
@@ -37,11 +37,11 @@ export function TopNavigation({ activeSection }: Readonly<TopNavigationProps>) {
 
   // Reordenado para coincidir con el orden de las secciones en la página
   const navItems = [
-    { id: "services", label: "Servicios", icon: <Briefcase className="h-4 w-4" /> },
-    { id: "projects", label: "Proyectos", icon: <FolderOpenDot className="h-4 w-4" /> },
-    { id: "testimonials", label: "Testimonios", icon: <Users className="h-4 w-4" /> },
+    { id: "services", label: "Servicios", icon: <Settings className="h-4 w-4" /> },
+    { id: "projects", label: "Proyectos", icon: <FolderKanban className="h-4 w-4" /> },
+    { id: "testimonials", label: "Testimonios", icon: <Quote className="h-4 w-4" /> },
     { id: "about", label: "Sobre Mí", icon: <User className="h-4 w-4" /> },
-    { id: "education", label: "Educación", icon: <GraduationCap className="h-4 w-4" /> },
+    { id: "experience", label: "Experiencia", icon: <Briefcase className="h-4 w-4" /> },
     { id: "contact", label: "Contacto", icon: <Mail className="h-4 w-4" /> },
   ]
 

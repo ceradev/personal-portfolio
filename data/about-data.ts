@@ -43,8 +43,8 @@ export const aboutData: AboutData = {
     "Mentorizar a nuevos desarrolladores en la comunidad",
   ],
   aboutText: [
-    "Desarrollador full stack con +1 año de experiencia creando soluciones digitales innovadoras. Especializado en tecnologías modernas como React, Next.js, Node.js y Python.",
-    "Graduado en Desarrollo de Aplicaciones Web con enfoque en arquitecturas escalables y mejores prácticas. Dominio avanzado de inglés y mentalidad internacional.",
-    "Canario con nacionalidad sueca, combino creatividad mediterránea con precisión nórdica. Apasionado por el aprendizaje continuo y la excelencia técnica en cada proyecto."
+    "Desarrollador Full Stack especializado en crear soluciones digitales escalables y modernas para empresas. Con +1 año de experiencia entregando proyectos de alta calidad utilizando tecnologías como React, Next.js, Node.js y Python.",
+    "Mi enfoque se centra en entender las necesidades del negocio y traducirlas en soluciones técnicas eficientes. Experiencia trabajando con metodologías ágiles y equipos multidisciplinarios.",
+    "Comprometido con la excelencia técnica y el aprendizaje continuo. Busco aportar valor inmediato a los proyectos mientras mantengo un crecimiento constante en habilidades y conocimientos."
   ]
 };

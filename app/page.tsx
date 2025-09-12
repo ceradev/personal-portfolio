@@ -18,6 +18,8 @@ import {
   ProjectsSection,
   ServicesSection,
   TestimonialsSection,
+  SkillsSection,
+  ExperienceSection,
 } from "@/components/sections";
 
 export default function Home() {
@@ -104,8 +106,8 @@ export default function Home() {
         {/* About Section */}
         <AboutSection />
 
-        {/* Education Section */}
-        <EducationSection />
+        {/* Experience Section */}
+        <ExperienceSection />
 
         {/* Contact Section */}
         <ContactSection />
