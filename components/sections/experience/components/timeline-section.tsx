@@ -15,7 +15,7 @@ export function TimelineSection({ experiences, activeExperience, onNodeClick }: 
     <div className="relative">
       {/* Enhanced Timeline line */}
       <motion.div
-        className="absolute top-10 left-4 right-4 md:left-8 md:right-8 h-1 bg-gradient-to-r from-gray-300 via-red-500 to-gray-300 rounded-full shadow-lg shadow-gray-400/20"
+        className="absolute top-10 left-4 right-4 md:left-8 md:right-8 h-1 bg-gradient-to-r from-gray-300/40 dark:from-gray-600/40 via-red-500/60 to-gray-300/40 dark:to-gray-600/40 rounded-full shadow-lg shadow-gray-400/15 dark:shadow-gray-600/15 backdrop-blur-sm"
         initial={{ scaleX: 0 }}
         whileInView={{ scaleX: 1 }}
         transition={{ 
@@ -28,10 +28,10 @@ export function TimelineSection({ experiences, activeExperience, onNodeClick }: 
       
       {/* Animated gradient overlay */}
       <motion.div
-        className="absolute top-10 left-4 right-4 md:left-8 md:right-8 h-1 bg-gradient-to-r from-transparent via-red-600 to-transparent rounded-full"
+        className="absolute top-10 left-4 right-4 md:left-8 md:right-8 h-1 bg-gradient-to-r from-transparent via-red-600/40 to-transparent rounded-full backdrop-blur-sm"
         animate={{
           x: ["-100%", "100%"],
-          opacity: [0, 1, 0]
+          opacity: [0, 0.6, 0]
         }}
         transition={{
           duration: 3,

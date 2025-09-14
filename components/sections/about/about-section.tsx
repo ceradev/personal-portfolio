@@ -3,14 +3,12 @@
 import { motion } from "framer-motion";
 import { SectionTitle } from "@/utils/section-title";
 import { SectionTransition } from "@/utils/section-transition";
-import { 
-  AboutSubtitle,
-  EssentialInfo,
-  EducationCertSummary,
-  ProfessionalSoftSkills,
-  LanguagesInfo,
-  PracticalInfo
-} from "@/components/sections/about/components/about-components";
+import { AboutSubtitle } from "@/components/sections/about/components/about-subtitle";
+import { EssentialInfo } from "@/components/sections/about/components/essential-info";
+import { EducationCertSummary } from "@/components/sections/about/components/education-cert-summary";
+import { ProfessionalSoftSkills } from "@/components/sections/about/components/professional-soft-skills";
+import { LanguagesInfo } from "@/components/sections/about/components/languages-info";
+import { PracticalInfo } from "@/components/sections/about/components/practical-info";
 import { CompactTechSkills } from "@/components/sections/about/components/compact-tech-skills";
 import { InfoCard } from "@/components/ui/layout/info-card";
 import { TextParagraph } from "@/components/ui/display/text-paragraph";
@@ -60,13 +58,13 @@ export function AboutSection() {
         {/* Contenido principal */}
         <div className="space-y-8">
           {/* Primera fila - Propuesta de valor y formación */}
-          <div className="grid lg:grid-cols-2 gap-8 items-start">
+          <div className="grid lg:grid-cols-2 gap-8 items-stretch">
             {/* Columna izquierda - Propuesta de valor */}
             <InfoCard
               title="Mi Propuesta de Valor"
               icon={<Briefcase className="h-5 w-5 text-primary" />}
             >
-              <div className="space-y-4">
+              <div className="space-y-5">
                 {aboutData.aboutText.map((text, index) => (
                   <TextParagraph
                     key={text.slice(0, 20)}
@@ -82,13 +80,13 @@ export function AboutSection() {
           </div>
 
           {/* Segunda fila - Tech Skills y Habilidades profesionales */}
-          <div className="grid lg:grid-cols-2 gap-8 items-start">
+          <div className="grid lg:grid-cols-2 gap-8 items-stretch">
             <CompactTechSkills />
             <ProfessionalSoftSkills />
           </div>
 
           {/* Tercera fila - Idiomas e Información práctica */}
-          <div className="grid lg:grid-cols-2 gap-8 items-start">
+          <div className="grid lg:grid-cols-2 gap-8 items-stretch">
             <LanguagesInfo />
             <PracticalInfo />
           </div>

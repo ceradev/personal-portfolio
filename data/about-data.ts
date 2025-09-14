@@ -6,45 +6,187 @@ export const aboutData: AboutData = {
       icon: "Briefcase",
       label: "Experiencia",
       value: "1+ años",
-    },
-    {
-      icon: "GraduationCap",
-      label: "Educación",
-      value: "Desarrollo de Aplicaciones Web",
+      color: "bg-blue-500/10 text-blue-600 dark:text-blue-400"
     },
     {
       icon: "MapPin",
       label: "Ubicación",
       value: "Tenerife, España",
+      color: "bg-green-500/10 text-green-600 dark:text-green-400"
     },
     {
       icon: "Globe",
       label: "Disponibilidad",
       value: "Remoto / Presencial",
+      color: "bg-purple-500/10 text-purple-600 dark:text-purple-400"
     },
+    {
+      icon: "GraduationCap",
+      label: "Educación",
+      value: "Desarrollo Web",
+      color: "bg-orange-500/10 text-orange-600 dark:text-orange-400"
+    }
   ],
   additionalInfo: [
-    { icon: "License", label: "Carnet de conducir" },
-    { icon: "Car", label: "Coche propio" },
-    { icon: "Plane", label: "Disponibilidad para viajar" },
+    { 
+      icon: "Briefcase", 
+      label: "Carnet de Conducir", 
+      value: "B1, B",
+      color: "bg-green-500/10 text-green-600 dark:text-green-400"
+    },
+    { 
+      icon: "MapPin", 
+      label: "Vehículo Propio", 
+      value: "Disponible",
+      color: "bg-blue-500/10 text-blue-600 dark:text-blue-400"
+    },
+    { 
+      icon: "Globe", 
+      label: "Disponibilidad", 
+      value: "Remoto / Presencial",
+      color: "bg-purple-500/10 text-purple-600 dark:text-purple-400"
+    },
+    { 
+      icon: "Clock", 
+      label: "Movilidad", 
+      value: "Para viajar",
+      color: "bg-orange-500/10 text-orange-600 dark:text-orange-400"
+    }
   ],
   softSkills: [
-    { icon: "Users", label: "Trabajo en Equipo" },
-    { icon: "Target", label: "Disciplina" },
-    { icon: "Brain", label: "Autodidacta" },
-    { icon: "MessageCircle", label: "Comunicación" },
-    { icon: "Lightbulb", label: "Resolución de Problemas" },
-    { icon: "Clock", label: "Gestión del Tiempo" },
+    {
+      icon: "Users",
+      name: "Trabajo en Equipo",
+      description: "Colaboración efectiva en equipos multidisciplinarios",
+      color: "bg-blue-500/10 text-blue-600 dark:text-blue-400"
+    },
+    {
+      icon: "MessageCircle",
+      name: "Comunicación",
+      description: "Comunicación clara con stakeholders técnicos y no técnicos",
+      color: "bg-green-500/10 text-green-600 dark:text-green-400"
+    },
+    {
+      icon: "Lightbulb",
+      name: "Resolución de Problemas",
+      description: "Enfoque analítico para encontrar soluciones innovadoras",
+      color: "bg-yellow-500/10 text-yellow-600 dark:text-yellow-400"
+    },
+    {
+      icon: "Target",
+      name: "Orientación a Resultados",
+      description: "Enfoque en entregar valor y cumplir objetivos del negocio",
+      color: "bg-purple-500/10 text-purple-600 dark:text-purple-400"
+    },
+    {
+      icon: "Brain",
+      name: "Aprendizaje Continuo",
+      description: "Adaptabilidad y actualización constante de conocimientos",
+      color: "bg-orange-500/10 text-orange-600 dark:text-orange-400"
+    },
+    {
+      icon: "Clock",
+      name: "Gestión del Tiempo",
+      description: "Organización eficiente para cumplir deadlines",
+      color: "bg-red-500/10 text-red-600 dark:text-red-400"
+    }
   ],
+  languages: [
+    { 
+      label: "Español", 
+      level: "Nativo", 
+      flag: "🇪🇸", 
+      color: "bg-red-500/10 text-red-600 dark:text-red-400" 
+    },
+    { 
+      label: "Inglés", 
+      level: "Avanzado (C1)", 
+      flag: "🇬🇧", 
+      color: "bg-blue-500/10 text-blue-600 dark:text-blue-400" 
+    },
+    { 
+      label: "Sueco", 
+      level: "Intermedio", 
+      flag: "🇸🇪", 
+      color: "bg-yellow-500/10 text-yellow-600 dark:text-yellow-400" 
+    }
+  ],
+  education: {
+    main: {
+      institution: "I.E.S Las Galletas",
+      degree: "Desarrollo de Aplicaciones Web",
+      year: "2024",
+      highlight: "Matrícula de Honor"
+    },
+    certificates: [
+      { 
+        name: "Meta Front-End Developer", 
+        provider: "Meta", 
+        year: "2024", 
+        month: "Octubre",
+        featured: true,
+        icon: "Code",
+        color: "bg-blue-500/10 text-blue-600 dark:text-blue-400 border-blue-200 dark:border-blue-800"
+      },
+      { 
+        name: "Full Stack Development", 
+        provider: "Udemy", 
+        year: "2023", 
+        month: "Diciembre",
+        featured: true,
+        icon: "Database",
+        color: "bg-purple-500/10 text-purple-600 dark:text-purple-400 border-purple-200 dark:border-purple-800"
+      },
+      { 
+        name: "React & Redux", 
+        provider: "Udemy", 
+        year: "2023", 
+        month: "Agosto",
+        featured: false,
+        icon: "Code",
+        color: "bg-cyan-500/10 text-cyan-600 dark:text-cyan-400 border-cyan-200 dark:border-cyan-800"
+      },
+      { 
+        name: "TypeScript Fundamentals", 
+        provider: "Udemy", 
+        year: "2023", 
+        month: "Julio",
+        featured: false,
+        icon: "BookOpen",
+        color: "bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 border-indigo-200 dark:border-indigo-800"
+      },
+      {
+        name: "Python",
+        provider: "Udemy",
+        year: "2023",
+        month: "Junio",
+        featured: false,
+        icon: "Code",
+        color: "bg-yellow-500/10 text-yellow-600 dark:text-yellow-400 border-yellow-200 dark:border-yellow-800"
+      },
+      {
+        name: "N8N Workflow Automation",
+        provider: "Udemy",
+        year: "2023",
+        month: "Junio",
+        featured: false,
+        icon: "Brain",
+        color: "bg-green-500/10 text-green-600 dark:text-green-400 border-green-200 dark:border-green-800"
+      }
+    ]
+  },
   professionalGoals: [
-    "Convertirme en desarrollador senior en los próximos 3 años",
-    "Especializarme en arquitecturas cloud y microservicios",
-    "Contribuir a proyectos de código abierto significativos",
-    "Mentorizar a nuevos desarrolladores en la comunidad",
+    "Crear mi propia agencia digital especializada en Inteligencia Artificial",
+    "Desarrollar soluciones tecnológicas que transformen negocios tradicionales",
+    "Especializarme en aplicaciones web modernas y escalables",
+    "Contribuir a la digitalización de empresas y emprendedores",
+    "Dominar tecnologías emergentes y frameworks modernos",
+    "Crear impacto real en la forma en que los negocios se conectan con sus clientes",
   ],
   aboutText: [
-    "Desarrollador Full Stack especializado en crear soluciones digitales escalables y modernas para empresas. Con +1 año de experiencia entregando proyectos de alta calidad utilizando tecnologías como React, Next.js, Node.js y Python.",
-    "Mi enfoque se centra en entender las necesidades del negocio y traducirlas en soluciones técnicas eficientes. Experiencia trabajando con metodologías ágiles y equipos multidisciplinarios.",
-    "Comprometido con la excelencia técnica y el aprendizaje continuo. Busco aportar valor inmediato a los proyectos mientras mantengo un crecimiento constante en habilidades y conocimientos."
+    "Me llamo César Suárez, soy un desarrollador Full-Stack especializado en aplicaciones web modernas, rápidas y escalables. Trabajo con tecnologías como React, Next.js, Angular, Spring Boot y PostgreSQL entre otras, creando soluciones que ayudan a empresas y emprendedores a digitalizar y optimizar sus negocios.",
+    "Apasionado por el aprendizaje constante y la innovación, busco aportar valor real en cada proyecto mientras sigo ampliando mis conocimientos en desarrollo de aplicaciones, IA y tecnologías emergentes.",
+    "Mi meta es crear mi propia agencia digital especializada en Inteligencia Artificial, ofreciendo soluciones tecnológicas que transformen la forma en que los negocios crecen y se conectan con sus clientes.",
+    "Con experiencia en metodologías ágiles y trabajo en equipos multidisciplinarios, me enfoco en entender las necesidades del negocio para traducirlas en soluciones técnicas eficientes y escalables.",
   ]
-};
+}

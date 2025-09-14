@@ -41,7 +41,8 @@ export function ContactFormFields({
 
   return (
     <div className="space-y-4">
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+      {/* Primera fila: Nombre y Email lado a lado */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
         <motion.div variants={formItemVariants}>
           <FormField
             id="name"
@@ -72,6 +73,7 @@ export function ContactFormFields({
         </motion.div>
       </div>
 
+      {/* Segunda fila: Asunto ocupa todo el ancho */}
       <motion.div variants={formItemVariants}>
         <FormField
           id="subject"
@@ -86,13 +88,14 @@ export function ContactFormFields({
         />
       </motion.div>
 
+      {/* Tercera fila: Mensaje ocupa todo el ancho con más altura */}
       <motion.div variants={formItemVariants}>
         <FormField
           id="message"
           label="Mensaje"
           type="textarea"
           placeholder="Escribe tu mensaje aquí..."
-          rows={6}
+          rows={5}
           value={formData.message}
           error={errors.message}
           isFocused={focusedField === "message"}

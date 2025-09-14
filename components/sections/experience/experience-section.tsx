@@ -27,10 +27,10 @@ export function ExperienceSection() {
   const selectedExperience = EXPERIENCES.find(exp => exp.id === activeExperience);
 
   return (
-    <SectionTransition id="experience" className="py-20 my-8 relative overflow-hidden">
+    <SectionTransition id="experience" className="py-16 my-6 relative overflow-hidden">
       <BackgroundElements />
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4">
+      <div className="relative z-10 max-w-5xl mx-auto px-4">
         <SectionTitle title="Trayectoria Profesional" />
         
         <SubtitleSection />

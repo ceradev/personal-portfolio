@@ -1,6 +1,6 @@
 "use client";
 
-import { ServicesSubtitle, ServicesGrid, CallToAction } from "./components";
+import { ServicesSubtitle, ServicesGrid, ScheduleCall } from "./components";
 import { servicesData } from "@/data/services-data";
 import { motion } from "framer-motion";
 export function ServicesSection() {
@@ -24,7 +24,7 @@ export function ServicesSection() {
         </motion.div>
         
         {/* Call to action section */}
-        <CallToAction />
+        <ScheduleCall />
       </div>
     </section>
   );

@@ -112,7 +112,7 @@ export function ContactForm() {
     }
 
     return (
-      <form className="space-y-4 sm:space-y-6">
+      <form className="space-y-4">
         <ContactFormFields
           formData={formData}
           errors={errors}

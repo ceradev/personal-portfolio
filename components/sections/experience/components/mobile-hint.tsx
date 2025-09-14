@@ -9,9 +9,9 @@ export function MobileHint() {
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ delay: 1.2, duration: 0.6 }}
-      className="mt-12 text-center md:hidden"
+      className="mt-8 text-center md:hidden"
     >
-      <div className="inline-flex items-center gap-3 px-4 py-3 rounded-2xl bg-gradient-to-r from-gray-100 to-white border border-gray-200 backdrop-blur-sm shadow-sm">
+      <div className="inline-flex items-center gap-2 px-3 py-2 rounded-xl bg-gradient-to-r from-gray-100/20 dark:from-gray-700/20 to-white/20 dark:to-gray-600/20 border-2 border-gray-200/60 dark:border-gray-600/60 backdrop-blur-sm shadow-sm">
         <motion.div
           animate={{ 
             y: [0, -3, 0],
@@ -25,7 +25,7 @@ export function MobileHint() {
         >
           <ChevronDown className="h-4 w-4 text-red-500" />
         </motion.div>
-        <p className="text-sm text-gray-700 font-medium">
+        <p className="text-xs text-gray-700 dark:text-gray-300 font-medium">
         Desliza horizontalmente para ver todas las experiencias
       </p>
         <motion.div

@@ -11,18 +11,27 @@ const spaceGrotesk = Space_Grotesk({
 })
 
 export const metadata: Metadata = {
-  title: "Ceradev | Desarrollador Freelancer Full Stack",
+  title: "Ceradev | Desarrollador Freelancer",
   description:
-    "Portfolio profesional de César Suárez, Desarrollador Full Stack con experiencia en React, Next.js y más.",
+    "Portfolio profesional de Ceradev, Desarrollador Full Stack con experiencia en React, Java, Python, entre otras tecnologías.",
   keywords: [
     "César Suárez",
-    "Desarrollador Freelancer Full Stack",
+    "Desarrollador Full Stack",
     "React",
     "Next.js",
     "TypeScript",
     "JavaScript",
+    "Spring Boot",
+    "PostgreSQL",
+    "MySQL",
+    "MongoDB",
+    "Docker",
+    "Kubernetes",
+    "Git",
+    "Figma",
     "Node.js",
     "Portfolio",
+    "Full Stack",
     "Freelancer",
     "Desarrollador Web"
   ],
@@ -35,23 +44,23 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'es_ES',
-    url: 'https://cesarsuarez.dev',
-    title: 'Ceradev | Desarrollador Freelancer Full Stack',
-    description: 'Portfolio profesional de Ceradev, Desarrollador Freelancer Full Stack con experiencia en React, Next.js y más.',
+    url: 'https://ceradev.com',
+    title: 'Ceradev | Desarrollador Full Stack',
+    description: 'Portfolio profesional de Ceradev, Desarrollador Full Stack con experiencia en React, Java, Python, entre otras tecnologías.',
     siteName: 'Ceradev Portfolio',
     images: [
       {
         url: '/avatar-profile.png',
         width: 1200,
         height: 630,
-        alt: 'Ceradev - Desarrollador Freelancer Full Stack',
+        alt: 'Ceradev - Desarrollador Full Stack',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Ceradev | Desarrollador Freelancer Full Stack',
-    description: 'Portfolio profesional de César Suárez, Desarrollador Full Stack con experiencia en React, Next.js y más.',
+    title: 'Ceradev | Desarrollador Full Stack',
+    description: 'Portfolio profesional de Ceradev, Desarrollador Full Stack con experiencia en React, Java, Python, entre otras tecnologías.',
     images: ['/avatar-profile.png'],
   },
   icons: {

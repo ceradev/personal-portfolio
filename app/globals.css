@@ -397,7 +397,7 @@
 }
 
 /* 3D transform utilities */
-.perspective-[1000px] {
+.perspective-1000 {
   perspective: 1000px;
 }
 

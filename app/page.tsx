@@ -14,11 +14,9 @@ import {
   AboutSection,
   ContactSection,
   HeroSection,
-  EducationSection,
   ProjectsSection,
   ServicesSection,
   TestimonialsSection,
-  SkillsSection,
   ExperienceSection,
 } from "@/components/sections";
 

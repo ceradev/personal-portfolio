@@ -9,10 +9,10 @@ export function TimelineNode({ experience, index, isActive, onClick }: Readonly<
     <div className="relative flex flex-col items-center group">
       {/* Enhanced Timeline dot */}
       <motion.div
-        className={`relative z-10 w-20 h-20 rounded-full border-4 cursor-pointer transition-all duration-500 ${
+        className={`relative z-10 w-16 h-16 rounded-full border-3 cursor-pointer transition-all duration-500 backdrop-blur-sm ${
           isActive 
-            ? "border-red-500 bg-gradient-to-br from-gray-800 to-gray-900 shadow-md shadow-red-500/40" 
-            : "border-gray-300 bg-gradient-to-br from-white to-gray-100 hover:border-red-400 hover:from-gray-50 hover:to-gray-200 shadow-md shadow-gray-400/20 hover:shadow-red-400/30"
+            ? "border-red-500/80 dark:border-red-400/80 bg-gradient-to-br from-gray-800/20 to-gray-900/20 dark:from-gray-700/20 dark:to-gray-800/20 shadow-lg shadow-red-500/30 dark:shadow-red-400/30" 
+            : "border-gray-300/60 dark:border-gray-600/60 bg-gradient-to-br from-white/20 to-gray-100/20 dark:from-gray-800/20 dark:to-gray-700/20 hover:border-red-400/70 dark:hover:border-red-500/70 hover:from-gray-50/30 hover:to-gray-200/30 dark:hover:from-gray-700/30 dark:hover:to-gray-600/30 shadow-md shadow-gray-400/20 dark:shadow-gray-600/20 hover:shadow-red-400/25 dark:hover:shadow-red-500/25"
         }`}
         onClick={onClick}
         whileHover={{ 
@@ -31,7 +31,7 @@ export function TimelineNode({ experience, index, isActive, onClick }: Readonly<
         }}
       >
         {/* Enhanced Company logo */}
-        <div className="absolute inset-3 rounded-full overflow-hidden border-2 border-gray-300 shadow-md">
+        <div className="absolute inset-2 rounded-full overflow-hidden border-2 border-gray-300/60 dark:border-gray-600/60 shadow-md backdrop-blur-sm">
           <Image
             src={experience.logo || "/placeholder.svg"}
             alt={experience.company}
@@ -69,17 +69,17 @@ export function TimelineNode({ experience, index, isActive, onClick }: Readonly<
         }}
       >
         <motion.h4 
-          className={`text-sm md:text-base font-bold truncate transition-colors duration-300 ${
+          className={`text-xs md:text-sm font-bold truncate transition-colors duration-300 ${
             isActive 
-              ? "text-red-600" 
-              : "text-gray-800 group-hover:text-red-500"
+              ? "text-red-600 dark:text-red-400" 
+              : "text-gray-800 dark:text-gray-200 group-hover:text-red-500 dark:group-hover:text-red-400"
           }`}
           whileHover={{ scale: 1.05 }}
         >
           {experience.company.split(' ')[0]}
         </motion.h4>
         <motion.p 
-          className="text-xs md:text-sm text-gray-600 mt-2 leading-tight font-medium"
+          className="text-xs text-gray-600 dark:text-gray-400 mt-2 leading-tight font-medium"
           whileHover={{ scale: 1.02 }}
         >
           {experience.period}

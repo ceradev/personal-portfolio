@@ -16,7 +16,7 @@ export function TestimonialsSubtitle() {
         className="text-center mb-12 relative"
       >
         {/* Background gradient effect */}
-        <div className="absolute inset-0 bg-gradient-to-r from-primary/10 via-transparent to-primary/10 blur-3xl z-0" />
+        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-primary/20 to-transparent blur-3xl z-0" />
 
         <div className="relative z-10">
           <div className="text-xl text-foreground/90 max-w-3xl mx-auto leading-relaxed font-medium mb-6">
