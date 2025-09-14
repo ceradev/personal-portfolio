@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
+import { MessageSquare, Sparkles } from "lucide-react";
 import { ContactFormFields } from "./contact-form-fields";
 import { ContactFormActions } from "./contact-form-actions";
 import { FormStatusMessage } from "@/components/ui/feedback/form-status-message";
@@ -147,9 +148,60 @@ export function ContactForm() {
       whileInView="visible"
       viewport={{ once: false, amount: 0.3 }}
       variants={formContainerVariants}
-      className="backdrop-blur-md bg-background/20 dark:bg-background/30 rounded-xl border border-border p-4 sm:p-6"
+      className="w-full"
     >
-      {renderFormContent()}
+      {/* Header del formulario */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+        viewport={{ once: true }}
+        className="text-center mb-8"
+      >
+        <div className="flex items-center justify-center gap-3 mb-4">
+          <motion.div
+            whileHover={{ scale: 1.1, rotate: 5 }}
+            transition={{ duration: 0.3 }}
+            className="p-3 rounded-xl bg-gradient-to-br from-primary/20 to-primary/10 shadow-md shadow-primary/20"
+          >
+            <MessageSquare className="h-6 w-6 text-primary" />
+          </motion.div>
+          <div>
+            <h3 className="text-2xl font-bold bg-gradient-to-r from-primary to-primary/80 bg-clip-text text-transparent">
+              Envíame un mensaje
+            </h3>
+            <p className="text-foreground/70">¿Tienes un proyecto en mente?</p>
+          </div>
+        </div>
+        
+        <p className="text-foreground/80 text-lg leading-relaxed max-w-2xl mx-auto mb-6">
+          Completa el formulario a continuación y me pondré en contacto contigo lo antes posible.
+          Cuéntame sobre tu proyecto y cómo puedo ayudarte a hacerlo realidad.
+        </p>
+        
+        <div className="flex items-center justify-center gap-6 p-4 rounded-xl bg-background border border-border/50 max-w-md mx-auto">
+          <div className="flex items-center gap-2">
+            <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
+            <span className="text-sm text-green-500 font-medium">Respuesta garantizada en 24h</span>
+          </div>
+          <div className="w-px h-4 bg-border" />
+          <div className="flex items-center gap-1">
+            <Sparkles className="h-4 w-4 text-primary" />
+            <span className="text-sm text-primary font-medium">Consulta gratuita</span>
+          </div>
+        </div>
+      </motion.div>
+
+      {/* Formulario */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.2 }}
+        viewport={{ once: true }}
+        className="max-w-2xl mx-auto mt-12 p-8 rounded-2xl border border-border/30 bg-background/50 backdrop-blur-sm shadow-lg shadow-red-500/10 transition-all duration-300"
+      >
+        {renderFormContent()}
+      </motion.div>
     </motion.div>
   );
 }

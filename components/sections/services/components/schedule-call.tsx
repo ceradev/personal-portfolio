@@ -14,12 +14,7 @@ export function ScheduleCall() {
     >
       <div className="max-w-4xl mx-auto">
         <motion.div
-          className="bg-white rounded-2xl p-8 border-2 border-red-300/40 shadow-lg hover:shadow-xl transition-all duration-300 text-center"
-          whileHover={{
-            scale: 1.02,
-            boxShadow:
-              "0 20px 25px -5px rgba(239, 68, 68, 0.1), 0 10px 10px -5px rgba(239, 68, 68, 0.04)",
-          }}
+          className="bg-background rounded-2xl p-8 border-2 border-red-300/40 shadow-lg hover:shadow-lg transition-all duration-300 text-center"
           initial={{ opacity: 0, scale: 0.95 }}
           whileInView={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.5, delay: 0.1 }}
@@ -64,7 +59,7 @@ export function ScheduleCall() {
           </motion.div>
 
           <motion.h3
-            className="text-2xl font-bold text-gray-800 mb-4"
+            className="text-2xl font-bold text-foreground mb-4"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 1.0 }}
@@ -74,7 +69,7 @@ export function ScheduleCall() {
           </motion.h3>
 
           <motion.p
-            className="text-gray-600 mb-8 max-w-2xl mx-auto leading-relaxed"
+            className="text-muted-foreground mb-8 max-w-2xl mx-auto leading-relaxed"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 1.1 }}
@@ -100,7 +95,7 @@ export function ScheduleCall() {
               whileHover={{ y: -5, scale: 1.05 }}
               className="group/option relative"
             >
-              <div className="relative p-6 rounded-xl bg-gradient-to-br from-blue-500/10 to-blue-500/5 border border-blue-500/20 hover:border-blue-500/40 transition-all duration-300 text-center">
+              <div className="relative p-6 rounded-xl bg-background border border-blue-500/20 hover:border-blue-500/40 transition-all duration-300 text-center">
                 <motion.div
                   whileHover={{ scale: 1.1, rotate: 5 }}
                   transition={{ duration: 0.3 }}
@@ -108,8 +103,8 @@ export function ScheduleCall() {
                 >
                   <Video className="h-6 w-6 text-blue-500" />
                 </motion.div>
-                <h4 className="font-bold text-gray-800 text-lg mb-2">Videollamada</h4>
-                <p className="text-gray-600 mb-2">Google Meet o Zoom</p>
+                <h4 className="font-bold text-foreground text-lg mb-2">Videollamada</h4>
+                <p className="text-muted-foreground mb-2">Google Meet o Zoom</p>
                 <p className="text-sm text-gray-500">Ideal para proyectos complejos</p>
                 <div className="mt-3 flex items-center justify-center gap-2">
                   <div className="w-2 h-2 rounded-full bg-blue-500 animate-pulse" />
@@ -126,7 +121,7 @@ export function ScheduleCall() {
               whileHover={{ y: -5, scale: 1.05 }}
               className="group/option relative"
             >
-              <div className="relative p-6 rounded-xl bg-gradient-to-br from-green-500/10 to-green-500/5 border border-green-500/20 hover:border-green-500/40 transition-all duration-300 text-center">
+              <div className="relative p-6 rounded-xl bg-background border border-green-500/20 hover:border-green-500/40 transition-all duration-300 text-center">
                 <motion.div
                   whileHover={{ scale: 1.1, rotate: -5 }}
                   transition={{ duration: 0.3 }}
@@ -134,8 +129,8 @@ export function ScheduleCall() {
                 >
                   <Phone className="h-6 w-6 text-green-500" />
                 </motion.div>
-                <h4 className="font-bold text-gray-800 text-lg mb-2">Llamada telefónica</h4>
-                <p className="text-gray-600 mb-2">Conversación directa</p>
+                <h4 className="font-bold text-foreground text-lg mb-2">Llamada telefónica</h4>
+                <p className="text-muted-foreground mb-2">Conversación directa</p>
                 <p className="text-sm text-gray-500">Rápido y personal</p>
                 <div className="mt-3 flex items-center justify-center gap-2">
                   <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
@@ -152,7 +147,7 @@ export function ScheduleCall() {
               whileHover={{ y: -5, scale: 1.05 }}
               className="group/option relative"
             >
-              <div className="relative p-6 rounded-xl bg-gradient-to-br from-purple-500/10 to-purple-500/5 border border-purple-500/20 hover:border-purple-500/40 transition-all duration-300 text-center">
+              <div className="relative p-6 rounded-xl bg-background border border-purple-500/20 hover:border-purple-500/40 transition-all duration-300 text-center">
                 <motion.div
                   whileHover={{ scale: 1.1, rotate: 5 }}
                   transition={{ duration: 0.3 }}
@@ -160,8 +155,8 @@ export function ScheduleCall() {
                 >
                   <MessageSquare className="h-6 w-6 text-purple-500" />
                 </motion.div>
-                <h4 className="font-bold text-gray-800 text-lg mb-2">Consulta inicial</h4>
-                <p className="text-gray-600 mb-2">Evaluación gratuita</p>
+                <h4 className="font-bold text-foreground text-lg mb-2">Consulta inicial</h4>
+                <p className="text-muted-foreground mb-2">Evaluación gratuita</p>
                 <p className="text-sm text-gray-500">Sin compromiso</p>
                 <div className="mt-3 flex items-center justify-center gap-2">
                   <div className="w-2 h-2 rounded-full bg-purple-500 animate-pulse" />
@@ -217,7 +212,7 @@ export function ScheduleCall() {
             </motion.a>
             
             <div className="text-center space-y-2">
-              <div className="flex items-center justify-center gap-2 text-gray-600">
+              <div className="flex items-center justify-center gap-2 text-muted-foreground">
                 <Clock className="h-4 w-4 text-red-500" />
                 <span className="font-medium">Disponible Lun-Vie, 9:00-18:00 (GMT+1)</span>
               </div>

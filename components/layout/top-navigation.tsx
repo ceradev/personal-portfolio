@@ -4,6 +4,7 @@ import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { User, Briefcase, Mail, Settings, Quote, FolderKanban } from "lucide-react"
 import { Button } from "@/components/ui/display/button"
+import { AvatarButton } from "@/components/ui/display/avatar-button"
 import { SmoothScrollLink } from "@/utils/smooth-scroll-link"
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/feedback/tooltip"
 
@@ -50,6 +51,21 @@ export function TopNavigation({ activeSection }: Readonly<TopNavigationProps>) {
 
   return (
     <>
+      {/* Avatar button - Top left */}
+      <AnimatePresence>
+        {!isHomeActive && (
+          <motion.div
+            className={`fixed z-[60] ${isMobile ? 'top-3 left-4' : 'top-6 left-6'}`}
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: -20 }}
+            transition={{ duration: 0.3, type: "spring" }}
+          >
+            <AvatarButton className={isMobile ? "w-8 h-8" : ""} />
+          </motion.div>
+        )}
+      </AnimatePresence>
+
       {/* Centered navigation for desktop - Positioned absolutely to ensure perfect centering */}
       {!isMobile && (
         <AnimatePresence>

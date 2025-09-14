@@ -11,8 +11,8 @@ export function TimelineNode({ experience, index, isActive, onClick }: Readonly<
       <motion.div
         className={`relative z-10 w-16 h-16 rounded-full border-3 cursor-pointer transition-all duration-500 backdrop-blur-sm ${
           isActive 
-            ? "border-red-500/80 dark:border-red-400/80 bg-gradient-to-br from-gray-800/20 to-gray-900/20 dark:from-gray-700/20 dark:to-gray-800/20 shadow-lg shadow-red-500/30 dark:shadow-red-400/30" 
-            : "border-gray-300/60 dark:border-gray-600/60 bg-gradient-to-br from-white/20 to-gray-100/20 dark:from-gray-800/20 dark:to-gray-700/20 hover:border-red-400/70 dark:hover:border-red-500/70 hover:from-gray-50/30 hover:to-gray-200/30 dark:hover:from-gray-700/30 dark:hover:to-gray-600/30 shadow-md shadow-gray-400/20 dark:shadow-gray-600/20 hover:shadow-red-400/25 dark:hover:shadow-red-500/25"
+            ? "border-red-500/80 dark:border-red-400/80 bg-background shadow-lg shadow-red-500/30 dark:shadow-red-400/30" 
+            : "border-gray-300/60 dark:border-gray-600/60 bg-background hover:border-red-400/70 dark:hover:border-red-500/70 hover:bg-background shadow-md shadow-gray-400/20 dark:shadow-gray-600/20 hover:shadow-red-400/25 dark:hover:shadow-red-500/25"
         }`}
         onClick={onClick}
         whileHover={{ 

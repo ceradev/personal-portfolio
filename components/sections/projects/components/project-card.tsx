@@ -81,7 +81,7 @@ export function ProjectCard({ project, onViewDetails }: ProjectCardProps) {
       {/* Background blur effect */}
       <div className="absolute inset-0 bg-gradient-to-br from-primary/15 via-primary/5 to-transparent rounded-2xl blur-xl group-hover:blur-2xl transition-all duration-500 opacity-0 group-hover:opacity-100" />
 
-      <Card className="group/card relative overflow-hidden border-2 border-primary/20 hover:border-primary/50 bg-gradient-to-br from-background/80 to-background/60 backdrop-blur-xl transition-all duration-300 hover:shadow-2xl hover:shadow-primary/20 flex flex-col h-full rounded-2xl">
+      <Card className="group/card relative overflow-hidden border-2 border-primary/20 hover:border-primary/50 bg-background backdrop-blur-xl transition-all duration-300 hover:shadow-2xl hover:shadow-primary/20 flex flex-col h-full rounded-2xl">
         {/* Image with overlay */}
         <div className="relative aspect-video overflow-hidden">
           <Image
@@ -121,7 +121,7 @@ export function ProjectCard({ project, onViewDetails }: ProjectCardProps) {
               <Badge
                 key={`${project.id}-tech-${tech}`}
                 variant="outline"
-                className="text-xs bg-background/50 hover:bg-background"
+                className="text-xs bg-background hover:bg-background"
               >
                 {tech}
               </Badge>
@@ -129,7 +129,7 @@ export function ProjectCard({ project, onViewDetails }: ProjectCardProps) {
             {project.technologies.length > 4 && (
               <Badge
                 variant="outline"
-                className="text-xs bg-background/50 hover:bg-background"
+                className="text-xs bg-background hover:bg-background"
               >
                 +{project.technologies.length - 4}
               </Badge>
@@ -187,7 +187,7 @@ export function ProjectCard({ project, onViewDetails }: ProjectCardProps) {
                   <Button
                     size="icon"
                     variant="outline"
-                    className="h-9 w-9 bg-gradient-to-r from-background/80 to-background/60 backdrop-blur-sm border-2 border-primary/20 hover:border-primary/40 rounded-xl shadow-lg shadow-primary/10 hover:shadow-primary/20 transition-all duration-300"
+                    className="h-9 w-9 bg-background backdrop-blur-sm border-2 border-primary/20 hover:border-primary/40 rounded-xl shadow-lg shadow-primary/10 hover:shadow-primary/20 transition-all duration-300"
                     onClick={() => window.open(project.demoUrl, "_blank")}
                   >
                     <ExternalLink className="h-4 w-4" />
@@ -203,7 +203,7 @@ export function ProjectCard({ project, onViewDetails }: ProjectCardProps) {
                   <Button
                     size="icon"
                     variant="outline"
-                    className="h-9 w-9 bg-gradient-to-r from-background/80 to-background/60 backdrop-blur-sm border-2 border-primary/20 hover:border-primary/40 rounded-xl shadow-lg shadow-primary/10 hover:shadow-primary/20 transition-all duration-300"
+                    className="h-9 w-9 bg-background backdrop-blur-sm border-2 border-primary/20 hover:border-primary/40 rounded-xl shadow-lg shadow-primary/10 hover:shadow-primary/20 transition-all duration-300"
                     onClick={() => window.open(project.githubUrl, "_blank")}
                   >
                     <Github className="h-4 w-4" />

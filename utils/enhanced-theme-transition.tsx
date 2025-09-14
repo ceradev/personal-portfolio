@@ -31,7 +31,7 @@ export function EnhancedThemeTransition() {
       // Reset transition state after animation
       setTimeout(() => {
         setIsTransitioning(false)
-      }, 1000)
+      }, 600)
     }
   }, [theme, prevTheme, mounted])
 
@@ -46,14 +46,14 @@ export function EnhancedThemeTransition() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          transition={{ duration: 0.5 }}
+          transition={{ duration: 0.3 }}
           className="fixed inset-0 pointer-events-none z-[100]"
         >
           <motion.div
             initial={{ scale: 0, borderRadius: "100%" }}
             animate={{ scale: 1.5, borderRadius: "0%" }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+            transition={{ duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
             className={`absolute inset-0 ${
               theme === "light"
                 ? "bg-gradient-to-br from-zinc-100 to-zinc-200"
@@ -64,55 +64,25 @@ export function EnhancedThemeTransition() {
             }}
           />
 
-          {/* Decorative elements for transition */}
+          {/* Subtle decorative elements for transition */}
           <div className="absolute inset-0 overflow-hidden">
-            {Array.from({ length: 20 }).map((_, i) => (
+            {Array.from({ length: 8 }).map((_, i) => (
               <motion.div
                 key={`particle-${i}`}
                 initial={{ opacity: 0, scale: 0, x: "50%", y: "50%" }}
                 animate={{
-                  opacity: [0, 1, 0],
-                  scale: [0, Math.random() * 2 + 1, 0],
+                  opacity: [0, 0.3, 0],
+                  scale: [0, Math.random() * 1.5 + 0.5, 0],
                   x: `${Math.random() * 100}%`,
                   y: `${Math.random() * 100}%`,
                 }}
-                transition={{ duration: Math.random() * 1 + 0.5, ease: "easeOut" }}
-                className={`absolute w-2 h-2 rounded-full ${
-                  theme === "light" ? "bg-primary/40" : "bg-primary/60"
-                } blur-[2px]`}
+                transition={{ duration: 0.4, ease: "easeOut" }}
+                className={`absolute w-1 h-1 rounded-full ${
+                  theme === "light" ? "bg-primary/20" : "bg-primary/30"
+                } blur-sm`}
               />
             ))}
           </div>
-
-          {/* Central logo or icon */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.5 }}
-            animate={{ opacity: [0, 1, 0], scale: [0.5, 1.2, 0.5] }}
-            transition={{ duration: 0.8 }}
-            className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
-          >
-            <div
-              className={`w-20 h-20 rounded-full flex items-center justify-center ${
-                theme === "light" ? "bg-white text-primary" : "bg-black text-primary"
-              } shadow-lg`}
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="32"
-                height="32"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <path d="M18 16.98h-5.99c-1.1 0-1.95.94-2.48 1.9A4 4 0 0 1 2 17c.01-.7.2-1.4.57-2"></path>
-                <path d="m6 17 3.13-5.78c.53-.97.43-2.22-.26-3.07A4 4 0 0 1 22 7c-.01.7-.2 1.4-.57 2"></path>
-                <path d="m18 7-3.13 5.78c-.53.97-.43 2.22.26 3.07"></path>
-              </svg>
-            </div>
-          </motion.div>
         </motion.div>
       )}
     </AnimatePresence>

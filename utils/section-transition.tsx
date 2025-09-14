@@ -11,9 +11,9 @@ interface SectionTransitionProps {
   className?: string
 }
 
-export function SectionTransition({ children, id, className }: SectionTransitionProps) {
+export function SectionTransition({ children, id, className }: Readonly<SectionTransitionProps>) {
   const ref = useRef<HTMLElement>(null)
-  const isInView = useInView(ref, { once: false, amount: 0.1 })
+  useInView(ref, { once: false, amount: 0.1 })
 
   // Detectar si es la sección de proyectos
   const isProjectsSection = id === "projects"
@@ -48,7 +48,7 @@ export function SectionTransition({ children, id, className }: SectionTransition
       whileInView="visible"
       viewport={{ once: false, margin: "-100px" }}
       variants={containerVariants}
-      className={`relative ${isProjectsSection ? "pb-40 md:pb-52" : "pb-16 md:pb-24"} ${className}`}
+      className={`relative ${isProjectsSection ? "pb-40 md:pb-52" : "pb-20 md:pb-32"} ${className}`}
     >
       <div className={`container mx-auto px-4 md:px-8 ${isProjectsSection ? "max-w-[90vw]" : ""}`}>
         <motion.div

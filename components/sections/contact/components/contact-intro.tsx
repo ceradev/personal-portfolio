@@ -15,7 +15,7 @@ export function ContactIntro() {
     >
       {/* Fondo con gradiente y efectos */}
       <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-primary/10 rounded-2xl blur-xl group-hover:blur-2xl transition-all duration-500" />
-      <div className="absolute inset-0 bg-gradient-to-r from-background/80 via-background/60 to-background/80 backdrop-blur-xl rounded-2xl border border-primary/20 shadow-2xl shadow-primary/10" />
+      <div className="absolute inset-0 bg-gradient-to-r from-background/80 via-background/60 to-background/80 backdrop-blur-xl rounded-2xl border border-primary/20 shadow-lg shadow-primary/10" />
       
       <div className="relative p-8 sm:p-10">
         <div className="max-w-4xl mx-auto">

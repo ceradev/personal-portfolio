@@ -26,7 +26,7 @@ export function ExperienceDetails({ experience }: Readonly<ExperienceDetailsProp
     >
       <div className="mt-6 relative group">
         {/* Enhanced background effects */}
-        <div className="absolute inset-0 bg-gradient-to-r from-white/20 dark:from-gray-800/20 via-gray-50/15 dark:via-gray-700/15 to-white/20 dark:to-gray-800/20 backdrop-blur-2xl rounded-3xl border-2 border-gray-200/50 dark:border-gray-600/50 shadow-lg shadow-gray-500/10 dark:shadow-gray-700/10 hover:shadow-gray-600/20 dark:hover:shadow-gray-600/20 hover:border-gray-300/70 dark:hover:border-gray-500/70 transition-all duration-500" />
+        <div className="absolute inset-0 bg-background backdrop-blur-2xl rounded-3xl border-2 border-gray-200/50 dark:border-gray-600/50 shadow-lg shadow-gray-500/10 dark:shadow-gray-700/10 hover:shadow-gray-600/20 dark:hover:shadow-gray-600/20 hover:border-gray-300/70 dark:hover:border-gray-500/70 transition-all duration-500" />
         
         <Card className="relative border-0 bg-transparent shadow-none">
           <CardContent className="p-4 md:p-6">
@@ -36,7 +36,7 @@ export function ExperienceDetails({ experience }: Readonly<ExperienceDetailsProp
               <motion.div 
                 whileHover={{ scale: 1.05, rotate: 2 }}
                 transition={{ duration: 0.3 }}
-                className="relative w-12 h-12 md:w-16 md:h-16 rounded-xl overflow-hidden border-2 border-gray-300 dark:border-gray-600 bg-gradient-to-br from-white to-gray-100 dark:from-gray-700 dark:to-gray-800 shadow-md shadow-gray-400/20 dark:shadow-gray-600/20 flex-shrink-0"
+                className="relative w-12 h-12 md:w-16 md:h-16 rounded-xl overflow-hidden border-2 border-gray-300 dark:border-gray-600 bg-background shadow-md shadow-gray-400/20 dark:shadow-gray-600/20 flex-shrink-0"
               >
                 <Image
                   src={experience.logo || "/placeholder.svg"}
@@ -84,7 +84,7 @@ export function ExperienceDetails({ experience }: Readonly<ExperienceDetailsProp
                   whileTap={{ scale: 0.95 }}
                 >
                   <div className="absolute inset-0 bg-gradient-to-r from-red-500/20 to-red-400/10 rounded-xl blur-lg group-hover:blur-xl transition-all duration-300" />
-                  <div className="relative flex items-center gap-2 px-3 py-2 bg-gradient-to-r from-gray-100/20 dark:from-gray-700/20 to-white/20 dark:to-gray-600/20 border-2 border-red-400/60 dark:border-red-500/60 hover:border-red-500/80 dark:hover:border-red-400/80 transition-all duration-300 backdrop-blur-sm text-red-600 dark:text-red-400 hover:text-red-700 dark:hover:text-red-300 text-xs md:text-sm font-semibold rounded-xl">
+                  <div className="relative flex items-center gap-2 px-3 py-2 bg-background border-2 border-red-400/60 dark:border-red-500/60 hover:border-red-500/80 dark:hover:border-red-400/80 transition-all duration-300 backdrop-blur-sm text-red-600 dark:text-red-400 hover:text-red-700 dark:hover:text-red-300 text-xs md:text-sm font-semibold rounded-xl">
                   Ver empresa
                     <motion.div
                       animate={{ x: [0, 3, 0] }}
@@ -102,7 +102,7 @@ export function ExperienceDetails({ experience }: Readonly<ExperienceDetailsProp
           <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-6 mb-6">
             <motion.div 
               whileHover={{ scale: 1.02, x: 5 }}
-              className="group flex items-center gap-3 p-3 rounded-xl bg-gradient-to-r from-gray-100/30 dark:from-gray-700/30 to-white/30 dark:to-gray-600/30 border border-gray-200/60 dark:border-gray-600/60 hover:border-gray-400/80 dark:hover:border-gray-500/80 transition-all duration-300 backdrop-blur-sm"
+              className="group flex items-center gap-3 p-3 rounded-xl bg-background border border-gray-200/60 dark:border-gray-600/60 hover:border-gray-400/80 dark:hover:border-gray-500/80 transition-all duration-300 backdrop-blur-sm"
             >
               <motion.div
                 whileHover={{ rotate: 360 }}
@@ -115,7 +115,7 @@ export function ExperienceDetails({ experience }: Readonly<ExperienceDetailsProp
             </motion.div>
             <motion.div 
               whileHover={{ scale: 1.02, x: 5 }}
-              className="group flex items-center gap-3 p-3 rounded-xl bg-gradient-to-r from-gray-100/30 dark:from-gray-700/30 to-white/30 dark:to-gray-600/30 border border-gray-200/60 dark:border-gray-600/60 hover:border-gray-400/80 dark:hover:border-gray-500/80 transition-all duration-300 backdrop-blur-sm"
+              className="group flex items-center gap-3 p-3 rounded-xl bg-background border border-gray-200/60 dark:border-gray-600/60 hover:border-gray-400/80 dark:hover:border-gray-500/80 transition-all duration-300 backdrop-blur-sm"
             >
               <motion.div
                 whileHover={{ rotate: 360 }}
@@ -135,7 +135,7 @@ export function ExperienceDetails({ experience }: Readonly<ExperienceDetailsProp
             transition={{ delay: 0.3 }}
             className="mb-6 relative group"
           >
-            <div className="relative p-4 rounded-xl bg-white/20 dark:bg-gray-800/20 border border-gray-200/60 dark:border-gray-600/60 hover:border-gray-300/80 dark:hover:border-gray-500/80 transition-all duration-300 shadow-sm backdrop-blur-sm">
+            <div className="relative p-4 rounded-xl bg-background border border-gray-200/60 dark:border-gray-600/60 hover:border-gray-300/80 dark:hover:border-gray-500/80 transition-all duration-300 shadow-sm backdrop-blur-sm">
               <div className="flex items-center gap-3 mb-4">
                 <motion.div
                   whileHover={{ scale: 1.1, rotate: 5 }}
@@ -159,7 +159,7 @@ export function ExperienceDetails({ experience }: Readonly<ExperienceDetailsProp
             transition={{ delay: 0.35 }}
             className="mb-6 relative group"
           >
-            <div className="relative p-4 rounded-xl bg-white/20 dark:bg-gray-800/20 border border-gray-200/60 dark:border-gray-600/60 hover:border-gray-300/80 dark:hover:border-gray-500/80 transition-all duration-300 shadow-sm backdrop-blur-sm">
+            <div className="relative p-4 rounded-xl bg-background border border-gray-200/60 dark:border-gray-600/60 hover:border-gray-300/80 dark:hover:border-gray-500/80 transition-all duration-300 shadow-sm backdrop-blur-sm">
               <div className="flex items-center gap-3 mb-4">
                 <motion.div
                   whileHover={{ scale: 1.1, rotate: 5 }}
@@ -206,7 +206,7 @@ export function ExperienceDetails({ experience }: Readonly<ExperienceDetailsProp
             transition={{ delay: 0.4 }}
             className="relative group"
           >
-            <div className="relative p-4 rounded-xl bg-white/20 dark:bg-gray-800/20 border border-gray-200/60 dark:border-gray-600/60 hover:border-gray-300/80 dark:hover:border-gray-500/80 transition-all duration-300 shadow-sm backdrop-blur-sm">
+            <div className="relative p-4 rounded-xl bg-background border border-gray-200/60 dark:border-gray-600/60 hover:border-gray-300/80 dark:hover:border-gray-500/80 transition-all duration-300 shadow-sm backdrop-blur-sm">
               <div className="flex items-center gap-3 mb-4">
                 <motion.div
                   whileHover={{ scale: 1.1, rotate: -5 }}
@@ -239,8 +239,8 @@ export function ExperienceDetails({ experience }: Readonly<ExperienceDetailsProp
                     <div 
                       className={`relative inline-flex items-center rounded-xl px-2 md:px-3 py-1.5 md:py-2 text-xs md:text-sm font-bold border-2 transition-all duration-300 ${
                       experience.status === "current" 
-                          ? "bg-gradient-to-r from-red-100/20 dark:from-red-900/20 to-red-50/20 dark:to-red-800/20 hover:from-red-200/30 dark:hover:from-red-800/30 hover:to-red-100/30 dark:hover:to-red-700/30 text-red-700 dark:text-red-300 border-2 border-red-400/70 dark:border-red-500/70 hover:border-red-500/90 dark:hover:border-red-400/90 shadow-md shadow-red-200/30 dark:shadow-red-800/20 backdrop-blur-sm" 
-                          : "bg-gradient-to-r from-gray-100/20 dark:from-gray-700/20 to-gray-50/20 dark:to-gray-600/20 hover:from-gray-200/30 dark:hover:from-gray-600/30 hover:to-gray-100/30 dark:hover:to-gray-500/30 text-gray-800 dark:text-gray-200 border-2 border-gray-400/60 dark:border-gray-500/60 hover:border-gray-500/80 dark:hover:border-gray-400/80 shadow-md shadow-gray-200/30 dark:shadow-gray-600/20 backdrop-blur-sm"
+                          ? "bg-background hover:bg-background text-red-700 dark:text-red-300 border-2 border-red-400/70 dark:border-red-500/70 hover:border-red-500/90 dark:hover:border-red-400/90 shadow-md shadow-red-200/30 dark:shadow-red-800/20 backdrop-blur-sm" 
+                          : "bg-background hover:bg-background text-gray-800 dark:text-gray-200 border-2 border-gray-400/60 dark:border-gray-500/60 hover:border-gray-500/80 dark:hover:border-gray-400/80 shadow-md shadow-gray-200/30 dark:shadow-gray-600/20 backdrop-blur-sm"
                       }`}
                   >
                     {skill}
