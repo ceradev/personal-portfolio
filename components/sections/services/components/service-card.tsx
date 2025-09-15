@@ -4,7 +4,6 @@ import { Service } from "@/types/services";
 import { Card } from "@/components/ui/layout/card";
 import { Badge } from "@/components/ui/display/badge";
 import { motion } from "framer-motion";
-import { ArrowRight } from "lucide-react";
 
 interface ServiceCardProps {
   readonly service: Service;
@@ -68,7 +67,7 @@ export function ServiceCard({ service, index }: ServiceCardProps) {
               <Badge 
                 key={tech}
                 variant="secondary" 
-                className="text-xs bg-red-100/60 text-red-800 border-red-300 shadow-sm"
+                className="text-xs bg-red-100/60 dark:bg-red-900/60 text-red-800 dark:text-red-200 border-red-300 shadow-sm"
               >
                 {tech}
               </Badge>
@@ -76,7 +75,7 @@ export function ServiceCard({ service, index }: ServiceCardProps) {
             {service.technologies.length > 3 && (
               <Badge 
                 variant="secondary" 
-                className="text-xs bg-red-100/60 text-red-800 border-red-300 shadow-sm"
+                className="text-xs bg-red-100/60 dark:bg-red-900/60 text-red-800 dark:text-red-200 border-red-300 shadow-sm"
               >
                 +{service.technologies.length - 3}
               </Badge>

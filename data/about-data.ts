@@ -144,7 +144,7 @@ export const aboutData: AboutData = {
         month: "Agosto",
         featured: false,
         icon: "Code",
-        color: "bg-cyan-500/10 text-cyan-600 dark:text-cyan-400 border-cyan-200 dark:border-cyan-800"
+        color: "bg-blue-500/10 text-blue-600 dark:text-blue-400 border-blue-200 dark:border-blue-800"
       },
       { 
         name: "TypeScript Fundamentals", 
@@ -153,7 +153,7 @@ export const aboutData: AboutData = {
         month: "Julio",
         featured: false,
         icon: "BookOpen",
-        color: "bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 border-indigo-200 dark:border-indigo-800"
+        color: "bg-blue-500/10 text-blue-600 dark:text-blue-400 border-blue-200 dark:border-blue-800"
       },
       {
         name: "Python",

@@ -2,11 +2,13 @@
 
 import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
+import { motion, AnimatePresence } from "framer-motion";
 import { AllInOneFrame } from "@/components/ui/display/all-in-one-frame";
 import { VideoControls } from "./video-controls";
 import { PlaylistSidebar } from "./playlist-sidebar";
 import { ProjectDetailsModal } from "./project-details-modal";
 import { VideoOverlay } from "./video-overlay";
+import { useMobile } from "@/hooks/use-mobile";
 import { type Project } from "@/types/projects";
 
 interface ProjectVideoPlayerProps {
@@ -23,10 +25,57 @@ export function ProjectVideoPlayer({ projects, onViewDetails }: ProjectVideoPlay
   const [duration] = useState(10); // Simulated video duration
   const [showPlaylist, setShowPlaylist] = useState(false);
   const [showDetailsModal, setShowDetailsModal] = useState(false);
+  const [slideDirection, setSlideDirection] = useState<'left' | 'right' | null>(null);
+  const [isTransitioning, setIsTransitioning] = useState(false);
   
   const progressRef = useRef<HTMLDivElement>(null);
+  const touchStartX = useRef<number>(0);
+  const touchEndX = useRef<number>(0);
+  const isMobile = useMobile();
 
   const currentProject = projects[currentProjectIndex];
+
+  // Helper functions for animation directions
+  const getInitialX = () => {
+    if (slideDirection === 'left') return '100%';
+    if (slideDirection === 'right') return '-100%';
+    return 0;
+  };
+
+  const getExitX = () => {
+    if (slideDirection === 'left') return '-100%';
+    if (slideDirection === 'right') return '100%';
+    return 0;
+  };
+
+  // Touch gesture handlers for mobile
+  const handleTouchStart = (e: React.TouchEvent) => {
+    if (!isMobile) return;
+    touchStartX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    if (!isMobile) return;
+    touchEndX.current = e.changedTouches[0].clientX;
+    handleSwipe();
+  };
+
+  const handleSwipe = () => {
+    if (!isMobile) return;
+    
+    const swipeThreshold = 50;
+    const diff = touchStartX.current - touchEndX.current;
+
+    if (Math.abs(diff) > swipeThreshold) {
+      if (diff > 0) {
+        // Swipe left - next project
+        handleNext();
+      } else {
+        // Swipe right - previous project
+        handlePrevious();
+      }
+    }
+  };
 
   // Auto-play functionality
   useEffect(() => {
@@ -50,17 +99,35 @@ export function ProjectVideoPlayer({ projects, onViewDetails }: ProjectVideoPlay
   };
 
   const handlePrevious = () => {
-    setCurrentProjectIndex((prev) => 
-      prev === 0 ? projects.length - 1 : prev - 1
-    );
-    setCurrentTime(0);
+    if (isTransitioning) return;
+    
+    setSlideDirection('right');
+    setIsTransitioning(true);
+    
+    setTimeout(() => {
+      setCurrentProjectIndex((prev) => 
+        prev === 0 ? projects.length - 1 : prev - 1
+      );
+      setCurrentTime(0);
+      setSlideDirection(null);
+      setIsTransitioning(false);
+    }, isMobile ? 100 : 150);
   };
 
   const handleNext = () => {
-    setCurrentProjectIndex((prev) => 
-      prev === projects.length - 1 ? 0 : prev + 1
-    );
-    setCurrentTime(0);
+    if (isTransitioning) return;
+    
+    setSlideDirection('left');
+    setIsTransitioning(true);
+    
+    setTimeout(() => {
+      setCurrentProjectIndex((prev) => 
+        prev === projects.length - 1 ? 0 : prev + 1
+      );
+      setCurrentTime(0);
+      setSlideDirection(null);
+      setIsTransitioning(false);
+    }, isMobile ? 100 : 150);
   };
 
   const handleVolumeChange = (value: number[]) => {
@@ -86,8 +153,18 @@ export function ProjectVideoPlayer({ projects, onViewDetails }: ProjectVideoPlay
   };
 
   const handleSelectProject = (index: number) => {
-    setCurrentProjectIndex(index);
-    setCurrentTime(0);
+    if (isTransitioning) return;
+    
+    const direction = index > currentProjectIndex ? 'left' : 'right';
+    setSlideDirection(direction);
+    setIsTransitioning(true);
+    
+    setTimeout(() => {
+      setCurrentProjectIndex(index);
+      setCurrentTime(0);
+      setSlideDirection(null);
+      setIsTransitioning(false);
+    }, isMobile ? 100 : 150);
   };
 
   if (projects.length === 0) {
@@ -105,19 +182,49 @@ export function ProjectVideoPlayer({ projects, onViewDetails }: ProjectVideoPlay
   }
 
   return (
-    <div className="relative max-w-4xl mx-auto">
+    <div className={`relative mx-auto ${isMobile ? 'max-w-sm px-4' : 'max-w-4xl'}`}>
       {/* All-in-One Frame with Video Player */}
-      <AllInOneFrame className="w-full" size="large">
+      <AllInOneFrame 
+        className="w-full" 
+        size={isMobile ? "small" : "large"}
+      >
         {/* Main Video Player */}
         <div className="relative bg-black rounded-lg overflow-hidden w-full h-full">
         {/* Video Content */}
-        <div className="relative w-full h-full">
-          <Image
-            src={currentProject.image || "/placeholder.svg"}
-            alt={currentProject.title}
-            fill
-            className="object-cover"
-          />
+        <div 
+          className="relative w-full h-full overflow-hidden"
+          onTouchStart={handleTouchStart}
+          onTouchEnd={handleTouchEnd}
+        >
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={currentProjectIndex}
+              initial={{ 
+                x: getInitialX(),
+                opacity: 0 
+              }}
+              animate={{ 
+                x: 0, 
+                opacity: 1 
+              }}
+              exit={{ 
+                x: getExitX(),
+                opacity: 0 
+              }}
+              transition={{ 
+                duration: isMobile ? 0.2 : 0.3, 
+                ease: "easeInOut" 
+              }}
+              className="absolute inset-0"
+            >
+              <Image
+                src={currentProject.image || "/placeholder.svg"}
+                alt={currentProject.title}
+                fill
+                className="object-cover"
+              />
+            </motion.div>
+          </AnimatePresence>
           
           {/* Video Overlay */}
             <VideoOverlay
@@ -137,6 +244,7 @@ export function ProjectVideoPlayer({ projects, onViewDetails }: ProjectVideoPlay
             isMuted={isMuted}
             showPlaylist={showPlaylist}
             currentProject={currentProject}
+            isMobile={isMobile}
             onPlayPause={handlePlayPause}
             onPrevious={handlePrevious}
             onNext={handleNext}
@@ -155,6 +263,7 @@ export function ProjectVideoPlayer({ projects, onViewDetails }: ProjectVideoPlay
         projects={projects}
         currentProjectIndex={currentProjectIndex}
         isPlaying={isPlaying}
+        isMobile={isMobile}
         onClose={() => setShowPlaylist(false)}
         onSelectProject={handleSelectProject}
       />

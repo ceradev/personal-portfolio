@@ -1,4 +1,4 @@
-import { Globe, Smartphone, Lightbulb, BarChart3 } from "lucide-react";
+import { Globe, Bot, Lightbulb, BarChart3 } from "lucide-react";
 
 export interface Service {
   id: string;
@@ -33,21 +33,21 @@ export const servicesData: Service[] = [
     }
   },
   {
-    id: 'mobile-development',
-    title: 'Desarrollo Móvil',
-    description: 'Desarrollo de aplicaciones móviles nativas y multiplataforma para iOS y Android.',
-    icon: Smartphone,
+    id: 'ai-automation',
+    title: 'Automatizaciones de IA',
+    description: 'Desarrollo de agentes inteligentes y sistemas automatizados que optimizan procesos empresariales.',
+    icon: Bot,
     features: [
-      'Apps nativas',
-      'Apps multiplataforma',
-      'UI/UX optimizada',
-      'Integración de servicios',
-      'Publicación en stores'
+      'Agentes conversacionales',
+      'Automatización de procesos',
+      'Integración con APIs',
+      'Análisis predictivo',
+      'Sistemas inteligentes'
     ],
-    technologies: ['React Native', 'Flutter', 'Swift', 'Kotlin', 'Firebase'],
+    technologies: ['Python', 'OpenAI', 'LangChain', 'FastAPI', 'Docker', 'AWS'],
     pricing: {
       type: 'project',
-      range: '€1000 - €8000'
+      range: '€1500 - €10000'
     }
   },
   {

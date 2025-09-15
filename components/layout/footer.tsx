@@ -6,7 +6,6 @@ import {
   Github, 
   Linkedin, 
   Mail, 
-  Phone, 
   MapPin, 
   ArrowUp,
   Heart,
@@ -23,25 +22,25 @@ export function Footer() {
     {
       name: "GitHub",
       icon: Github,
-      href: "https://github.com/tu-usuario",
+      href: "https://github.com/ceradev",
       color: "hover:text-gray-900 dark:hover:text-gray-100"
     },
     {
       name: "LinkedIn", 
       icon: Linkedin,
-      href: "https://linkedin.com/in/tu-perfil",
+      href: "https://linkedin.com/in/césar-aramis-suárez-orizondo/",
       color: "hover:text-blue-600"
     },
     {
       name: "Email",
       icon: Mail,
-      href: "mailto:tu-email@ejemplo.com",
+      href: "suarezorizondocesararamis@gmail.com",
       color: "hover:text-red-500"
     }
   ];
 
   const quickLinks = [
-    { name: "Inicio", href: "#hero" },
+    { name: "Inicio", href: "" },
     { name: "Sobre mí", href: "#about" },
     { name: "Proyectos", href: "#projects" },
     { name: "Experiencia", href: "#experience" },
@@ -119,21 +118,14 @@ export function Footer() {
                   className="flex items-center text-sm text-muted-foreground hover:text-foreground transition-colors"
                 >
                   <Mail className="h-4 w-4 mr-3 text-primary" />
-                  <span>tu-email@ejemplo.com</span>
-                </motion.div>
-                <motion.div
-                  whileHover={{ x: 5 }}
-                  className="flex items-center text-sm text-muted-foreground hover:text-foreground transition-colors"
-                >
-                  <Phone className="h-4 w-4 mr-3 text-primary" />
-                  <span>+34 123 456 789</span>
+                  <span>suarezorizondocesararamis@gmail.com</span>
                 </motion.div>
                 <motion.div
                   whileHover={{ x: 5 }}
                   className="flex items-center text-sm text-muted-foreground hover:text-foreground transition-colors"
                 >
                   <MapPin className="h-4 w-4 mr-3 text-primary" />
-                  <span>Madrid, España</span>
+                  <span>Tenerife, España</span>
                 </motion.div>
               </div>
             </motion.div>
