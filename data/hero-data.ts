@@ -14,6 +14,6 @@ export const SOCIAL_LINKS = {
 } as const;
 
 export const CV_DOWNLOAD = {
-  href: "/cv-cesar-suarez.pdf",
-  filename: "CV-Cesar-Suarez.pdf"
+  href: "/CV-Ceradev.pdf",
+  filename: "CV-Ceradev.pdf"
 } as const;

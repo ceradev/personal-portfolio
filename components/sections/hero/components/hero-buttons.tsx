@@ -1,19 +1,15 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Download, FolderOpen, Github, Linkedin, Mail } from "lucide-react";
+import { FileText, FolderOpen, Github, Linkedin, Mail } from "lucide-react";
 import Link from "next/link";
 import { Button } from "@/components/ui/display/button";
 import { SOCIAL_LINKS, CV_DOWNLOAD } from "@/data/hero-data";
 
 export function HeroButtons() {
-  const handleDownloadCV = () => {
-    const link = document.createElement("a");
-    link.href = CV_DOWNLOAD.href;
-    link.download = CV_DOWNLOAD.filename;
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
+  const handleOpenCV = () => {
+    // Abrir el CV directamente en una nueva pestaña
+    window.open(CV_DOWNLOAD.href, "_blank", "noopener,noreferrer");
   };
 
   return (
@@ -58,12 +54,12 @@ export function HeroButtons() {
       <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
         <Button
           variant="outline"
-          onClick={handleDownloadCV}
+          onClick={handleOpenCV}
           className="border-2 border-primary/50 text-foreground hover:bg-primary/10 hover:border-primary rounded-full px-8 py-3 font-medium relative overflow-hidden shadow-md hover:shadow-lg transition-all duration-300 backdrop-blur-sm bg-background/50"
         >
           <span className="relative z-10 flex items-center gap-2">
-            <Download className="h-4 w-4" />
-            Descargar CV
+            <FileText className="h-4 w-4" />
+            Ver CV
           </span>
           <motion.span
             className="absolute inset-0 bg-gradient-to-r from-primary/10 to-red-500/10 rounded-full"

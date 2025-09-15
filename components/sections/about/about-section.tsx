@@ -10,10 +10,7 @@ import { ProfessionalSoftSkills } from "@/components/sections/about/components/p
 import { LanguagesInfo } from "@/components/sections/about/components/languages-info";
 import { PracticalInfo } from "@/components/sections/about/components/practical-info";
 import { CompactTechSkills } from "@/components/sections/about/components/compact-tech-skills";
-import { InfoCard } from "@/components/ui/layout/info-card";
-import { TextParagraph } from "@/components/ui/display/text-paragraph";
-import { aboutData } from "@/data/about-data";
-import { Briefcase } from "lucide-react";
+import { ValueProposition } from "@/components/sections/about/components/value-proposition";
 
 export function AboutSection() {
   return (
@@ -60,20 +57,7 @@ export function AboutSection() {
           {/* Primera fila - Propuesta de valor y formación */}
           <div className="grid lg:grid-cols-2 gap-8 items-stretch">
             {/* Columna izquierda - Propuesta de valor */}
-            <InfoCard
-              title="Mi Propuesta de Valor"
-              icon={<Briefcase className="h-5 w-5 text-primary" />}
-            >
-              <div className="space-y-5">
-                {aboutData.aboutText.map((text, index) => (
-                  <TextParagraph
-                    key={text.slice(0, 20)}
-                    text={text}
-                    index={index}
-                  />
-                ))}
-              </div>
-            </InfoCard>
+            <ValueProposition />
 
             {/* Columna derecha - Formación */}
             <EducationCertSummary />

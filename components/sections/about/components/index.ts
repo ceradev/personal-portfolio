@@ -6,3 +6,4 @@ export { ProfessionalSoftSkills } from './professional-soft-skills';
 export { LanguagesInfo } from './languages-info';
 export { PracticalInfo } from './practical-info';
 export { CompactTechSkills } from './compact-tech-skills';
+export { ValueProposition } from './value-proposition';

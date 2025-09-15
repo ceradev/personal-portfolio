@@ -14,7 +14,7 @@ export function ScheduleCall() {
     >
       <div className="max-w-4xl mx-auto">
         <motion.div
-          className="bg-background rounded-2xl p-8 border-2 border-red-300/40 shadow-lg hover:shadow-lg transition-all duration-300 text-center"
+          className="bg-background rounded-2xl p-8 border-2 border-border/20 shadow-lg hover:shadow-lg transition-all duration-300 text-center"
           initial={{ opacity: 0, scale: 0.95 }}
           whileInView={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.5, delay: 0.1 }}
