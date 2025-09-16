@@ -11,6 +11,9 @@ interface VideoOverlayProps {
   readonly isPlaying: boolean;
   readonly duration: number;
   readonly onPlayPause: () => void;
+  readonly currentImageIndex?: number;
+  readonly totalImages?: number;
+  readonly currentTime?: number;
 }
 
 export function VideoOverlay({
@@ -18,6 +21,9 @@ export function VideoOverlay({
   isPlaying,
   duration,
   onPlayPause,
+  currentImageIndex = 0,
+  totalImages = 1,
+  currentTime = 0,
 }: VideoOverlayProps) {
   const renderCategoryIcon = (category: string) => {
     switch (category) {
@@ -82,6 +88,24 @@ export function VideoOverlay({
             </Badge>
           )}
         </div>
+        
+        {/* Slideshow Indicator */}
+        {totalImages > 1 && (
+          <div className="flex flex-col items-end gap-1">
+            <div className="bg-black/50 backdrop-blur-sm rounded-full px-3 py-1 text-white text-xs">
+              {currentImageIndex + 1} / {totalImages}
+            </div>
+            {/* Slideshow Progress Bar */}
+            <div className="w-16 h-1 bg-white/20 rounded-full overflow-hidden">
+              <div 
+                className="h-full bg-white/80 rounded-full transition-all duration-100"
+                style={{ 
+                  width: `${((currentImageIndex + 1) / totalImages) * 100}%` 
+                }}
+              />
+            </div>
+          </div>
+        )}
       </div>
 
       {/* Play/Pause Overlay */}

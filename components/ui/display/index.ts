@@ -2,6 +2,7 @@ export * from './animated-text';
 export * from './animated-underline';
 export * from './badge';
 export * from './dialog';
+export * from './floating-call-button';
 export * from './gradient-text';
 export * from './info-badge';
 export * from './all-in-one-frame';

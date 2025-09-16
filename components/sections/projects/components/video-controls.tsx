@@ -17,6 +17,7 @@ interface VideoControlsProps {
   readonly currentProject: {
     readonly demoUrl?: string;
     readonly githubUrl?: string;
+    readonly isDeployed?: boolean;
   };
   readonly onPlayPause: () => void;
   readonly onPrevious: () => void;
@@ -205,7 +206,7 @@ export function VideoControls({
               </Button>
             </motion.div>
             
-            {currentProject.demoUrl && (
+            {currentProject.demoUrl && currentProject.isDeployed && (
               <motion.div
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
@@ -262,7 +263,7 @@ export function VideoControls({
         {!isMobile && (
           <div className="flex items-center gap-1">
             {/* Project Action Buttons */}
-            {currentProject.demoUrl && (
+            {currentProject.demoUrl && currentProject.isDeployed && (
               <motion.div
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}

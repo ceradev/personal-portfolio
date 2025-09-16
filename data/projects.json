@@ -12,7 +12,16 @@
       "PostgreSQL",
       "Cloud Hosting"
     ],
-    "image": "/placeholder.jpg",
+    "image": "/projects/bar-guantanamera/preview.png",
+    "images": [
+      "/projects/bar-guantanamera/preview.png",
+      "/projects/bar-guantanamera/stock-1.png",
+      "/projects/bar-guantanamera/stock-2.png",
+      "/projects/bar-guantanamera/stock-3.png",
+      "/projects/bar-guantanamera/stock-4.png",
+      "/projects/bar-guantanamera/stock-5.png",
+      "/projects/bar-guantanamera/stock-6.png"
+    ],
     "demoUrl": "https://barguantanamera.com",
     "githubUrl": "https://github.com/ceradev/bar-guantanamera",
     "impact": "Aumento de la visibilidad online del negocio, optimización en la gestión de citas y mayor interacción con clientes gracias a una interfaz intuitiva.",
@@ -25,6 +34,7 @@
     "role": "Full Stack Developer",
     "teamSize": 1,
     "duration": "2 meses",
+    "isDeployed": true,
     "highlights": [
       "Implementación de un sistema de reservas en tiempo real",
       "Integración con mapas para localización del bar",
@@ -44,7 +54,17 @@
       "Express",
       "MongoDB"
     ],
-    "image": "/placeholder.jpg",
+    "image": "/projects/alphonics/preview.jpg",
+    "images": [
+      "/projects/alphonics/preview.jpg",
+      "/projects/alphonics/stock-1.jpg",
+      "/projects/alphonics/stock-2.jpg",
+      "/projects/alphonics/stock-3.jpg",
+      "/projects/alphonics/stock-4.jpg",
+      "/projects/alphonics/stock-5.jpg",
+      "/projects/alphonics/stock-6.jpg",
+      "/projects/alphonics/stock-7.jpg"
+    ],
     "demoUrl": "https://alphonics.ceradev.com",
     "githubUrl": "https://github.com/ceradev/alphonics",
     "impact": "Mejoró la visibilidad online de los artistas, facilitó la conexión con su audiencia y aportó una herramienta centralizada para la difusión de proyectos musicales.",
@@ -57,6 +77,7 @@
     "role": "Full Stack Developer",
     "teamSize": 1,
     "duration": "3 meses",
+    "isDeployed": false,
     "highlights": [
       "Creación de un reproductor musical integrado",
       "Panel de administración para la gestión de artistas y contenidos",
@@ -75,7 +96,23 @@
       "PostgreSQL",
       "PrimeNG"
     ],
-    "image": "/placeholder.jpg",
+    "image": "/projects/book-shop/preview.jpg",
+    "images": [
+      "/projects/book-shop/preview.jpg",
+      "/projects/book-shop/stock-1.png",
+      "/projects/book-shop/stock-2.png",
+      "/projects/book-shop/stock-3.png",
+      "/projects/book-shop/stock-4.png",
+      "/projects/book-shop/stock-5.png",
+      "/projects/book-shop/stock-6.png",
+      "/projects/book-shop/stock-7.png",
+      "/projects/book-shop/stock-8.png",
+      "/projects/book-shop/stock-9.png",
+      "/projects/book-shop/stock-10.png",
+      "/projects/book-shop/stock-11.png",
+      "/projects/book-shop/stock-12.png",
+      "/projects/book-shop/stock-13.png"
+    ],
     "demoUrl": "https://libreriainternet.ceradev.com",
     "githubUrl": "https://github.com/ceradev/libreria-online",
     "impact": "Optimización de la administración del inventario y mejora de la experiencia del usuario al facilitar la búsqueda, reserva y consulta de libros en línea.",
@@ -88,6 +125,7 @@
     "role": "Full Stack Developer",
     "teamSize": 1,
     "duration": "2 meses",
+    "isDeployed": false,
     "highlights": [
       "Implementación de CRUD completo para libros, autores y reservas",
       "Interfaz intuitiva y responsiva",
@@ -107,7 +145,7 @@
       "PrimeNG",
       "ngx-translate"
     ],
-    "image": "/placeholder.jpg",
+    "image": "/placeholders/placeholder.jpg",
     "demoUrl": "https://routing-entornos.ceradev.com",
     "githubUrl": "https://github.com/ceradev/routing-entornos",
     "impact": "Facilitó la administración de infraestructuras y optimizó los flujos de trabajo en proyectos internos.",
@@ -120,6 +158,7 @@
     "role": "Full Stack Developer",
     "teamSize": 1,
     "duration": "2 meses",
+    "isDeployed": false,
     "highlights": [
       "CRUD completo de entornos y namespaces",
       "Formularios dinámicos unificados",
@@ -138,7 +177,7 @@
       "PostgreSQL",
       "PrimeNG"
     ],
-    "image": "/placeholder.jpg",
+    "image": "/placeholders/placeholder.jpg",
     "demoUrl": "https://calendario-eviden.ceradev.com",
     "githubUrl": "https://github.com/ceradev/calendario-eviden",
     "impact": "Mejoró la organización del equipo y la productividad al centralizar la planificación en una herramienta intuitiva.",
@@ -151,6 +190,7 @@
     "role": "Full Stack Developer",
     "teamSize": 1,
     "duration": "2 meses",
+    "isDeployed": false,
     "highlights": [
       "Integración de calendario dinámico",
       "Gestión de eventos en tiempo real",
@@ -170,7 +210,11 @@
       "Framer Motion",
       "React"
     ],
-    "image": "/creative-portfolio-layout.png",
+    "image": "/projects/creative-portfolio-layout.png",
+    "images": [
+      "/projects/creative-portfolio-layout.png",
+      "/projects/code-projects-portfolio.png"
+    ],
     "demoUrl": "https://ceradev.com",
     "githubUrl": "https://github.com/ceradev/personal-portfolio",
     "impact": "Sitio web personal para mostrar habilidades y proyectos desarrollados.",
@@ -183,6 +227,7 @@
     "role": "Full Stack Developer",
     "teamSize": 1,
     "duration": "1 mes",
+    "isDeployed": true,
     "highlights": [
       "Diseño responsivo para todos los dispositivos",
       "Animaciones fluidas con Framer Motion",

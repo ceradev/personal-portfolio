@@ -437,65 +437,6 @@
   box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.1);
 }
 
-/* DJ Mode Styles */
-.dj-mode {
-  --primary: 270 70% 60%; /* Purple */
-  --primary-foreground: 0 0% 100%;
-}
-
-.dj-mode .section-title-text {
-  @apply font-bold uppercase tracking-wider;
-  font-family: Arial, Helvetica, sans-serif;
-  text-shadow: 0 0 10px rgba(147, 51, 234, 0.7);
-  letter-spacing: 0.1em;
-}
-
-.dj-mode .text-gradient {
-  @apply bg-gradient-to-r from-purple-600 via-pink-500 to-purple-600;
-}
-
-/* DJ Mode animations */
-@keyframes neon-pulse {
-  0% {
-    text-shadow: 0 0 5px rgba(147, 51, 234, 0.7), 0 0 10px rgba(147, 51, 234, 0.5);
-  }
-  50% {
-    text-shadow: 0 0 10px rgba(147, 51, 234, 0.9), 0 0 20px rgba(147, 51, 234, 0.7), 0 0 30px rgba(147, 51, 234, 0.5);
-  }
-  100% {
-    text-shadow: 0 0 5px rgba(147, 51, 234, 0.7), 0 0 10px rgba(147, 51, 234, 0.5);
-  }
-}
-
-.dj-mode .animate-neon {
-  animation: neon-pulse 2s ease-in-out infinite;
-}
-
-/* DJ Mode hover effects */
-.dj-mode .interactive-element {
-  transition: all 0.3s ease;
-}
-
-.dj-mode .interactive-element:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 15px rgba(147, 51, 234, 0.7);
-}
-
-/* DJ Mode background */
-.dj-mode-bg {
-  background: linear-gradient(45deg, rgba(0, 0, 0, 0.9), rgba(20, 0, 40, 0.9));
-}
-
-/* DJ Mode card styles */
-.dj-mode .card {
-  @apply backdrop-blur-md bg-purple-900/20 border-purple-500/30;
-  box-shadow: 0 0 15px rgba(147, 51, 234, 0.2);
-}
-
-.dj-mode .card:hover {
-  box-shadow: 0 0 20px rgba(147, 51, 234, 0.4);
-}
-
 /* Añadir al final del archivo */
 
 /* Clase global para alineación consistente */

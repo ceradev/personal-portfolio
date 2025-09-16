@@ -87,7 +87,7 @@ export function PlaylistSidebar({
                 <div className={`flex ${isMobile ? 'gap-1.5' : 'gap-2'}`}>
                   <div className={`relative rounded overflow-hidden flex-shrink-0 ${isMobile ? 'w-10 h-6' : 'w-12 h-8'}`}>
                     <Image
-                      src={project.image || "/placeholder.svg"}
+                      src={project.image || "/placeholders/placeholder.svg"}
                       alt={project.title}
                       fill
                       className="object-cover"

@@ -59,7 +59,7 @@ export function AvatarButton({ className = "" }: Readonly<AvatarButtonProps>) {
       transition={{ duration: 0.3 }}
     >
       <Image
-        src="/profile-icon.png"
+        src="/images/profile-icon.png"
         alt="Avatar - Volver al inicio"
         width={className?.includes('w-8') ? 32 : 40}
         height={className?.includes('h-8') ? 32 : 40}

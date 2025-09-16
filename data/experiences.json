@@ -16,7 +16,7 @@
     ],
     "skills": ["React", "Next.js", "TypeScript", "Node.js", "MongoDB", "AWS", "PostgreSQL", "Docker", "Git", "Figma"],
     "status": "current",
-    "logo": "/placeholder-logo.png"
+    "logo": "/images/profile-icon.png"
   },
   {
     "id": "eviden-dev",
@@ -34,7 +34,7 @@
     "skills": ["Angular", "Spring Boot", "PostgreSQL", "GitLab", "Kubernetes", "IA"],
     "url": "https://eviden.com",
     "status": "completed",
-    "logo": "/eviden-logo.png"
+    "logo": "/logos/eviden-logo.png"
   },
   {
     "id": "atos-intern",
@@ -52,6 +52,6 @@
     "skills": ["Java", "JavaScript", "Angular", "Spring Boot", "GIT", "Agile"],
     "url": "https://eviden.com",
     "status": "completed",
-    "logo": "/atos-logo.png"
+    "logo": "/logos/atos-logo.png"
   }
 ]

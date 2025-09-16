@@ -120,7 +120,7 @@ export function HeroProfile() {
             boxShadow: "0 0 40px rgba(220, 38, 38, 0.4)",
           }}
         >
-          <Image src="/avatar-profile.png" alt="César Suárez" fill className="object-cover" />
+          <Image src="/images/avatar-profile.png" alt="César Suárez" fill className="object-cover" />
           <motion.div
             className="absolute inset-0 bg-gradient-to-tr from-primary/20 to-transparent"
             initial={{ opacity: 0 }}

@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import { Calendar, Monitor, Server, Layers, Brain, Code, Star, ExternalLink, Github } from "lucide-react";
@@ -9,7 +10,7 @@ import { type Project } from "@/types/projects";
 
 interface ProjectDetailsModalProps {
   readonly showModal: boolean;
-  readonly project: Project;
+  readonly project: Project | null;
   readonly onClose: () => void;
 }
 
@@ -18,6 +19,23 @@ export function ProjectDetailsModal({
   project,
   onClose,
 }: ProjectDetailsModalProps) {
+  const [selectedImageIndex, setSelectedImageIndex] = useState(0);
+  
+  // Verificación de seguridad
+  if (!project) {
+    return null;
+  }
+  
+  // Obtener las imágenes disponibles
+  const getProjectImages = () => {
+    const images = project.images;
+    if (images && Array.isArray(images) && images.length > 0) {
+      return images;
+    }
+    return [project.image];
+  };
+  
+  const projectImages = getProjectImages();
   const renderCategoryIcon = (category: string) => {
     switch (category) {
       case "Frontend":
@@ -112,14 +130,58 @@ export function ProjectDetailsModal({
             {/* Modal Content */}
             <div className="p-6 max-h-[60vh] overflow-y-auto">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                {/* Project Image */}
-                <div className="relative aspect-video rounded-lg overflow-hidden">
-                  <Image
-                    src={project.image || "/placeholder.svg"}
-                    alt={project.title}
-                    fill
-                    className="object-cover"
-                  />
+                {/* Project Images Section */}
+                <div className="space-y-4">
+                  {/* Main Project Image */}
+                  <div className="relative aspect-video rounded-lg overflow-hidden">
+                    <Image
+                      src={projectImages[selectedImageIndex] || "/placeholders/placeholder.svg"}
+                      alt={`${project.title} - Vista ${selectedImageIndex + 1}`}
+                      fill
+                      className="object-cover"
+                    />
+                    {/* Image Counter */}
+                    {projectImages.length > 1 && (
+                      <div className="absolute top-2 right-2 bg-black/50 backdrop-blur-sm rounded-full px-2 py-1 text-white text-xs">
+                        {selectedImageIndex + 1} / {projectImages.length}
+                      </div>
+                    )}
+                  </div>
+                  
+                  {/* Additional Images Gallery */}
+                  {project.images?.length && project.images.length > 1 && (
+                    <div className="space-y-2">
+                      <h4 className="text-sm font-semibold text-muted-foreground">Más vistas</h4>
+                      <div className="grid grid-cols-2 gap-2">
+                        {projectImages.slice(1, 5).map((image, index) => (
+                          <div 
+                            key={`${project.id}-additional-${index}`} 
+                            className={`relative aspect-video rounded-md overflow-hidden cursor-pointer group transition-all duration-200 ${
+                              selectedImageIndex === index + 1 ? 'ring-2 ring-primary ring-offset-2' : ''
+                            }`}
+                            onClick={() => setSelectedImageIndex(index + 1)}
+                            role="button"
+                            tabIndex={0}
+                            onKeyDown={(e) => {
+                              if (e.key === 'Enter' || e.key === ' ') {
+                                e.preventDefault();
+                                setSelectedImageIndex(index + 1);
+                              }
+                            }}
+                            aria-label={`Ver imagen ${index + 2} de ${project.title}`}
+                          >
+                            <Image
+                              src={image}
+                              alt={`${project.title} - Vista ${index + 2}`}
+                              fill
+                              className="object-cover transition-transform duration-300 group-hover:scale-105"
+                            />
+                            <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300" />
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
                 </div>
 
                 {/* Project Details */}
@@ -177,7 +239,7 @@ export function ProjectDetailsModal({
               >
                 Cerrar
               </Button>
-              {project.demoUrl && (
+              {project.demoUrl && project.isDeployed && (
                 <Button
                   onClick={() => window.open(project.demoUrl, "_blank")}
                 >

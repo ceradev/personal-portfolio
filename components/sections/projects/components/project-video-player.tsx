@@ -16,18 +16,22 @@ interface ProjectVideoPlayerProps {
   readonly onViewDetails: (project: Project) => void;
 }
 
-export function ProjectVideoPlayer({ projects, onViewDetails }: ProjectVideoPlayerProps) {
+export function ProjectVideoPlayer({
+  projects,
+  onViewDetails,
+}: ProjectVideoPlayerProps) {
   const [currentProjectIndex, setCurrentProjectIndex] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
   const [volume, setVolume] = useState(50);
   const [isMuted, setIsMuted] = useState(false);
   const [currentTime, setCurrentTime] = useState(0);
-  const [duration] = useState(10); // Simulated video duration
+  const [duration, setDuration] = useState(16); // Duración dinámica basada en imágenes
   const [showPlaylist, setShowPlaylist] = useState(false);
   const [showDetailsModal, setShowDetailsModal] = useState(false);
-  const [slideDirection, setSlideDirection] = useState<'left' | 'right' | null>(null);
   const [isTransitioning, setIsTransitioning] = useState(false);
-  
+
+  // Nuevos estados para el slideshow de imágenes
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const progressRef = useRef<HTMLDivElement>(null);
   const touchStartX = useRef<number>(0);
   const touchEndX = useRef<number>(0);
@@ -35,18 +39,22 @@ export function ProjectVideoPlayer({ projects, onViewDetails }: ProjectVideoPlay
 
   const currentProject = projects[currentProjectIndex];
 
-  // Helper functions for animation directions
-  const getInitialX = () => {
-    if (slideDirection === 'left') return '100%';
-    if (slideDirection === 'right') return '-100%';
-    return 0;
+  // Obtener las imágenes disponibles para el proyecto actual
+  const getProjectImages = () => {
+    if (currentProject.images && currentProject.images.length > 0) {
+      return currentProject.images;
+    }
+    return [currentProject.image];
   };
 
-  const getExitX = () => {
-    if (slideDirection === 'left') return '-100%';
-    if (slideDirection === 'right') return '100%';
-    return 0;
-  };
+  const projectImages = getProjectImages();
+
+  // Calcular duración dinámica basada en el número de imágenes
+  useEffect(() => {
+    const timePerImage = 2; // 2 segundos por imagen
+    const newDuration = projectImages.length * timePerImage;
+    setDuration(newDuration);
+  }, [projectImages.length]);
 
   // Touch gesture handlers for mobile
   const handleTouchStart = (e: React.TouchEvent) => {
@@ -62,7 +70,7 @@ export function ProjectVideoPlayer({ projects, onViewDetails }: ProjectVideoPlay
 
   const handleSwipe = () => {
     if (!isMobile) return;
-    
+
     const swipeThreshold = 50;
     const diff = touchStartX.current - touchEndX.current;
 
@@ -77,7 +85,7 @@ export function ProjectVideoPlayer({ projects, onViewDetails }: ProjectVideoPlay
     }
   };
 
-  // Auto-play functionality
+  // Auto-play functionality y slideshow de imágenes
   useEffect(() => {
     if (!isPlaying) return;
 
@@ -94,40 +102,62 @@ export function ProjectVideoPlayer({ projects, onViewDetails }: ProjectVideoPlay
     return () => clearInterval(interval);
   }, [isPlaying, duration]);
 
+  // Sincronizar el índice de imagen con el progreso del video
+  useEffect(() => {
+    if (projectImages.length <= 1) return;
+
+    const timePerImage = duration / projectImages.length;
+    const newImageIndex = Math.floor(currentTime / timePerImage);
+
+    if (
+      newImageIndex !== currentImageIndex &&
+      newImageIndex < projectImages.length
+    ) {
+      setCurrentImageIndex(newImageIndex);
+    }
+  }, [currentTime, duration, projectImages.length, currentImageIndex]);
+
+  // Resetear el índice de imagen cuando cambia el proyecto
+  useEffect(() => {
+    setCurrentImageIndex(0);
+  }, [currentProjectIndex]);
+
   const handlePlayPause = () => {
     setIsPlaying(!isPlaying);
   };
 
   const handlePrevious = () => {
     if (isTransitioning) return;
-    
-    setSlideDirection('right');
+
     setIsTransitioning(true);
-    
-    setTimeout(() => {
-      setCurrentProjectIndex((prev) => 
-        prev === 0 ? projects.length - 1 : prev - 1
-      );
-      setCurrentTime(0);
-      setSlideDirection(null);
-      setIsTransitioning(false);
-    }, isMobile ? 100 : 150);
+
+    setTimeout(
+      () => {
+        setCurrentProjectIndex((prev) =>
+          prev === 0 ? projects.length - 1 : prev - 1
+        );
+        setCurrentTime(0);
+        setIsTransitioning(false);
+      },
+      isMobile ? 100 : 150
+    );
   };
 
   const handleNext = () => {
     if (isTransitioning) return;
-    
-    setSlideDirection('left');
+
     setIsTransitioning(true);
-    
-    setTimeout(() => {
-      setCurrentProjectIndex((prev) => 
-        prev === projects.length - 1 ? 0 : prev + 1
-      );
-      setCurrentTime(0);
-      setSlideDirection(null);
-      setIsTransitioning(false);
-    }, isMobile ? 100 : 150);
+
+    setTimeout(
+      () => {
+        setCurrentProjectIndex((prev) =>
+          prev === projects.length - 1 ? 0 : prev + 1
+        );
+        setCurrentTime(0);
+        setIsTransitioning(false);
+      },
+      isMobile ? 100 : 150
+    );
   };
 
   const handleVolumeChange = (value: number[]) => {
@@ -141,11 +171,21 @@ export function ProjectVideoPlayer({ projects, onViewDetails }: ProjectVideoPlay
 
   const handleProgressClick = (e: React.MouseEvent<HTMLDivElement>) => {
     if (!progressRef.current) return;
-    
+
     const rect = progressRef.current.getBoundingClientRect();
     const clickX = e.clientX - rect.left;
     const percentage = clickX / rect.width;
-    setCurrentTime(percentage * duration);
+    const newTime = percentage * duration;
+    setCurrentTime(newTime);
+
+    // Actualizar la imagen correspondiente al tiempo seleccionado
+    if (projectImages.length > 1) {
+      const timePerImage = duration / projectImages.length;
+      const newImageIndex = Math.floor(newTime / timePerImage);
+      if (newImageIndex < projectImages.length) {
+        setCurrentImageIndex(newImageIndex);
+      }
+    }
   };
 
   const handleFullscreen = () => {
@@ -154,17 +194,17 @@ export function ProjectVideoPlayer({ projects, onViewDetails }: ProjectVideoPlay
 
   const handleSelectProject = (index: number) => {
     if (isTransitioning) return;
-    
-    const direction = index > currentProjectIndex ? 'left' : 'right';
-    setSlideDirection(direction);
+
     setIsTransitioning(true);
-    
-    setTimeout(() => {
-      setCurrentProjectIndex(index);
-      setCurrentTime(0);
-      setSlideDirection(null);
-      setIsTransitioning(false);
-    }, isMobile ? 100 : 150);
+
+    setTimeout(
+      () => {
+        setCurrentProjectIndex(index);
+        setCurrentTime(0);
+        setIsTransitioning(false);
+      },
+      isMobile ? 100 : 150
+    );
   };
 
   if (projects.length === 0) {
@@ -182,56 +222,60 @@ export function ProjectVideoPlayer({ projects, onViewDetails }: ProjectVideoPlay
   }
 
   return (
-    <div className={`relative mx-auto ${isMobile ? 'max-w-sm px-4' : 'max-w-4xl'}`}>
+    <div
+      className={`relative mx-auto ${isMobile ? "max-w-sm px-4" : "max-w-4xl"}`}
+    >
       {/* All-in-One Frame with Video Player */}
-      <AllInOneFrame 
-        className="w-full" 
-        size={isMobile ? "small" : "large"}
-      >
+      <AllInOneFrame className="w-full" size={isMobile ? "small" : "large"}>
         {/* Main Video Player */}
         <div className="relative bg-black rounded-lg overflow-hidden w-full h-full">
-        {/* Video Content */}
-        <div 
-          className="relative w-full h-full overflow-hidden"
-          onTouchStart={handleTouchStart}
-          onTouchEnd={handleTouchEnd}
-        >
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={currentProjectIndex}
-              initial={{ 
-                x: getInitialX(),
-                opacity: 0 
-              }}
-              animate={{ 
-                x: 0, 
-                opacity: 1 
-              }}
-              exit={{ 
-                x: getExitX(),
-                opacity: 0 
-              }}
-              transition={{ 
-                duration: isMobile ? 0.2 : 0.3, 
-                ease: "easeInOut" 
-              }}
-              className="absolute inset-0"
-            >
-              <Image
-                src={currentProject.image || "/placeholder.svg"}
-                alt={currentProject.title}
-                fill
-                className="object-cover"
-              />
-            </motion.div>
-          </AnimatePresence>
-          
-          {/* Video Overlay */}
+          {/* Video Content */}
+          <div
+            className="relative w-full h-full overflow-hidden"
+            onTouchStart={handleTouchStart}
+            onTouchEnd={handleTouchEnd}
+          >
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={`${currentProjectIndex}-${currentImageIndex}`}
+                initial={{
+                  opacity: 0,
+                }}
+                animate={{
+                  opacity: 1,
+                }}
+                exit={{
+                  opacity: 0,
+                }}
+                transition={{
+                  duration: 0.5,
+                  ease: "easeInOut",
+                }}
+                className="absolute inset-0"
+              >
+                <Image
+                  src={
+                    projectImages[currentImageIndex] ||
+                    "/placeholders/placeholder.svg"
+                  }
+                  alt={`${currentProject.title} - Vista ${
+                    currentImageIndex + 1
+                  }`}
+                  fill
+                  className="object-cover"
+                />
+              </motion.div>
+            </AnimatePresence>
+
+            {/* Video Overlay */}
             <VideoOverlay
               project={currentProject}
               isPlaying={isPlaying}
               duration={duration}
               onPlayPause={handlePlayPause}
+              currentImageIndex={currentImageIndex}
+              totalImages={projectImages.length}
+              currentTime={currentTime}
             />
           </div>
 

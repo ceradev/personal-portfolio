@@ -8,6 +8,7 @@ import {
   Footer,
   ThemeToggle,
 } from "@/components/layout";
+import { FloatingCallButton } from "@/components/ui/display";
 import { ScrollProgress } from "@/utils/scroll-progress";
 import { EnhancedThemeTransition } from "@/utils/enhanced-theme-transition";
 import {
@@ -86,6 +87,9 @@ export default function Home() {
       <div className={`fixed ${isMobile ? "top-3" : "top-6"} right-6 z-50`}>
         <ThemeToggle />
       </div>
+
+      {/* Floating Call Button */}
+      <FloatingCallButton />
 
       {/* Add padding to the bottom on mobile to account for the bottom navigation */}
       <div className={isMobile ? "pb-16" : ""}>

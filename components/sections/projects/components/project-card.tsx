@@ -85,7 +85,7 @@ export function ProjectCard({ project, onViewDetails }: ProjectCardProps) {
         {/* Image with overlay */}
         <div className="relative aspect-video overflow-hidden">
           <Image
-            src={project.image || "/placeholder.svg"}
+            src={project.image || "/placeholders/placeholder.svg"}
             alt={project.title}
             fill
             className="object-cover transition-transform duration-500 group-hover:scale-105"
@@ -179,7 +179,7 @@ export function ProjectCard({ project, onViewDetails }: ProjectCardProps) {
             </motion.div>
 
             <div className="flex gap-1">
-              {project.demoUrl && (
+              {project.demoUrl && project.isDeployed && (
                 <motion.div
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}

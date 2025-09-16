@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
-import { User, Briefcase, Mail, Settings, Quote, FolderKanban } from "lucide-react"
+import { User, Briefcase, Mail, Settings, Quote, FolderKanban, Calendar } from "lucide-react"
 import { Button } from "@/components/ui/display/button"
 import { AvatarButton } from "@/components/ui/display/avatar-button"
 import { SmoothScrollLink } from "@/utils/smooth-scroll-link"
@@ -35,6 +35,10 @@ export function TopNavigation({ activeSection }: Readonly<TopNavigationProps>) {
       window.removeEventListener("scroll", handleScroll)
     }
   }, [])
+
+  const handleCalendlyClick = () => {
+    window.open("https://calendly.com/suarezorizondocesararamis", "_blank", "noopener,noreferrer")
+  }
 
   // Reordenado para coincidir con el orden de las secciones en la página
   const navItems = [
@@ -154,6 +158,19 @@ export function TopNavigation({ activeSection }: Readonly<TopNavigationProps>) {
                     </motion.div>
                   </SmoothScrollLink>
                 ))}
+                
+                {/* Call booking button for mobile */}
+                <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
+                  <Button
+                    onClick={handleCalendlyClick}
+                    variant="ghost"
+                    size="icon"
+                    className="rounded-full bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white shadow-lg hover:shadow-xl transition-all duration-300"
+                  >
+                    <Calendar className="h-4 w-4" />
+                    <span className="sr-only">Agendar llamada</span>
+                  </Button>
+                </motion.div>
               </div>
             </motion.div>
           )}

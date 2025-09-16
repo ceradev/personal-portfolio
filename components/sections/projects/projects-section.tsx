@@ -7,7 +7,7 @@ import { SectionTransition } from "@/utils/section-transition";
 import { projects, type Project } from "@/types/projects";
 import {
   ProjectVideoPlayer,
-  ProjectDetailsDialog,
+  ProjectDetailsModal,
   ProjectsSubtitle,
 } from "./components";
 
@@ -62,9 +62,10 @@ export function ProjectsSection() {
           />
         </div>
 
-        {/* Project details dialog */}
-        <ProjectDetailsDialog
-          project={selectedProject}
+        {/* Project details modal */}
+        <ProjectDetailsModal
+          showModal={!!selectedProject}
+          project={selectedProject!}
           onClose={() => setSelectedProject(null)}
         />
       </div>

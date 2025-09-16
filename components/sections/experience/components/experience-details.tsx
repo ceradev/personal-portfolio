@@ -39,7 +39,7 @@ export function ExperienceDetails({ experience }: Readonly<ExperienceDetailsProp
                 className="relative w-12 h-12 md:w-16 md:h-16 rounded-xl overflow-hidden border-2 border-gray-300 dark:border-gray-600 bg-background shadow-md shadow-gray-400/20 dark:shadow-gray-600/20 flex-shrink-0"
               >
                 <Image
-                  src={experience.logo || "/placeholder.svg"}
+                  src={experience.logo || "/placeholders/placeholder.svg"}
                   alt={experience.company}
                   fill
                   className="object-cover"

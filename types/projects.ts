@@ -6,6 +6,7 @@ export interface Project {
   longDescription?: string;
   technologies: string[];
   image: string;
+  images?: string[]; // Nuevo campo para múltiples imágenes del proyecto
   demoUrl?: string;
   githubUrl?: string;
   impact?: string;
@@ -19,6 +20,7 @@ export interface Project {
   teamSize?: number;
   duration?: string;
   highlights?: string[];
+  isDeployed?: boolean; // Nuevo campo para indicar si el proyecto está desplegado
 }
 
 // Importar los datos de proyectos

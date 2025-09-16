@@ -33,7 +33,7 @@ export function ServiceCard({ service, index }: ServiceCardProps) {
       whileHover={{ y: -5, scale: 1.02 }}
       className="h-full"
     >
-      <Card className="group relative overflow-hidden border border-border/20 bg-background backdrop-blur-sm p-6 transition-all duration-300 hover:border-red-400/60 hover:shadow-lg hover:shadow-red-200/30 h-full">
+      <Card className="group relative overflow-hidden border-2 border-border/20 bg-background backdrop-blur-sm p-6 transition-all duration-300 hover:border-red-400/60 hover:shadow-lg hover:shadow-red-200/30 h-full">
         {/* Background gradient overlay */}
         <div className="absolute inset-0 bg-gradient-to-br from-red-100/15 via-transparent to-red-200/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
         

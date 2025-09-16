@@ -70,8 +70,19 @@ export function ContactForm() {
     setFormStatus("submitting");
 
     try {
-      // Simulación de envío de formulario
-      await new Promise((resolve) => setTimeout(resolve, 1500));
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const result = await response.json();
+
+      if (!response.ok) {
+        throw new Error(result.error || 'Error al enviar el mensaje');
+      }
       
       setFormStatus("success");
       setFormData({ name: "", email: "", subject: "", message: "" });
