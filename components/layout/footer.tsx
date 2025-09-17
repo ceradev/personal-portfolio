@@ -49,7 +49,7 @@ export function Footer() {
   ];
 
   return (
-    <footer className="relative bg-background border-t border-border/30 backdrop-blur-md overflow-hidden">
+    <footer id="footer" className="relative bg-background border-t border-border/30 backdrop-blur-md overflow-hidden">
       {/* Background decorative elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <motion.div

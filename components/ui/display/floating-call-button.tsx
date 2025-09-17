@@ -7,9 +7,10 @@ import { Button } from "./button";
 
 interface FloatingCallButtonProps {
   readonly className?: string;
+  readonly activeSection?: string;
 }
 
-export function FloatingCallButton({ className = "" }: FloatingCallButtonProps) {
+export function FloatingCallButton({ className = "", activeSection = "home" }: FloatingCallButtonProps) {
   const [isVisible, setIsVisible] = useState(false);
   const [isExpanded, setIsExpanded] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
@@ -20,19 +21,25 @@ export function FloatingCallButton({ className = "" }: FloatingCallButtonProps) 
     };
 
     const handleScroll = () => {
-      // Show button after scrolling down 300px
-      setIsVisible(window.scrollY > 300);
+      // Show button after scrolling down 300px, but hide in footer and home sections
+      const shouldShow = window.scrollY > 300 && 
+                        activeSection !== "home" && 
+                        activeSection !== "footer";
+      setIsVisible(shouldShow);
     };
 
     checkMobile();
     window.addEventListener("resize", checkMobile);
     window.addEventListener("scroll", handleScroll);
 
+    // Initial check
+    handleScroll();
+
     return () => {
       window.removeEventListener("resize", checkMobile);
       window.removeEventListener("scroll", handleScroll);
     };
-  }, []);
+  }, [activeSection]);
 
   const handleCalendlyClick = () => {
     window.open("https://calendly.com/suarezorizondocesararamis", "_blank", "noopener,noreferrer");

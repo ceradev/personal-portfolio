@@ -89,7 +89,7 @@ export default function Home() {
       </div>
 
       {/* Floating Call Button */}
-      <FloatingCallButton />
+      <FloatingCallButton activeSection={activeSection} />
 
       {/* Add padding to the bottom on mobile to account for the bottom navigation */}
       <div className={isMobile ? "pb-16" : ""}>
