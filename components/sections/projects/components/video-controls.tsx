@@ -62,7 +62,7 @@ export function VideoControls({
         {/* Progress Bar - Mobile */}
         <button
           ref={progressRef}
-          className="w-full bg-white/40 rounded-full cursor-pointer block h-3 mb-4"
+          className="w-full bg-white/40 rounded-full cursor-pointer block h-3 mb-4 touch-manipulation"
           onClick={onProgressClick}
           aria-label="Barra de progreso del video"
         >
@@ -75,116 +75,92 @@ export function VideoControls({
         {/* Mobile Control Layout - Centered and simplified */}
         <div className="flex items-center justify-center gap-6">
           {/* Previous Button */}
-          <motion.div
+          <motion.button
             whileTap={{ scale: 0.9 }}
             whileHover={{ scale: 1.05 }}
             transition={{ type: "spring", stiffness: 400, damping: 17 }}
+            onClick={onPrevious}
+            className="text-white hover:bg-white/20 active:bg-white/30 h-12 w-12 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 touch-manipulation flex items-center justify-center"
+            aria-label="Proyecto anterior"
           >
-            <Button
-              size="icon"
-              variant="ghost"
-              onClick={onPrevious}
-              className="text-white hover:bg-white/20 h-12 w-12 rounded-full"
-            >
-              <ChevronLeft className="h-6 w-6" />
-            </Button>
-          </motion.div>
+            <ChevronLeft className="h-6 w-6" />
+          </motion.button>
           
           {/* Play/Pause Button - Larger and more prominent */}
-          <motion.div
+          <motion.button
             whileTap={{ scale: 0.9 }}
             whileHover={{ scale: 1.05 }}
             transition={{ type: "spring", stiffness: 400, damping: 17 }}
+            onClick={onPlayPause}
+            className="text-white hover:bg-white/20 active:bg-white/30 h-16 w-16 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 touch-manipulation flex items-center justify-center"
+            aria-label={isPlaying ? "Pausar" : "Reproducir"}
           >
-            <Button
-              size="icon"
-              variant="ghost"
-              onClick={onPlayPause}
-              className="text-white hover:bg-white/20 h-16 w-16 rounded-full bg-white/10 backdrop-blur-sm"
+            <motion.div
+              animate={{ scale: isPlaying ? [1, 1.1, 1] : 1 }}
+              transition={{ duration: 0.2 }}
             >
-              <motion.div
-                animate={{ scale: isPlaying ? [1, 1.1, 1] : 1 }}
-                transition={{ duration: 0.2 }}
-              >
-                {isPlaying ? (
-                  <Pause className="h-8 w-8" />
-                ) : (
-                  <Play className="h-8 w-8 ml-1" />
-                )}
-              </motion.div>
-            </Button>
-          </motion.div>
+              {isPlaying ? (
+                <Pause className="h-8 w-8" />
+              ) : (
+                <Play className="h-8 w-8 ml-1" />
+              )}
+            </motion.div>
+          </motion.button>
           
           {/* Next Button */}
-          <motion.div
+          <motion.button
             whileTap={{ scale: 0.9 }}
             whileHover={{ scale: 1.05 }}
             transition={{ type: "spring", stiffness: 400, damping: 17 }}
+            onClick={onNext}
+            className="text-white hover:bg-white/20 active:bg-white/30 h-12 w-12 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 touch-manipulation flex items-center justify-center"
+            aria-label="Proyecto siguiente"
           >
-            <Button
-              size="icon"
-              variant="ghost"
-              onClick={onNext}
-              className="text-white hover:bg-white/20 h-12 w-12 rounded-full"
-            >
-              <ChevronRight className="h-6 w-6" />
-            </Button>
-          </motion.div>
+            <ChevronRight className="h-6 w-6" />
+          </motion.button>
         </div>
 
         {/* Mobile Action Buttons - Bottom row */}
         <div className="flex items-center justify-center gap-4 mt-4">
           {currentProject.demoUrl && currentProject.isDeployed && (
-            <motion.div
+            <motion.button
               whileTap={{ scale: 0.9 }}
               whileHover={{ scale: 1.05 }}
               transition={{ type: "spring", stiffness: 400, damping: 17 }}
+              onClick={() => window.open(currentProject.demoUrl, "_blank")}
+              className="text-white hover:bg-white/20 active:bg-white/30 h-10 w-10 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 touch-manipulation flex items-center justify-center"
+              title="Ver Demo"
+              aria-label="Ver Demo"
             >
-              <Button
-                size="icon"
-                variant="ghost"
-                onClick={() => window.open(currentProject.demoUrl, "_blank")}
-                className="text-white hover:bg-white/20 h-10 w-10 rounded-full"
-                title="Ver Demo"
-              >
-                <ExternalLink className="h-5 w-5" />
-              </Button>
-            </motion.div>
+              <ExternalLink className="h-5 w-5" />
+            </motion.button>
           )}
           
           {currentProject.githubUrl && (
-            <motion.div
+            <motion.button
               whileTap={{ scale: 0.9 }}
               whileHover={{ scale: 1.05 }}
               transition={{ type: "spring", stiffness: 400, damping: 17 }}
+              onClick={() => window.open(currentProject.githubUrl, "_blank")}
+              className="text-white hover:bg-white/20 active:bg-white/30 h-10 w-10 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 touch-manipulation flex items-center justify-center"
+              title="Ver Código"
+              aria-label="Ver Código"
             >
-              <Button
-                size="icon"
-                variant="ghost"
-                onClick={() => window.open(currentProject.githubUrl, "_blank")}
-                className="text-white hover:bg-white/20 h-10 w-10 rounded-full"
-                title="Ver Código"
-              >
-                <Github className="h-5 w-5" />
-              </Button>
-            </motion.div>
+              <Github className="h-5 w-5" />
+            </motion.button>
           )}
           
-          <motion.div
+          <motion.button
             whileTap={{ scale: 0.9 }}
             whileHover={{ scale: 1.05 }}
             transition={{ type: "spring", stiffness: 400, damping: 17 }}
+            onClick={onShowDetails}
+            className="text-white hover:bg-white/20 active:bg-white/30 h-10 w-10 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 touch-manipulation flex items-center justify-center"
+            title="Ver detalles"
+            aria-label="Ver detalles"
           >
-            <Button
-              size="icon"
-              variant="ghost"
-              onClick={onShowDetails}
-              className="text-white hover:bg-white/20 h-10 w-10 rounded-full"
-              title="Ver detalles"
-            >
-              <Maximize className="h-5 w-5" />
-            </Button>
-          </motion.div>
+            <Maximize className="h-5 w-5" />
+          </motion.button>
         </div>
       </div>
     );
