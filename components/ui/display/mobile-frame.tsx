@@ -14,43 +14,52 @@ export function MobileFrame({
   className = "",
   size = "medium",
 }: MobileFrameProps) {
-  // Size configurations optimized for mobile viewing
+  // Enhanced size configurations for more realistic mobile appearance
   const sizeConfig = {
     small: {
-      containerPadding: "p-2",
-      screenPadding: "p-1",
-      bezelPadding: "p-1",
-      borderRadius: "rounded-xl",
-      screenRadius: "rounded-lg",
-      notchWidth: "w-16",
-      notchHeight: "h-6",
-      notchRadius: "rounded-b-lg",
-      homeIndicator: "w-8 h-1",
-      shadowSize: "shadow-lg",
-    },
-    medium: {
+      width: "w-72",
+      height: "h-[32rem]",
       containerPadding: "p-3",
       screenPadding: "p-2",
       bezelPadding: "p-2",
-      borderRadius: "rounded-2xl",
-      screenRadius: "rounded-xl",
+      borderRadius: "rounded-[2.5rem]",
+      screenRadius: "rounded-[1.5rem]",
       notchWidth: "w-20",
-      notchHeight: "h-7",
-      notchRadius: "rounded-b-xl",
-      homeIndicator: "w-10 h-1",
-      shadowSize: "shadow-xl",
+      notchHeight: "h-6",
+      notchRadius: "rounded-full",
+      homeIndicator: "w-12 h-1",
+      shadowSize: "shadow-2xl",
+      borderWidth: "border-2",
     },
-    large: {
+    medium: {
+      width: "w-80",
+      height: "h-[36rem]",
       containerPadding: "p-4",
       screenPadding: "p-3",
       bezelPadding: "p-3",
-      borderRadius: "rounded-3xl",
-      screenRadius: "rounded-2xl",
+      borderRadius: "rounded-[3rem]",
+      screenRadius: "rounded-[2rem]",
       notchWidth: "w-24",
-      notchHeight: "h-8",
-      notchRadius: "rounded-b-2xl",
-      homeIndicator: "w-12 h-1.5",
+      notchHeight: "h-7",
+      notchRadius: "rounded-full",
+      homeIndicator: "w-14 h-1.5",
       shadowSize: "shadow-2xl",
+      borderWidth: "border-2",
+    },
+    large: {
+      width: "w-96",
+      height: "h-[40rem]",
+      containerPadding: "p-5",
+      screenPadding: "p-4",
+      bezelPadding: "p-4",
+      borderRadius: "rounded-[3.5rem]",
+      screenRadius: "rounded-[2.5rem]",
+      notchWidth: "w-28",
+      notchHeight: "h-8",
+      notchRadius: "rounded-full",
+      homeIndicator: "w-16 h-2",
+      shadowSize: "shadow-2xl",
+      borderWidth: "border-2",
     },
   };
 
@@ -63,36 +72,40 @@ export function MobileFrame({
       animate={{ opacity: 1, scale: 1 }}
       transition={{ duration: 0.5, ease: "easeOut" }}
     >
-      {/* Mobile Device Container */}
-      <div className={`relative bg-gradient-to-b from-gray-800 to-gray-900 ${config.containerPadding} ${config.borderRadius} ${config.shadowSize}`}>
-        {/* Screen Bezel */}
-        <div className={`bg-black ${config.bezelPadding} ${config.screenRadius}`}>
-          {/* Dynamic Island / Notch */}
-          <div className={`${config.notchWidth} ${config.notchHeight} bg-black ${config.notchRadius} mx-auto mb-2`}></div>
+      {/* Enhanced Mobile Device Container */}
+      <div className={`${config.width} ${config.height} mx-auto relative bg-gradient-to-b from-card via-card/95 to-card ${config.containerPadding} ${config.borderRadius} ${config.shadowSize} ${config.borderWidth} border-border flex flex-col justify-center`}>
+        {/* Screen Bezel with more realistic proportions */}
+        <div className={`bg-black ${config.bezelPadding} ${config.screenRadius} h-full`}>
+          {/* Dynamic Island / Notch - more realistic */}
+          <div className={`${config.notchWidth} ${config.notchHeight} bg-black ${config.notchRadius} mx-auto mt-3 mb-2`}></div>
           
-          {/* Screen Content Area */}
-          <div className={`relative bg-gradient-to-br from-background to-muted ${config.screenRadius} overflow-hidden aspect-video shadow-inner`}>
+          {/* Screen Content Area - better aspect ratio */}
+          <div className={`relative bg-gradient-to-br from-background to-muted ${config.screenRadius} overflow-hidden h-[calc(100%-4rem)] shadow-inner`}>
             {children}
           </div>
           
-          {/* Home Indicator */}
-          <div className="flex justify-center mt-2">
-            <div className={`${config.homeIndicator} bg-white/30 rounded-full`}></div>
+          {/* Home Indicator - more realistic */}
+          <div className="flex justify-center mt-3">
+            <div className={`${config.homeIndicator} bg-foreground/40 rounded-full`}></div>
           </div>
         </div>
         
-        {/* Side Buttons */}
-        <div className="absolute left-1 top-1/2 transform -translate-y-1/2 space-y-2">
-          <div className="w-1 h-8 bg-gray-600 rounded-full"></div>
-          <div className="w-1 h-6 bg-gray-600 rounded-full"></div>
+        {/* Enhanced Side Buttons */}
+        <div className="absolute left-2 top-1/2 transform -translate-y-1/2 space-y-4">
+          <div className="w-1.5 h-12 bg-muted-foreground/60 rounded-full shadow-sm"></div>
+          <div className="w-1.5 h-10 bg-muted-foreground/60 rounded-full shadow-sm"></div>
         </div>
         
-        {/* Power Button */}
-        <div className="absolute right-1 top-1/3 w-1 h-12 bg-gray-600 rounded-full"></div>
+        {/* Enhanced Power Button */}
+        <div className="absolute right-2 top-1/3 w-1.5 h-16 bg-muted-foreground/60 rounded-full shadow-sm"></div>
+        
+        {/* Additional realistic details */}
+        <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-8 h-1 bg-muted-foreground/40 rounded-full mt-1"></div>
+        <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-12 h-1 bg-muted-foreground/40 rounded-full mb-1"></div>
       </div>
       
-      {/* Subtle glow effect */}
-      <div className="absolute inset-0 bg-gradient-to-r from-primary/10 via-transparent to-primary/10 rounded-full blur-xl opacity-50"></div>
+      {/* Enhanced glow effect */}
+      <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-primary/10 rounded-full blur-2xl opacity-60"></div>
     </motion.div>
   );
 }

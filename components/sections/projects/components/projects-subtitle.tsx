@@ -19,7 +19,7 @@ export function ProjectsSubtitle() {
       <div className="absolute inset-0 bg-gradient-to-r from-transparent via-primary/10 to-transparent blur-3xl -z-10" />
 
       <div className="relative">
-        <div className="text-xl text-foreground/90 max-w-3xl mx-auto leading-relaxed font-medium mb-8">
+        <div className="text-lg sm:text-xl md:text-2xl text-foreground/90 max-w-3xl mx-auto leading-relaxed font-medium mb-6 sm:mb-8 px-4 sm:px-6">
           Una selección de mis{" "}
           <span className="relative">
             <span className="text-primary font-bold">
@@ -35,7 +35,7 @@ export function ProjectsSubtitle() {
           y desarrollos técnicos
         </div>
 
-        <p className="text-foreground/90 text-base leading-relaxed mb-6 font-light max-w-2xl mx-auto">
+        <p className="text-foreground/90 text-sm sm:text-base leading-relaxed mb-4 sm:mb-6 font-light max-w-2xl mx-auto px-4 sm:px-6">
          Te invito a que explores cada una de las creaciones que he realizado y veas mi trabajo.
         </p>
 

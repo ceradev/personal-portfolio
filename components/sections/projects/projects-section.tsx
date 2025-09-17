@@ -86,7 +86,7 @@ export function ProjectsSection() {
         )}
 
         {/* Projects Video Player */}
-        <div className="mt-12">
+        <div className="mt-12 flex justify-center">
           <ProjectVideoPlayer
             projects={projects}
             onViewDetails={setSelectedProject}

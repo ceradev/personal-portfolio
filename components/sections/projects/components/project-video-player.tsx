@@ -35,6 +35,8 @@ export function ProjectVideoPlayer({
   const progressRef = useRef<HTMLDivElement>(null);
   const touchStartX = useRef<number>(0);
   const touchEndX = useRef<number>(0);
+  const touchStartY = useRef<number>(0);
+  const touchEndY = useRef<number>(0);
   const isMobile = useMobile();
 
   const currentProject = projects[currentProjectIndex];
@@ -56,26 +58,38 @@ export function ProjectVideoPlayer({
     setDuration(newDuration);
   }, [projectImages.length]);
 
-  // Touch gesture handlers for mobile
+  // Enhanced touch gesture handlers for mobile
   const handleTouchStart = (e: React.TouchEvent) => {
     if (!isMobile) return;
+    e.preventDefault();
     touchStartX.current = e.touches[0].clientX;
+    touchStartY.current = e.touches[0].clientY;
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    if (!isMobile) return;
+    e.preventDefault();
   };
 
   const handleTouchEnd = (e: React.TouchEvent) => {
     if (!isMobile) return;
+    e.preventDefault();
     touchEndX.current = e.changedTouches[0].clientX;
+    touchEndY.current = e.changedTouches[0].clientY;
     handleSwipe();
   };
 
   const handleSwipe = () => {
     if (!isMobile) return;
 
-    const swipeThreshold = 50;
-    const diff = touchStartX.current - touchEndX.current;
+    const swipeThreshold = 80; // Increased threshold for better control
+    const verticalThreshold = 100; // Prevent accidental swipes when scrolling
+    const diffX = touchStartX.current - touchEndX.current;
+    const diffY = Math.abs(touchStartY.current - touchEndY.current);
 
-    if (Math.abs(diff) > swipeThreshold) {
-      if (diff > 0) {
+    // Only process horizontal swipes if vertical movement is minimal
+    if (Math.abs(diffX) > swipeThreshold && diffY < verticalThreshold) {
+      if (diffX > 0) {
         // Swipe left - next project
         handleNext();
       } else {
@@ -223,17 +237,18 @@ export function ProjectVideoPlayer({
 
   return (
     <div
-      className={`relative mx-auto ${isMobile ? "max-w-sm px-4" : "max-w-4xl"}`}
+      className={`relative mx-auto ${isMobile ? "max-w-lg px-6 flex justify-center" : "max-w-4xl"}`}
     >
       {/* Responsive Frame with Video Player */}
       {isMobile ? (
-        <MobileFrame className="w-full" size="medium">
+        <MobileFrame className="w-full" size="large">
           {/* Main Video Player */}
-          <div className="relative bg-black rounded-lg overflow-hidden w-full h-full">
+          <div className={`relative ${isMobile ? "bg-gradient-to-br from-gray-900 to-black" : "bg-black"} rounded-lg overflow-hidden w-full h-full`}>
             {/* Video Content */}
             <div
-              className="relative w-full h-full overflow-hidden"
+              className={`relative w-full h-full overflow-hidden ${isMobile ? "p-2" : ""}`}
               onTouchStart={handleTouchStart}
+              onTouchMove={handleTouchMove}
               onTouchEnd={handleTouchEnd}
             >
               <AnimatePresence mode="wait">
@@ -263,7 +278,10 @@ export function ProjectVideoPlayer({
                       currentImageIndex + 1
                     }`}
                     fill
-                    className="object-cover"
+                    className={isMobile ? "object-contain bg-black/20" : "object-cover"}
+                    priority={currentImageIndex === 0}
+                    quality={isMobile ? 90 : 75}
+                    sizes={isMobile ? "(max-width: 768px) 100vw" : "(max-width: 1200px) 50vw"}
                   />
                 </motion.div>
               </AnimatePresence>
@@ -277,6 +295,7 @@ export function ProjectVideoPlayer({
                 currentImageIndex={currentImageIndex}
                 totalImages={projectImages.length}
                 currentTime={currentTime}
+                isMobile={isMobile}
               />
             </div>
 
@@ -309,6 +328,7 @@ export function ProjectVideoPlayer({
             <div
               className="relative w-full h-full overflow-hidden"
               onTouchStart={handleTouchStart}
+              onTouchMove={handleTouchMove}
               onTouchEnd={handleTouchEnd}
             >
               <AnimatePresence mode="wait">
@@ -338,7 +358,10 @@ export function ProjectVideoPlayer({
                       currentImageIndex + 1
                     }`}
                     fill
-                    className="object-cover"
+                    className={isMobile ? "object-contain bg-black/20" : "object-cover"}
+                    priority={currentImageIndex === 0}
+                    quality={isMobile ? 90 : 75}
+                    sizes={isMobile ? "(max-width: 768px) 100vw" : "(max-width: 1200px) 50vw"}
                   />
                 </motion.div>
               </AnimatePresence>
@@ -352,6 +375,7 @@ export function ProjectVideoPlayer({
                 currentImageIndex={currentImageIndex}
                 totalImages={projectImages.length}
                 currentTime={currentTime}
+                isMobile={isMobile}
               />
             </div>
 

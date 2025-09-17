@@ -15,7 +15,7 @@ export function AboutSubtitle() {
       <div className="absolute inset-0 bg-gradient-to-r from-transparent via-primary/20 to-transparent blur-3xl -z-10" />
 
       <div className="relative">
-        <div className="text-xl text-black dark:text-white max-w-2xl mx-auto leading-relaxed font-medium">
+        <div className="text-lg sm:text-xl md:text-2xl text-black dark:text-white max-w-2xl mx-auto leading-relaxed font-medium px-4 sm:px-6">
           Soy un desarrollador especializado en{" "}
           <span className="relative">
             <span className="text-primary font-bold">creación de soluciones digitales</span>
@@ -28,7 +28,7 @@ export function AboutSubtitle() {
             />
           </span>
         </div>
-        <p className="text-foreground/90 text-base leading-relaxed my-6 font-light max-w-xl mx-auto">
+        <p className="text-foreground/90 text-sm sm:text-base leading-relaxed my-4 sm:my-6 font-light max-w-xl mx-auto px-4 sm:px-6">
           Mi enfoque se centra en entender las necesidades del negocio y traducirlas en soluciones técnicas, eficientes y escalables.
         </p>
       </div>

@@ -15,7 +15,7 @@ export function ContactSubtitle() {
       <div className="absolute inset-0 bg-gradient-to-r from-transparent via-primary/20 to-transparent blur-3xl -z-10" />
       
       <div className="relative">
-        <div className="text-xl text-foreground max-w-3xl mx-auto leading-relaxed font-medium">
+        <div className="text-lg sm:text-xl md:text-2xl text-foreground max-w-3xl mx-auto leading-relaxed font-medium px-4 sm:px-6">
           Conectemos y hagamos realidad tu próximo{" "}
           <span className="relative">
             <span className="text-primary font-bold">

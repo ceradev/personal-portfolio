@@ -14,6 +14,7 @@ interface VideoOverlayProps {
   readonly currentImageIndex?: number;
   readonly totalImages?: number;
   readonly currentTime?: number;
+  readonly isMobile?: boolean;
 }
 
 export function VideoOverlay({
@@ -24,6 +25,7 @@ export function VideoOverlay({
   currentImageIndex = 0,
   totalImages = 1,
   currentTime = 0,
+  isMobile = false,
 }: VideoOverlayProps) {
   const renderCategoryIcon = (category: string) => {
     switch (category) {
@@ -76,7 +78,7 @@ export function VideoOverlay({
   return (
     <>
       {/* Video Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
+      <div className={`absolute inset-0 ${isMobile ? "bg-gradient-to-b from-black/80 via-transparent to-black/60" : "bg-gradient-to-t from-black/80 via-transparent to-transparent"}`} />
       
       {/* Project Info Overlay */}
       <div className="absolute top-2 left-2 right-2 flex justify-between items-start z-10">
@@ -108,52 +110,81 @@ export function VideoOverlay({
         )}
       </div>
 
-      {/* Play/Pause Overlay */}
-      <div className="absolute inset-0 flex items-center justify-center z-5 pointer-events-none">
-        <motion.div
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-          className="pointer-events-auto"
-        >
-          <Button
-            size="icon"
-            onClick={onPlayPause}
-            className="h-12 w-12 bg-primary/20 hover:bg-primary/30 backdrop-blur-sm border-2 border-primary/30 rounded-full"
+      {/* Play/Pause Overlay - Only show on desktop */}
+      {!isMobile && (
+        <div className="absolute inset-0 flex items-center justify-center z-5 pointer-events-none">
+          <motion.div
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="pointer-events-auto"
           >
-            {isPlaying ? (
-              <Pause className="h-4 w-4 text-primary" />
-            ) : (
-              <Play className="h-4 w-4 text-primary ml-0.5" />
-            )}
-          </Button>
-        </motion.div>
-      </div>
+            <Button
+              size="icon"
+              onClick={onPlayPause}
+              className="h-12 w-12 bg-primary/20 hover:bg-primary/30 backdrop-blur-sm border-2 border-primary/30 rounded-full"
+            >
+              {isPlaying ? (
+                <Pause className="h-4 w-4 text-primary" />
+              ) : (
+                <Play className="h-4 w-4 text-primary ml-0.5" />
+              )}
+            </Button>
+          </motion.div>
+        </div>
+      )}
 
-      {/* Project Title Overlay */}
-      <div className="absolute bottom-12 left-2 right-2">
-        <h2 className="text-sm font-bold text-white mb-1">
-          {project.title}
-        </h2>
-        <div className="flex items-center gap-2 text-white/80 text-xs">
-          <div className="flex items-center gap-1">
-            {renderCategoryIcon(project.category as string)}
-            <span>{project.category}</span>
-          </div>
-          <div className="flex items-center gap-1">
-            <Calendar className="h-3 w-3" />
-            <span>
-              {new Date(project.date).toLocaleDateString("es-ES", {
-                year: "numeric",
-                month: "short",
-              })}
-            </span>
-          </div>
-          <div className="flex items-center gap-1">
-            <Clock className="h-3 w-3" />
-            <span>{formatTime(duration)}</span>
+      {/* Project Title Overlay - Different position for mobile vs desktop */}
+      {isMobile ? (
+        <div className="absolute top-16 left-2 right-2">
+          <h2 className="text-sm font-bold text-white mb-1">
+            {project.title}
+          </h2>
+          <div className="flex items-center gap-2 text-white/80 text-xs">
+            <div className="flex items-center gap-1">
+              {renderCategoryIcon(project.category as string)}
+              <span>{project.category}</span>
+            </div>
+            <div className="flex items-center gap-1">
+              <Calendar className="h-3 w-3" />
+              <span>
+                {new Date(project.date).toLocaleDateString("es-ES", {
+                  year: "numeric",
+                  month: "short",
+                })}
+              </span>
+            </div>
+            <div className="flex items-center gap-1">
+              <Clock className="h-3 w-3" />
+              <span>{formatTime(duration)}</span>
+            </div>
           </div>
         </div>
-      </div>
+      ) : (
+        <div className="absolute bottom-12 left-2 right-2">
+          <h2 className="text-sm font-bold text-white mb-1">
+            {project.title}
+          </h2>
+          <div className="flex items-center gap-2 text-white/80 text-xs">
+            <div className="flex items-center gap-1">
+              {renderCategoryIcon(project.category as string)}
+              <span>{project.category}</span>
+            </div>
+            <div className="flex items-center gap-1">
+              <Calendar className="h-3 w-3" />
+              <span>
+                {new Date(project.date).toLocaleDateString("es-ES", {
+                  year: "numeric",
+                  month: "short",
+                })}
+              </span>
+            </div>
+            <div className="flex items-center gap-1">
+              <Clock className="h-3 w-3" />
+              <span>{formatTime(duration)}</span>
+            </div>
+          </div>
+        </div>
+      )}
     </>
   );
 }

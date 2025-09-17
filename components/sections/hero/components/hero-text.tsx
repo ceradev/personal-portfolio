@@ -14,7 +14,7 @@ export function HeroText() {
       <StatusBadge text="Disponible para proyectos" />
 
       {/* Nombre con efecto mejorado */}
-      <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 tracking-tight">
+      <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-3 sm:mb-4 tracking-tight px-4 sm:px-6">
         <motion.span 
           className="block text-foreground drop-shadow-sm dark:drop-shadow-[0_1px_1px_rgba(0,0,0,0.5)]"
           initial={{ opacity: 0, y: 20 }}
@@ -33,7 +33,7 @@ export function HeroText() {
 
       {/* Subtítulo con animación de texto */}
       <motion.h2 
-        className="text-lg sm:text-xl md:text-2xl text-foreground/90 dark:text-foreground/95 mb-6 font-light drop-shadow-sm"
+        className="text-base sm:text-lg md:text-xl lg:text-2xl text-foreground/90 dark:text-foreground/95 mb-4 sm:mb-6 font-light drop-shadow-sm px-4 sm:px-6"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 0.9 }}

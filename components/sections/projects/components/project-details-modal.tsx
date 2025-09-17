@@ -4,9 +4,10 @@ import { useState } from "react";
 import { createPortal } from "react-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
-import { Calendar, Monitor, Server, Layers, Brain, Code, Star, ExternalLink, Github } from "lucide-react";
+import { Calendar, Monitor, Server, Layers, Brain, Code, Star, ExternalLink, Github, X } from "lucide-react";
 import { Button } from "@/components/ui/display/button";
 import { Badge } from "@/components/ui/display/badge";
+import { useMobile } from "@/hooks/use-mobile";
 import { type Project } from "@/types/projects";
 
 interface ProjectDetailsModalProps {
@@ -21,6 +22,7 @@ export function ProjectDetailsModal({
   onClose,
 }: ProjectDetailsModalProps) {
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
+  const isMobile = useMobile();
   
   // Verificación de seguridad
   if (!project) {
@@ -91,22 +93,22 @@ export function ProjectDetailsModal({
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          className="fixed inset-0 z-[99999] bg-black/80 backdrop-blur-sm flex items-center justify-center p-4"
+          className={`fixed inset-0 z-[99999] bg-black/80 backdrop-blur-sm flex items-center justify-center ${isMobile ? "p-0" : "p-4"}`}
           onClick={onClose}
         >
           <motion.div
             initial={{ scale: 0.9, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             exit={{ scale: 0.9, opacity: 0 }}
-            className="bg-background rounded-2xl max-w-4xl max-h-[90vh] w-full overflow-hidden flex flex-col"
+            className={`bg-background ${isMobile ? "rounded-none max-w-none max-h-none w-full h-full" : "rounded-2xl max-w-4xl max-h-[90vh] w-full"} overflow-hidden flex flex-col`}
             onClick={(e) => e.stopPropagation()}
           >
             {/* Modal Header */}
-            <div className="flex-shrink-0 p-6 border-b border-border">
-              <div className="flex items-center justify-between">
-                <div>
-                  <h2 className="text-2xl font-bold">{project.title}</h2>
-                  <div className="flex items-center gap-4 mt-2 text-sm text-muted-foreground">
+            <div className={`flex-shrink-0 ${isMobile ? "p-4" : "p-6"} border-b border-border`}>
+              <div className={`flex items-center justify-between ${isMobile ? "flex-col gap-3" : ""}`}>
+                <div className={`${isMobile ? "w-full" : ""}`}>
+                  <h2 className={`${isMobile ? "text-xl" : "text-2xl"} font-bold`}>{project.title}</h2>
+                  <div className={`flex items-center gap-4 mt-2 text-sm text-muted-foreground ${isMobile ? "flex-col items-start gap-2" : ""}`}>
                     <div className="flex items-center gap-1">
                       {renderCategoryIcon(project.category as string)}
                       <span>{project.category}</span>
@@ -122,29 +124,44 @@ export function ProjectDetailsModal({
                     </div>
                   </div>
                 </div>
-                <div className="flex items-center gap-2">
-                  {renderStatusBadge(project.status)}
-                  {project.featured && (
-                    <Badge className="bg-primary/20 text-primary border-primary/30">
-                      <Star className="h-3 w-3 mr-1" /> Destacado
-                    </Badge>
+                <div className={`flex items-center gap-2 ${isMobile ? "w-full justify-between" : ""}`}>
+                  <div className="flex items-center gap-2">
+                    {renderStatusBadge(project.status)}
+                    {project.featured && (
+                      <Badge className="bg-primary/20 text-primary border-primary/30">
+                        <Star className="h-3 w-3 mr-1" /> Destacado
+                      </Badge>
+                    )}
+                  </div>
+                  {isMobile && (
+                    <Button
+                      variant="ghost"
+                      size="icon"
+                      onClick={onClose}
+                      className="h-8 w-8"
+                    >
+                      <X className="h-4 w-4" />
+                    </Button>
                   )}
                 </div>
               </div>
             </div>
 
             {/* Modal Content */}
-            <div className="flex-1 overflow-y-auto p-6">
-              <div className="grid grid-cols-1 lg:grid-cols-5 gap-6">
+            <div className={`flex-1 overflow-y-auto ${isMobile ? "p-4" : "p-6"}`}>
+              <div className={`grid grid-cols-1 ${isMobile ? "" : "lg:grid-cols-5"} gap-6`}>
                 {/* Project Images Section */}
-                <div className="space-y-4 lg:col-span-2">
+                <div className={`space-y-4 ${isMobile ? "" : "lg:col-span-2"}`}>
                   {/* Main Project Image */}
-                  <div className="relative aspect-[3/2] rounded-lg overflow-hidden max-w-sm mx-auto">
+                  <div className={`relative aspect-[3/2] rounded-lg overflow-hidden ${isMobile ? "w-full" : "max-w-sm mx-auto"}`}>
                     <Image
                       src={projectImages[selectedImageIndex] || "/placeholders/placeholder.svg"}
                       alt={`${project.title} - Vista ${selectedImageIndex + 1}`}
                       fill
-                      className="object-cover"
+                      className="object-contain bg-black/20"
+                      priority={selectedImageIndex === 0}
+                      quality={isMobile ? 90 : 75}
+                      sizes={isMobile ? "(max-width: 768px) 100vw" : "(max-width: 1200px) 50vw"}
                     />
                     {/* Image Counter */}
                     {projectImages.length > 1 && (
@@ -163,7 +180,7 @@ export function ProjectDetailsModal({
                           {projectImages.length} imágenes
                         </span>
                       </div>
-                      <div className="grid grid-cols-2 gap-3 max-h-96 overflow-y-auto pr-2">
+                      <div className={`grid ${isMobile ? "grid-cols-3" : "grid-cols-2"} gap-3 ${isMobile ? "max-h-48" : "max-h-96"} overflow-y-auto pr-2`}>
                         {projectImages.slice(1).map((image, index) => (
                           <div 
                             key={`${project.id}-additional-${index}`} 
@@ -199,28 +216,28 @@ export function ProjectDetailsModal({
                 </div>
 
                 {/* Project Details */}
-                <div className="space-y-4 lg:col-span-3">
+                <div className={`space-y-4 ${isMobile ? "" : "lg:col-span-3"}`}>
                   <div>
-                    <h3 className="text-lg font-semibold mb-2">Descripción</h3>
-                    <p className="text-muted-foreground">
+                    <h3 className={`${isMobile ? "text-base" : "text-lg"} font-semibold mb-2`}>Descripción</h3>
+                    <p className="text-muted-foreground text-sm">
                       {project.longDescription || project.description}
                     </p>
                   </div>
 
                   {project.impact && (
-                    <div className="p-4 rounded-lg bg-primary/10">
-                      <h3 className="text-lg font-semibold mb-2">Impacto</h3>
-                      <p className="text-muted-foreground">{project.impact}</p>
+                    <div className={`p-4 rounded-lg bg-primary/10 ${isMobile ? "p-3" : ""}`}>
+                      <h3 className={`${isMobile ? "text-base" : "text-lg"} font-semibold mb-2`}>Impacto</h3>
+                      <p className="text-muted-foreground text-sm">{project.impact}</p>
                     </div>
                   )}
 
                   <div>
-                    <h3 className="text-lg font-semibold mb-2">Tecnologías</h3>
+                    <h3 className={`${isMobile ? "text-base" : "text-lg"} font-semibold mb-2`}>Tecnologías</h3>
                     <div className="flex flex-wrap gap-2">
                       {project.technologies.map((tech) => (
                         <Badge
                           key={tech}
-                          className="bg-primary/20 text-primary border-primary/30"
+                          className={`bg-primary/20 text-primary border-primary/30 ${isMobile ? "text-xs" : ""}`}
                         >
                           {tech}
                         </Badge>
@@ -230,12 +247,12 @@ export function ProjectDetailsModal({
 
                   {project.highlights && (
                     <div>
-                      <h3 className="text-lg font-semibold mb-2">Aspectos destacados</h3>
+                      <h3 className={`${isMobile ? "text-base" : "text-lg"} font-semibold mb-2`}>Aspectos destacados</h3>
                       <ul className="space-y-1">
                         {project.highlights.map((highlight, index) => (
                           <li key={`${project.id}-highlight-${highlight.slice(0, 20)}`} className="flex items-start gap-2">
                             <div className="h-1.5 w-1.5 rounded-full mt-1.5 bg-primary flex-shrink-0" />
-                            <span className="text-muted-foreground">{highlight}</span>
+                            <span className="text-muted-foreground text-sm">{highlight}</span>
                           </li>
                         ))}
                       </ul>
@@ -246,16 +263,20 @@ export function ProjectDetailsModal({
             </div>
 
             {/* Modal Footer */}
-            <div className="flex-shrink-0 p-6 border-t border-border flex justify-end gap-2">
-              <Button
-                variant="outline"
-                onClick={onClose}
-              >
-                Cerrar
-              </Button>
+            <div className={`flex-shrink-0 ${isMobile ? "p-4" : "p-6"} border-t border-border ${isMobile ? "flex-col gap-2" : "flex justify-end gap-2"}`}>
+              {isMobile && (
+                <Button
+                  variant="outline"
+                  onClick={onClose}
+                  className="w-full"
+                >
+                  Cerrar
+                </Button>
+              )}
               {project.demoUrl && project.isDeployed && (
                 <Button
                   onClick={() => window.open(project.demoUrl, "_blank")}
+                  className={isMobile ? "w-full" : ""}
                 >
                   <ExternalLink className="h-4 w-4 mr-2" />
                   Ver Demo
@@ -265,9 +286,18 @@ export function ProjectDetailsModal({
                 <Button
                   variant="outline"
                   onClick={() => window.open(project.githubUrl, "_blank")}
+                  className={isMobile ? "w-full" : ""}
                 >
                   <Github className="h-4 w-4 mr-2" />
                   Ver Código
+                </Button>
+              )}
+              {!isMobile && (
+                <Button
+                  variant="outline"
+                  onClick={onClose}
+                >
+                  Cerrar
                 </Button>
               )}
             </div>

@@ -19,7 +19,7 @@ export function ServicesSubtitle() {
         <div className="absolute inset-0 bg-gradient-to-r from-transparent via-primary/10 to-transparent blur-3xl -z-10" />
 
         <div className="relative">
-          <div className="text-xl text-black dark:text-white max-w-3xl mx-auto leading-relaxed font-medium mb-6">
+          <div className="text-lg sm:text-xl md:text-2xl text-black dark:text-white max-w-3xl mx-auto leading-relaxed font-medium mb-4 sm:mb-6 px-4 sm:px-6">
             Soluciones tecnológicas{" "}
             <span className="relative">
               <span className="text-primary font-bold">personalizadas</span>

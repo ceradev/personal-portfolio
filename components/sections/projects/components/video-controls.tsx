@@ -58,7 +58,7 @@ export function VideoControls({
   // Mobile Controls - Simplified and touch-friendly
   if (isMobile) {
     return (
-      <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/95 via-black/70 to-transparent p-4">
+      <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/95 via-black/70 to-transparent p-4 z-50">
         {/* Progress Bar - Mobile */}
         <button
           ref={progressRef}
@@ -80,7 +80,7 @@ export function VideoControls({
             whileHover={{ scale: 1.05 }}
             transition={{ type: "spring", stiffness: 400, damping: 17 }}
             onClick={onPrevious}
-            className="text-white hover:bg-white/20 active:bg-white/30 h-12 w-12 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 touch-manipulation flex items-center justify-center"
+            className="text-white hover:bg-white/20 active:bg-white/30 h-12 w-12 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 touch-manipulation flex items-center justify-center relative z-10"
             aria-label="Proyecto anterior"
           >
             <ChevronLeft className="h-6 w-6" />
@@ -92,7 +92,7 @@ export function VideoControls({
             whileHover={{ scale: 1.05 }}
             transition={{ type: "spring", stiffness: 400, damping: 17 }}
             onClick={onPlayPause}
-            className="text-white hover:bg-white/20 active:bg-white/30 h-16 w-16 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 touch-manipulation flex items-center justify-center"
+            className="text-white hover:bg-white/20 active:bg-white/30 h-16 w-16 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 touch-manipulation flex items-center justify-center relative z-10"
             aria-label={isPlaying ? "Pausar" : "Reproducir"}
           >
             <motion.div
@@ -113,7 +113,7 @@ export function VideoControls({
             whileHover={{ scale: 1.05 }}
             transition={{ type: "spring", stiffness: 400, damping: 17 }}
             onClick={onNext}
-            className="text-white hover:bg-white/20 active:bg-white/30 h-12 w-12 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 touch-manipulation flex items-center justify-center"
+            className="text-white hover:bg-white/20 active:bg-white/30 h-12 w-12 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 touch-manipulation flex items-center justify-center relative z-10"
             aria-label="Proyecto siguiente"
           >
             <ChevronRight className="h-6 w-6" />
@@ -128,7 +128,7 @@ export function VideoControls({
               whileHover={{ scale: 1.05 }}
               transition={{ type: "spring", stiffness: 400, damping: 17 }}
               onClick={() => window.open(currentProject.demoUrl, "_blank")}
-              className="text-white hover:bg-white/20 active:bg-white/30 h-10 w-10 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 touch-manipulation flex items-center justify-center"
+              className="text-white hover:bg-white/20 active:bg-white/30 h-10 w-10 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 touch-manipulation flex items-center justify-center relative z-10"
               title="Ver Demo"
               aria-label="Ver Demo"
             >
@@ -142,7 +142,7 @@ export function VideoControls({
               whileHover={{ scale: 1.05 }}
               transition={{ type: "spring", stiffness: 400, damping: 17 }}
               onClick={() => window.open(currentProject.githubUrl, "_blank")}
-              className="text-white hover:bg-white/20 active:bg-white/30 h-10 w-10 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 touch-manipulation flex items-center justify-center"
+              className="text-white hover:bg-white/20 active:bg-white/30 h-10 w-10 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 touch-manipulation flex items-center justify-center relative z-10"
               title="Ver Código"
               aria-label="Ver Código"
             >
@@ -154,8 +154,20 @@ export function VideoControls({
             whileTap={{ scale: 0.9 }}
             whileHover={{ scale: 1.05 }}
             transition={{ type: "spring", stiffness: 400, damping: 17 }}
+            onClick={onTogglePlaylist}
+            className="text-white hover:bg-white/20 active:bg-white/30 h-10 w-10 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 touch-manipulation flex items-center justify-center relative z-10"
+            title="Lista de proyectos"
+            aria-label="Lista de proyectos"
+          >
+            <Settings className="h-5 w-5" />
+          </motion.button>
+          
+          <motion.button
+            whileTap={{ scale: 0.9 }}
+            whileHover={{ scale: 1.05 }}
+            transition={{ type: "spring", stiffness: 400, damping: 17 }}
             onClick={onShowDetails}
-            className="text-white hover:bg-white/20 active:bg-white/30 h-10 w-10 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 touch-manipulation flex items-center justify-center"
+            className="text-white hover:bg-white/20 active:bg-white/30 h-10 w-10 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 touch-manipulation flex items-center justify-center relative z-10"
             title="Ver detalles"
             aria-label="Ver detalles"
           >

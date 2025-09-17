@@ -16,6 +16,7 @@ export function AllInOneFrame({
   // Size configurations
   const sizeConfig = {
     small: {
+      width: "w-96",
       screenPadding: "p-2",
       bezelPadding: "p-2",
       cameraSize: "w-2 h-2",
@@ -31,6 +32,7 @@ export function AllInOneFrame({
       shadowBottom: "-bottom-1",
     },
     medium: {
+      width: "w-[32rem]",
       screenPadding: "p-2",
       bezelPadding: "p-2",
       cameraSize: "w-2 h-2",
@@ -46,6 +48,7 @@ export function AllInOneFrame({
       shadowBottom: "-bottom-2",
     },
     large: {
+      width: "w-[42rem]",
       screenPadding: "p-3",
       bezelPadding: "p-3",
       cameraSize: "w-3 h-3",
@@ -65,7 +68,7 @@ export function AllInOneFrame({
   const config = sizeConfig[size];
 
   return (
-    <div className={`relative ${className}`}>
+    <div className={`relative ${config.width} mx-auto ${className}`}>
       {/* All-in-One TV Container */}
       <div className="relative">
         {/* Screen */}

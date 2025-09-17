@@ -19,7 +19,7 @@ export function SubtitleSection() {
         <div className="flex items-center justify-center gap-3 mb-4">
         </div>
         
-        <div className="text-lg text-black dark:text-white max-w-3xl mx-auto leading-relaxed font-medium">
+        <div className="text-base sm:text-lg md:text-xl text-black dark:text-white max-w-3xl mx-auto leading-relaxed font-medium px-4 sm:px-6">
         Mi trayectoria profesional y{" "}
           <span className="relative">
             <span className="text-primary dark:text-primary-400 font-bold">
@@ -39,7 +39,7 @@ export function SubtitleSection() {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ delay: 0.8 }}
-          className="text-xs text-gray-600 dark:text-gray-400 mt-4 flex items-center justify-center gap-2"
+          className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 mt-3 sm:mt-4 flex items-center justify-center gap-2 px-4 sm:px-6"
         >
           <Rocket className="h-4 w-4 text-primary animate-bounce" />
         Haz clic en cualquier punto del timeline para ver los detalles
