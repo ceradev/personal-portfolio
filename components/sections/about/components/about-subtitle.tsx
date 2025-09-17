@@ -18,13 +18,13 @@ export function AboutSubtitle() {
         <div className="text-xl text-black dark:text-white max-w-2xl mx-auto leading-relaxed font-medium">
           Soy un desarrollador especializado en{" "}
           <span className="relative">
-            <span className="text-red-600 font-bold">creación de soluciones digitales</span>
+            <span className="text-primary font-bold">creación de soluciones digitales</span>
             <motion.div
               initial={{ width: 0 }}
               whileInView={{ width: "100%" }}
               transition={{ duration: 0.8, delay: 0.5 }}
               viewport={{ once: false }}
-              className="absolute -bottom-1 left-0 h-0.5 bg-gradient-to-r from-red-500 to-red-400"
+              className="absolute -bottom-1 left-0 h-0.5 bg-gradient-to-r from-primary to-primary-400"
             />
           </span>
         </div>

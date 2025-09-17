@@ -39,7 +39,7 @@ export function ProfessionalSoftSkills() {
       icon: <Clock className="h-4 w-4" />,
       name: "Gestión del Tiempo",
       description: "Organización eficiente para cumplir deadlines",
-      color: "bg-red-500/10 text-red-600 dark:text-red-400"
+      color: "bg-primary/10 text-primary dark:text-primary-400"
     }
   ];
 

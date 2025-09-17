@@ -209,7 +209,7 @@ export function ContactForm() {
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.2 }}
         viewport={{ once: true }}
-        className="max-w-2xl mx-auto mt-12 p-8 rounded-2xl border border-border/30 bg-background/50 backdrop-blur-sm shadow-lg shadow-red-500/10 transition-all duration-300"
+        className="max-w-2xl mx-auto mt-12 p-8 rounded-2xl border border-border/30 bg-background/50 backdrop-blur-sm shadow-lg shadow-primary/10 transition-all duration-300"
       >
         {renderFormContent()}
       </motion.div>

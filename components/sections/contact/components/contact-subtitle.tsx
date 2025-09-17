@@ -18,14 +18,14 @@ export function ContactSubtitle() {
         <div className="text-xl text-foreground max-w-3xl mx-auto leading-relaxed font-medium">
           Conectemos y hagamos realidad tu próximo{" "}
           <span className="relative">
-            <span className="text-red-600 font-bold">
+            <span className="text-primary font-bold">
               proyecto digital
             </span>
             <motion.div
               initial={{ width: 0 }}
               whileInView={{ width: "100%" }}
               transition={{ duration: 0.8, delay: 0.5 }}
-              className="absolute -bottom-1 left-0 h-0.5 bg-gradient-to-r from-red-500 to-red-400"
+              className="absolute -bottom-1 left-0 h-0.5 bg-gradient-to-r from-primary to-primary-400"
             />
           </span>
         </div>

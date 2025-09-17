@@ -14,8 +14,8 @@ function renderStars(rating: number) {
       key={index}
       className={`h-5 w-5 ${
         index < rating 
-          ? "fill-yellow-400 text-yellow-400" 
-          : "text-gray-300 dark:text-gray-600"
+          ? "fill-warning-400 text-warning-400" 
+          : "text-neutral-300 dark:text-neutral-600"
       }`}
     />
   ));

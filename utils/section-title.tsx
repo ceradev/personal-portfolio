@@ -17,7 +17,7 @@ export function SectionTitle({ title = "" }: SectionTitleProps) {
         transition={{ duration: 0.5 }}
         viewport={{ once: false }}
       >
-        <span className="bg-clip-text text-transparent bg-gradient-to-r from-red-500 via-red-600 to-red-800 dark:from-red-500 dark:via-red-600 dark:to-red-800 drop-shadow-md">
+        <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary via-primary-600 to-primary-800 dark:from-primary dark:via-primary-600 dark:to-primary-800 drop-shadow-md">
           {title}
         </span>
       </motion.h2>

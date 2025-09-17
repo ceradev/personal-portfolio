@@ -62,7 +62,7 @@ export function HeroButtons() {
             Ver CV
           </span>
           <motion.span
-            className="absolute inset-0 bg-gradient-to-r from-primary/10 to-red-500/10 rounded-full"
+            className="absolute inset-0 bg-gradient-to-r from-primary/10 to-primary/10 rounded-full"
             initial={{ scale: 0, opacity: 0 }}
             whileHover={{ scale: 1, opacity: 1 }}
             transition={{ duration: 0.3 }}
@@ -88,13 +88,13 @@ export function HeroButtons() {
           className="group relative"
         >
           <motion.div
-            className="p-3 rounded-full backdrop-blur-sm bg-background/30 dark:bg-background/40 border border-border hover:border-blue-500/50 hover:bg-blue-500/10 transition-all duration-300 shadow-md hover:shadow-lg"
+            className="p-3 rounded-full backdrop-blur-sm bg-background/30 dark:bg-background/40 border border-border hover:border-info/50 hover:bg-info/10 transition-all duration-300 shadow-md hover:shadow-lg"
             whileHover={{ scale: 1.15, rotate: 10 }}
             whileTap={{ scale: 0.9 }}
           >
-            <Linkedin className="h-5 w-5 text-foreground/70 group-hover:text-blue-500 transition-colors duration-300" />
+            <Linkedin className="h-5 w-5 text-foreground/70 group-hover:text-info transition-colors duration-300" />
             <motion.div
-              className="absolute -inset-1 bg-blue-500/20 rounded-full blur"
+              className="absolute -inset-1 bg-info/20 rounded-full blur"
               initial={{ opacity: 0 }}
               whileHover={{ opacity: 1 }}
               transition={{ duration: 0.3 }}
@@ -124,13 +124,13 @@ export function HeroButtons() {
 
         <Link href={SOCIAL_LINKS.email} className="group relative">
           <motion.div
-            className="p-3 rounded-full backdrop-blur-sm bg-background/30 dark:bg-background/40 border border-border hover:border-red-500/50 hover:bg-red-500/10 transition-all duration-300 shadow-md hover:shadow-lg"
+            className="p-3 rounded-full backdrop-blur-sm bg-background/30 dark:bg-background/40 border border-border hover:border-primary/50 hover:bg-primary/10 transition-all duration-300 shadow-md hover:shadow-lg"
             whileHover={{ scale: 1.15, rotate: 10 }}
             whileTap={{ scale: 0.9 }}
           >
-            <Mail className="h-5 w-5 text-foreground/70 group-hover:text-red-500 transition-colors duration-300" />
+            <Mail className="h-5 w-5 text-foreground/70 group-hover:text-primary transition-colors duration-300" />
             <motion.div
-              className="absolute -inset-1 bg-red-500/20 rounded-full blur"
+              className="absolute -inset-1 bg-primary/20 rounded-full blur"
               initial={{ opacity: 0 }}
               whileHover={{ opacity: 1 }}
               transition={{ duration: 0.3 }}

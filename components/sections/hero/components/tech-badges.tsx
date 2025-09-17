@@ -9,15 +9,15 @@ import { TechBadgeProps } from "@/types/hero";
 const TECH_BADGES: TechBadgeProps[] = [
   {
     icon: FaReact,
-    color: "text-blue-400",
-    hoverColor: "text-blue-300",
+    color: "text-info-400",
+    hoverColor: "text-info-300",
     position: { top: "-top-2 -right-2 md:-top-6 md:-right-6" },
     animation: { duration: 6, type: "y", values: [0, -8, 0] }
   },
   {
     icon: SiTypescript,
-    color: "text-blue-600",
-    hoverColor: "text-blue-500",
+    color: "text-info-600",
+    hoverColor: "text-info-500",
     position: { top: "top-1/2", right: "-right-12 md:-right-16" },
     animation: { duration: 7, delay: 0.5, type: "y", values: [0, 12, 0] }
   },
@@ -37,15 +37,15 @@ const TECH_BADGES: TechBadgeProps[] = [
   },
   {
     icon: FaPython,
-    color: "text-green-500",
-    hoverColor: "text-green-400",
+    color: "text-success-500",
+    hoverColor: "text-success-400",
     position: { top: "top-1/2", left: "-left-12 md:-left-16" },
     animation: { duration: 7.5, delay: 2, type: "y", values: [0, 10, 0] }
   },
   {
     icon: FaNodeJs,
-    color: "text-green-600",
-    hoverColor: "text-green-500",
+    color: "text-success-600",
+    hoverColor: "text-success-500",
     position: { bottom: "-bottom-12 -left-12 md:-bottom-16 md:-left-16" },
     animation: { duration: 6.8, delay: 2.5, type: "y", values: [0, -8, 0] }
   },
@@ -58,8 +58,8 @@ const TECH_BADGES: TechBadgeProps[] = [
   },
   {
     icon: SiMongodb,
-    color: "text-green-700",
-    hoverColor: "text-green-600",
+    color: "text-success-700",
+    hoverColor: "text-success-600",
     position: { bottom: "-bottom-16 md:-bottom-20", left: "left-1/2", transform: "transform -translate-x-1/2" },
     animation: { duration: 7.2, delay: 3.5, type: "x", values: [8, -8, 8] }
   },
@@ -72,15 +72,15 @@ const TECH_BADGES: TechBadgeProps[] = [
   },
   {
     icon: SiDocker,
-    color: "text-blue-500",
-    hoverColor: "text-blue-400",
+    color: "text-info-500",
+    hoverColor: "text-info-400",
     position: { top: "top-1/4", left: "-left-14 md:-left-18" },
     animation: { duration: 8.5, delay: 4.5, type: "combined", values: [0, -10, 0] }
   },
   {
     icon: SiGit,
-    color: "text-red-600",
-    hoverColor: "text-red-500",
+    color: "text-primary",
+    hoverColor: "text-primary-500",
     position: { bottom: "-bottom-20 -right-6 md:-bottom-24 md:-right-8" },
     animation: { duration: 10, delay: 5, type: "combined", values: [0, 8, 0] }
   }

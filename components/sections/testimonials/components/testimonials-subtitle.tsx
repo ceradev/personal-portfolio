@@ -22,13 +22,13 @@ export function TestimonialsSubtitle() {
           <div className="text-xl text-foreground/90 max-w-3xl mx-auto leading-relaxed font-medium mb-6">
             Lo que dicen mis{" "}
             <span className="relative">
-              <span className="text-red-600 font-bold">clientes satisfechos</span>
+              <span className="text-primary font-bold">clientes satisfechos</span>
               <motion.div
                 initial={{ width: 0 }}
                 whileInView={{ width: "100%" }}
                 transition={{ duration: 0.8, delay: 0.5 }}
                 viewport={{ once: false }}
-                className="absolute -bottom-1 left-0 h-0.5 bg-gradient-to-r from-red-500 to-red-400"
+                className="absolute -bottom-1 left-0 h-0.5 bg-gradient-to-r from-primary to-primary-400"
               />
             </span>{" "}
             sobre mi trabajo.
@@ -39,7 +39,7 @@ export function TestimonialsSubtitle() {
             transition={{ delay: 0.8 }}
             className="text-sm text-foreground/90 mt-4 flex items-center justify-center gap-2"
           >
-            <Heart className="h-4 w-4 text-red-500 animate-bounce" />
+            <Heart className="h-4 w-4 text-primary animate-bounce" />
           Haz clic en cualquier punto del carousel para ver los detalles
           </motion.p>
         </div>

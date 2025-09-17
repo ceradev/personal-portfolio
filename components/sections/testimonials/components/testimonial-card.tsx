@@ -13,7 +13,7 @@ function renderStars(rating: number) {
     <Star
       key={index}
       className={`h-4 w-4 ${
-        index < rating ? "fill-yellow-400 text-yellow-400" : "text-gray-300"
+        index < rating ? "fill-warning-400 text-warning-400" : "text-neutral-300"
       }`}
     />
   ));

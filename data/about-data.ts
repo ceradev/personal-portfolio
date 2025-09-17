@@ -6,13 +6,13 @@ export const aboutData: AboutData = {
       icon: "Briefcase",
       label: "Experiencia",
       value: "1+ años",
-      color: "bg-blue-500/10 text-blue-600 dark:text-blue-400"
+      color: "bg-info-500/10 text-info-600 dark:text-info-400"
     },
     {
       icon: "MapPin",
       label: "Ubicación",
       value: "Tenerife, España",
-      color: "bg-green-500/10 text-green-600 dark:text-green-400"
+      color: "bg-success-500/10 text-success-600 dark:text-success-400"
     },
     {
       icon: "Globe",
@@ -32,13 +32,13 @@ export const aboutData: AboutData = {
       icon: "Briefcase", 
       label: "Carnet de Conducir", 
       value: "B1, B",
-      color: "bg-green-500/10 text-green-600 dark:text-green-400"
+      color: "bg-success-500/10 text-success-600 dark:text-success-400"
     },
     { 
       icon: "MapPin", 
       label: "Vehículo Propio", 
       value: "Disponible",
-      color: "bg-blue-500/10 text-blue-600 dark:text-blue-400"
+      color: "bg-info-500/10 text-info-600 dark:text-info-400"
     },
     { 
       icon: "Globe", 
@@ -58,19 +58,19 @@ export const aboutData: AboutData = {
       icon: "Users",
       name: "Trabajo en Equipo",
       description: "Colaboración efectiva en equipos multidisciplinarios",
-      color: "bg-blue-500/10 text-blue-600 dark:text-blue-400"
+      color: "bg-info-500/10 text-info-600 dark:text-info-400"
     },
     {
       icon: "MessageCircle",
       name: "Comunicación",
       description: "Comunicación clara con stakeholders técnicos y no técnicos",
-      color: "bg-green-500/10 text-green-600 dark:text-green-400"
+      color: "bg-success-500/10 text-success-600 dark:text-success-400"
     },
     {
       icon: "Lightbulb",
       name: "Resolución de Problemas",
       description: "Enfoque analítico para encontrar soluciones innovadoras",
-      color: "bg-yellow-500/10 text-yellow-600 dark:text-yellow-400"
+      color: "bg-warning-500/10 text-warning-600 dark:text-warning-400"
     },
     {
       icon: "Target",
@@ -88,7 +88,7 @@ export const aboutData: AboutData = {
       icon: "Clock",
       name: "Gestión del Tiempo",
       description: "Organización eficiente para cumplir deadlines",
-      color: "bg-red-500/10 text-red-600 dark:text-red-400"
+      color: "bg-primary/10 text-primary dark:text-primary-400"
     }
   ],
   languages: [
@@ -96,19 +96,19 @@ export const aboutData: AboutData = {
       label: "Español", 
       level: "Nativo", 
       flag: "🇪🇸", 
-      color: "bg-red-500/10 text-red-600 dark:text-red-400" 
+      color: "bg-primary/10 text-primary dark:text-primary-400" 
     },
     { 
       label: "Inglés", 
       level: "Avanzado (C1)", 
       flag: "🇬🇧", 
-      color: "bg-blue-500/10 text-blue-600 dark:text-blue-400" 
+      color: "bg-info-500/10 text-info-600 dark:text-info-400" 
     },
     { 
       label: "Sueco", 
       level: "Intermedio", 
       flag: "🇸🇪", 
-      color: "bg-yellow-500/10 text-yellow-600 dark:text-yellow-400" 
+      color: "bg-warning-500/10 text-warning-600 dark:text-warning-400" 
     }
   ],
   education: {
@@ -126,7 +126,7 @@ export const aboutData: AboutData = {
         month: "Octubre",
         featured: true,
         icon: "Code",
-        color: "bg-blue-500/10 text-blue-600 dark:text-blue-400 border-blue-200 dark:border-blue-800"
+        color: "bg-blue-500/10 text-blue-600 border-blue-200"
       },
       { 
         name: "Full Stack Development", 
@@ -144,7 +144,7 @@ export const aboutData: AboutData = {
         month: "Agosto",
         featured: false,
         icon: "Code",
-        color: "bg-blue-500/10 text-blue-600 dark:text-blue-400 border-blue-200 dark:border-blue-800"
+        color: "bg-blue-500/10 text-blue-600 border-blue-200"
       },
       { 
         name: "TypeScript Fundamentals", 
@@ -153,7 +153,7 @@ export const aboutData: AboutData = {
         month: "Julio",
         featured: false,
         icon: "BookOpen",
-        color: "bg-blue-500/10 text-blue-600 dark:text-blue-400 border-blue-200 dark:border-blue-800"
+        color: "bg-blue-500/10 text-blue-600 border-blue-200"
       },
       {
         name: "Python",
@@ -162,7 +162,7 @@ export const aboutData: AboutData = {
         month: "Junio",
         featured: false,
         icon: "Code",
-        color: "bg-yellow-500/10 text-yellow-600 dark:text-yellow-400 border-yellow-200 dark:border-yellow-800"
+        color: "bg-yellow-500/10 text-yellow-600 border-yellow-200"
       },
       {
         name: "N8N Workflow Automation",
@@ -171,7 +171,7 @@ export const aboutData: AboutData = {
         month: "Junio",
         featured: false,
         icon: "Brain",
-        color: "bg-green-500/10 text-green-600 dark:text-green-400 border-green-200 dark:border-green-800"
+        color: "bg-green-500/10 text-green-600 border-green-200"
       }
     ]
   },

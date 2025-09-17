@@ -3,7 +3,8 @@
 import { motion } from "framer-motion";
 import { Calendar, Clock, Video, Phone, MessageSquare, ArrowRight } from "lucide-react";
 
-export function ScheduleCall() {
+
+export function ScheduleCall({ serviceType = 'web-development' }: Readonly<{ readonly serviceType?: string }>) {
   return (
     <motion.div
       className="mt-16"
@@ -14,7 +15,7 @@ export function ScheduleCall() {
     >
       <div className="max-w-4xl mx-auto">
         <motion.div
-          className="bg-background rounded-2xl p-6 border-2 border-border/20 shadow-lg hover:shadow-lg transition-all duration-300 text-center"
+           className="bg-background rounded-2xl p-6 border border-red-200/30 dark:border-red-800/30 shadow-sm shadow-red-500/10 hover:shadow-md hover:shadow-red-500/15 transition-all duration-300 text-center"
           initial={{ opacity: 0, scale: 0.95 }}
           whileInView={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.5, delay: 0.1 }}
@@ -37,9 +38,9 @@ export function ScheduleCall() {
                 repeat: Infinity,
                 repeatType: "reverse"
               }}
-              className="p-3 rounded-xl bg-gradient-to-br from-red-500/30 to-red-500/20 shadow-md shadow-red-500/20"
+              className='p-3 rounded-xl bg-gradient-to-br from-red-500/30 to-red-500/20 shadow-md shadow-red-500/20'
             >
-              <Calendar className="h-6 w-6 text-red-500" />
+              <Calendar className='h-6 w-6 text-red-500' />
             </motion.div>
             
             <motion.div
@@ -52,9 +53,9 @@ export function ScheduleCall() {
                 repeat: Infinity,
                 repeatType: "reverse"
               }}
-              className="p-2 rounded-full bg-gradient-to-br from-red-500/40 to-red-500/30"
+              className='p-2 rounded-full bg-gradient-to-br from-red-500/40 to-red-500/30'
             >
-              <Clock className="h-5 w-5 text-red-500" />
+              <Clock className='h-5 w-5 text-red-500' />
             </motion.div>
           </motion.div>
 
@@ -174,7 +175,7 @@ export function ScheduleCall() {
               href="https://calendly.com/suarezorizondocesararamis"
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-red-500 text-white px-6 py-2.5 rounded-lg font-semibold text-center w-full sm:w-auto border-2 border-red-500 hover:bg-red-600 hover:border-red-600 transition-all duration-300 flex items-center justify-center gap-2 text-sm"
+              className='bg-red-500 text-white px-6 py-2.5 rounded-lg font-semibold text-center w-full sm:w-auto border-2 border-red-500 hover:bg-red-600 hover:border-red-600 transition-all duration-300 flex items-center justify-center gap-2 text-sm'
               style={{ 
                 backgroundColor: '#ef4444', 
                 color: '#ffffff',
@@ -209,7 +210,7 @@ export function ScheduleCall() {
             
             <div className="text-center space-y-1">
               <div className="flex items-center justify-center gap-2 text-muted-foreground">
-                <Clock className="h-3 w-3 text-red-500" />
+                <Clock className='h-3 w-3 text-red-500' />
                 <span className="text-xs font-medium">Disponible Lun-Vie, 9:00-18:00</span>
               </div>
               <div className="flex items-center justify-center gap-2">

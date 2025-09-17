@@ -6,7 +6,7 @@ import { Badge } from "@/components/ui/display/badge";
 
 export function LanguagesInfo() {
   const languages = [
-    { label: "Español", level: "Nativo", flag: "🇪🇸", color: "bg-red-500/10 text-red-600 dark:text-red-400" },
+    { label: "Español", level: "Nativo", flag: "🇪🇸", color: "bg-primary/10 text-primary dark:text-primary-400" },
     { label: "Inglés", level: "Avanzado (C1)", flag: "🇬🇧", color: "bg-blue-500/10 text-blue-600 dark:text-blue-400" },
     { label: "Sueco", level: "Intermedio", flag: "🇸🇪", color: "bg-yellow-500/10 text-yellow-600 dark:text-yellow-400" }
   ];

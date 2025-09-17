@@ -19,14 +19,14 @@ export function ProjectsSubtitle() {
         <div className="text-xl text-foreground/90 max-w-3xl mx-auto leading-relaxed font-medium mb-8">
           Una selección de mis{" "}
           <span className="relative">
-            <span className="text-red-600 font-bold">
+            <span className="text-primary font-bold">
               proyectos más destacados
             </span>
             <motion.div
               initial={{ width: 0 }}
               whileInView={{ width: "100%" }}
               transition={{ duration: 0.8, delay: 0.5 }}
-              className="absolute -bottom-1 left-0 h-0.5 bg-gradient-to-r from-red-500 to-red-400"
+              className="absolute -bottom-1 left-0 h-0.5 bg-gradient-to-r from-primary to-primary-400"
             />
           </span>{" "}
           y desarrollos técnicos
@@ -44,25 +44,25 @@ export function ProjectsSubtitle() {
           viewport={{ once: false }}
           className="max-w-2xl mx-auto"
         >
-          <div className="bg-transparent rounded-xl p-6 border dark:border-border border-red-600/30">
+          <div className="bg-transparent rounded-xl p-6 border dark:border-border border-primary/30">
             <h3 className="text-lg font-semibold text-foreground/90 mb-4 flex items-center justify-center gap-2">
-              <Info className="h-5 w-5 text-red-600" />
+              <Info className="h-5 w-5 text-primary" />
               ¿Cómo usar el reproductor?
             </h3>
             <div className="flex flex-wrap justify-center gap-6 text-sm text-foreground/90">
               <div className="flex items-center gap-2">
-                <Play className="h-4 w-4 text-red-600" />
-                <SkipBack className="h-4 w-4 text-red-600" />
-                <SkipForward className="h-4 w-4 text-red-600" />
+                <Play className="h-4 w-4 text-primary" />
+                <SkipBack className="h-4 w-4 text-primary" />
+                <SkipForward className="h-4 w-4 text-primary" />
                 <span>Reproduce y navega</span>
               </div>
               <div className="flex items-center gap-2">
-                <Settings className="h-4 w-4 text-red-600" />
+                <Settings className="h-4 w-4 text-primary" />
                 <span>Ver playlist completa</span>
               </div>
             </div>
             <div className="flex items-center justify-center gap-2 mt-3">
-              <Maximize className="h-4 w-4 text-red-600" />
+              <Maximize className="h-4 w-4 text-primary" />
               <p className="text-xs text-foreground/90">
                 Ver detalles completos de cada proyecto
               </p>

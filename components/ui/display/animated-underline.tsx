@@ -10,7 +10,7 @@ export function AnimatedUnderline({ delay = 1 }: AnimatedUnderlineProps) {
   return (
     <>
       <motion.div 
-        className="absolute -bottom-2 left-0 right-0 h-1 bg-gradient-to-r from-primary via-red-500 to-primary rounded-full group-hover:shadow-md group-hover:shadow-primary/50"
+        className="absolute -bottom-2 left-0 right-0 h-1 bg-gradient-to-r from-primary via-primary-500 to-primary rounded-full group-hover:shadow-md group-hover:shadow-primary/50"
         initial={{ scaleX: 0 }}
         animate={{ scaleX: 1 }}
         transition={{ duration: 1.2, delay, ease: "easeOut" }}

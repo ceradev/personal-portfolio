@@ -46,7 +46,7 @@ export function HeroText() {
         <AnimatedText 
           text="Freelancer " 
           delay={1.9} 
-          className="text-red-600 font-medium"
+          className="text-primary font-medium"
         />
         <AnimatedText 
           text="con pasión por la" 
@@ -62,7 +62,7 @@ export function HeroText() {
         <AnimatedText 
           text="aplicaciones rápidas y escalables." 
           delay={2.8} 
-          className="text-red-600 font-medium"
+          className="text-primary font-medium"
         />
       </motion.h2>
     </>

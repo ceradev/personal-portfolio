@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { createPortal } from "react-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import { Calendar, Monitor, Server, Layers, Brain, Code, Star, ExternalLink, Github } from "lucide-react";
@@ -23,6 +24,11 @@ export function ProjectDetailsModal({
   
   // Verificación de seguridad
   if (!project) {
+    return null;
+  }
+
+  // Verificar que estamos en el cliente
+  if (typeof window === 'undefined') {
     return null;
   }
   
@@ -78,25 +84,25 @@ export function ProjectDetailsModal({
     }
   };
 
-  return (
+  return createPortal(
     <AnimatePresence>
       {showModal && (
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4"
+          className="fixed inset-0 z-[99999] bg-black/80 backdrop-blur-sm flex items-center justify-center p-4"
           onClick={onClose}
         >
           <motion.div
             initial={{ scale: 0.9, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             exit={{ scale: 0.9, opacity: 0 }}
-            className="bg-background rounded-2xl max-w-4xl max-h-[90vh] w-full overflow-hidden"
+            className="bg-background rounded-2xl max-w-4xl max-h-[90vh] w-full overflow-hidden flex flex-col"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Modal Header */}
-            <div className="p-6 border-b border-border">
+            <div className="flex-shrink-0 p-6 border-b border-border">
               <div className="flex items-center justify-between">
                 <div>
                   <h2 className="text-2xl font-bold">{project.title}</h2>
@@ -128,12 +134,12 @@ export function ProjectDetailsModal({
             </div>
 
             {/* Modal Content */}
-            <div className="p-6 max-h-[60vh] overflow-y-auto">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="flex-1 overflow-y-auto p-6">
+              <div className="grid grid-cols-1 lg:grid-cols-5 gap-6">
                 {/* Project Images Section */}
-                <div className="space-y-4">
+                <div className="space-y-4 lg:col-span-2">
                   {/* Main Project Image */}
-                  <div className="relative aspect-video rounded-lg overflow-hidden">
+                  <div className="relative aspect-[3/2] rounded-lg overflow-hidden max-w-sm mx-auto">
                     <Image
                       src={projectImages[selectedImageIndex] || "/placeholders/placeholder.svg"}
                       alt={`${project.title} - Vista ${selectedImageIndex + 1}`}
@@ -151,12 +157,17 @@ export function ProjectDetailsModal({
                   {/* Additional Images Gallery */}
                   {project.images?.length && project.images.length > 1 && (
                     <div className="space-y-2">
-                      <h4 className="text-sm font-semibold text-muted-foreground">Más vistas</h4>
-                      <div className="grid grid-cols-2 gap-2">
-                        {projectImages.slice(1, 5).map((image, index) => (
+                      <div className="flex items-center justify-between">
+                        <h4 className="text-sm font-semibold text-muted-foreground">Todas las vistas</h4>
+                        <span className="text-xs text-muted-foreground bg-muted px-2 py-1 rounded-full">
+                          {projectImages.length} imágenes
+                        </span>
+                      </div>
+                      <div className="grid grid-cols-2 gap-3 max-h-96 overflow-y-auto pr-2">
+                        {projectImages.slice(1).map((image, index) => (
                           <div 
                             key={`${project.id}-additional-${index}`} 
-                            className={`relative aspect-video rounded-md overflow-hidden cursor-pointer group transition-all duration-200 ${
+                            className={`relative aspect-[3/2] rounded-md overflow-hidden cursor-pointer group transition-all duration-200 ${
                               selectedImageIndex === index + 1 ? 'ring-2 ring-primary ring-offset-2' : ''
                             }`}
                             onClick={() => setSelectedImageIndex(index + 1)}
@@ -177,6 +188,9 @@ export function ProjectDetailsModal({
                               className="object-cover transition-transform duration-300 group-hover:scale-105"
                             />
                             <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300" />
+                            <div className="absolute top-1 left-1 bg-black/70 text-white text-xs px-1.5 py-0.5 rounded-full">
+                              {index + 2}
+                            </div>
                           </div>
                         ))}
                       </div>
@@ -185,7 +199,7 @@ export function ProjectDetailsModal({
                 </div>
 
                 {/* Project Details */}
-                <div className="space-y-4">
+                <div className="space-y-4 lg:col-span-3">
                   <div>
                     <h3 className="text-lg font-semibold mb-2">Descripción</h3>
                     <p className="text-muted-foreground">
@@ -232,7 +246,7 @@ export function ProjectDetailsModal({
             </div>
 
             {/* Modal Footer */}
-            <div className="p-6 border-t border-border flex justify-end gap-2">
+            <div className="flex-shrink-0 p-6 border-t border-border flex justify-end gap-2">
               <Button
                 variant="outline"
                 onClick={onClose}
@@ -260,6 +274,7 @@ export function ProjectDetailsModal({
           </motion.div>
         </motion.div>
       )}
-    </AnimatePresence>
+    </AnimatePresence>,
+    document.body
   );
 }

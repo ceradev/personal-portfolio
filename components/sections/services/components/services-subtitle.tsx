@@ -22,13 +22,13 @@ export function ServicesSubtitle() {
           <div className="text-xl text-black dark:text-white max-w-3xl mx-auto leading-relaxed font-medium mb-6">
             Soluciones tecnológicas{" "}
             <span className="relative">
-              <span className="text-red-600 font-bold">personalizadas</span>
+              <span className="text-primary font-bold">personalizadas</span>
               <motion.div
                 initial={{ width: 0 }}
                 whileInView={{ width: "100%" }}
                 transition={{ duration: 0.8, delay: 0.5 }}
                 viewport={{ once: false }}
-                className="absolute -bottom-1 left-0 h-0.5 bg-gradient-to-r from-red-500 to-red-400"
+                className="absolute -bottom-1 left-0 h-0.5 bg-gradient-to-r from-primary to-primary-400"
               />
             </span>{" "}
             para tu negocio
@@ -49,9 +49,9 @@ export function ServicesSubtitle() {
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               transition={{ delay: 0.8 }}
-              className="text-sm text-gray-600 mt-4 flex items-center justify-center gap-2"
+              className="text-sm text-neutral-600 mt-4 flex items-center justify-center gap-2"
             >
-              <Mail className="h-4 w-4 text-red-500 animate-bounce" />
+              <Mail className="h-4 w-4 text-primary animate-bounce" />
             Haz clic en el botón de contacto de arriba para obtener más información
             </motion.p>
           </motion.div>

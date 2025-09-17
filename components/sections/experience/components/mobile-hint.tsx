@@ -23,7 +23,7 @@ export function MobileHint() {
             ease: "easeInOut"
           }}
         >
-          <ChevronDown className="h-4 w-4 text-red-500" />
+          <ChevronDown className="h-4 w-4 text-primary" />
         </motion.div>
         <p className="text-xs text-gray-700 dark:text-gray-300 font-medium">
         Desliza horizontalmente para ver todas las experiencias
@@ -39,7 +39,7 @@ export function MobileHint() {
             delay: 0.5
           }}
         >
-          <BadgeCheck className="h-3 w-3 text-red-500" />
+          <BadgeCheck className="h-3 w-3 text-primary" />
         </motion.div>
       </div>
     </motion.div>

@@ -95,13 +95,13 @@ export function ExperienceStepper() {
   const getStepColor = (status: Experience["status"]) => {
     switch (status) {
       case "completed":
-        return "bg-green-500 dark:bg-green-600"
+        return "bg-success-500 dark:bg-success-600"
       case "current":
         return "bg-primary"
       case "future":
-        return "bg-gray-400 dark:bg-gray-600"
+        return "bg-neutral-400 dark:bg-neutral-600"
       default:
-        return "bg-gray-400 dark:bg-gray-600"
+        return "bg-neutral-400 dark:bg-neutral-600"
     }
   }
 
@@ -124,7 +124,7 @@ export function ExperienceStepper() {
       <div className="relative">
         {/* Línea vertical conectora - ajustada para móvil */}
         <div
-          className={`absolute ${isMobile ? "left-4" : "left-6"} top-8 bottom-0 w-0.5 bg-gradient-to-b from-green-500 via-primary to-gray-400 dark:from-green-600 dark:via-primary dark:to-gray-600`}
+          className={`absolute ${isMobile ? "left-4" : "left-6"} top-8 bottom-0 w-0.5 bg-gradient-to-b from-success-500 via-primary to-neutral-400 dark:from-success-600 dark:via-primary dark:to-neutral-600`}
         ></div>
 
         {/* Experiencias como pasos */}
@@ -161,16 +161,16 @@ export function ExperienceStepper() {
                     : "bg-background/20 dark:bg-background/30"
                 } rounded-xl border ${
                   experience.status === "completed"
-                    ? "border-green-500/30 dark:border-green-600/30"
+                    ? "border-success-500/30 dark:border-success-600/30"
                     : experience.status === "current"
                       ? "border-primary"
-                      : "border-gray-400/30 dark:border-gray-600/30"
+                      : "border-neutral-400/30 dark:border-neutral-600/30"
                 } overflow-hidden transition-all duration-300 hover:shadow-md ${
                   experience.status === "completed"
-                    ? "hover:shadow-green-500/10"
+                    ? "hover:shadow-success-500/10"
                     : experience.status === "current"
                       ? "shadow-md shadow-primary/20 hover:shadow-primary/30"
-                      : "hover:shadow-gray-400/10"
+                      : "hover:shadow-neutral-400/10"
                 }`}
                 whileHover={{ y: -5 }}
               >
@@ -241,10 +241,10 @@ export function ExperienceStepper() {
                             key={i}
                             className={`${
                               experience.status === "completed"
-                                ? "bg-green-500/20 hover:bg-green-500/30"
+                                ? "bg-success-500/20 hover:bg-success-500/30"
                                 : experience.status === "current"
                                   ? "bg-primary/30 hover:bg-primary/40"
-                                  : "bg-gray-400/20 hover:bg-gray-400/30"
+                                  : "bg-neutral-400/20 hover:bg-neutral-400/30"
                             } text-foreground border-none font-normal`}
                           >
                             {skill}

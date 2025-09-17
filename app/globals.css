@@ -136,7 +136,7 @@
 
   /* Enhanced gradient text for better readability */
   .text-gradient {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-red-600 via-red-700 to-red-800 drop-shadow-sm;
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary via-primary-600 to-primary-800 drop-shadow-sm;
     background-size: 200% 200%;
     animation: gradient-shift 8s ease infinite;
   }
@@ -166,7 +166,7 @@
 
 /* Custom styles */
 .text-gradient {
-  @apply bg-clip-text text-transparent bg-gradient-to-r from-red-600 via-red-700 to-red-800 drop-shadow-sm;
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-primary via-primary-600 to-primary-800 drop-shadow-sm;
   background-size: 200% 200%;
   animation: gradient-shift 8s ease infinite;
 }
@@ -372,7 +372,7 @@
 }
 
 .section-title-gradient {
-  @apply bg-clip-text text-transparent bg-gradient-to-r from-red-500 via-red-600 to-red-700;
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-primary via-primary-600 to-primary-700;
   background-size: 200% 200%;
   animation: gradient-shift 8s ease infinite;
 }
@@ -454,4 +454,222 @@ main > div.container {
 /* Asegurar que todos los elementos usen Arial */
 * {
   font-family: Arial, Helvetica, sans-serif;
+}
+
+/* ====== SERVICIOS - COLORES DINÁMICOS ====== */
+/* Colores para servicios - Info (Azul) */
+.service-info-icon {
+  @apply text-info-600 dark:text-info-400;
+}
+
+.service-info-bg {
+  @apply bg-info-100/15 dark:bg-info-900/15;
+}
+
+.service-info-bg-hover {
+  @apply group-hover:bg-info-200/20 dark:group-hover:bg-info-800/20;
+}
+
+.service-info-text {
+  @apply group-hover:text-info-600 dark:group-hover:text-info-400;
+}
+
+.service-info-badge {
+  @apply bg-info-100/60 dark:bg-info-900/60 text-info-800 dark:text-info-200 border-info-300;
+}
+
+.service-info-border {
+  @apply border-info-200/40 dark:border-info-700/40;
+}
+
+/* Colores para servicios - Purple (Púrpura) */
+.service-purple-icon {
+  @apply text-purple-600 dark:text-purple-400;
+}
+
+.service-purple-bg {
+  @apply bg-purple-100/15 dark:bg-purple-900/15;
+}
+
+.service-purple-bg-hover {
+  @apply group-hover:bg-purple-200/20 dark:group-hover:bg-purple-800/20;
+}
+
+.service-purple-text {
+  @apply group-hover:text-purple-600 dark:group-hover:text-purple-400;
+}
+
+.service-purple-badge {
+  @apply bg-purple-100/60 dark:bg-purple-900/60 text-purple-800 dark:text-purple-200 border-purple-300;
+}
+
+.service-purple-border {
+  @apply border-purple-200/40 dark:border-purple-700/40;
+}
+
+/* Colores para servicios - Success (Verde) */
+.service-success-icon {
+  @apply text-success-600 dark:text-success-400;
+}
+
+.service-success-bg {
+  @apply bg-success-100/15 dark:bg-success-900/15;
+}
+
+.service-success-bg-hover {
+  @apply group-hover:bg-success-200/20 dark:group-hover:bg-success-800/20;
+}
+
+.service-success-text {
+  @apply group-hover:text-success-600 dark:group-hover:text-success-400;
+}
+
+.service-success-badge {
+  @apply bg-success-100/60 dark:bg-success-900/60 text-success-800 dark:text-success-200 border-success-300;
+}
+
+.service-success-border {
+  @apply border-success-200/40 dark:border-success-700/40;
+}
+
+/* Colores para servicios - Warning (Amarillo) */
+.service-warning-icon {
+  @apply text-warning-600 dark:text-warning-400;
+}
+
+.service-warning-bg {
+  @apply bg-warning-100/15 dark:bg-warning-900/15;
+}
+
+.service-warning-bg-hover {
+  @apply group-hover:bg-warning-200/20 dark:group-hover:bg-warning-800/20;
+}
+
+.service-warning-text {
+  @apply group-hover:text-warning-600 dark:group-hover:text-warning-400;
+}
+
+.service-warning-badge {
+  @apply bg-warning-100/60 dark:bg-warning-900/60 text-warning-800 dark:text-warning-200 border-warning-300;
+}
+
+.service-warning-border {
+  @apply border-warning-200/40 dark:border-warning-700/40;
+}
+
+/* ====== SCHEDULE CALL - COLORES DINÁMICOS ====== */
+/* Colores para ScheduleCall - Info (Azul) */
+.schedule-info-icon {
+  @apply text-info-600 dark:text-info-400;
+}
+
+.schedule-info-bg {
+  @apply bg-info-500/30 dark:bg-info-500/20;
+}
+
+.schedule-info-bg-gradient {
+  @apply from-info-500/30 to-info-500/20;
+}
+
+.schedule-info-shadow {
+  @apply shadow-info-500/20;
+}
+
+.schedule-info-border {
+  @apply border-info-500/20 hover:border-info-500/40;
+}
+
+.schedule-info-button {
+  @apply bg-info-600 hover:bg-info-700 border-info-600 hover:border-info-700;
+}
+
+.schedule-info-button-text {
+  @apply text-info-600;
+}
+
+/* Colores para ScheduleCall - Purple (Púrpura) */
+.schedule-purple-icon {
+  @apply text-purple-600 dark:text-purple-400;
+}
+
+.schedule-purple-bg {
+  @apply bg-purple-500/30 dark:bg-purple-500/20;
+}
+
+.schedule-purple-bg-gradient {
+  @apply from-purple-500/30 to-purple-500/20;
+}
+
+.schedule-purple-shadow {
+  @apply shadow-purple-500/20;
+}
+
+.schedule-purple-border {
+  @apply border-purple-500/20 hover:border-purple-500/40;
+}
+
+.schedule-purple-button {
+  @apply bg-purple-600 hover:bg-purple-700 border-purple-600 hover:border-purple-700;
+}
+
+.schedule-purple-button-text {
+  @apply text-purple-600;
+}
+
+/* Colores para ScheduleCall - Success (Verde) */
+.schedule-success-icon {
+  @apply text-success-600 dark:text-success-400;
+}
+
+.schedule-success-bg {
+  @apply bg-success-500/30 dark:bg-success-500/20;
+}
+
+.schedule-success-bg-gradient {
+  @apply from-success-500/30 to-success-500/20;
+}
+
+.schedule-success-shadow {
+  @apply shadow-success-500/20;
+}
+
+.schedule-success-border {
+  @apply border-success-500/20 hover:border-success-500/40;
+}
+
+.schedule-success-button {
+  @apply bg-success-600 hover:bg-success-700 border-success-600 hover:border-success-700;
+}
+
+.schedule-success-button-text {
+  @apply text-success-600;
+}
+
+/* Colores para ScheduleCall - Warning (Amarillo) */
+.schedule-warning-icon {
+  @apply text-warning-600 dark:text-warning-400;
+}
+
+.schedule-warning-bg {
+  @apply bg-warning-500/30 dark:bg-warning-500/20;
+}
+
+.schedule-warning-bg-gradient {
+  @apply from-warning-500/30 to-warning-500/20;
+}
+
+.schedule-warning-shadow {
+  @apply shadow-warning-500/20;
+}
+
+.schedule-warning-border {
+  @apply border-warning-500/20 hover:border-warning-500/40;
+}
+
+.schedule-warning-button {
+  @apply bg-warning-600 hover:bg-warning-700 border-warning-600 hover:border-warning-700;
+}
+
+.schedule-warning-button-text {
+  @apply text-warning-600;
 }

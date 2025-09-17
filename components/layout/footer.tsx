@@ -23,19 +23,19 @@ export function Footer() {
       name: "GitHub",
       icon: Github,
       href: "https://github.com/ceradev",
-      color: "hover:text-gray-900 dark:hover:text-gray-100"
+      color: "hover:text-neutral-900 dark:hover:text-neutral-100"
     },
     {
       name: "LinkedIn", 
       icon: Linkedin,
       href: "https://linkedin.com/in/césar-aramis-suárez-orizondo/",
-      color: "hover:text-blue-600"
+      color: "hover:text-info-600"
     },
     {
       name: "Email",
       icon: Mail,
       href: "suarezorizondocesararamis@gmail.com",
-      color: "hover:text-red-500"
+      color: "hover:text-primary"
     }
   ];
 
@@ -66,7 +66,7 @@ export function Footer() {
           }}
         />
         <motion.div
-          className="absolute bottom-0 right-1/4 w-24 h-24 bg-gradient-to-l from-blue-500/5 to-transparent rounded-full blur-xl"
+          className="absolute bottom-0 right-1/4 w-24 h-24 bg-gradient-to-l from-info-500/5 to-transparent rounded-full blur-xl"
           animate={{
             scale: [1, 1.3, 1],
             opacity: [0.2, 0.5, 0.2],
@@ -212,7 +212,7 @@ export function Footer() {
                   <motion.div
                     animate={{ scale: [1, 1.2, 1] }}
                     transition={{ duration: 2, repeat: Infinity }}
-                    className="w-2 h-2 rounded-full bg-green-500"
+                    className="w-2 h-2 rounded-full bg-success-500"
                   />
                   <span className="text-sm font-medium text-foreground">Disponible para proyectos</span>
                 </div>
@@ -240,7 +240,7 @@ export function Footer() {
                   transition={{ duration: 1.5, repeat: Infinity }}
                   className="mx-1"
                 >
-                  <Heart className="h-4 w-4 text-red-500" />
+                  <Heart className="h-4 w-4 text-primary" />
                 </motion.div>
                 <span>en España</span>
               </div>

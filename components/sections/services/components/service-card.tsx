@@ -13,17 +13,60 @@ interface ServiceCardProps {
 function getPricingTypeLabel(type: 'hourly' | 'project' | 'monthly'): string {
   switch (type) {
     case 'hourly':
-      return 'Por hora';
+      return 'Tarifa por hora';
     case 'project':
-      return 'Por proyecto';
+      return 'Precio por proyecto';
     case 'monthly':
-      return 'Mensual';
+      return 'Tarifa mensual';
     default:
       return '';
   }
 }
 
+// Función helper para obtener las clases CSS según el color del servicio
+function getServiceColorClasses(color: string) {
+  const colorMap = {
+    info: {
+      icon: 'service-info-icon',
+      bg: 'service-info-bg',
+      bgHover: 'service-info-bg-hover',
+      text: 'service-info-text',
+      badge: 'service-info-badge',
+      border: 'service-info-border',
+    },
+    purple: {
+      icon: 'service-purple-icon',
+      bg: 'service-purple-bg',
+      bgHover: 'service-purple-bg-hover',
+      text: 'service-purple-text',
+      badge: 'service-purple-badge',
+      border: 'service-purple-border',
+    },
+    success: {
+      icon: 'service-success-icon',
+      bg: 'service-success-bg',
+      bgHover: 'service-success-bg-hover',
+      text: 'service-success-text',
+      badge: 'service-success-badge',
+      border: 'service-success-border',
+    },
+    warning: {
+      icon: 'service-warning-icon',
+      bg: 'service-warning-bg',
+      bgHover: 'service-warning-bg-hover',
+      text: 'service-warning-text',
+      badge: 'service-warning-badge',
+      border: 'service-warning-border',
+    },
+  };
+
+  // Fallback a 'info' si el color no existe
+  return colorMap[color as keyof typeof colorMap] || colorMap.info;
+}
+
 export function ServiceCard({ service, index }: ServiceCardProps) {
+  const colorClasses = getServiceColorClasses(service.color);
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 30 }}
@@ -33,13 +76,13 @@ export function ServiceCard({ service, index }: ServiceCardProps) {
       whileHover={{ y: -5, scale: 1.02 }}
       className="h-full"
     >
-      <Card className="group relative overflow-hidden border-2 border-border/20 bg-background backdrop-blur-sm p-6 transition-all duration-300 hover:border-red-400/60 hover:shadow-lg hover:shadow-red-200/30 h-full">
+      <Card className="group relative overflow-hidden border-2 border-red-200/30 dark:border-red-800/30 bg-background backdrop-blur-sm p-6 transition-all duration-300 hover:border-red-300/50 dark:hover:border-red-700/50 hover:shadow-lg hover:shadow-red-200/20 dark:hover:shadow-red-800/20 h-full">
         {/* Background gradient overlay */}
-        <div className="absolute inset-0 bg-gradient-to-br from-red-100/15 via-transparent to-red-200/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+        <div className={`absolute inset-0 ${colorClasses.bg} opacity-0 group-hover:opacity-100 transition-opacity duration-300`} />
         
         {/* Icon with animation */}
         <motion.div 
-          className="mb-4 flex justify-center text-red-600 drop-shadow-md shadow-red-200/40"
+          className={`mb-4 flex justify-center ${colorClasses.icon} drop-shadow-md`}
           whileHover={{ scale: 1.1, rotate: 5 }}
           transition={{ type: "spring", stiffness: 300 }}
         >
@@ -48,7 +91,7 @@ export function ServiceCard({ service, index }: ServiceCardProps) {
         
         {/* Title */}
         <motion.h3 
-          className="mb-3 text-xl font-bold text-center text-foreground group-hover:text-red-600 transition-colors duration-300"
+          className={`mb-3 text-xl font-bold text-center text-foreground ${colorClasses.text} transition-colors duration-300`}
         >
           {service.title}
         </motion.h3>
@@ -67,7 +110,7 @@ export function ServiceCard({ service, index }: ServiceCardProps) {
               <Badge 
                 key={tech}
                 variant="secondary" 
-                className="text-xs bg-red-100/60 dark:bg-red-900/60 text-red-800 dark:text-red-200 border-red-300 shadow-sm"
+                className={`text-xs ${colorClasses.badge} shadow-sm`}
               >
                 {tech}
               </Badge>
@@ -75,7 +118,7 @@ export function ServiceCard({ service, index }: ServiceCardProps) {
             {service.technologies.length > 3 && (
               <Badge 
                 variant="secondary" 
-                className="text-xs bg-red-100/60 dark:bg-red-900/60 text-red-800 dark:text-red-200 border-red-300 shadow-sm"
+                className={`text-xs ${colorClasses.badge} shadow-sm`}
               >
                 +{service.technologies.length - 3}
               </Badge>
@@ -86,14 +129,17 @@ export function ServiceCard({ service, index }: ServiceCardProps) {
         {/* Pricing */}
         {service.pricing && (
           <motion.div 
-            className="mt-auto pt-4 border-t border-red-200/40"
+            className={`mt-auto pt-4 border-t ${colorClasses.border}`}
           >
             <div className="text-center">
               <div className="text-xs text-muted-foreground mb-1">
                 {getPricingTypeLabel(service.pricing.type)}
               </div>
-              <div className="font-bold text-lg text-red-600">
+              <div className={`font-bold text-lg ${colorClasses.icon} mb-1`}>
                 {service.pricing.range}
+              </div>
+              <div className="text-xs text-muted-foreground/80 italic">
+                Precio negociable según alcance
               </div>
             </div>
           </motion.div>

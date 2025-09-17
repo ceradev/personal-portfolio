@@ -20,7 +20,7 @@ export function FormStatusMessage({
   onButtonClick,
 }: Readonly<FormStatusMessageProps>) {
   const Icon = type === "success" ? CheckCircle : AlertCircle;
-  const iconColor = type === "success" ? "text-green-500" : "text-destructive";
+  const iconColor = type === "success" ? "text-success-500" : "text-destructive";
   
   return (
     <motion.div

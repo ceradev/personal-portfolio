@@ -165,7 +165,7 @@ export function TopNavigation({ activeSection }: Readonly<TopNavigationProps>) {
                     onClick={handleCalendlyClick}
                     variant="ghost"
                     size="icon"
-                    className="rounded-full bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white shadow-lg hover:shadow-xl transition-all duration-300"
+                    className="rounded-full bg-gradient-to-r from-primary to-primary-600 hover:from-primary-600 hover:to-primary-700 text-white shadow-lg hover:shadow-xl transition-all duration-300"
                   >
                     <Calendar className="h-4 w-4" />
                     <span className="sr-only">Agendar llamada</span>
