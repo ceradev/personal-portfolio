@@ -21,7 +21,7 @@ export function FloatingCallButton({ className = "", activeSection = "home" }: F
     };
 
     const handleScroll = () => {
-      // Show button after scrolling down 300px, but hide in footer and home sections
+      // Only hide floating button in home and footer sections - never in between sections
       const shouldShow = window.scrollY > 300 && 
                         activeSection !== "home" && 
                         activeSection !== "footer";
@@ -72,20 +72,20 @@ export function FloatingCallButton({ className = "", activeSection = "home" }: F
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.8 }}
                 transition={{ duration: 0.2 }}
-                className="flex flex-col gap-3"
+                className="flex flex-col gap-2"
               >
                 {/* Close button */}
                 <motion.div
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.9 }}
                 >
-                  <Button
-                    onClick={() => setIsExpanded(false)}
-                    size="icon"
-                    className="w-12 h-12 rounded-full bg-destructive hover:bg-destructive/90 text-destructive-foreground shadow-lg hover:shadow-xl transition-all duration-300"
-                  >
-                    <X className="h-5 w-5" />
-                  </Button>
+                <Button
+                  onClick={() => setIsExpanded(false)}
+                  size="icon"
+                  className="w-10 h-10 rounded-full bg-destructive hover:bg-destructive/90 text-destructive-foreground shadow-lg hover:shadow-xl transition-all duration-300"
+                >
+                  <X className="h-4 w-4" />
+                </Button>
                 </motion.div>
 
                 {/* Calendly button */}
@@ -95,10 +95,10 @@ export function FloatingCallButton({ className = "", activeSection = "home" }: F
                 >
                   <Button
                     onClick={handleCalendlyClick}
-                    className="w-12 h-12 rounded-full bg-success-500 hover:bg-success-600 text-white shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center"
+                    className="w-10 h-10 rounded-full bg-success-500 hover:bg-success-600 text-white shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center"
                     title="Agendar llamada"
                   >
-                    <Calendar className="h-5 w-5" />
+                    <Calendar className="h-4 w-4" />
                   </Button>
                 </motion.div>
 
@@ -109,10 +109,10 @@ export function FloatingCallButton({ className = "", activeSection = "home" }: F
                 >
                   <Button
                     onClick={handleWhatsAppClick}
-                    className="w-12 h-12 rounded-full bg-success-600 hover:bg-success-700 text-white shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center"
+                    className="w-10 h-10 rounded-full bg-success-600 hover:bg-success-700 text-white shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center"
                     title="Contactar por WhatsApp"
                   >
-                    <MessageCircle className="h-5 w-5" />
+                    <MessageCircle className="h-4 w-4" />
                   </Button>
                 </motion.div>
               </motion.div>
@@ -124,9 +124,9 @@ export function FloatingCallButton({ className = "", activeSection = "home" }: F
                 <Button
                   onClick={() => setIsExpanded(true)}
                   size="icon"
-                  className="w-14 h-14 rounded-full bg-gradient-to-r from-primary to-primary-600 hover:from-primary-600 hover:to-primary-700 text-primary-foreground shadow-lg hover:shadow-xl transition-all duration-300 animate-pulse-glow"
+                  className="w-12 h-12 rounded-full bg-gradient-to-r from-primary to-primary-600 hover:from-primary-600 hover:to-primary-700 text-primary-foreground shadow-lg hover:shadow-xl transition-all duration-300 animate-pulse-glow"
                 >
-                  <Phone className="h-6 w-6" />
+                  <Phone className="h-5 w-5" />
                 </Button>
               </motion.div>
             )}

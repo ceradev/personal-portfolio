@@ -37,7 +37,7 @@ export function EssentialInfo() {
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, delay: 0.3 }}
       viewport={{ once: false, margin: "-50px" }}
-      className="grid grid-cols-2 lg:grid-cols-4 gap-3 mb-8"
+      className="grid grid-cols-2 lg:grid-cols-4 gap-2 md:gap-3 mb-6 md:mb-8"
     >
       {essentialData.map((item, index) => (
         <motion.div
@@ -47,14 +47,14 @@ export function EssentialInfo() {
           transition={{ duration: 0.4, delay: index * 0.1 }}
           viewport={{ once: false }}
           whileHover={{ y: -2, scale: 1.02 }}
-          className="flex items-center gap-3 p-3 bg-background/30 backdrop-blur-sm rounded-lg border border-border/20 hover:border-primary/30 transition-all duration-300"
+          className="flex flex-col sm:flex-row items-center sm:items-center gap-2 sm:gap-3 p-2 md:p-3 bg-background/30 backdrop-blur-sm rounded-lg border border-border/20 hover:border-primary/30 transition-all duration-300"
         >
-          <div className={`p-2 rounded-lg ${item.color}`}>
+          <div className={`p-1.5 md:p-2 rounded-lg ${item.color} flex-shrink-0`}>
             {item.icon}
           </div>
-          <div className="flex-1 min-w-0">
+          <div className="flex-1 min-w-0 text-center sm:text-left">
             <p className="text-xs text-foreground/60 font-medium">{item.label}</p>
-            <p className="text-sm font-semibold text-foreground truncate">{item.value}</p>
+            <p className="text-xs md:text-sm font-semibold text-foreground truncate">{item.value}</p>
           </div>
         </motion.div>
       ))}

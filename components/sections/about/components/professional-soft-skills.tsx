@@ -49,16 +49,16 @@ export function ProfessionalSoftSkills() {
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, delay: 0.6 }}
       viewport={{ once: false, margin: "-50px" }}
-      className="bg-background/20 backdrop-blur-sm rounded-xl border border-border/30 p-6 hover:border-primary/30 transition-all duration-300 h-full flex flex-col"
+      className="bg-background/20 backdrop-blur-sm rounded-xl border border-border/30 p-4 md:p-6 hover:border-primary/30 transition-all duration-300 h-full flex flex-col"
     >
-      <div className="flex items-center gap-2 mb-4 flex-shrink-0">
-        <div className="p-2 bg-primary/10 rounded-lg">
-          <Users className="h-5 w-5 text-primary" />
+      <div className="flex items-center gap-2 mb-3 md:mb-4 flex-shrink-0">
+        <div className="p-1.5 md:p-2 bg-primary/10 rounded-lg">
+          <Users className="h-4 w-4 md:h-5 md:w-5 text-primary" />
         </div>
-        <h3 className="text-lg font-semibold text-foreground">Habilidades Profesionales</h3>
+        <h3 className="text-base md:text-lg font-semibold text-foreground">Habilidades Profesionales</h3>
       </div>
       
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 flex-1">
+      <div className="grid grid-cols-1 gap-2 md:gap-3 flex-1">
         {softSkills.map((skill, index) => (
           <motion.div
             key={skill.name}
@@ -67,9 +67,9 @@ export function ProfessionalSoftSkills() {
             transition={{ duration: 0.4, delay: index * 0.1 }}
             viewport={{ once: false }}
             whileHover={{ y: -2, scale: 1.02 }}
-            className="flex items-start gap-3 p-3 bg-background/30 backdrop-blur-sm rounded-lg border border-border/20 hover:border-primary/30 transition-all duration-300"
+            className="flex items-start gap-2 md:gap-3 p-2.5 md:p-3 bg-background/30 backdrop-blur-sm rounded-lg border border-border/20 hover:border-primary/30 transition-all duration-300"
           >
-            <div className={`p-2 rounded-lg ${skill.color} flex-shrink-0`}>
+            <div className={`p-1.5 md:p-2 rounded-lg ${skill.color} flex-shrink-0`}>
               {skill.icon}
             </div>
             <div className="flex-1 min-w-0">

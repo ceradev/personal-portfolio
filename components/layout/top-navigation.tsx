@@ -15,7 +15,8 @@ interface TopNavigationProps {
 export function TopNavigation({ activeSection }: Readonly<TopNavigationProps>) {
   const [isMobile, setIsMobile] = useState(false)
   const [scrolled, setScrolled] = useState(false)
-  const isHomeActive = activeSection === "home"
+  // Only hide navigation in home and footer sections - never in between sections
+  const shouldHideNavigation = activeSection === "home" || activeSection === "footer"
 
   useEffect(() => {
     const checkMobile = () => {
@@ -53,7 +54,7 @@ export function TopNavigation({ activeSection }: Readonly<TopNavigationProps>) {
     <>
       {/* Avatar button - Top left */}
       <AnimatePresence>
-        {!isHomeActive && (
+        {!shouldHideNavigation && (
           <motion.div
             className={`fixed z-[60] ${isMobile ? 'top-3 left-4' : 'top-6 left-6'}`}
             initial={{ opacity: 0, x: -20 }}
@@ -69,7 +70,7 @@ export function TopNavigation({ activeSection }: Readonly<TopNavigationProps>) {
       {/* Centered navigation for desktop - Positioned absolutely to ensure perfect centering */}
       {!isMobile && (
         <AnimatePresence>
-          {!isHomeActive && (
+          {!shouldHideNavigation && (
             <motion.div
               className="fixed top-4 left-0 right-0 z-50 flex justify-center"
               initial={{ opacity: 0, y: -20 }}
@@ -123,7 +124,7 @@ export function TopNavigation({ activeSection }: Readonly<TopNavigationProps>) {
       {/* Bottom navigation for mobile with enhanced animations */}
       {isMobile && (
         <AnimatePresence>
-          {!isHomeActive && (
+          {!shouldHideNavigation && (
             <motion.div
               className="fixed bottom-0 left-0 right-0 z-50 backdrop-blur-md bg-background/70 dark:bg-background/80 border-t border-border shadow-lg"
               initial={{ y: 100 }}

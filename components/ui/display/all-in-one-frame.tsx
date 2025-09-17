@@ -48,7 +48,7 @@ export function AllInOneFrame({
       shadowBottom: "-bottom-2",
     },
     large: {
-      width: "w-[42rem]",
+      width: "w-[50rem]",
       screenPadding: "p-3",
       bezelPadding: "p-3",
       cameraSize: "w-3 h-3",

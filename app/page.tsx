@@ -43,25 +43,36 @@ export default function Home() {
     window.addEventListener("resize", checkMobile);
 
     const handleScroll = () => {
-      const sections = document.querySelectorAll("section[id], div[id]");
+      // Only detect main sections, not form fields or other elements
+      const validSectionIds = ["home", "services", "projects", "testimonials", "about", "experience", "contact", "footer"];
+      const sections = document.querySelectorAll("section[id], footer[id]");
       const scrollPosition = window.scrollY + 100;
 
       let currentSection = "home";
+      let closestSection = { id: "home", distance: Infinity };
 
       sections.forEach((section) => {
         const sectionTop = (section as HTMLElement).offsetTop;
         const sectionHeight = (section as HTMLElement).offsetHeight;
         const sectionId = section.getAttribute("id") || "";
 
-        if (
-          scrollPosition >= sectionTop &&
-          scrollPosition < sectionTop + sectionHeight
-        ) {
-          currentSection = sectionId;
+        // Only consider valid main sections
+        if (validSectionIds.includes(sectionId)) {
+          // Check if we're currently inside this section
+          if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+            currentSection = sectionId;
+          }
+          
+          // Also track the closest section for fallback
+          const distance = Math.abs(scrollPosition - (sectionTop + sectionHeight / 2));
+          if (distance < closestSection.distance) {
+            closestSection = { id: sectionId, distance };
+          }
         }
       });
 
-      setActiveSection(currentSection);
+      // Use current section if found, otherwise use closest section
+      setActiveSection(currentSection !== "home" ? currentSection : closestSection.id);
     };
 
     window.addEventListener("scroll", handleScroll);

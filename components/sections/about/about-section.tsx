@@ -14,9 +14,9 @@ import { ValueProposition } from "@/components/sections/about/components/value-p
 
 export function AboutSection() {
   return (
-    <SectionTransition id="about" className="py-20 my-8 relative overflow-hidden">
-      {/* Background decorative elements */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+    <SectionTransition id="about" className="py-12 md:py-20 my-4 md:my-8 relative overflow-hidden">
+      {/* Background decorative elements - Hidden on mobile for performance */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none hidden md:block">
         <motion.div
           className="absolute top-10 left-10 w-20 h-20 bg-primary/5 rounded-full blur-xl"
           animate={{
@@ -44,7 +44,7 @@ export function AboutSection() {
         />
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 md:px-6">
         <SectionTitle title="Sobre Mí" />
         
         <AboutSubtitle />
@@ -53,9 +53,9 @@ export function AboutSection() {
         <EssentialInfo />
 
         {/* Contenido principal */}
-        <div className="space-y-8">
+        <div className="space-y-6 md:space-y-8">
           {/* Primera fila - Propuesta de valor y formación */}
-          <div className="grid lg:grid-cols-2 gap-8 items-stretch">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 items-stretch">
             {/* Columna izquierda - Propuesta de valor */}
             <ValueProposition />
 
@@ -64,13 +64,13 @@ export function AboutSection() {
           </div>
 
           {/* Segunda fila - Tech Skills y Habilidades profesionales */}
-          <div className="grid lg:grid-cols-2 gap-8 items-stretch">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 items-stretch">
             <CompactTechSkills />
             <ProfessionalSoftSkills />
           </div>
 
           {/* Tercera fila - Idiomas e Información práctica */}
-          <div className="grid lg:grid-cols-2 gap-8 items-stretch">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 items-stretch">
             <LanguagesInfo />
             <PracticalInfo />
           </div>
