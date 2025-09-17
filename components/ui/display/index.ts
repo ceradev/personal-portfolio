@@ -6,6 +6,8 @@ export * from './floating-call-button';
 export * from './gradient-text';
 export * from './info-badge';
 export * from './all-in-one-frame';
+export * from './mobile-frame';
+export * from './mobile-indicators';
 export * from './personal-info-item';
 export * from './soft-skill-item';
 export * from './status-badge';

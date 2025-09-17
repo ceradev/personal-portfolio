@@ -5,14 +5,18 @@ import { motion } from "framer-motion";
 import { SectionTitle } from "@/utils/section-title";
 import { SectionTransition } from "@/utils/section-transition";
 import { projects, type Project } from "@/types/projects";
+import { DeviceIndicator, MobileGestureHint } from "@/components/ui/display";
+import { useMobile } from "@/hooks/use-mobile";
 import {
   ProjectVideoPlayer,
   ProjectDetailsModal,
   ProjectsSubtitle,
+  MobileProjectIndicator,
 } from "./components";
 
 export function ProjectsSection() {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+  const isMobile = useMobile();
 
   return (
     <SectionTransition
@@ -51,8 +55,35 @@ export function ProjectsSection() {
       <div className="relative z-10">
         <SectionTitle title="Portafolio" />
 
+        {/* Device indicator for mobile users */}
+        {isMobile && (
+          <div className="flex justify-center mb-6">
+            <DeviceIndicator isMobile={isMobile} />
+          </div>
+        )}
+
         {/* Enhanced Subtitle with Instructions */}
         <ProjectsSubtitle />
+
+        {/* Mobile gesture hints and project indicator */}
+        {isMobile && (
+          <div className="flex flex-col items-center gap-4 mb-8">
+            <MobileProjectIndicator
+              currentProjectIndex={0}
+              totalProjects={projects.length}
+            />
+            <div className="flex justify-center gap-4">
+              <MobileGestureHint 
+                gesture="swipe" 
+                message="Desliza para cambiar proyectos" 
+              />
+              <MobileGestureHint 
+                gesture="tap" 
+                message="Toca para reproducir" 
+              />
+            </div>
+          </div>
+        )}
 
         {/* Projects Video Player */}
         <div className="mt-12">
@@ -65,7 +96,7 @@ export function ProjectsSection() {
         {/* Project details modal */}
         <ProjectDetailsModal
           showModal={!!selectedProject}
-          project={selectedProject!}
+          project={selectedProject}
           onClose={() => setSelectedProject(null)}
         />
       </div>

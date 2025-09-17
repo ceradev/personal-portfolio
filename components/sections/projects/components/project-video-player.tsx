@@ -3,7 +3,7 @@
 import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
-import { AllInOneFrame } from "@/components/ui/display/all-in-one-frame";
+import { AllInOneFrame, MobileFrame } from "@/components/ui/display";
 import { VideoControls } from "./video-controls";
 import { PlaylistSidebar } from "./playlist-sidebar";
 import { ProjectDetailsModal } from "./project-details-modal";
@@ -225,81 +225,158 @@ export function ProjectVideoPlayer({
     <div
       className={`relative mx-auto ${isMobile ? "max-w-sm px-4" : "max-w-4xl"}`}
     >
-      {/* All-in-One Frame with Video Player */}
-      <AllInOneFrame className="w-full" size={isMobile ? "small" : "large"}>
-        {/* Main Video Player */}
-        <div className="relative bg-black rounded-lg overflow-hidden w-full h-full">
-          {/* Video Content */}
-          <div
-            className="relative w-full h-full overflow-hidden"
-            onTouchStart={handleTouchStart}
-            onTouchEnd={handleTouchEnd}
-          >
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={`${currentProjectIndex}-${currentImageIndex}`}
-                initial={{
-                  opacity: 0,
-                }}
-                animate={{
-                  opacity: 1,
-                }}
-                exit={{
-                  opacity: 0,
-                }}
-                transition={{
-                  duration: 0.5,
-                  ease: "easeInOut",
-                }}
-                className="absolute inset-0"
-              >
-                <Image
-                  src={
-                    projectImages[currentImageIndex] ||
-                    "/placeholders/placeholder.svg"
-                  }
-                  alt={`${currentProject.title} - Vista ${
-                    currentImageIndex + 1
-                  }`}
-                  fill
-                  className="object-cover"
-                />
-              </motion.div>
-            </AnimatePresence>
+      {/* Responsive Frame with Video Player */}
+      {isMobile ? (
+        <MobileFrame className="w-full" size="medium">
+          {/* Main Video Player */}
+          <div className="relative bg-black rounded-lg overflow-hidden w-full h-full">
+            {/* Video Content */}
+            <div
+              className="relative w-full h-full overflow-hidden"
+              onTouchStart={handleTouchStart}
+              onTouchEnd={handleTouchEnd}
+            >
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={`${currentProjectIndex}-${currentImageIndex}`}
+                  initial={{
+                    opacity: 0,
+                  }}
+                  animate={{
+                    opacity: 1,
+                  }}
+                  exit={{
+                    opacity: 0,
+                  }}
+                  transition={{
+                    duration: 0.5,
+                    ease: "easeInOut",
+                  }}
+                  className="absolute inset-0"
+                >
+                  <Image
+                    src={
+                      projectImages[currentImageIndex] ||
+                      "/placeholders/placeholder.svg"
+                    }
+                    alt={`${currentProject.title} - Vista ${
+                      currentImageIndex + 1
+                    }`}
+                    fill
+                    className="object-cover"
+                  />
+                </motion.div>
+              </AnimatePresence>
 
-            {/* Video Overlay */}
-            <VideoOverlay
-              project={currentProject}
+              {/* Video Overlay */}
+              <VideoOverlay
+                project={currentProject}
+                isPlaying={isPlaying}
+                duration={duration}
+                onPlayPause={handlePlayPause}
+                currentImageIndex={currentImageIndex}
+                totalImages={projectImages.length}
+                currentTime={currentTime}
+              />
+            </div>
+
+            {/* Video Controls */}
+            <VideoControls
               isPlaying={isPlaying}
-              duration={duration}
-              onPlayPause={handlePlayPause}
-              currentImageIndex={currentImageIndex}
-              totalImages={projectImages.length}
               currentTime={currentTime}
+              duration={duration}
+              volume={volume}
+              isMuted={isMuted}
+              showPlaylist={showPlaylist}
+              currentProject={currentProject}
+              isMobile={isMobile}
+              onPlayPause={handlePlayPause}
+              onPrevious={handlePrevious}
+              onNext={handleNext}
+              onVolumeChange={handleVolumeChange}
+              onMute={handleMute}
+              onProgressClick={handleProgressClick}
+              onTogglePlaylist={() => setShowPlaylist(!showPlaylist)}
+              onShowDetails={handleFullscreen}
             />
           </div>
+        </MobileFrame>
+      ) : (
+        <AllInOneFrame className="w-full" size="large">
+          {/* Main Video Player */}
+          <div className="relative bg-black rounded-lg overflow-hidden w-full h-full">
+            {/* Video Content */}
+            <div
+              className="relative w-full h-full overflow-hidden"
+              onTouchStart={handleTouchStart}
+              onTouchEnd={handleTouchEnd}
+            >
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={`${currentProjectIndex}-${currentImageIndex}`}
+                  initial={{
+                    opacity: 0,
+                  }}
+                  animate={{
+                    opacity: 1,
+                  }}
+                  exit={{
+                    opacity: 0,
+                  }}
+                  transition={{
+                    duration: 0.5,
+                    ease: "easeInOut",
+                  }}
+                  className="absolute inset-0"
+                >
+                  <Image
+                    src={
+                      projectImages[currentImageIndex] ||
+                      "/placeholders/placeholder.svg"
+                    }
+                    alt={`${currentProject.title} - Vista ${
+                      currentImageIndex + 1
+                    }`}
+                    fill
+                    className="object-cover"
+                  />
+                </motion.div>
+              </AnimatePresence>
 
-          {/* Video Controls */}
-          <VideoControls
-            isPlaying={isPlaying}
-            currentTime={currentTime}
-            duration={duration}
-            volume={volume}
-            isMuted={isMuted}
-            showPlaylist={showPlaylist}
-            currentProject={currentProject}
-            isMobile={isMobile}
-            onPlayPause={handlePlayPause}
-            onPrevious={handlePrevious}
-            onNext={handleNext}
-            onVolumeChange={handleVolumeChange}
-            onMute={handleMute}
-            onProgressClick={handleProgressClick}
-            onTogglePlaylist={() => setShowPlaylist(!showPlaylist)}
-            onShowDetails={handleFullscreen}
-          />
-        </div>
-      </AllInOneFrame>
+              {/* Video Overlay */}
+              <VideoOverlay
+                project={currentProject}
+                isPlaying={isPlaying}
+                duration={duration}
+                onPlayPause={handlePlayPause}
+                currentImageIndex={currentImageIndex}
+                totalImages={projectImages.length}
+                currentTime={currentTime}
+              />
+            </div>
+
+            {/* Video Controls */}
+            <VideoControls
+              isPlaying={isPlaying}
+              currentTime={currentTime}
+              duration={duration}
+              volume={volume}
+              isMuted={isMuted}
+              showPlaylist={showPlaylist}
+              currentProject={currentProject}
+              isMobile={isMobile}
+              onPlayPause={handlePlayPause}
+              onPrevious={handlePrevious}
+              onNext={handleNext}
+              onVolumeChange={handleVolumeChange}
+              onMute={handleMute}
+              onProgressClick={handleProgressClick}
+              onTogglePlaylist={() => setShowPlaylist(!showPlaylist)}
+              onShowDetails={handleFullscreen}
+            />
+          </div>
+        </AllInOneFrame>
+      )}
 
       {/* Playlist Sidebar */}
       <PlaylistSidebar

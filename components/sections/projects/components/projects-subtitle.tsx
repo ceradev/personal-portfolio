@@ -2,8 +2,11 @@
 
 import { motion } from "framer-motion";
 import { Play, Settings, Info, Maximize, SkipForward, SkipBack } from "lucide-react";
+import { useMobile } from "@/hooks/use-mobile";
 
 export function ProjectsSubtitle() {
+  const isMobile = useMobile();
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -36,39 +39,41 @@ export function ProjectsSubtitle() {
          Te invito a que explores cada una de las creaciones que he realizado y veas mi trabajo.
         </p>
 
-        {/* Quick Tips */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          viewport={{ once: false }}
-          className="max-w-2xl mx-auto"
-        >
-          <div className="bg-transparent rounded-xl p-6 border dark:border-border border-primary/30">
-            <h3 className="text-lg font-semibold text-foreground/90 mb-4 flex items-center justify-center gap-2">
-              <Info className="h-5 w-5 text-primary" />
-              ¿Cómo usar el reproductor?
-            </h3>
-            <div className="flex flex-wrap justify-center gap-6 text-sm text-foreground/90">
-              <div className="flex items-center gap-2">
-                <Play className="h-4 w-4 text-primary" />
-                <SkipBack className="h-4 w-4 text-primary" />
-                <SkipForward className="h-4 w-4 text-primary" />
-                <span>Reproduce y navega</span>
+        {/* Quick Tips - Hidden on mobile */}
+        {!isMobile && (
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            viewport={{ once: false }}
+            className="max-w-2xl mx-auto"
+          >
+            <div className="bg-transparent rounded-xl p-6 border dark:border-border border-primary/30">
+              <h3 className="text-lg font-semibold text-foreground/90 mb-4 flex items-center justify-center gap-2">
+                <Info className="h-5 w-5 text-primary" />
+                ¿Cómo usar el reproductor?
+              </h3>
+              <div className="flex flex-wrap justify-center gap-6 text-sm text-foreground/90">
+                <div className="flex items-center gap-2">
+                  <Play className="h-4 w-4 text-primary" />
+                  <SkipBack className="h-4 w-4 text-primary" />
+                  <SkipForward className="h-4 w-4 text-primary" />
+                  <span>Reproduce y navega</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <Settings className="h-4 w-4 text-primary" />
+                  <span>Ver playlist completa</span>
+                </div>
               </div>
-              <div className="flex items-center gap-2">
-                <Settings className="h-4 w-4 text-primary" />
-                <span>Ver playlist completa</span>
+              <div className="flex items-center justify-center gap-2 mt-3">
+                <Maximize className="h-4 w-4 text-primary" />
+                <p className="text-xs text-foreground/90">
+                  Ver detalles completos de cada proyecto
+                </p>
               </div>
             </div>
-            <div className="flex items-center justify-center gap-2 mt-3">
-              <Maximize className="h-4 w-4 text-primary" />
-              <p className="text-xs text-foreground/90">
-                Ver detalles completos de cada proyecto
-              </p>
-            </div>
-          </div>
-        </motion.div>
+          </motion.div>
+        )}
       </div>
     </motion.div>
   );

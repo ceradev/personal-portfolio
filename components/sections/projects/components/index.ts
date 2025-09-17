@@ -7,3 +7,4 @@ export { VideoControls } from "./video-controls";
 export { PlaylistSidebar } from "./playlist-sidebar";
 export { ProjectDetailsModal } from "./project-details-modal";
 export { VideoOverlay } from "./video-overlay";
+export { MobileProjectNavigation, MobileProjectIndicator } from "./mobile-project-navigation";
