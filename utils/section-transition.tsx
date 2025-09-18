@@ -49,6 +49,7 @@ export function SectionTransition({ children, id, className }: Readonly<SectionT
       viewport={{ once: false, margin: "-100px" }}
       variants={containerVariants}
       className={`relative ${isProjectsSection ? "pb-40 md:pb-52" : "pb-20 md:pb-32"} ${className}`}
+      style={{ position: 'relative' }}
     >
       <div className={`container mx-auto px-4 md:px-8 ${isProjectsSection ? "max-w-[90vw]" : ""}`}>
         <motion.div
@@ -59,6 +60,7 @@ export function SectionTransition({ children, id, className }: Readonly<SectionT
                 ? "max-w-[2200px] px-3 md:px-10 py-8 md:py-16 scale-100 md:scale-110"
                 : "max-w-[1600px] px-4 md:px-6 py-4 md:py-8 scale-105"
             }`}
+          style={{ position: 'relative' }}
         >
           {children}
         </motion.div>

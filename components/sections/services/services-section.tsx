@@ -19,6 +19,7 @@ export function ServicesSection() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.3 }}
           viewport={{ once: true }}
+          style={{ position: 'relative' }}
         >
           <ServicesGrid services={servicesData} />
         </motion.div>

@@ -11,6 +11,7 @@ export function SubtitleSection() {
       transition={{ duration: 0.6, delay: 0.2 }}
       viewport={{ once: false, margin: "-50px" }}
       className="text-center mb-12 relative"
+      style={{ position: 'relative' }}
     >
       {/* Background gradient effect */}
       <div className="absolute inset-0 bg-gradient-to-r from-transparent via-primary/20 to-transparent blur-3xl -z-10" />
@@ -19,7 +20,7 @@ export function SubtitleSection() {
         <div className="flex items-center justify-center gap-3 mb-4">
         </div>
         
-        <div className="text-base sm:text-lg md:text-xl text-black dark:text-white max-w-3xl mx-auto leading-relaxed font-medium px-4 sm:px-6">
+        <div className="text-sm sm:text-base md:text-lg lg:text-xl text-black dark:text-white max-w-3xl mx-auto leading-relaxed font-medium px-3 sm:px-4 md:px-6">
         Mi trayectoria profesional y{" "}
           <span className="relative">
             <span className="text-primary dark:text-primary-400 font-bold">
@@ -39,10 +40,11 @@ export function SubtitleSection() {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ delay: 0.8 }}
-          className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 mt-3 sm:mt-4 flex items-center justify-center gap-2 px-4 sm:px-6"
+          className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 mt-2 sm:mt-3 md:mt-4 flex items-center justify-center gap-2 px-3 sm:px-4 md:px-6"
         >
-          <Rocket className="h-4 w-4 text-primary animate-bounce" />
-        Haz clic en cualquier punto del timeline para ver los detalles
+          <Rocket className="h-3 w-3 sm:h-4 sm:w-4 text-primary animate-bounce" />
+        <span className="hidden sm:inline">Haz clic en cualquier punto del timeline para ver los detalles</span>
+        <span className="sm:hidden">Toca cualquier experiencia para ver los detalles</span>
         </motion.p>
       </div>
     </motion.div>

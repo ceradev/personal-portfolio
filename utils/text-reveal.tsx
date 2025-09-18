@@ -9,7 +9,7 @@ interface TextRevealProps {
   className?: string
 }
 
-export function TextReveal({ children, className = "" }: TextRevealProps) {
+export function TextReveal({ children, className = "" }: Readonly<TextRevealProps>) {
   return (
     <motion.p
       className={`${className}`}
@@ -17,6 +17,7 @@ export function TextReveal({ children, className = "" }: TextRevealProps) {
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
       viewport={{ once: false, margin: "-50px" }}
+      style={{ position: 'relative' }}
     >
       {children}
     </motion.p>

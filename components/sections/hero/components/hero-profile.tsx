@@ -7,12 +7,12 @@ import { TechBadges } from "./tech-badges";
 export function HeroProfile() {
   return (
     <motion.div
-      className="relative order-1 lg:order-2 flex justify-center mx-auto max-w-[280px] md:max-w-full"
+      className="relative order-1 lg:order-2 flex justify-center mx-auto max-w-[240px] sm:max-w-[280px] md:max-w-full"
       initial={{ opacity: 0, y: 50 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8 }}
     >
-      <div className="relative w-64 h-64 md:w-80 md:h-80">
+      <div className="relative w-56 h-56 sm:w-64 sm:h-64 md:w-80 md:h-80">
         {/* Enhanced decorative elements with synchronized glow effect */}
         <motion.div
           className="absolute -top-6 -left-6 w-24 h-24 border-t-2 border-l-2 border-primary/50 shadow-md shadow-primary/20"
@@ -120,7 +120,7 @@ export function HeroProfile() {
             boxShadow: "0 0 40px rgba(220, 38, 38, 0.4)",
           }}
         >
-          <Image src="/images/avatar-profile.png" alt="César Suárez" fill className="object-cover" />
+          <Image src="/images/avatar-profile.png" alt="César Suárez" fill className="object-cover" priority />
           <motion.div
             className="absolute inset-0 bg-gradient-to-tr from-primary/20 to-transparent"
             initial={{ opacity: 0 }}

@@ -7,7 +7,7 @@ interface ScrollDownArrowProps {
   targetSection: string
 }
 
-export function ScrollDownArrow({ targetSection = "about" }: ScrollDownArrowProps) {
+export function ScrollDownArrow({ targetSection = "about" }: Readonly<ScrollDownArrowProps>) {
   const handleClick = () => {
     const section = document.getElementById(targetSection)
     if (section) {
@@ -19,7 +19,7 @@ export function ScrollDownArrow({ targetSection = "about" }: ScrollDownArrowProp
   }
 
   return (
-    <div className="w-full flex justify-center mt-8 sm:mt-12 md:mt-16 lg:mt-20 z-10">
+    <div className="w-full flex justify-center mt-4 sm:mt-6 md:mt-8 lg:mt-12 z-10">
       <motion.div
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}

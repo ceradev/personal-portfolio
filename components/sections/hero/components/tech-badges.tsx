@@ -181,6 +181,17 @@ function TechBadge({ badge, index }: Readonly<{ badge: TechBadgeProps; index: nu
     return colorMap[badge.color] || 'rgba(59, 130, 246, 0.6)'; // fallback azul
   };
 
+  const getDefaultBorderColor = () => {
+    // Default border color in RGB format to match CSS variable --border
+    return 'rgba(228, 228, 231, 0.6)'; // equivalent to hsl(var(--border))
+  };
+
+  const getScaleValue = () => {
+    if (!isVisible) return 0.3;
+    if (isClicked) return 1.4;
+    return 1;
+  };
+
   return (
     <motion.div
       className={`absolute ${Object.values(badge.position).join(' ')} backdrop-blur-sm bg-background/30 dark:bg-background/40 shadow-md rounded-full p-2 md:p-3 border border-border group cursor-pointer`}
@@ -192,11 +203,11 @@ function TechBadge({ badge, index }: Readonly<{ badge: TechBadgeProps; index: nu
       }}
       animate={{ 
         opacity: isVisible ? 1 : 0,
-        scale: isVisible ? (isClicked ? 1.4 : 1) : 0.3,
+        scale: getScaleValue(),
         y: isVisible ? 0 : 20,
         rotate: isVisible ? 0 : -180,
         boxShadow: isClicked ? `0 0 25px ${getHoverColor()}` : '0 4px 6px -1px rgba(0, 0, 0, 0.1)',
-        borderColor: isClicked ? getBorderColor() : 'hsl(var(--border))',
+        borderColor: isClicked ? getBorderColor() : getDefaultBorderColor(),
         ...getAnimationProps().animate
       }}
       transition={{
