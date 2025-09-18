@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { FileText, FolderOpen, Github, Linkedin, Mail } from "lucide-react";
+import { FileText, FolderOpen, Github, Linkedin, Mail, ChevronDown } from "lucide-react";
 import Link from "next/link";
 import { Button } from "@/components/ui/display/button";
 import { SOCIAL_LINKS, CV_DOWNLOAD } from "@/data/hero-data";
@@ -10,6 +10,16 @@ export function HeroButtons() {
   const handleOpenCV = () => {
     // Abrir el CV directamente en una nueva pestaña
     window.open(CV_DOWNLOAD.href, "_blank", "noopener,noreferrer");
+  };
+
+  const handleScrollToServices = () => {
+    const section = document.getElementById("services");
+    if (section) {
+      window.scrollTo({
+        top: section.offsetTop,
+        behavior: "smooth",
+      });
+    }
   };
 
   return (
@@ -122,22 +132,53 @@ export function HeroButtons() {
           </motion.div>
         </Link>
 
-        <Link href={SOCIAL_LINKS.email} className="group relative">
-          <motion.div
-            className="p-2 sm:p-3 rounded-full backdrop-blur-sm bg-background/30 dark:bg-background/40 border border-border hover:border-primary/50 hover:bg-primary/10 transition-all duration-300 shadow-md hover:shadow-lg"
-            whileHover={{ scale: 1.15, rotate: 10 }}
-            whileTap={{ scale: 0.9 }}
-          >
-            <Mail className="h-4 w-4 sm:h-5 sm:w-5 text-foreground/70 group-hover:text-primary transition-colors duration-300" />
-            <motion.div
-              className="absolute -inset-1 bg-primary/20 rounded-full blur"
-              initial={{ opacity: 0 }}
-              whileHover={{ opacity: 1 }}
-              transition={{ duration: 0.3 }}
-            />
-          </motion.div>
-        </Link>
-      </motion.div>
-    </motion.div>
-  );
-}
+         <Link href={SOCIAL_LINKS.email} className="group relative">
+           <motion.div
+             className="p-2 sm:p-3 rounded-full backdrop-blur-sm bg-background/30 dark:bg-background/40 border border-border hover:border-primary/50 hover:bg-primary/10 transition-all duration-300 shadow-md hover:shadow-lg"
+             whileHover={{ scale: 1.15, rotate: 10 }}
+             whileTap={{ scale: 0.9 }}
+           >
+             <Mail className="h-4 w-4 sm:h-5 sm:w-5 text-foreground/70 group-hover:text-primary transition-colors duration-300" />
+             <motion.div
+               className="absolute -inset-1 bg-primary/20 rounded-full blur"
+               initial={{ opacity: 0 }}
+               whileHover={{ opacity: 1 }}
+               transition={{ duration: 0.3 }}
+             />
+           </motion.div>
+         </Link>
+       </motion.div>
+
+       {/* Mobile scroll arrow - separate section */}
+       <div className="md:hidden w-full flex justify-center mt-0.5">
+         <motion.div
+           className="p-4 rounded-full bg-gradient-to-r from-primary/20 to-red-500/20 border border-primary/60 hover:border-primary hover:from-primary/30 hover:to-red-500/30 transition-all duration-300 shadow-lg hover:shadow-xl cursor-pointer"
+           whileHover={{ scale: 1.15, rotate: 5 }}
+           whileTap={{ scale: 0.9 }}
+           onClick={handleScrollToServices}
+           initial={{ opacity: 0, scale: 0.8 }}
+           animate={{ opacity: 1, scale: 1 }}
+           transition={{ delay: 3.4, duration: 0.5 }}
+         >
+           <motion.div
+             animate={{ y: [0, 6, 0] }}
+             transition={{
+               duration: 1.5,
+               repeat: Number.POSITIVE_INFINITY,
+               repeatType: "loop",
+               ease: "easeInOut",
+             }}
+           >
+             <ChevronDown className="h-6 w-6 text-primary hover:text-primary-foreground transition-colors duration-300" />
+           </motion.div>
+           <motion.div
+             className="absolute -inset-1 bg-gradient-to-r from-primary/30 to-red-500/30 rounded-full blur"
+             initial={{ opacity: 0 }}
+             whileHover={{ opacity: 1 }}
+             transition={{ duration: 0.3 }}
+           />
+         </motion.div>
+       </div>
+     </motion.div>
+   );
+ }

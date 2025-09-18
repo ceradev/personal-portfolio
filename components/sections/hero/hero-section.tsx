@@ -11,9 +11,9 @@ import { HeroSectionProps } from "@/types/hero";
 
 export function HeroSection({ isMobile }: Readonly<HeroSectionProps>) {
   return (
-    <section id="home" className="relative min-h-screen flex flex-col justify-between pt-6 pb-8">
+    <section id="home" className="relative min-h-screen flex flex-col justify-center pt-6 pb-8 md:pb-16">
       {/* Split content layout with improved mobile spacing */}
-      <div className="container mx-auto px-4 md:px-8 z-10 grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 lg:gap-12 items-center flex-1">
+      <div className="container mx-auto px-4 md:px-8 z-10 grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 lg:gap-12 items-center">
         {/* Left side - Text content with improved mobile typography */}
         <motion.div
           className="text-left order-2 lg:order-1 mt-6 lg:mt-0"
@@ -30,8 +30,10 @@ export function HeroSection({ isMobile }: Readonly<HeroSectionProps>) {
         <HeroProfile />
       </div>
 
-      {/* Scroll Down Arrow */}
-      <ScrollDownArrow targetSection="services" />
+      {/* Scroll Down Arrow - Only visible on desktop */}
+      <div className="hidden md:block">
+        <ScrollDownArrow targetSection="services" />
+      </div>
     </section>
   );
 }
