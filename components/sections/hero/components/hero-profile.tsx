@@ -7,15 +7,15 @@ import { TechBadges } from "./tech-badges";
 export function HeroProfile() {
   return (
     <motion.div
-      className="relative order-1 lg:order-2 flex justify-center mx-auto max-w-[240px] sm:max-w-[280px] md:max-w-full"
+      className="relative order-1 lg:order-2 flex justify-center mx-auto max-w-[200px] sm:max-w-[240px] md:max-w-[280px] lg:max-w-full"
       initial={{ opacity: 0, y: 50 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8 }}
     >
-      <div className="relative w-56 h-56 sm:w-64 sm:h-64 md:w-80 md:h-80">
+      <div className="relative w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64 lg:w-80 lg:h-80">
         {/* Enhanced decorative elements with synchronized glow effect */}
         <motion.div
-          className="absolute -top-6 -left-6 w-24 h-24 border-t-2 border-l-2 border-primary/50 shadow-md shadow-primary/20"
+          className="absolute -top-4 -left-4 sm:-top-6 sm:-left-6 w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 border-t-2 border-l-2 border-primary/50 shadow-md shadow-primary/20"
           initial={{ opacity: 0, rotate: -45 }}
           animate={{ 
             opacity: 1,
@@ -27,7 +27,7 @@ export function HeroProfile() {
           }}
         />
         <motion.div
-          className="absolute -bottom-6 -right-6 w-24 h-24 border-b-2 border-r-2 border-primary/50 shadow-md shadow-primary/20"
+          className="absolute -bottom-4 -right-4 sm:-bottom-6 sm:-right-6 w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 border-b-2 border-r-2 border-primary/50 shadow-md shadow-primary/20"
           initial={{ opacity: 0, rotate: 45 }}
           animate={{ 
             opacity: 1,
@@ -72,7 +72,7 @@ export function HeroProfile() {
 
         {/* Additional orbital ring for more tech badges */}
         <motion.div
-          className="absolute inset-[-20px] rounded-full border border-dashed border-primary/15"
+          className="absolute inset-[-12px] sm:inset-[-16px] md:inset-[-20px] rounded-full border border-dashed border-primary/15"
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ 
             opacity: 1,

@@ -14,7 +14,7 @@ export function HeroButtons() {
 
   return (
     <motion.div
-      className="flex flex-wrap items-center gap-4"
+      className="flex flex-wrap items-center gap-2 sm:gap-3 md:gap-4"
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8, delay: 3 }}
@@ -30,10 +30,10 @@ export function HeroButtons() {
               });
             }
           }}
-          className="bg-gradient-to-r from-primary via-red-500 to-primary hover:from-primary/90 hover:via-red-500/90 hover:to-primary/90 text-primary-foreground rounded-full px-8 py-3 group relative overflow-hidden shadow-md hover:shadow-lg transition-all duration-300"
+          className="bg-gradient-to-r from-primary via-red-500 to-primary hover:from-primary/90 hover:via-red-500/90 hover:to-primary/90 text-primary-foreground rounded-full px-4 py-2 sm:px-6 sm:py-2.5 md:px-8 md:py-3 group relative overflow-hidden shadow-md hover:shadow-lg transition-all duration-300 text-sm sm:text-base"
         >
-          <span className="relative z-10 flex items-center gap-2 font-medium">
-            <FolderOpen className="h-4 w-4" />
+          <span className="relative z-10 flex items-center gap-1 sm:gap-2 font-medium">
+            <FolderOpen className="h-3 w-3 sm:h-4 sm:w-4" />
             Mis proyectos
           </span>
           <motion.span
@@ -55,10 +55,10 @@ export function HeroButtons() {
         <Button
           variant="outline"
           onClick={handleOpenCV}
-          className="border-2 border-primary/50 text-foreground hover:bg-primary/10 hover:border-primary rounded-full px-8 py-3 font-medium relative overflow-hidden shadow-md hover:shadow-lg transition-all duration-300 backdrop-blur-sm bg-background/50"
+          className="border-2 border-primary/50 text-foreground hover:bg-primary/10 hover:border-primary rounded-full px-4 py-2 sm:px-6 sm:py-2.5 md:px-8 md:py-3 font-medium relative overflow-hidden shadow-md hover:shadow-lg transition-all duration-300 backdrop-blur-sm bg-background/50 text-sm sm:text-base"
         >
-          <span className="relative z-10 flex items-center gap-2">
-            <FileText className="h-4 w-4" />
+          <span className="relative z-10 flex items-center gap-1 sm:gap-2">
+            <FileText className="h-3 w-3 sm:h-4 sm:w-4" />
             Ver CV
           </span>
           <motion.span
@@ -77,7 +77,7 @@ export function HeroButtons() {
       </motion.div>
 
       <motion.div
-        className="flex items-center gap-3 ml-2"
+        className="flex items-center gap-2 sm:gap-3 ml-1 sm:ml-2"
         initial={{ opacity: 0, x: -20 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.8, delay: 3.2 }}
@@ -88,11 +88,11 @@ export function HeroButtons() {
           className="group relative"
         >
           <motion.div
-            className="p-3 rounded-full backdrop-blur-sm bg-background/30 dark:bg-background/40 border border-border hover:border-info/50 hover:bg-info/10 transition-all duration-300 shadow-md hover:shadow-lg"
+            className="p-2 sm:p-3 rounded-full backdrop-blur-sm bg-background/30 dark:bg-background/40 border border-border hover:border-info/50 hover:bg-info/10 transition-all duration-300 shadow-md hover:shadow-lg"
             whileHover={{ scale: 1.15, rotate: 10 }}
             whileTap={{ scale: 0.9 }}
           >
-            <Linkedin className="h-5 w-5 text-foreground/70 group-hover:text-info transition-colors duration-300" />
+            <Linkedin className="h-4 w-4 sm:h-5 sm:w-5 text-foreground/70 group-hover:text-info transition-colors duration-300" />
             <motion.div
               className="absolute -inset-1 bg-info/20 rounded-full blur"
               initial={{ opacity: 0 }}
@@ -108,11 +108,11 @@ export function HeroButtons() {
           className="group relative"
         >
           <motion.div
-            className="p-3 rounded-full backdrop-blur-sm bg-background/30 dark:bg-background/40 border border-border hover:border-gray-600/50 hover:bg-gray-600/10 transition-all duration-300 shadow-md hover:shadow-lg"
+            className="p-2 sm:p-3 rounded-full backdrop-blur-sm bg-background/30 dark:bg-background/40 border border-border hover:border-gray-600/50 hover:bg-gray-600/10 transition-all duration-300 shadow-md hover:shadow-lg"
             whileHover={{ scale: 1.15, rotate: -10 }}
             whileTap={{ scale: 0.9 }}
           >
-            <Github className="h-5 w-5 text-foreground/70 group-hover:text-gray-600 dark:group-hover:text-gray-300 transition-colors duration-300" />
+            <Github className="h-4 w-4 sm:h-5 sm:w-5 text-foreground/70 group-hover:text-gray-600 dark:group-hover:text-gray-300 transition-colors duration-300" />
             <motion.div
               className="absolute -inset-1 bg-gray-600/20 rounded-full blur"
               initial={{ opacity: 0 }}
@@ -124,11 +124,11 @@ export function HeroButtons() {
 
         <Link href={SOCIAL_LINKS.email} className="group relative">
           <motion.div
-            className="p-3 rounded-full backdrop-blur-sm bg-background/30 dark:bg-background/40 border border-border hover:border-primary/50 hover:bg-primary/10 transition-all duration-300 shadow-md hover:shadow-lg"
+            className="p-2 sm:p-3 rounded-full backdrop-blur-sm bg-background/30 dark:bg-background/40 border border-border hover:border-primary/50 hover:bg-primary/10 transition-all duration-300 shadow-md hover:shadow-lg"
             whileHover={{ scale: 1.15, rotate: 10 }}
             whileTap={{ scale: 0.9 }}
           >
-            <Mail className="h-5 w-5 text-foreground/70 group-hover:text-primary transition-colors duration-300" />
+            <Mail className="h-4 w-4 sm:h-5 sm:w-5 text-foreground/70 group-hover:text-primary transition-colors duration-300" />
             <motion.div
               className="absolute -inset-1 bg-primary/20 rounded-full blur"
               initial={{ opacity: 0 }}
