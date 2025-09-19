@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { CheckCircle, AlertCircle } from "lucide-react";
+import { CheckCircle, AlertCircle, Clock } from "lucide-react";
 import { Button } from "@/components/ui/display/button";
 
 interface FormStatusMessageProps {
@@ -10,6 +10,7 @@ interface FormStatusMessageProps {
   message: string;
   buttonText: string;
   onButtonClick: () => void;
+  showAutoReset?: boolean;
 }
 
 export function FormStatusMessage({
@@ -18,6 +19,7 @@ export function FormStatusMessage({
   message,
   buttonText,
   onButtonClick,
+  showAutoReset = false,
 }: Readonly<FormStatusMessageProps>) {
   const Icon = type === "success" ? CheckCircle : AlertCircle;
   const iconColor = type === "success" ? "text-success-500" : "text-destructive";
@@ -47,6 +49,19 @@ export function FormStatusMessage({
       <p className="text-foreground/90 dark:text-foreground/95 mb-6">
         {message}
       </p>
+      
+      {showAutoReset && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1 }}
+          className="flex items-center gap-2 text-sm text-muted-foreground mb-4"
+        >
+          <Clock className="h-4 w-4" />
+          <span>El formulario se reiniciará automáticamente...</span>
+        </motion.div>
+      )}
+      
       <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
         <Button
           onClick={onButtonClick}

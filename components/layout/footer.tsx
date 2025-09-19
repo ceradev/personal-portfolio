@@ -29,18 +29,18 @@ export function Footer() {
       name: "LinkedIn", 
       icon: Linkedin,
       href: "https://linkedin.com/in/césar-aramis-suárez-orizondo/",
-      color: "hover:text-info-600"
+      color: "hover:text-info-600 dark:hover:text-info-400"
     },
     {
       name: "Email",
       icon: Mail,
-      href: "suarezorizondocesararamis@gmail.com",
-      color: "hover:text-primary"
+      href: "mailto:suarezorizondocesararamis@gmail.com",
+      color: "hover:text-primary/90 dark:hover:text-primary/80"
     }
   ];
 
   const quickLinks = [
-    { name: "Inicio", href: "" },
+    { name: "Inicio", href: "#" },
     { name: "Sobre mí", href: "#about" },
     { name: "Proyectos", href: "#projects" },
     { name: "Experiencia", href: "#experience" },

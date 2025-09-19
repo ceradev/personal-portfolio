@@ -77,37 +77,37 @@
   }
   body {
     @apply bg-background text-foreground antialiased;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: var(--font-inter), system-ui, sans-serif;
     font-feature-settings: "rlig" 1, "calt" 1;
   }
 
   h1 {
     @apply text-foreground font-bold tracking-tight text-4xl md:text-5xl lg:text-6xl;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: var(--font-inter), system-ui, sans-serif;
     letter-spacing: -0.02em;
   }
 
   h2 {
     @apply text-foreground font-semibold tracking-tight text-3xl md:text-4xl;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: var(--font-inter), system-ui, sans-serif;
     letter-spacing: -0.01em;
   }
 
   h3 {
     @apply text-foreground font-semibold tracking-tight text-2xl md:text-3xl;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: var(--font-inter), system-ui, sans-serif;
   }
 
   h4,
   h5,
   h6 {
     @apply text-foreground font-medium tracking-tight;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: var(--font-inter), system-ui, sans-serif;
   }
 
   p {
     @apply text-foreground/90 dark:text-foreground/95 leading-relaxed;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: var(--font-inter), system-ui, sans-serif;
     font-size: 1.05rem;
     line-height: 1.8;
   }
@@ -171,42 +171,6 @@
   animation: gradient-shift 8s ease infinite;
 }
 
-/* Estilos para títulos de sección destacados */
-.section-title-highlight {
-  @apply font-extrabold uppercase tracking-wider;
-  font-family: Arial, Helvetica, sans-serif;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
-  letter-spacing: 0.05em;
-}
-
-.section-title {
-  @apply text-3xl md:text-4xl font-bold mb-12 flex items-center drop-shadow-sm relative;
-  font-family: Arial, Helvetica, sans-serif;
-  letter-spacing: -0.01em;
-}
-
-.section-title-line {
-  @apply ml-4 h-px flex-grow bg-gradient-to-r from-primary/70 to-transparent;
-  background-size: 200% 200%;
-  animation: gradient-shift 8s ease infinite;
-}
-
-.card {
-  @apply backdrop-blur-md bg-background/50 dark:bg-background/60 rounded-xl border border-border/30 dark:border-border/40 shadow-sm;
-}
-
-.card-hover {
-  @apply hover:border-primary/50 transition-all duration-300 hover:shadow-md hover:shadow-primary/15 transform hover:-translate-y-1;
-}
-
-.icon-container {
-  @apply flex-shrink-0 w-10 h-10 rounded-full bg-primary/20 dark:bg-primary/30 flex items-center justify-center shadow-sm;
-}
-
-.skill-card {
-  @apply backdrop-blur-md bg-background/50 dark:bg-background/60 p-4 rounded-lg border border-border/30 dark:border-border/40 flex flex-col items-center hover:border-primary/50 transition-all duration-300 hover:shadow-md hover:shadow-primary/15;
-}
-
 .nav-item {
   @apply rounded-full w-10 h-10 transition-all duration-300;
 }
@@ -219,45 +183,9 @@
   @apply text-foreground/80 hover:bg-background/50 dark:hover:bg-background/60 hover:text-foreground hover:scale-110;
 }
 
-/* Improve form element readability */
-.form-input {
-  @apply bg-background/50 dark:bg-background/60 border-border/50 focus:border-primary/60 text-foreground placeholder:text-foreground/60 dark:placeholder:text-foreground/50;
-}
-
 /* Improve badge readability */
 .badge {
   @apply bg-background/40 dark:bg-background/50 text-foreground/90 border-border/30 px-2 py-0.5 rounded-full text-xs font-medium;
-}
-
-/* Add these enhanced animations to globals.css */
-@keyframes float-slow {
-  0% {
-    transform: translateY(0) rotate(0);
-  }
-  50% {
-    transform: translateY(-20px) rotate(5deg);
-  }
-  100% {
-    transform: translateY(0) rotate(0);
-  }
-}
-
-@keyframes float-parallax {
-  0% {
-    transform: translateY(0) translateX(0);
-  }
-  25% {
-    transform: translateY(-15px) translateX(15px);
-  }
-  50% {
-    transform: translateY(0) translateX(30px);
-  }
-  75% {
-    transform: translateY(15px) translateX(15px);
-  }
-  100% {
-    transform: translateY(0) translateX(0);
-  }
 }
 
 @keyframes pulse-glow {
@@ -284,100 +212,15 @@
   }
 }
 
-/* Animación para títulos de sección */
-@keyframes title-glow {
-  0% {
-    text-shadow: 0 0 5px rgba(220, 38, 38, 0.3);
-  }
-  50% {
-    text-shadow: 0 0 15px rgba(220, 38, 38, 0.6), 0 0 30px rgba(220, 38, 38, 0.3);
-  }
-  100% {
-    text-shadow: 0 0 5px rgba(220, 38, 38, 0.3);
-  }
-}
-
-/* Timeline animation */
-@keyframes timeline-pulse {
-  0% {
-    opacity: 0.5;
-    transform: scale(1);
-  }
-  50% {
-    opacity: 1;
-    transform: scale(1.2);
-  }
-  100% {
-    opacity: 0.5;
-    transform: scale(1);
-  }
-}
-
-/* Add these to the existing animations in the @layer components section */
-.animate-float-slow {
-  animation: float-slow 8s ease-in-out infinite;
-}
-
-.animate-float-parallax {
-  animation: float-parallax 20s ease-in-out infinite;
-}
-
 .animate-pulse-glow {
   animation: pulse-glow 3s ease-in-out infinite;
 }
 
-.animate-title-glow {
-  animation: title-glow 3s ease-in-out infinite;
+
+/* 3D transform utilities */
+.perspective-1000 {
+  perspective: 1000px;
 }
-
-.animate-timeline-pulse {
-  animation: timeline-pulse 2s ease-in-out infinite;
-}
-
-.animation-delay-1000 {
-  animation-delay: 1s;
-}
-
-.animation-delay-2000 {
-  animation-delay: 2s;
-}
-
-/* Enhanced hover effects for interactive elements */
-.interactive-hover {
-  @apply transition-all duration-300 transform hover:scale-105 hover:shadow-md;
-}
-
-/* Enhanced card hover effect */
-
-/* Enhanced button hover effect */
-.button-hover {
-  @apply relative overflow-hidden transform hover:scale-105 transition-all duration-300;
-}
-
-.button-hover::after {
-  content: "";
-  @apply absolute inset-0 bg-white/20 translate-y-full transition-transform duration-300;
-}
-
-.button-hover:hover::after {
-  @apply translate-y-0;
-}
-
-/* Enhanced section title with animation */
-/* Enhanced section titles with prominent gradient */
-.section-title-prominent {
-  @apply text-center font-extrabold text-3xl md:text-4xl lg:text-5xl;
-  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  letter-spacing: -0.01em;
-}
-
-.section-title-gradient {
-  @apply bg-clip-text text-transparent bg-gradient-to-r from-primary via-primary-600 to-primary-700;
-  background-size: 200% 200%;
-  animation: gradient-shift 8s ease infinite;
-}
-
-/* Add responsive typography improvements */
 @media (max-width: 640px) {
   h1 {
     @apply text-3xl;
@@ -396,53 +239,6 @@
   }
 }
 
-/* 3D transform utilities */
-.perspective-1000 {
-  perspective: 1000px;
-}
-
-.transform-style-3d {
-  transform-style: preserve-3d;
-}
-
-.rotate-x-12 {
-  transform: rotateX(12deg);
-}
-
-.rotate-y-12 {
-  transform: rotateY(12deg);
-}
-
-/* Parallax effect for timeline */
-.parallax-scroll {
-  will-change: transform;
-  transform: translateZ(0);
-}
-
-/* Timeline dot pulse effect */
-.timeline-dot::after {
-  content: "";
-  @apply absolute inset-0 rounded-full border-2 border-primary;
-  animation: timeline-pulse 2s infinite;
-}
-
-/* Hover card effect */
-.hover-card {
-  @apply transition-all duration-300;
-  transform: perspective(1000px) rotateX(0) rotateY(0);
-}
-
-.hover-card:hover {
-  transform: perspective(1000px) rotateX(2deg) rotateY(-2deg);
-  box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.1);
-}
-
-/* Añadir al final del archivo */
-
-/* Clase global para alineación consistente */
-.content-container {
-  @apply container mx-auto px-4 md:px-8;
-}
 
 /* Asegurar que todos los contenedores principales tengan la misma alineación */
 section > div.container,
@@ -451,35 +247,30 @@ main > div.container {
   @apply px-4 md:px-8;
 }
 
-/* Asegurar que todos los elementos usen Arial */
-* {
-  font-family: Arial, Helvetica, sans-serif;
-}
-
 /* ====== SERVICIOS - COLORES DINÁMICOS ====== */
 /* Colores para servicios - Info (Azul) */
 .service-info-icon {
-  @apply text-info-600 dark:text-info-400;
+  @apply text-blue-600 dark:text-blue-400;
 }
 
 .service-info-bg {
-  @apply bg-info-100/15 dark:bg-info-900/15;
+  @apply bg-blue-100/15 dark:bg-blue-900/15;
 }
 
 .service-info-bg-hover {
-  @apply group-hover:bg-info-200/20 dark:group-hover:bg-info-800/20;
+  @apply group-hover:bg-blue-200/20 dark:group-hover:bg-blue-800/20;
 }
 
 .service-info-text {
-  @apply group-hover:text-info-600 dark:group-hover:text-info-400;
+  @apply group-hover:text-blue-600 dark:group-hover:text-blue-400;
 }
 
 .service-info-badge {
-  @apply bg-info-100/60 dark:bg-info-900/60 text-info-800 dark:text-info-200 border-info-300;
+  @apply bg-blue-100/60 dark:bg-blue-900/60 text-blue-800 dark:text-blue-200 border-blue-300;
 }
 
 .service-info-border {
-  @apply border-info-200/40 dark:border-info-700/40;
+  @apply border-blue-200/40 dark:border-blue-700/40;
 }
 
 /* Colores para servicios - Purple (Púrpura) */
@@ -509,167 +300,51 @@ main > div.container {
 
 /* Colores para servicios - Success (Verde) */
 .service-success-icon {
-  @apply text-success-600 dark:text-success-400;
+  @apply text-green-600 dark:text-green-400;
 }
 
 .service-success-bg {
-  @apply bg-success-100/15 dark:bg-success-900/15;
+  @apply bg-green-100/15 dark:bg-green-900/15;
 }
 
 .service-success-bg-hover {
-  @apply group-hover:bg-success-200/20 dark:group-hover:bg-success-800/20;
+  @apply group-hover:bg-green-200/20 dark:group-hover:bg-green-800/20;
 }
 
 .service-success-text {
-  @apply group-hover:text-success-600 dark:group-hover:text-success-400;
+  @apply group-hover:text-green-600 dark:group-hover:text-green-400;
 }
 
 .service-success-badge {
-  @apply bg-success-100/60 dark:bg-success-900/60 text-success-800 dark:text-success-200 border-success-300;
+  @apply bg-green-100/60 dark:bg-green-900/60 text-green-800 dark:text-green-200 border-green-300;
 }
 
 .service-success-border {
-  @apply border-success-200/40 dark:border-success-700/40;
+  @apply border-green-200/40 dark:border-green-700/40;
 }
 
 /* Colores para servicios - Warning (Amarillo) */
 .service-warning-icon {
-  @apply text-warning-600 dark:text-warning-400;
+  @apply text-yellow-600 dark:text-yellow-400;
 }
 
 .service-warning-bg {
-  @apply bg-warning-100/15 dark:bg-warning-900/15;
+  @apply bg-yellow-100/15 dark:bg-yellow-900/15;
 }
 
 .service-warning-bg-hover {
-  @apply group-hover:bg-warning-200/20 dark:group-hover:bg-warning-800/20;
+  @apply group-hover:bg-yellow-200/20 dark:group-hover:bg-yellow-800/20;
 }
 
 .service-warning-text {
-  @apply group-hover:text-warning-600 dark:group-hover:text-warning-400;
+  @apply group-hover:text-yellow-600 dark:group-hover:text-yellow-400;
 }
 
 .service-warning-badge {
-  @apply bg-warning-100/60 dark:bg-warning-900/60 text-warning-800 dark:text-warning-200 border-warning-300;
+  @apply bg-yellow-100/60 dark:bg-yellow-900/60 text-yellow-800 dark:text-yellow-200 border-yellow-300;
 }
 
 .service-warning-border {
-  @apply border-warning-200/40 dark:border-warning-700/40;
+  @apply border-yellow-200/40 dark:border-yellow-700/40;
 }
 
-/* ====== SCHEDULE CALL - COLORES DINÁMICOS ====== */
-/* Colores para ScheduleCall - Info (Azul) */
-.schedule-info-icon {
-  @apply text-info-600 dark:text-info-400;
-}
-
-.schedule-info-bg {
-  @apply bg-info-500/30 dark:bg-info-500/20;
-}
-
-.schedule-info-bg-gradient {
-  @apply from-info-500/30 to-info-500/20;
-}
-
-.schedule-info-shadow {
-  @apply shadow-info-500/20;
-}
-
-.schedule-info-border {
-  @apply border-info-500/20 hover:border-info-500/40;
-}
-
-.schedule-info-button {
-  @apply bg-info-600 hover:bg-info-700 border-info-600 hover:border-info-700;
-}
-
-.schedule-info-button-text {
-  @apply text-info-600;
-}
-
-/* Colores para ScheduleCall - Purple (Púrpura) */
-.schedule-purple-icon {
-  @apply text-purple-600 dark:text-purple-400;
-}
-
-.schedule-purple-bg {
-  @apply bg-purple-500/30 dark:bg-purple-500/20;
-}
-
-.schedule-purple-bg-gradient {
-  @apply from-purple-500/30 to-purple-500/20;
-}
-
-.schedule-purple-shadow {
-  @apply shadow-purple-500/20;
-}
-
-.schedule-purple-border {
-  @apply border-purple-500/20 hover:border-purple-500/40;
-}
-
-.schedule-purple-button {
-  @apply bg-purple-600 hover:bg-purple-700 border-purple-600 hover:border-purple-700;
-}
-
-.schedule-purple-button-text {
-  @apply text-purple-600;
-}
-
-/* Colores para ScheduleCall - Success (Verde) */
-.schedule-success-icon {
-  @apply text-success-600 dark:text-success-400;
-}
-
-.schedule-success-bg {
-  @apply bg-success-500/30 dark:bg-success-500/20;
-}
-
-.schedule-success-bg-gradient {
-  @apply from-success-500/30 to-success-500/20;
-}
-
-.schedule-success-shadow {
-  @apply shadow-success-500/20;
-}
-
-.schedule-success-border {
-  @apply border-success-500/20 hover:border-success-500/40;
-}
-
-.schedule-success-button {
-  @apply bg-success-600 hover:bg-success-700 border-success-600 hover:border-success-700;
-}
-
-.schedule-success-button-text {
-  @apply text-success-600;
-}
-
-/* Colores para ScheduleCall - Warning (Amarillo) */
-.schedule-warning-icon {
-  @apply text-warning-600 dark:text-warning-400;
-}
-
-.schedule-warning-bg {
-  @apply bg-warning-500/30 dark:bg-warning-500/20;
-}
-
-.schedule-warning-bg-gradient {
-  @apply from-warning-500/30 to-warning-500/20;
-}
-
-.schedule-warning-shadow {
-  @apply shadow-warning-500/20;
-}
-
-.schedule-warning-border {
-  @apply border-warning-500/20 hover:border-warning-500/40;
-}
-
-.schedule-warning-button {
-  @apply bg-warning-600 hover:bg-warning-700 border-warning-600 hover:border-warning-700;
-}
-
-.schedule-warning-button-text {
-  @apply text-warning-600;
-}

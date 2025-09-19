@@ -8,10 +8,10 @@ interface SectionTitleProps {
 
 export function SectionTitle({ title = "" }: SectionTitleProps) {
   return (
-    <div className="flex justify-center mb-12 w-full relative dark:text-background">
+    <div className="flex justify-center mb-8 md:mb-12 lg:mb-16 w-full relative dark:text-background">
 
       <motion.h2
-        className="text-center font-bold text-3xl sm:text-4xl md:text-4xl lg:text-5xl xl:text-6xl tracking-tight px-4 sm:px-6 md:px-8 py-4 sm:py-6 relative z-10"
+        className="!text-3xl md:!text-5xl lg:!text-7xl !font-bold text-center tracking-tight px-4 md:px-6 lg:px-8 py-4 md:py-6 lg:py-8 relative z-10"
         initial={{ opacity: 0, y: 10 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}

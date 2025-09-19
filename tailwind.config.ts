@@ -20,8 +20,8 @@ const config = {
     },
     extend: {
       fontFamily: {
-        sans: ["var(--font-inter)"],
-        space: ["var(--font-space)"],
+        sans: ["var(--font-sans)"],
+        space: ["var(--font-space-grotesk)"],
         orbitron: ["var(--font-orbitron)"],
       },
       colors: {

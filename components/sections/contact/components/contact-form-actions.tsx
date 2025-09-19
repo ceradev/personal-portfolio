@@ -7,10 +7,9 @@ import { LoadingSpinner } from "@/components/ui/feedback/loading-spinner";
 
 interface ContactFormActionsProps {
   isSubmitting: boolean;
-  onSubmit: () => void;
 }
 
-export function ContactFormActions({ isSubmitting, onSubmit }: ContactFormActionsProps) {
+export function ContactFormActions({ isSubmitting }: Readonly<ContactFormActionsProps>) {
   const formItemVariants = {
     hidden: { opacity: 0, y: 20 },
     visible: {
@@ -28,7 +27,6 @@ export function ContactFormActions({ isSubmitting, onSubmit }: ContactFormAction
     >
       <Button
         type="submit"
-        onClick={onSubmit}
         className="w-full bg-primary hover:bg-primary/90 text-primary-foreground relative overflow-hidden group"
         disabled={isSubmitting}
       >
