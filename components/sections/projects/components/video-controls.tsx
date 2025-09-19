@@ -24,7 +24,7 @@ interface VideoControlsProps {
   readonly onNext: () => void;
   readonly onVolumeChange: (value: number[]) => void;
   readonly onMute: () => void;
-  readonly onProgressClick: (e: React.MouseEvent<HTMLDivElement>) => void;
+  readonly onProgressClick: (e: React.MouseEvent<HTMLButtonElement>) => void;
   readonly onTogglePlaylist: () => void;
   readonly onShowDetails: () => void;
 }
@@ -47,7 +47,7 @@ export function VideoControls({
   onTogglePlaylist,
   onShowDetails,
 }: VideoControlsProps) {
-  const progressRef = useRef<HTMLDivElement>(null);
+  const progressRef = useRef<HTMLButtonElement>(null);
 
   const formatTime = (time: number) => {
     const minutes = Math.floor(time / 60);

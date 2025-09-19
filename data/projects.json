@@ -2,15 +2,14 @@
   {
     "id": "bar-guantanamera",
     "title": "Bar Guantanamera",
-    "description": "Aplicación web para la gestión de reservas y promoción del Bar Guantanamera, con un diseño moderno y orientado a mejorar la experiencia de los clientes.",
-    "longDescription": "Desarrollo de una aplicación web completa para la gestión de reservas y promoción del Bar Guantanamera. La aplicación incluye un sistema de reservas en tiempo real, integración con mapas para localización, diseño responsivo adaptable a móviles y un panel de administración para la gestión del negocio.",
+    "description": "Aplicación web frontend para la promoción del Bar Guantanamera, con un diseño moderno y orientado a mejorar la experiencia de los clientes. Próximamente se implementará funcionalidad full stack con IA para pedidos online.",
+    "longDescription": "Desarrollo de una aplicación web frontend para la promoción del Bar Guantanamera. La aplicación incluye un diseño moderno y responsivo, integración con mapas para localización, y una interfaz intuitiva. Próximamente se implementará funcionalidad full stack con integración de IA para permitir pedidos online automatizados y gestión avanzada del negocio.",
     "technologies": [
       "React",
       "Next.js",
       "Tailwind CSS",
-      "Spring Boot",
-      "PostgreSQL",
-      "Cloud Hosting"
+      "Framer Motion",
+      "JavaScript"
     ],
     "image": "/projects/bar-guantanamera/preview.png",
     "images": [
@@ -24,29 +23,31 @@
     ],
     "demoUrl": "https://barguantanamera.com",
     "githubUrl": "https://github.com/ceradev/bar-guantanamera",
-    "impact": "Aumento de la visibilidad online del negocio, optimización en la gestión de citas y mayor interacción con clientes gracias a una interfaz intuitiva.",
-    "category": "Full Stack",
-    "type": ["Full Stack", "Business"],
+    "impact": "Aumento de la visibilidad online del negocio y mejora de la experiencia del usuario. Próximamente se implementará funcionalidad de pedidos online con IA.",
+    "category": "Frontend",
+    "type": ["Frontend", "Business"],
     "featured": true,
     "status": "completed",
     "date": "2025-08-29",
     "client": "Bar Guantanamera",
-    "role": "Full Stack Developer",
+    "role": "Frontend Developer",
     "teamSize": 1,
     "duration": "2 meses",
     "isDeployed": true,
     "highlights": [
-      "Implementación de un sistema de reservas en tiempo real",
+      "Diseño moderno y responsivo para promoción del negocio",
+      "Animaciones fluidas con Framer Motion",
       "Integración con mapas para localización del bar",
-      "Diseño responsivo adaptable a móviles",
-      "Panel de administración para la gestión del negocio"
+      "Interfaz intuitiva y atractiva para clientes",
+      "Próximamente: Sistema de pedidos online con IA",
+      "Próximamente: Panel de administración full stack"
     ]
   },
   {
     "id": "alphonics",
     "title": "Alphonics",
-    "description": "Plataforma web para la promoción musical de artistas y gestión de contenido digital.",
-    "longDescription": "Desarrollo de una plataforma web completa para la promoción musical de artistas y gestión de contenido digital. La plataforma incluye un reproductor musical integrado, panel de administración para la gestión de artistas y contenidos, diseño responsivo y un enfoque especial en la experiencia de usuario.",
+    "description": "Proyecto de fin de curso desarrollado durante mi formación como desarrollador web. Aplicación web para la promoción musical de artistas y gestión de contenido digital. Pendiente de volver a realizar con funcionalidades avanzadas e integración con IA.",
+    "longDescription": "Proyecto de fin de curso desarrollado durante mi formación como desarrollador web. La plataforma incluye un reproductor musical integrado, panel de administración para la gestión de artistas y contenidos, diseño responsivo y un enfoque especial en la experiencia de usuario. En el futuro me gustaría volver a desarrollar esta aplicación con funcionalidades avanzadas e integración con IA para crear una aplicación musical completa.",
     "technologies": [
       "React",
       "Tailwind CSS",
@@ -67,22 +68,24 @@
     ],
     "demoUrl": "https://alphonics.ceradev.com",
     "githubUrl": "https://github.com/ceradev/alphonics",
-    "impact": "Mejoró la visibilidad online de los artistas, facilitó la conexión con su audiencia y aportó una herramienta centralizada para la difusión de proyectos musicales.",
+    "impact": "Proyecto de fin de curso que demostró mis habilidades iniciales en desarrollo web. En el futuro se convertirá en una aplicación musical avanzada con IA.",
     "category": "Full Stack",
     "type": ["Full Stack", "Entertainment"],
     "featured": true,
-    "status": "completed",
-    "date": "2023-05-15",
+    "status": "pendiente",
+    "date": "2024-05-15",
     "client": "Alphonics",
     "role": "Full Stack Developer",
     "teamSize": 1,
     "duration": "3 meses",
     "isDeployed": false,
     "highlights": [
-      "Creación de un reproductor musical integrado",
-      "Panel de administración para la gestión de artistas y contenidos",
+      "Proyecto de fin de curso durante mi formación como desarrollador web",
+      "Reproductor musical integrado con funcionalidades básicas",
+      "Panel de administración para gestión de artistas y contenidos",
       "Diseño responsivo adaptable a todos los dispositivos",
-      "Enfoque especial en la experiencia de usuario"
+      "Futuro: Aplicación musical avanzada con integración de IA",
+      "Futuro: Funcionalidades avanzadas de recomendación musical"
     ]
   },
   {
@@ -136,19 +139,21 @@
   {
     "id": "portfolio-website",
     "title": "Portfolio Personal",
-    "description": "Sitio web portfolio personal desarrollado con Next.js, TypeScript y Tailwind CSS, con animaciones fluidas y diseño responsivo.",
-    "longDescription": "Portfolio personal desarrollado con tecnologías modernas como Next.js, TypeScript y Tailwind CSS. Incluye secciones de presentación, proyectos, servicios y contacto, con animaciones fluidas usando Framer Motion y diseño completamente responsivo.",
+    "description": "Portfolio personal moderno desarrollado con Astro, React y Tailwind CSS, con animaciones fluidas, diseño responsivo y optimización SEO.",
+    "longDescription": "Portfolio personal desarrollado con Astro como framework principal, React para componentes interactivos y Tailwind CSS para estilos. Incluye secciones de presentación, proyectos, servicios, experiencia y contacto, con animaciones fluidas usando Framer Motion, diseño completamente responsivo, modo oscuro/claro, y optimización completa para SEO y rendimiento.",
     "technologies": [
-      "Next.js",
-      "TypeScript",
+      "Astro",
+      "React",
       "Tailwind CSS",
       "Framer Motion",
-      "React"
+      "TypeScript"
     ],
-    "image": "/projects/creative-portfolio-layout.png",
+    "image": "/projects/personal-portfolio/Captura de pantalla 2025-09-18 230431.png",
     "images": [
-      "/projects/creative-portfolio-layout.png",
-      "/projects/code-projects-portfolio.png"
+      "/projects/personal-portfolio/Captura de pantalla 2025-09-18 230431.png",
+      "/projects/personal-portfolio/Captura de pantalla 2025-09-18 230458.png",
+      "/projects/personal-portfolio/Captura de pantalla 2025-09-18 230525.png",
+      "/projects/personal-portfolio/Captura de pantalla 2025-09-18 230545.png"
     ],
     "demoUrl": "https://ceradev.com",
     "githubUrl": "https://github.com/ceradev/personal-portfolio",
@@ -157,17 +162,19 @@
     "type": ["Frontend", "Personal"],
     "featured": false,
     "status": "completed",
-    "date": "2025-01-15",
+    "date": "2024-11-15",
     "client": "Personal",
     "role": "Full Stack Developer",
     "teamSize": 1,
     "duration": "1 mes",
     "isDeployed": true,
     "highlights": [
-      "Diseño responsivo para todos los dispositivos",
+      "Desarrollado con Astro para máximo rendimiento",
+      "Componentes React para interactividad",
+      "Diseño responsivo con Tailwind CSS",
       "Animaciones fluidas con Framer Motion",
-      "Optimización de rendimiento y SEO",
-      "Interfaz moderna y atractiva"
+      "Modo oscuro/claro con persistencia de preferencias",
+      "Optimización completa de SEO y rendimiento"
     ]
   }
 ]

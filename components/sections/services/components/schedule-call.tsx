@@ -211,7 +211,7 @@ export function ScheduleCall({ serviceType = 'web-development' }: Readonly<{ rea
             <div className="text-center space-y-1">
               <div className="flex items-center justify-center gap-2 text-muted-foreground">
                 <Clock className='h-3 w-3 text-red-500' />
-                <span className="text-xs font-medium">Disponible Lun-Vie, 9:00-18:00</span>
+                <span className="text-xs font-medium">Disponible Lun-Jue, 8:30 - 14:30</span>
               </div>
               <div className="flex items-center justify-center gap-2">
                 <div className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" />

@@ -24,7 +24,7 @@ export function HeroButtons() {
 
   return (
     <motion.div
-      className="flex flex-wrap items-center gap-2 sm:gap-3 md:gap-4"
+      className="flex flex-wrap items-center gap-2 sm:gap-3 md:gap-4 px-2 sm:px-4 md:px-6"
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8, delay: 3 }}
@@ -40,7 +40,7 @@ export function HeroButtons() {
               });
             }
           }}
-          className="bg-gradient-to-r from-primary via-red-500 to-primary hover:from-primary/90 hover:via-red-500/90 hover:to-primary/90 text-primary-foreground rounded-full px-4 py-2 sm:px-6 sm:py-2.5 md:px-8 md:py-3 group relative overflow-hidden shadow-md hover:shadow-lg transition-all duration-300 text-sm sm:text-base"
+          className="bg-gradient-to-r from-primary via-red-500 to-primary hover:from-primary/90 hover:via-red-500/90 hover:to-primary/90 text-primary-foreground rounded-full px-4 py-2 sm:px-6 sm:py-2.5 md:px-6 md:py-4 lg:px-6 lg:py-5 group relative overflow-hidden shadow-md hover:shadow-lg transition-all duration-300 text-sm sm:text-base"
         >
           <span className="relative z-10 flex items-center gap-1 sm:gap-2 font-medium">
             <FolderOpen className="h-3 w-3 sm:h-4 sm:w-4" />
@@ -65,7 +65,7 @@ export function HeroButtons() {
         <Button
           variant="outline"
           onClick={handleOpenCV}
-          className="border-2 border-primary/50 text-foreground hover:bg-primary/10 hover:border-primary rounded-full px-4 py-2 sm:px-6 sm:py-2.5 md:px-8 md:py-3 font-medium relative overflow-hidden shadow-md hover:shadow-lg transition-all duration-300 backdrop-blur-sm bg-background/50 text-sm sm:text-base"
+          className="border-2 border-primary/50 text-foreground hover:bg-primary/10 hover:border-primary rounded-full px-4 py-2 sm:px-6 sm:py-2.5 md:px-6 md:py-4 lg:px-6 lg:py-5 font-medium relative overflow-hidden shadow-md hover:shadow-lg transition-all duration-300 backdrop-blur-sm bg-background/50 text-sm sm:text-base"
         >
           <span className="relative z-10 flex items-center gap-1 sm:gap-2">
             <FileText className="h-3 w-3 sm:h-4 sm:w-4" />

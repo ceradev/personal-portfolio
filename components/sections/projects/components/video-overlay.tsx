@@ -64,6 +64,12 @@ export function VideoOverlay({
             Planificado
           </Badge>
         );
+      case "pendiente":
+        return (
+          <Badge className="bg-orange-600/20 text-orange-600 hover:bg-orange-600/30 border-orange-600/30">
+            Pendiente
+          </Badge>
+        );
       default:
         return null;
     }

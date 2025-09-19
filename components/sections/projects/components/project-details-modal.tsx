@@ -16,6 +16,102 @@ interface ProjectDetailsModalProps {
   readonly onClose: () => void;
 }
 
+// Helper components to reduce complexity
+const CategoryIcon = ({ category }: { category: string }) => {
+  const iconMap = {
+    "Frontend": Monitor,
+    "Backend": Server,
+    "Full Stack": Layers,
+    "IA": Brain,
+    "Freelance": Code,
+  };
+  const Icon = iconMap[category as keyof typeof iconMap] || Code;
+  return <Icon className="h-4 w-4" />;
+};
+
+const StatusBadge = ({ status }: { status: string }) => {
+  const badgeMap = {
+    "completed": { className: "bg-green-600/20 text-green-600 hover:bg-green-600/30 border-green-600/30", text: "Completado" },
+    "in-progress": { className: "bg-blue-600/20 text-blue-600 hover:bg-blue-600/30 border-blue-600/30", text: "En Progreso" },
+    "planned": { className: "bg-amber-600/20 text-amber-600 hover:bg-amber-600/30 border-amber-600/30", text: "Planificado" },
+    "pendiente": { className: "bg-orange-600/20 text-orange-600 hover:bg-orange-600/30 border-orange-600/30", text: "Pendiente" },
+  };
+  const config = badgeMap[status as keyof typeof badgeMap];
+  return config ? <Badge className={config.className}>{config.text}</Badge> : null;
+};
+
+const ImageGallery = ({ project, selectedImageIndex, setSelectedImageIndex, isMobile }: {
+  project: Project;
+  selectedImageIndex: number;
+  setSelectedImageIndex: (index: number) => void;
+  isMobile: boolean;
+}) => {
+  const projectImages = project.images?.length ? project.images : [project.image];
+  
+  return (
+    <div className={`space-y-4 ${isMobile ? "" : "lg:col-span-2"}`}>
+      <div className={`relative aspect-[3/2] rounded-lg overflow-hidden ${isMobile ? "w-full" : "max-w-sm mx-auto"}`}>
+        <Image
+          src={projectImages[selectedImageIndex] || "/placeholders/placeholder.svg"}
+          alt={`${project.title} - Vista ${selectedImageIndex + 1}`}
+          fill
+          className="object-contain bg-black/20"
+          priority={selectedImageIndex === 0}
+          quality={isMobile ? 90 : 75}
+          sizes={isMobile ? "(max-width: 768px) 100vw" : "(max-width: 1200px) 50vw"}
+        />
+        {projectImages.length > 1 && (
+          <div className="absolute top-2 right-2 bg-black/50 backdrop-blur-sm rounded-full px-2 py-1 text-white text-xs">
+            {selectedImageIndex + 1} / {projectImages.length}
+          </div>
+        )}
+      </div>
+      
+      {projectImages.length > 1 && (
+        <div className="space-y-2">
+          <div className="flex items-center justify-between">
+            <h4 className="text-sm font-semibold text-muted-foreground">Todas las vistas</h4>
+            <span className="text-xs text-muted-foreground bg-muted px-2 py-1 rounded-full">
+              {projectImages.length} imágenes
+            </span>
+          </div>
+          <div className={`grid ${isMobile ? "grid-cols-3" : "grid-cols-2"} gap-3 ${isMobile ? "max-h-48" : "max-h-96"} overflow-y-auto pr-2`}>
+            {projectImages.slice(1).map((image, index) => (
+              <div 
+                key={`${project.id}-additional-${index}`} 
+                className={`relative aspect-[3/2] rounded-md overflow-hidden cursor-pointer group transition-all duration-200 ${
+                  selectedImageIndex === index + 1 ? 'ring-2 ring-primary ring-offset-2' : ''
+                }`}
+                onClick={() => setSelectedImageIndex(index + 1)}
+                role="button"
+                tabIndex={0}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    setSelectedImageIndex(index + 1);
+                  }
+                }}
+                aria-label={`Ver imagen ${index + 2} de ${project.title}`}
+              >
+                <Image
+                  src={image}
+                  alt={`${project.title} - Vista ${index + 2}`}
+                  fill
+                  className="object-cover transition-transform duration-300 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300" />
+                <div className="absolute top-1 left-1 bg-black/70 text-white text-xs px-1.5 py-0.5 rounded-full">
+                  {index + 2}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+    </div>
+  );
+};
+
 export function ProjectDetailsModal({
   showModal,
   project,
@@ -24,67 +120,9 @@ export function ProjectDetailsModal({
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
   const isMobile = useMobile();
   
-  // Verificación de seguridad
-  if (!project) {
+  if (!project || typeof window === 'undefined') {
     return null;
   }
-
-  // Verificar que estamos en el cliente
-  if (typeof window === 'undefined') {
-    return null;
-  }
-  
-  // Obtener las imágenes disponibles
-  const getProjectImages = () => {
-    const images = project.images;
-    if (images && Array.isArray(images) && images.length > 0) {
-      return images;
-    }
-    return [project.image];
-  };
-  
-  const projectImages = getProjectImages();
-  const renderCategoryIcon = (category: string) => {
-    switch (category) {
-      case "Frontend":
-        return <Monitor className="h-4 w-4" />;
-      case "Backend":
-        return <Server className="h-4 w-4" />;
-      case "Full Stack":
-        return <Layers className="h-4 w-4" />;
-      case "IA":
-        return <Brain className="h-4 w-4" />;
-      case "Freelance":
-        return <Code className="h-4 w-4" />;
-      default:
-        return <Code className="h-4 w-4" />;
-    }
-  };
-
-  const renderStatusBadge = (status: string) => {
-    switch (status) {
-      case "completed":
-        return (
-          <Badge className="bg-green-600/20 text-green-600 hover:bg-green-600/30 border-green-600/30">
-            Completado
-          </Badge>
-        );
-      case "in-progress":
-        return (
-          <Badge className="bg-blue-600/20 text-blue-600 hover:bg-blue-600/30 border-blue-600/30">
-            En Progreso
-          </Badge>
-        );
-      case "planned":
-        return (
-          <Badge className="bg-amber-600/20 text-amber-600 hover:bg-amber-600/30 border-amber-600/30">
-            Planificado
-          </Badge>
-        );
-      default:
-        return null;
-    }
-  };
 
   return createPortal(
     <AnimatePresence>
@@ -110,7 +148,7 @@ export function ProjectDetailsModal({
                   <h2 className={`${isMobile ? "text-xl" : "text-2xl"} font-bold`}>{project.title}</h2>
                   <div className={`flex items-center gap-4 mt-2 text-sm text-muted-foreground ${isMobile ? "flex-col items-start gap-2" : ""}`}>
                     <div className="flex items-center gap-1">
-                      {renderCategoryIcon(project.category as string)}
+                      <CategoryIcon category={project.category as string} />
                       <span>{project.category}</span>
                     </div>
                     <div className="flex items-center gap-1">
@@ -126,7 +164,7 @@ export function ProjectDetailsModal({
                 </div>
                 <div className={`flex items-center gap-2 ${isMobile ? "w-full justify-between" : ""}`}>
                   <div className="flex items-center gap-2">
-                    {renderStatusBadge(project.status)}
+                    <StatusBadge status={project.status} />
                     {project.featured && (
                       <Badge className="bg-primary/20 text-primary border-primary/30">
                         <Star className="h-3 w-3 mr-1" /> Destacado
@@ -134,12 +172,7 @@ export function ProjectDetailsModal({
                     )}
                   </div>
                   {isMobile && (
-                    <Button
-                      variant="ghost"
-                      size="icon"
-                      onClick={onClose}
-                      className="h-8 w-8"
-                    >
+                    <Button variant="ghost" size="icon" onClick={onClose} className="h-8 w-8">
                       <X className="h-4 w-4" />
                     </Button>
                   )}
@@ -150,70 +183,12 @@ export function ProjectDetailsModal({
             {/* Modal Content */}
             <div className={`flex-1 overflow-y-auto ${isMobile ? "p-4" : "p-6"}`}>
               <div className={`grid grid-cols-1 ${isMobile ? "" : "lg:grid-cols-5"} gap-6`}>
-                {/* Project Images Section */}
-                <div className={`space-y-4 ${isMobile ? "" : "lg:col-span-2"}`}>
-                  {/* Main Project Image */}
-                  <div className={`relative aspect-[3/2] rounded-lg overflow-hidden ${isMobile ? "w-full" : "max-w-sm mx-auto"}`}>
-                    <Image
-                      src={projectImages[selectedImageIndex] || "/placeholders/placeholder.svg"}
-                      alt={`${project.title} - Vista ${selectedImageIndex + 1}`}
-                      fill
-                      className="object-contain bg-black/20"
-                      priority={selectedImageIndex === 0}
-                      quality={isMobile ? 90 : 75}
-                      sizes={isMobile ? "(max-width: 768px) 100vw" : "(max-width: 1200px) 50vw"}
-                    />
-                    {/* Image Counter */}
-                    {projectImages.length > 1 && (
-                      <div className="absolute top-2 right-2 bg-black/50 backdrop-blur-sm rounded-full px-2 py-1 text-white text-xs">
-                        {selectedImageIndex + 1} / {projectImages.length}
-                      </div>
-                    )}
-                  </div>
-                  
-                  {/* Additional Images Gallery */}
-                  {project.images?.length && project.images.length > 1 && (
-                    <div className="space-y-2">
-                      <div className="flex items-center justify-between">
-                        <h4 className="text-sm font-semibold text-muted-foreground">Todas las vistas</h4>
-                        <span className="text-xs text-muted-foreground bg-muted px-2 py-1 rounded-full">
-                          {projectImages.length} imágenes
-                        </span>
-                      </div>
-                      <div className={`grid ${isMobile ? "grid-cols-3" : "grid-cols-2"} gap-3 ${isMobile ? "max-h-48" : "max-h-96"} overflow-y-auto pr-2`}>
-                        {projectImages.slice(1).map((image, index) => (
-                          <div 
-                            key={`${project.id}-additional-${index}`} 
-                            className={`relative aspect-[3/2] rounded-md overflow-hidden cursor-pointer group transition-all duration-200 ${
-                              selectedImageIndex === index + 1 ? 'ring-2 ring-primary ring-offset-2' : ''
-                            }`}
-                            onClick={() => setSelectedImageIndex(index + 1)}
-                            role="button"
-                            tabIndex={0}
-                            onKeyDown={(e) => {
-                              if (e.key === 'Enter' || e.key === ' ') {
-                                e.preventDefault();
-                                setSelectedImageIndex(index + 1);
-                              }
-                            }}
-                            aria-label={`Ver imagen ${index + 2} de ${project.title}`}
-                          >
-                            <Image
-                              src={image}
-                              alt={`${project.title} - Vista ${index + 2}`}
-                              fill
-                              className="object-cover transition-transform duration-300 group-hover:scale-105"
-                            />
-                            <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300" />
-                            <div className="absolute top-1 left-1 bg-black/70 text-white text-xs px-1.5 py-0.5 rounded-full">
-                              {index + 2}
-                            </div>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                  )}
-                </div>
+                <ImageGallery 
+                  project={project} 
+                  selectedImageIndex={selectedImageIndex} 
+                  setSelectedImageIndex={setSelectedImageIndex} 
+                  isMobile={isMobile} 
+                />
 
                 {/* Project Details */}
                 <div className={`space-y-4 ${isMobile ? "" : "lg:col-span-3"}`}>
@@ -265,11 +240,7 @@ export function ProjectDetailsModal({
             {/* Modal Footer */}
             <div className={`flex-shrink-0 ${isMobile ? "p-4" : "p-6"} border-t border-border ${isMobile ? "flex-col gap-2" : "flex justify-end gap-2"}`}>
               {isMobile && (
-                <Button
-                  variant="outline"
-                  onClick={onClose}
-                  className="w-full"
-                >
+                <Button variant="outline" onClick={onClose} className="w-full">
                   Cerrar
                 </Button>
               )}
@@ -293,10 +264,7 @@ export function ProjectDetailsModal({
                 </Button>
               )}
               {!isMobile && (
-                <Button
-                  variant="outline"
-                  onClick={onClose}
-                >
+                <Button variant="outline" onClick={onClose}>
                   Cerrar
                 </Button>
               )}
