@@ -1,6 +1,6 @@
 "use client";
 
-import { SectionTitle } from "@/utils/section-title";
+import { SectionTitle } from "@/components/ui/display/section-title";
 import { motion } from "framer-motion";
 import { Mail } from "lucide-react";
 

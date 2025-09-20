@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { SectionTitle } from "@/utils/section-title";
+import { SectionTitle } from "@/components/ui/display/section-title";
 import { SectionTransition } from "@/utils/section-transition";
 import { projects, type Project } from "@/types/projects";
 import { DeviceIndicator, MobileGestureHint } from "@/components/ui/display";

@@ -9,7 +9,6 @@ import {
   ThemeToggle,
 } from "@/components/layout";
 import { FloatingCallButton } from "@/components/ui/display";
-import { ScrollProgress } from "@/utils/scroll-progress";
 import { EnhancedThemeTransition } from "@/utils/enhanced-theme-transition";
 import {
   AboutSection,
@@ -90,7 +89,6 @@ export default function Home() {
       {/* Global background for the entire application */}
       <GlobalBackground />
 
-      <ScrollProgress />
       <TopNavigation activeSection={activeSection} />
       <EnhancedThemeTransition />
 

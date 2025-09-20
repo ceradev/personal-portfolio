@@ -6,7 +6,7 @@ interface SectionTitleProps {
   readonly title?: string;
 }
 
-export function SectionTitle({ title = "" }: SectionTitleProps) {
+export function SectionTitle({ title = "" }: Readonly<SectionTitleProps>) {
   return (
     <div className="flex justify-center mb-8 md:mb-12 lg:mb-16 w-full relative dark:text-background">
 

@@ -13,3 +13,4 @@ export * from './soft-skill-item';
 export * from './status-badge';
 export * from './text-paragraph';
 export * from './avatar-button';
+export * from './section-title';

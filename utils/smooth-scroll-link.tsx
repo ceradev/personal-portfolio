@@ -10,7 +10,7 @@ interface SmoothScrollLinkProps {
   onClick?: () => void
 }
 
-export function SmoothScrollLink({ href, children, className, onClick }: SmoothScrollLinkProps) {
+export function SmoothScrollLink({ href, children, className, onClick }: Readonly<SmoothScrollLinkProps>) {
   const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault()
     

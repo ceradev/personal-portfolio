@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { SectionTitle } from "@/utils/section-title";
+import { SectionTitle } from "@/components/ui/display/section-title";
 import { SectionTransition } from "@/utils/section-transition";
 import { AboutSubtitle } from "@/components/sections/about/components/about-subtitle";
 import { EssentialInfo } from "@/components/sections/about/components/essential-info";

@@ -1,6 +1,6 @@
 "use client";
 
-import { SectionTitle } from "@/utils/section-title";
+import { SectionTitle } from "@/components/ui/display/section-title";
 import { SectionTransition } from "@/utils/section-transition";
 import { ContactSubtitle, ContactIntro, ContactForm } from "./components";
 
