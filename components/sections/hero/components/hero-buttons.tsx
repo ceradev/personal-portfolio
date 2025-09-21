@@ -1,7 +1,14 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { FileText, FolderOpen, Github, Linkedin, Mail, ChevronDown } from "lucide-react";
+import {
+  FileText,
+  FolderOpen,
+  Github,
+  Linkedin,
+  Mail,
+  ChevronDown,
+} from "lucide-react";
 import Link from "next/link";
 import { Button } from "@/components/ui/display/button";
 import { SOCIAL_LINKS, CV_DOWNLOAD } from "@/data/hero-data";
@@ -29,7 +36,11 @@ export function HeroButtons() {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8, delay: 3 }}
     >
-      <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+      <motion.div
+        whileHover={{ scale: 1.05, y: -1 }}
+        whileTap={{ scale: 0.98 }}
+        transition={{ duration: 0.3, ease: "easeOut", delay: 0.1 }}
+      >
         <Button
           onClick={() => {
             const projectsSection = document.getElementById("projects");
@@ -40,49 +51,55 @@ export function HeroButtons() {
               });
             }
           }}
-          className="bg-gradient-to-r from-primary via-red-500 to-primary hover:from-primary/90 hover:via-red-500/90 hover:to-primary/90 text-primary-foreground rounded-full px-2 py-1.5 sm:px-3 sm:py-2 md:px-3 md:py-2 lg:px-3 lg:py-2 group relative overflow-hidden shadow-md hover:shadow-lg transition-all duration-300 text-xs sm:text-sm whitespace-nowrap"
+          className="bg-gradient-to-r from-primary via-red-500 to-primary hover:from-red-800 dark:hover:from-red-300 hover:via-red-600 dark:hover:via-red-400 hover:to-red-800 dark:hover:to-red-300 text-primary-foreground hover:text-white dark:hover:text-black rounded-full px-3 py-2 sm:px-4 sm:py-2.5 md:px-4 md:py-3 lg:px-5 lg:py-3 group relative overflow-hidden transition-all duration-300 text-sm sm:text-base whitespace-nowrap"
         >
           <span className="relative z-10 flex items-center gap-1 sm:gap-2 font-medium">
-            <FolderOpen className="h-3 w-3 sm:h-4 sm:w-4" />
+            <FolderOpen className="h-4 w-4 sm:h-5 sm:w-5" />
             <span className="hidden sm:inline">Mis proyectos</span>
             <span className="sm:hidden">Proyectos</span>
           </span>
-          <motion.span
-            className="absolute inset-0 bg-white/20 rounded-full"
-            initial={{ scale: 0, opacity: 0 }}
-            whileHover={{ scale: 1, opacity: 1 }}
-            transition={{ duration: 0.3 }}
-          />
-          <motion.span
-            className="absolute -inset-1 bg-gradient-to-r from-primary/50 via-red-500/50 to-primary/50 rounded-full blur"
+
+          {/* Sombra interna que aparece en hover */}
+          <motion.div
+            className="absolute inset-0 bg-black/20 dark:bg-white/20 rounded-full"
             initial={{ opacity: 0 }}
             whileHover={{ opacity: 1 }}
-            transition={{ duration: 0.3 }}
+            transition={{ duration: 0.3, ease: "easeOut", delay: 0.1 }}
+          />
+
+          {/* Brillo superior */}
+          <motion.div
+            className="absolute inset-0 bg-gradient-to-b from-white/30 via-transparent to-transparent dark:from-white/20 rounded-full"
+            initial={{ opacity: 0 }}
+            whileHover={{ opacity: 1 }}
+            transition={{ duration: 0.3, ease: "easeOut", delay: 0.1 }}
           />
         </Button>
       </motion.div>
 
-      <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+      <motion.div whileTap={{ scale: 0.95 }}>
         <Button
           variant="outline"
           onClick={handleOpenCV}
-          className="border-2 border-primary/50 text-foreground hover:bg-primary/10 hover:border-primary rounded-full px-2 py-1.5 sm:px-3 sm:py-2 md:px-3 md:py-2 lg:px-3 lg:py-2 font-medium relative overflow-hidden shadow-md hover:shadow-lg transition-all duration-300 backdrop-blur-sm bg-background/50 text-xs sm:text-sm whitespace-nowrap"
+          className="border-2 border-primary/50 text-foreground rounded-full px-3 py-2 sm:px-4 sm:py-2.5 md:px-4 md:py-3 lg:px-5 lg:py-3 font-medium relative overflow-hidden shadow-md transition-all duration-300 backdrop-blur-sm bg-background/50 text-sm sm:text-base whitespace-nowrap"
         >
           <span className="relative z-10 flex items-center gap-1 sm:gap-2">
-            <FileText className="h-3 w-3 sm:h-4 sm:w-4" />
+            <FileText className="h-4 w-4 sm:h-5 sm:w-5" />
             Ver CV
           </span>
-          <motion.span
-            className="absolute inset-0 bg-gradient-to-r from-primary/10 to-primary/10 rounded-full"
+          <motion.div
+            className="absolute inset-0 bg-red-800 dark:bg-red-300 rounded-full"
             initial={{ scale: 0, opacity: 0 }}
-            whileHover={{ scale: 1, opacity: 1 }}
-            transition={{ duration: 0.3 }}
+            whileHover={{ scale: 1, opacity: 0.9 }}
+            transition={{ duration: 0.3, ease: "easeOut" }}
+            style={{ transformOrigin: "center" }}
           />
-          <motion.span
-            className="absolute -inset-1 bg-primary/20 rounded-full blur"
-            initial={{ opacity: 0 }}
-            whileHover={{ opacity: 1 }}
-            transition={{ duration: 0.3 }}
+          <motion.div
+            className="absolute -inset-3 bg-red-800/80 dark:bg-red-300/80 rounded-full blur-md"
+            initial={{ scale: 0, opacity: 0 }}
+            whileHover={{ scale: 1.3, opacity: 1 }}
+            transition={{ duration: 0.4, ease: "easeOut" }}
+            style={{ transformOrigin: "center" }}
           />
         </Button>
       </motion.div>
@@ -133,53 +150,22 @@ export function HeroButtons() {
           </motion.div>
         </Link>
 
-         <Link href={SOCIAL_LINKS.email} className="group relative">
-           <motion.div
-             className="p-2 sm:p-2.5 rounded-full backdrop-blur-sm bg-background/30 dark:bg-background/40 border border-border hover:border-primary/50 hover:bg-primary/10 transition-all duration-300 shadow-md hover:shadow-lg"
-             whileHover={{ scale: 1.15, rotate: 10 }}
-             whileTap={{ scale: 0.9 }}
-           >
-             <Mail className="h-4 w-4 sm:h-5 sm:w-5 text-foreground/70 group-hover:text-primary transition-colors duration-300" />
-             <motion.div
-               className="absolute -inset-1 bg-primary/20 rounded-full blur"
-               initial={{ opacity: 0 }}
-               whileHover={{ opacity: 1 }}
-               transition={{ duration: 0.3 }}
-             />
-           </motion.div>
-         </Link>
-       </motion.div>
-
-       {/* Mobile scroll arrow - separate section */}
-       <div className="md:hidden w-full flex justify-center mt-0.5">
-         <motion.div
-           className="p-4 rounded-full bg-gradient-to-r from-primary/20 to-red-500/20 border border-primary/60 hover:border-primary hover:from-primary/30 hover:to-red-500/30 transition-all duration-300 shadow-lg hover:shadow-xl cursor-pointer"
-           whileHover={{ scale: 1.15, rotate: 5 }}
-           whileTap={{ scale: 0.9 }}
-           onClick={handleScrollToServices}
-           initial={{ opacity: 0, scale: 0.8 }}
-           animate={{ opacity: 1, scale: 1 }}
-           transition={{ delay: 3.4, duration: 0.5 }}
-         >
-           <motion.div
-             animate={{ y: [0, 6, 0] }}
-             transition={{
-               duration: 1.5,
-               repeat: Number.POSITIVE_INFINITY,
-               repeatType: "loop",
-               ease: "easeInOut",
-             }}
-           >
-             <ChevronDown className="h-6 w-6 text-primary hover:text-primary-foreground transition-colors duration-300" />
-           </motion.div>
-           <motion.div
-             className="absolute -inset-1 bg-gradient-to-r from-primary/30 to-red-500/30 rounded-full blur"
-             initial={{ opacity: 0 }}
-             whileHover={{ opacity: 1 }}
-             transition={{ duration: 0.3 }}
-           />
-         </motion.div>
-       </div>
-     </motion.div>
-   );
- }
+        <Link href={SOCIAL_LINKS.email} className="group relative">
+          <motion.div
+            className="p-2 sm:p-2.5 rounded-full backdrop-blur-sm bg-background/30 dark:bg-background/40 border border-border hover:border-primary/50 hover:bg-primary/10 transition-all duration-300 shadow-md hover:shadow-lg"
+            whileHover={{ scale: 1.15, rotate: 10 }}
+            whileTap={{ scale: 0.9 }}
+          >
+            <Mail className="h-4 w-4 sm:h-5 sm:w-5 text-foreground/70 group-hover:text-primary transition-colors duration-300" />
+            <motion.div
+              className="absolute -inset-1 bg-primary/20 rounded-full blur"
+              initial={{ opacity: 0 }}
+              whileHover={{ opacity: 1 }}
+              transition={{ duration: 0.3 }}
+            />
+          </motion.div>
+        </Link>
+      </motion.div>
+    </motion.div>
+  );
+}

@@ -2,40 +2,47 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { TechBadges } from "./tech-badges";
 
 export function HeroProfile() {
   return (
     <motion.div
-      className="relative order-1 lg:order-2 flex justify-center mx-auto max-w-[200px] sm:max-w-[240px] md:max-w-[280px] lg:max-w-full"
+      className="relative order-1 lg:order-2 flex justify-center items-center mx-auto max-w-[280px] sm:max-w-[320px] md:max-w-[380px] lg:max-w-[500px] xl:max-w-[550px] w-full"
       initial={{ opacity: 0, y: 50 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8 }}
     >
-      <div className="relative w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64 lg:w-80 lg:h-80">
+      <div className="relative w-56 h-56 sm:w-64 sm:h-64 md:w-72 md:h-72 lg:w-96 lg:h-96 xl:w-[420px] xl:h-[420px]">
         {/* Enhanced decorative elements with synchronized glow effect */}
         <motion.div
-          className="absolute -top-4 -left-4 sm:-top-6 sm:-left-6 w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 border-t-2 border-l-2 border-primary/50 shadow-md shadow-primary/20"
+          className="absolute -top-4 -left-4 sm:-top-6 sm:-left-6 w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 border-t-2 border-l-2 border-red-500"
           initial={{ opacity: 0, rotate: -45 }}
-          animate={{ 
+          animate={{
             opacity: 1,
-            rotate: [0, 8, 0, -8, 0] 
+            rotate: [0, 8, 0, -8, 0],
           }}
-          transition={{ 
+          transition={{
             opacity: { duration: 0.6, delay: 0.5 },
-            rotate: { duration: 12, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut" }
+            rotate: {
+              duration: 12,
+              repeat: Number.POSITIVE_INFINITY,
+              ease: "easeInOut",
+            },
           }}
         />
         <motion.div
-          className="absolute -bottom-4 -right-4 sm:-bottom-6 sm:-right-6 w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 border-b-2 border-r-2 border-primary/50 shadow-md shadow-primary/20"
+          className="absolute -bottom-4 -right-4 sm:-bottom-6 sm:-right-6 w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 border-b-2 border-r-2 border-red-500"
           initial={{ opacity: 0, rotate: 45 }}
-          animate={{ 
+          animate={{
             opacity: 1,
-            rotate: [0, -8, 0, 8, 0] 
+            rotate: [0, -8, 0, 8, 0],
           }}
-          transition={{ 
+          transition={{
             opacity: { duration: 0.6, delay: 0.7 },
-            rotate: { duration: 12, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut" }
+            rotate: {
+              duration: 12,
+              repeat: Number.POSITIVE_INFINITY,
+              ease: "easeInOut",
+            },
           }}
         />
 
@@ -43,46 +50,38 @@ export function HeroProfile() {
         <motion.div
           className="absolute inset-0 rounded-full border-2 border-dashed border-primary/30 shadow-md shadow-primary/10"
           initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ 
+          animate={{
             opacity: 1,
             scale: 1,
-            rotate: 360 
+            rotate: 360,
           }}
-          transition={{ 
+          transition={{
             opacity: { duration: 0.8, delay: 0.3 },
             scale: { duration: 0.8, delay: 0.3 },
-            rotate: { duration: 25, repeat: Number.POSITIVE_INFINITY, ease: "linear" }
+            rotate: {
+              duration: 25,
+              repeat: Number.POSITIVE_INFINITY,
+              ease: "linear",
+            },
           }}
         />
 
         <motion.div
           className="absolute inset-4 rounded-full border-2 border-dashed border-primary/20"
           initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ 
+          animate={{
             opacity: 1,
             scale: 1,
-            rotate: -360 
+            rotate: -360,
           }}
-          transition={{ 
+          transition={{
             opacity: { duration: 0.8, delay: 0.5 },
             scale: { duration: 0.8, delay: 0.5 },
-            rotate: { duration: 30, repeat: Number.POSITIVE_INFINITY, ease: "linear" }
-          }}
-        />
-
-        {/* Additional orbital ring for more tech badges */}
-        <motion.div
-          className="absolute inset-[-12px] sm:inset-[-16px] md:inset-[-20px] rounded-full border border-dashed border-primary/15"
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ 
-            opacity: 1,
-            scale: 1,
-            rotate: 360 
-          }}
-          transition={{ 
-            opacity: { duration: 0.8, delay: 0.7 },
-            scale: { duration: 0.8, delay: 0.7 },
-            rotate: { duration: 35, repeat: Number.POSITIVE_INFINITY, ease: "linear" }
+            rotate: {
+              duration: 30,
+              repeat: Number.POSITIVE_INFINITY,
+              ease: "linear",
+            },
           }}
         />
 
@@ -104,30 +103,36 @@ export function HeroProfile() {
 
         {/* Enhanced profile image with synchronized interactive effects */}
         <motion.div
-          className="absolute inset-8 rounded-full overflow-hidden border-2 border-primary/50 shadow-lg shadow-primary/30 bg-gradient-to-br from-primary/5 to-transparent"
+          className="absolute inset-8 rounded-full overflow-hidden border-2 border-primary/50 shadow-md shadow-primary/30 bg-gradient-to-br from-primary/5 to-transparent"
           initial={{ opacity: 0, scale: 0.8, y: 20 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
-          transition={{ 
-            duration: 0.8, 
+          transition={{
+            duration: 0.8,
             delay: 0.4,
             scale: { duration: 0.2, ease: "easeOut" },
             borderColor: { duration: 0.2, ease: "easeOut" },
-            boxShadow: { duration: 0.2, ease: "easeOut" }
+            boxShadow: { duration: 0.2, ease: "easeOut" },
           }}
           whileHover={{
             scale: 1.05,
             borderColor: "rgba(220, 38, 38, 0.8)",
-            boxShadow: "0 0 40px rgba(220, 38, 38, 0.4)",
+            boxShadow: "0 0 10px rgba(220, 38, 38, 0.4)",
           }}
         >
-          <Image src="/images/avatar-profile.png" alt="César Suárez" fill className="object-cover" priority />
+          <Image
+            src="/images/avatar-profile.png"
+            alt="César Suárez"
+            fill
+            className="object-cover"
+            priority
+          />
           <motion.div
             className="absolute inset-0 bg-gradient-to-tr from-primary/20 to-transparent"
             initial={{ opacity: 0 }}
             whileHover={{ opacity: 1 }}
             transition={{ duration: 0.15 }}
           />
-          
+
           {/* Animated overlay with synchronized pulse effect */}
           <motion.div
             className="absolute inset-0 bg-gradient-to-br from-transparent via-primary/10 to-transparent"
@@ -144,9 +149,6 @@ export function HeroProfile() {
           />
         </motion.div>
       </div>
-
-      {/* Floating tech stack badges */}
-      <TechBadges />
     </motion.div>
   );
 }

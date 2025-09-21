@@ -99,7 +99,7 @@ export function CompactTechSkills({ maxSkills = 18 }: CompactTechSkillsProps) {
                 initial={{ opacity: 0, scale: 0.8 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.3, delay: index * 0.05 }}
-                viewport={{ once: false }}
+                viewport={{ once: true }}
                 whileHover={{ y: -2, scale: 1.05 }}
                 className="flex flex-col items-center gap-1.5 md:gap-2 p-2 md:p-3 bg-background/30 rounded-lg border border-border/20 hover:border-primary/30 hover:bg-primary/5 transition-all duration-300 group"
               >
@@ -128,7 +128,7 @@ export function CompactTechSkills({ maxSkills = 18 }: CompactTechSkillsProps) {
                 initial={{ opacity: 0, scale: 0.8 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.3, delay: index * 0.05 }}
-                viewport={{ once: false }}
+                viewport={{ once: true }}
                 whileHover={{ y: -2, scale: 1.05 }}
                 className="flex flex-col items-center gap-1.5 md:gap-2 p-2 md:p-3 bg-background/30 rounded-lg border border-border/20 hover:border-primary/30 hover:bg-primary/5 transition-all duration-300 group"
               >
@@ -157,7 +157,7 @@ export function CompactTechSkills({ maxSkills = 18 }: CompactTechSkillsProps) {
                 initial={{ opacity: 0, scale: 0.8 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.3, delay: index * 0.05 }}
-                viewport={{ once: false }}
+                viewport={{ once: true }}
                 whileHover={{ y: -2, scale: 1.05 }}
                 className="flex flex-col items-center gap-1.5 md:gap-2 p-2 md:p-3 bg-background/30 rounded-lg border border-border/20 hover:border-primary/30 hover:bg-primary/5 transition-all duration-300 group"
               >

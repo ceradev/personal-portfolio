@@ -16,7 +16,7 @@ export function HeroText() {
       </div>
 
       {/* Nombre con efecto mejorado - optimizado para laptop */}
-      <h1 className="text-xl sm:text-2xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-2 sm:mb-3 md:mb-4 tracking-tight px-2 sm:px-4 md:px-6">
+      <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-2 sm:mb-3 md:mb-4 tracking-tight px-2 sm:px-4 md:px-6">
         <motion.span 
           className="block text-foreground drop-shadow-sm dark:drop-shadow-[0_1px_1px_rgba(0,0,0,0.5)]"
           initial={{ opacity: 0, y: 20 }}
@@ -35,7 +35,7 @@ export function HeroText() {
 
       {/* Subtítulo con animación de texto - optimizado para laptop */}
       <motion.h2 
-        className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl text-foreground/90 dark:text-foreground/95 mb-3 sm:mb-4 md:mb-6 font-light drop-shadow-sm px-2 sm:px-4 md:px-6"
+        className="text-base sm:text-lg md:text-lg lg:text-xl xl:text-2xl text-foreground/90 dark:text-foreground/95 mb-3 sm:mb-4 md:mb-6 font-light drop-shadow-sm px-2 sm:px-4 md:px-6"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 0.9 }}

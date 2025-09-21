@@ -211,7 +211,7 @@ export function ContactForm() {
       <motion.div
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: false, amount: 0.3 }}
+        viewport={{ once: true, amount: 0.3 }}
         variants={formContainerVariants}
         className="w-full"
       >

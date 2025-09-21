@@ -72,7 +72,7 @@ export function EducationCertSummary() {
                   initial={{ opacity: 0, x: -10 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.4, delay: index * 0.1 }}
-                  viewport={{ once: false }}
+                  viewport={{ once: true }}
                   className={`p-3 md:p-4 rounded-lg border ${cert.color} hover:shadow-md transition-all duration-300`}
                 >
                   <div className="flex items-start gap-2 md:gap-3">
@@ -108,7 +108,7 @@ export function EducationCertSummary() {
                   initial={{ opacity: 0, scale: 0.95 }}
                   whileInView={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 0.3, delay: index * 0.05 }}
-                  viewport={{ once: false }}
+                  viewport={{ once: true }}
                   className={`p-2.5 md:p-3 rounded-lg border ${cert.color} hover:shadow-sm transition-all duration-300`}
                 >
                   <div className="flex items-center gap-2 md:gap-3">

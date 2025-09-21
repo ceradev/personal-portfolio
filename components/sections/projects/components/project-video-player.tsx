@@ -321,7 +321,7 @@ export function ProjectVideoPlayer({
           </div>
         </MobileFrame>
       ) : (
-        <AllInOneFrame className="w-full" size="large">
+        <AllInOneFrame>
           {/* Main Video Player */}
           <div className="relative bg-black rounded-lg overflow-hidden w-full h-full">
             {/* Video Content */}

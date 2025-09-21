@@ -11,7 +11,7 @@ export function ScheduleCall({ serviceType = 'web-development' }: Readonly<{ rea
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, delay: 0.8 }}
-      viewport={{ once: true }}
+      viewport={{ once: true, margin: "-100px" }}
     >
       <div className="max-w-4xl mx-auto">
         <motion.div
@@ -19,7 +19,7 @@ export function ScheduleCall({ serviceType = 'web-development' }: Readonly<{ rea
           initial={{ opacity: 0, scale: 0.95 }}
           whileInView={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.5, delay: 0.1 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, margin: "-50px" }}
         >
           {/* Header with animated icons */}
           <motion.div
@@ -64,7 +64,7 @@ export function ScheduleCall({ serviceType = 'web-development' }: Readonly<{ rea
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 1.0 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, margin: "-50px" }}
           >
             Agenda una llamada conmigo
           </motion.h3>
@@ -74,7 +74,7 @@ export function ScheduleCall({ serviceType = 'web-development' }: Readonly<{ rea
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 1.1 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, margin: "-50px" }}
           >
             ¿Prefieres una conversación directa? Agenda una llamada de 30 minutos para discutir tu proyecto.
           </motion.p>
@@ -85,7 +85,7 @@ export function ScheduleCall({ serviceType = 'web-development' }: Readonly<{ rea
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 1.2 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, margin: "-50px" }}
           >
             {/* Video call option */}
             <motion.div
@@ -169,7 +169,7 @@ export function ScheduleCall({ serviceType = 'web-development' }: Readonly<{ rea
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 1.3 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, margin: "-50px" }}
           >
             <motion.a
               href="https://calendly.com/suarezorizondocesararamis"
@@ -196,7 +196,7 @@ export function ScheduleCall({ serviceType = 'web-development' }: Readonly<{ rea
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5, delay: 1.4 }}
-              viewport={{ once: true }}
+              viewport={{ once: true, margin: "-50px" }}
             >
               <Calendar className="h-4 w-4" />
               Agendar llamada

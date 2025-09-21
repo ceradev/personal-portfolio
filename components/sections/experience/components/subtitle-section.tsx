@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { AnimatedHighlight } from "@/components/ui/display/animated-highlight";
 import { Rocket } from "lucide-react";
 
 export function SubtitleSection() {
@@ -9,7 +10,7 @@ export function SubtitleSection() {
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, delay: 0.2 }}
-      viewport={{ once: false, margin: "-50px" }}
+      viewport={{ once: true, margin: "-50px" }}
       className="text-center mb-12 relative"
       style={{ position: 'relative' }}
     >
@@ -20,12 +21,13 @@ export function SubtitleSection() {
         <div className="flex items-center justify-center gap-3 mb-4">
         </div>
         
-        <div className="text-sm sm:text-base md:text-lg lg:text-xl text-black dark:text-white max-w-3xl mx-auto leading-relaxed font-medium px-3 sm:px-4 md:px-6">
+        <div className="text-lg sm:text-xl md:text-2xl text-black dark:text-white max-w-3xl mx-auto leading-relaxed font-medium px-3 sm:px-4 md:px-6">
         Mi trayectoria profesional y{" "}
           <span className="relative">
-            <span className="text-primary dark:text-primary-400 font-bold">
-              experiencias clave
-            </span>
+            <AnimatedHighlight 
+              text="experiencias clave"
+              delay={0.5}
+            />
             <motion.div
               initial={{ width: 0 }}
               whileInView={{ width: "100%" }}

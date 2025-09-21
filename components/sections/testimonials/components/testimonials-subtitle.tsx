@@ -2,6 +2,7 @@
 
 import { SectionTitle } from "@/components/ui/display/section-title";
 import { motion } from "framer-motion";
+import { AnimatedHighlight } from "@/components/ui/display/animated-highlight";
 import { Heart } from "lucide-react";
 
 export function TestimonialsSubtitle() {
@@ -12,7 +13,7 @@ export function TestimonialsSubtitle() {
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.2 }}
-        viewport={{ once: false }}
+        viewport={{ once: true }}
         className="text-center mb-12 relative"
       >
         {/* Background gradient effect */}
@@ -22,12 +23,15 @@ export function TestimonialsSubtitle() {
           <div className="text-lg sm:text-xl md:text-2xl text-foreground/90 max-w-3xl mx-auto leading-relaxed font-medium mb-4 sm:mb-6 px-4 sm:px-6">
             Lo que dicen mis{" "}
             <span className="relative">
-              <span className="text-primary font-bold">clientes satisfechos</span>
+              <AnimatedHighlight 
+                text="clientes satisfechos"
+                delay={0.5}
+              />
               <motion.div
                 initial={{ width: 0 }}
                 whileInView={{ width: "100%" }}
                 transition={{ duration: 0.8, delay: 0.5 }}
-                viewport={{ once: false }}
+                viewport={{ once: true }}
                 className="absolute -bottom-1 left-0 h-0.5 bg-gradient-to-r from-primary to-primary-400"
               />
             </span>{" "}

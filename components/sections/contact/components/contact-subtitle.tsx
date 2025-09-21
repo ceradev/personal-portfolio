@@ -1,5 +1,6 @@
 "use client";
 
+import { AnimatedHighlight } from "@/components/ui/display/animated-highlight";
 import { motion } from "framer-motion";
 
 export function ContactSubtitle() {
@@ -8,7 +9,7 @@ export function ContactSubtitle() {
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, delay: 0.2 }}
-      viewport={{ once: false, margin: "-50px" }}
+      viewport={{ once: true, margin: "-50px" }}
       className="text-center mb-16 relative"
     >
       {/* Background gradient effect */}
@@ -18,9 +19,10 @@ export function ContactSubtitle() {
         <div className="text-lg sm:text-xl md:text-2xl text-foreground max-w-3xl mx-auto leading-relaxed font-medium px-4 sm:px-6">
           Conectemos y hagamos realidad tu próximo{" "}
           <span className="relative">
-            <span className="text-primary font-bold">
-              proyecto digital
-            </span>
+            <AnimatedHighlight 
+              text="proyecto digital"
+              delay={0.5}
+            />
             <motion.div
               initial={{ width: 0 }}
               whileInView={{ width: "100%" }}

@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { AnimatedHighlight } from "@/components/ui/display/animated-highlight";
 
 export function AboutSubtitle() {
   return (
@@ -8,7 +9,7 @@ export function AboutSubtitle() {
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, delay: 0.2 }}
-      viewport={{ once: false, margin: "-50px" }}
+      viewport={{ once: true, margin: "-50px" }}
       className="text-center mb-12 relative"
     >
       {/* Background gradient effect */}
@@ -18,12 +19,15 @@ export function AboutSubtitle() {
         <div className="text-lg sm:text-xl md:text-2xl text-black dark:text-white max-w-2xl mx-auto leading-relaxed font-medium px-4 sm:px-6">
           Soy un desarrollador especializado en{" "}
           <span className="relative">
-            <span className="text-primary font-bold">creación de soluciones digitales</span>
+            <AnimatedHighlight 
+              text="creación de soluciones digitales"
+              delay={0.5}
+            />
             <motion.div
               initial={{ width: 0 }}
               whileInView={{ width: "100%" }}
               transition={{ duration: 0.8, delay: 0.5 }}
-              viewport={{ once: false }}
+              viewport={{ once: true }}
               className="absolute -bottom-1 left-0 h-0.5 bg-gradient-to-r from-primary to-primary-400"
             />
           </span>

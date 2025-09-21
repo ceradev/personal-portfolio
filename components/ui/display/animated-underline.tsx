@@ -6,7 +6,7 @@ interface AnimatedUnderlineProps {
   delay?: number;
 }
 
-export function AnimatedUnderline({ delay = 1 }: AnimatedUnderlineProps) {
+export function AnimatedUnderline({ delay = 1 }: Readonly<AnimatedUnderlineProps>) {
   return (
     <>
       <motion.div 

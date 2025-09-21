@@ -5,70 +5,32 @@ import { ReactNode } from "react";
 interface AllInOneFrameProps {
   readonly children: ReactNode;
   readonly className?: string;
-  readonly size?: "small" | "medium" | "large";
 }
 
 export function AllInOneFrame({
   children,
   className = "",
-  size = "medium",
 }: AllInOneFrameProps) {
-  // Size configurations
-  const sizeConfig = {
-    small: {
-      width: "w-80",
-      screenPadding: "p-2",
-      bezelPadding: "p-2",
-      cameraSize: "w-2 h-2",
-      cameraTop: "top-3",
-      barPadding: "p-3",
-      barMargin: "mb-2",
-      accentWidth: "w-20",
-      accentHeight: "h-1",
-      standWidth: "w-20",
-      standHeight: "h-8",
-      standMargin: "mt-2",
-      shadowHeight: "h-1",
-      shadowBottom: "-bottom-1",
-    },
-    medium: {
-      width: "w-[28rem]",
-      screenPadding: "p-3",
-      bezelPadding: "p-3",
-      cameraSize: "w-2 h-2",
-      cameraTop: "top-4",
-      barPadding: "p-4",
-      barMargin: "mb-3",
-      accentWidth: "w-24",
-      accentHeight: "h-1",
-      standWidth: "w-24",
-      standHeight: "h-10",
-      standMargin: "mt-3",
-      shadowHeight: "h-2",
-      shadowBottom: "-bottom-2",
-    },
-    large: {
-      width: "w-[48rem]",
-      screenPadding: "p-5",
-      bezelPadding: "p-5",
-      cameraSize: "w-4 h-4",
-      cameraTop: "top-6",
-      barPadding: "p-6",
-      barMargin: "mb-5",
-      accentWidth: "w-32",
-      accentHeight: "h-2",
-      standWidth: "w-32",
-      standHeight: "h-14",
-      standMargin: "mt-5",
-      shadowHeight: "h-4",
-      shadowBottom: "-bottom-4",
-    },
+  // Desktop-only configuration - fixed size
+  const config = {
+    width: "w-[48rem]",
+    screenPadding: "p-5",
+    bezelPadding: "p-5",
+    cameraSize: "w-4 h-4",
+    cameraTop: "top-6",
+    barPadding: "p-6",
+    barMargin: "mb-5",
+    accentWidth: "w-32",
+    accentHeight: "h-2",
+    standWidth: "w-32",
+    standHeight: "h-14",
+    standMargin: "mt-1",
+    shadowHeight: "h-4",
+    shadowBottom: "-bottom-4",
   };
 
-  const config = sizeConfig[size];
-
   return (
-    <div className={`relative ${config.width} mx-auto ${className}`}>
+    <div className={`hidden md:block relative ${config.width} mx-auto ${className}`}>
       {/* All-in-One TV Container */}
       <div className="relative">
         {/* Screen */}

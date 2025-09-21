@@ -9,8 +9,9 @@ export function ValueProposition() {
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
+      whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, delay: 0.2 }}
+      viewport={{ once: true, margin: "-50px" }}
       className="bg-background/20 backdrop-blur-sm rounded-xl border border-border/30 p-4 md:p-6 hover:border-primary/30 transition-all duration-300"
     >
       {/* Header */}

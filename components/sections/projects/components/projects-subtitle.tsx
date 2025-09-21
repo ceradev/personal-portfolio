@@ -1,8 +1,10 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Play, Settings, Info, Maximize, SkipForward, SkipBack } from "lucide-react";
+import { AnimatedHighlight } from "@/components/ui/display/animated-highlight";
 import { useMobile } from "@/hooks/use-mobile";
+import { Info, Play, SkipBack, SkipForward, Settings, Maximize } from "lucide-react";
+
 
 export function ProjectsSubtitle() {
   const isMobile = useMobile();
@@ -22,9 +24,10 @@ export function ProjectsSubtitle() {
         <div className="text-lg sm:text-xl md:text-2xl text-foreground/90 max-w-3xl mx-auto leading-relaxed font-medium mb-6 sm:mb-8 px-4 sm:px-6">
           Una selección de mis{" "}
           <span className="relative">
-            <span className="text-primary font-bold">
-              proyectos más destacados
-            </span>
+            <AnimatedHighlight 
+              text="proyectos más destacados"
+              delay={0.5}
+            />
             <motion.div
               initial={{ width: 0 }}
               whileInView={{ width: "100%" }}
@@ -45,7 +48,7 @@ export function ProjectsSubtitle() {
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
-            viewport={{ once: false }}
+            viewport={{ once: true }}
             className="max-w-2xl mx-auto"
           >
             <div className="bg-transparent rounded-xl p-6 border dark:border-border border-primary/30">
