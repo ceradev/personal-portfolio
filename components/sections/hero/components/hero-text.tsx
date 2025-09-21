@@ -26,7 +26,7 @@ export function HeroText() {
           Hola, soy
         </motion.span>
         
-        <div className="mt-1 relative drop-shadow-sm dark:drop-shadow-[0_1px_1px_rgba(0,0,0,0.5)] text-gradient group cursor-pointer inline-block">
+        <div className="mt-1 relative drop-shadow-sm dark:drop-shadow-[0_1px_1px_rgba(0,0,0,0.5)] text-gradient inline-block">
           <GradientText text="cera" delay={0.5} />
           <TypeWriter words={TECH_WORDS as unknown as string[]} />
           <AnimatedUnderline delay={1} />
