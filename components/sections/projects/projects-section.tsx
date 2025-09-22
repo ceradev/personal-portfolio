@@ -5,7 +5,6 @@ import { motion } from "framer-motion";
 import { SectionTitle } from "@/components/ui/display/section-title";
 import { SectionTransition } from "@/utils/section-transition";
 import { projects, type Project } from "@/types/projects";
-import { DeviceIndicator } from "@/components/ui/display";
 import { useMobile } from "@/hooks/use-mobile";
 import {
   ProjectVideoPlayer,
@@ -52,14 +51,7 @@ export function ProjectsSection() {
       </div>
 
       <div className="relative z-10">
-        <SectionTitle title="Portafolio" />
-
-        {/* Device indicator for mobile users */}
-        {isMobile && (
-          <div className="flex justify-center mb-6">
-            <DeviceIndicator isMobile={isMobile} />
-          </div>
-        )}
+        <SectionTitle title="Portafolio" />       
 
         {/* Enhanced Subtitle with Instructions */}
         <ProjectsSubtitle />

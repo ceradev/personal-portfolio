@@ -81,10 +81,10 @@ export function MobileFrame({
         {/* Screen Bezel with more realistic proportions */}
         <div className={`bg-black ${config.bezelPadding} ${config.screenRadius} h-full`}>
           {/* Dynamic Island / Notch with Project Counter */}
-          <div className="flex justify-center mt-3 mb-2">
+          <div className="flex justify-center mt-3 mb-6">
             {currentProjectIndex !== undefined && totalProjects ? (
-              <div className="flex items-center gap-2 bg-black rounded-full px-3 py-1.5 border border-gray-600">
-                <span className="text-xs font-medium text-white">
+              <div className="flex items-center gap-2 bg-white dark:bg-black rounded-full px-3 py-1.5 border border-gray-600">
+                <span className="text-xs font-medium text-black dark:text-white">
                   {currentProjectIndex + 1}/{totalProjects}
                 </span>
                 <div className="flex items-center gap-1">
