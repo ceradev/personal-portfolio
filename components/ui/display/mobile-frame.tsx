@@ -71,13 +71,13 @@ export function MobileFrame({
 
   return (
     <motion.div
-      className={`relative ${className}`}
+      className={`relative flex justify-center items-center w-full ${className}`}
       initial={{ opacity: 0, scale: 0.9 }}
       animate={{ opacity: 1, scale: 1 }}
       transition={{ duration: 0.5, ease: "easeOut" }}
     >
       {/* Enhanced Mobile Device Container */}
-      <div className={`${config.width} ${config.height} mx-auto relative bg-gradient-to-b from-card via-card/95 to-card ${config.containerPadding} ${config.borderRadius} ${config.shadowSize} ${config.borderWidth} border-border flex flex-col justify-center max-w-full overflow-hidden`}>
+      <div className={`${config.width} ${config.height} relative bg-gradient-to-b from-card via-card/95 to-card ${config.containerPadding} ${config.borderRadius} ${config.shadowSize} ${config.borderWidth} border-border flex flex-col justify-center max-w-full`}>
         {/* Screen Bezel with more realistic proportions */}
         <div className={`bg-black ${config.bezelPadding} ${config.screenRadius} h-full`}>
           {/* Dynamic Island / Notch with Project Counter */}
@@ -181,13 +181,13 @@ export function ModernMobileFrame({
 
   return (
     <motion.div
-      className={`relative ${className}`}
+      className={`relative flex justify-center items-center w-full ${className}`}
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
     >
       {/* Modern Mobile Device */}
-      <div className={`${config.width} ${config.height} mx-auto bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900 ${config.padding} ${config.borderRadius} shadow-2xl border border-gray-700`}>
+      <div className={`${config.width} ${config.height} bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900 ${config.padding} ${config.borderRadius} shadow-2xl border border-gray-700 max-w-full`}>
         {/* Screen Area */}
         <div className="relative h-full bg-black rounded-2xl overflow-hidden">
           {/* Dynamic Island with Project Counter */}
