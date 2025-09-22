@@ -1,6 +1,11 @@
-export { TestimonialCard } from './testimonial-card';
+// Cards components
+export { TestimonialCard } from './cards/testimonial-card';
+export { TestimonialSlide } from './cards/testimonial-slide';
+
+// Carousel components
+export { TestimonialsCarousel } from './carousel/testimonials-carousel';
+export { CarouselNavigation } from './carousel/carousel-navigation';
+
+// Layout components
 export { TestimonialsSubtitle } from './testimonials-subtitle';
-export { TestimonialsGrid } from './testimonials-grid';
-export { TestimonialsCarousel } from './testimonials-carousel';
-export { TestimonialSlide } from './testimonial-slide';
-export { CarouselNavigation } from './carousel-navigation';
+export { TestimonialsGrid } from './layout/testimonials-grid';

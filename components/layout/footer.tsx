@@ -40,7 +40,7 @@ export function Footer() {
   ];
 
   const quickLinks = [
-    { name: "Inicio", href: "#" },
+    { name: "Inicio", href: "#home" },
     { name: "Sobre mí", href: "#about" },
     { name: "Proyectos", href: "#projects" },
     { name: "Experiencia", href: "#experience" },

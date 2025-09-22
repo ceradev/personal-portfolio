@@ -3,14 +3,14 @@
 import { motion } from "framer-motion";
 import { SectionTitle } from "@/components/ui/display/section-title";
 import { SectionTransition } from "@/utils/section-transition";
-import { AboutSubtitle } from "@/components/sections/about/components/about-subtitle";
-import { EssentialInfo } from "@/components/sections/about/components/essential-info";
-import { EducationCertSummary } from "@/components/sections/about/components/education-cert-summary";
-import { ProfessionalSoftSkills } from "@/components/sections/about/components/professional-soft-skills";
-import { LanguagesInfo } from "@/components/sections/about/components/languages-info";
-import { PracticalInfo } from "@/components/sections/about/components/practical-info";
-import { CompactTechSkills } from "@/components/sections/about/components/compact-tech-skills";
-import { ValueProposition } from "@/components/sections/about/components/value-proposition";
+import { AboutSubtitle } from "./components/about-subtitle";
+import { EssentialInfo } from "./components/info/essential-info";
+import { EducationCertSummary } from "./components/info/education-cert-summary";
+import { ProfessionalSoftSkills } from "./components/skills/professional-soft-skills";
+import { LanguagesInfo } from "./components/info/languages-info";
+import { PracticalInfo } from "./components/info/practical-info";
+import { CompactTechSkills } from "./components/skills/compact-tech-skills";
+import { ValueProposition } from "./components/info/value-proposition";
 
 export function AboutSection() {
   return (

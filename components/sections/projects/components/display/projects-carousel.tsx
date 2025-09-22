@@ -132,10 +132,16 @@ export function ProjectsCarousel({ projects, onViewDetails }: ProjectsCarouselPr
       </div>
 
       {/* Carousel Container */}
-      <div
+      <section
         className="relative overflow-hidden"
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
+        aria-label="Carrusel de proyectos"
+        tabIndex={0}
+        onKeyDown={(e) => {
+          if (e.key === "ArrowLeft") goToPrevious();
+          if (e.key === "ArrowRight") goToNext();
+        }}
       >
         <motion.div
           className="flex gap-6"
@@ -166,14 +172,14 @@ export function ProjectsCarousel({ projects, onViewDetails }: ProjectsCarouselPr
             </div>
           ))}
         </motion.div>
-      </div>
+      </section>
 
       {/* Dots Indicator */}
       {projects.length > projectsPerView && (
         <div className="flex justify-center mt-6 gap-2">
           {Array.from({ length: maxIndex + 1 }).map((_, index) => (
             <button
-              key={index}
+              key={index + 1}
               onClick={() => setCurrentIndex(index)}
               className={`h-2 w-2 rounded-full transition-all duration-300 ${
                 index === currentIndex

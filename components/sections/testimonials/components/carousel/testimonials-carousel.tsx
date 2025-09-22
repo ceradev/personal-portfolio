@@ -3,7 +3,7 @@
 import { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import { Testimonial } from "@/types/testimonials";
-import { TestimonialCard } from "./testimonial-card";
+import { TestimonialCard } from "../cards/testimonial-card";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
 interface TestimonialsCarouselProps {

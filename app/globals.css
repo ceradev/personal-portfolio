@@ -2,6 +2,19 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Fix for Framer Motion scroll offset warnings */
+@layer base {
+  /* Ensure all motion.div elements have relative positioning */
+  [data-framer-motion] {
+    position: relative !important;
+  }
+  
+  /* Alternative approach - target motion components directly */
+  .motion-container {
+    position: relative;
+  }
+}
+
 @layer base {
   :root {
     --background: 0 0% 100%;

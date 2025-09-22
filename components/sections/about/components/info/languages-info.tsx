@@ -3,13 +3,9 @@
 import { motion } from "framer-motion";
 import { Globe } from "lucide-react";
 import { Badge } from "@/components/ui/display/badge";
+import { LANGUAGES } from "@/types/about/about";
 
 export function LanguagesInfo() {
-  const languages = [
-    { label: "Español", level: "Nativo", flag: "🇪🇸", color: "bg-primary/10 text-primary dark:text-primary-400" },
-    { label: "Inglés", level: "Avanzado (C1)", flag: "🇬🇧", color: "bg-blue-500/10 text-blue-600 dark:text-blue-400" },
-    { label: "Sueco", level: "Intermedio", flag: "🇸🇪", color: "bg-yellow-500/10 text-yellow-600 dark:text-yellow-400" }
-  ];
 
   return (
     <motion.div
@@ -27,7 +23,7 @@ export function LanguagesInfo() {
       </div>
       
       <div className="space-y-3 flex-1">
-        {languages.map((language, index) => (
+        {LANGUAGES.map((language, index) => (
           <motion.div
             key={language.label}
             initial={{ opacity: 0, x: -10 }}

@@ -1,9 +1,14 @@
+// Skills components
+export { CompactTechSkills } from './skills/compact-tech-skills';
+export { ProfessionalSoftSkills } from './skills/professional-soft-skills';
+
+// Info components
+export { EssentialInfo } from './info/essential-info';
+export { EducationCertSummary } from './info/education-cert-summary';
+export { LanguagesInfo } from './info/languages-info';
+export { PracticalInfo } from './info/practical-info';
+export { ProfessionalGoal } from './info/professional-goal';
+export { ValueProposition } from './info/value-proposition';
+
+// Layout components
 export { AboutSubtitle } from './about-subtitle';
-export { ProfessionalGoal } from './professional-goal';
-export { EssentialInfo } from './essential-info';
-export { EducationCertSummary } from './education-cert-summary';
-export { ProfessionalSoftSkills } from './professional-soft-skills';
-export { LanguagesInfo } from './languages-info';
-export { PracticalInfo } from './practical-info';
-export { CompactTechSkills } from './compact-tech-skills';
-export { ValueProposition } from './value-proposition';

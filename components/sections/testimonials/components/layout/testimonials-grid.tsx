@@ -1,4 +1,4 @@
-import { TestimonialCard } from "./testimonial-card";
+import { TestimonialCard } from "../cards/testimonial-card";
 import { Testimonial } from "@/types/testimonials";
 
 interface TestimonialsGridProps {

@@ -12,7 +12,7 @@ export function ValueProposition() {
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, delay: 0.2 }}
       viewport={{ once: true, margin: "-50px" }}
-      className="bg-background/20 backdrop-blur-sm rounded-xl border border-border/30 p-4 md:p-6 hover:border-primary/30 transition-all duration-300"
+      className="relative bg-background/20 backdrop-blur-sm rounded-xl border border-border/30 p-4 md:p-6 hover:border-primary/30 transition-all duration-300"
     >
       {/* Header */}
       <div className="flex items-center gap-2 md:gap-3 mb-4 md:mb-6">

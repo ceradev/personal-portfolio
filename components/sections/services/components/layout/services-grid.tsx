@@ -1,4 +1,4 @@
-import { ServiceCard } from "./service-card";
+import { ServiceCard } from "../cards/service-card";
 import { Service } from "@/types/services";
 import { MobileResponsiveGrid } from "@/components/ui/layout";
 

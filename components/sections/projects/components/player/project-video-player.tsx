@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import { AllInOneFrame, MobileFrame } from "@/components/ui/display";
 import { VideoControls } from "./video-controls";
 import { PlaylistSidebar } from "./playlist-sidebar";
-import { ProjectDetailsModal } from "./project-details-modal";
+import { ProjectDetailsModal } from "../display/project-details-modal";
 import { VideoContent } from "./video-content";
 import { useMobile } from "@/hooks/use-mobile";
 import { useTouchGestures } from "@/hooks/use-touch-gestures";

@@ -1,4 +1,4 @@
-import { AboutData } from '../types/about';
+import { AboutData } from '../types/about/about';
 
 export const aboutData: AboutData = {
   personalInfo: [

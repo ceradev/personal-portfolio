@@ -50,11 +50,11 @@ export function HeroButtons() {
         </Button>
       </motion.div>
 
-      <motion.div whileTap={{ scale: 0.95 }}>
+      <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
         <Button
           variant="outline"
           onClick={handleOpenCV}
-          className="border-primary hover:bg-primary hover:text-primary-foreground px-4 py-2 sm:px-6 sm:py-3 shadow-lg hover:shadow-xl transition-all duration-300 rounded-lg font-medium text-xs sm:text-base"
+          className="border-red-800 dark:border-red-300 hover:bg-red-800 dark:hover:bg-red-300 hover:text-primary-foreground px-4 py-2 sm:px-6 sm:py-3 shadow-md transition-all duration-300 rounded-lg font-medium text-xs sm:text-base"
         >
           <motion.span
             className="relative z-10 flex items-center gap-2 sm:gap-2"

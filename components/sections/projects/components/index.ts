@@ -1,10 +1,16 @@
-export { ProjectCard } from "./project-card";
-export { ProjectsCarousel } from "./projects-carousel";
-export { ProjectFilters } from "./project-filters";
-export { ProjectVideoPlayer } from "./project-video-player";
+// Player components
+export { ProjectVideoPlayer } from "./player/project-video-player";
+export { VideoControls } from "./player/video-controls";
+export { VideoOverlay } from "./player/video-overlay";
+export { VideoContent } from "./player/video-content";
+export { PlaylistSidebar } from "./player/playlist-sidebar";
+
+// Display components
+export { ProjectCard } from "./display/project-card";
+export { ProjectsCarousel } from "./display/projects-carousel";
+export { ProjectDetailsModal } from "./display/project-details-modal";
+export { ProjectFilters } from "./display/project-filters";
+
+// Layout components
 export { ProjectsSubtitle } from "./projects-subtitle";
-export { VideoControls } from "./video-controls";
-export { PlaylistSidebar } from "./playlist-sidebar";
-export { ProjectDetailsModal } from "./project-details-modal";
-export { VideoOverlay } from "./video-overlay";
-export { MobileProjectNavigation, MobileProjectIndicator } from "./mobile-project-navigation";
+export { MobileProjectNavigation, MobileProjectIndicator } from "./layout/mobile-project-navigation";
