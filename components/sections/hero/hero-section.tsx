@@ -9,9 +9,9 @@ import {
 } from "@/components/sections/hero/components";
 import { HeroSectionProps } from "@/types/hero";
 
-export function HeroSection({ isMobile }: Readonly<HeroSectionProps>) {
+export function HeroSection(props: Readonly<HeroSectionProps>) {
   return (
-    <section id="home" className="relative min-h-screen flex flex-col justify-center pt-6 pb-8 md:pb-16">
+    <section id="home" className="relative min-h-screen flex flex-col justify-center pb-8 md:pb-16">
       {/* Split content layout with improved laptop spacing */}
       <div className="container mx-auto px-4 md:px-8 z-10 grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 lg:gap-12 xl:gap-16 items-center">
         {/* Left side - Text content with optimized laptop sizing */}

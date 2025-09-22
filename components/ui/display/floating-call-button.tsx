@@ -10,7 +10,10 @@ interface FloatingCallButtonProps {
   readonly activeSection?: string;
 }
 
-export function FloatingCallButton({ className = "", activeSection = "home" }: FloatingCallButtonProps) {
+export function FloatingCallButton({
+  className = "",
+  activeSection = "home",
+}: FloatingCallButtonProps) {
   const [isVisible, setIsVisible] = useState(false);
   const [isExpanded, setIsExpanded] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
@@ -22,9 +25,10 @@ export function FloatingCallButton({ className = "", activeSection = "home" }: F
 
     const handleScroll = () => {
       // Only hide floating button in home and footer sections - never in between sections
-      const shouldShow = window.scrollY > 300 && 
-                        activeSection !== "home" && 
-                        activeSection !== "footer";
+      const shouldShow =
+        window.scrollY > 300 &&
+        activeSection !== "home" &&
+        activeSection !== "footer";
       setIsVisible(shouldShow);
     };
 
@@ -42,7 +46,11 @@ export function FloatingCallButton({ className = "", activeSection = "home" }: F
   }, [activeSection]);
 
   const handleCalendlyClick = () => {
-    window.open("https://calendly.com/suarezorizondocesararamis", "_blank", "noopener,noreferrer");
+    window.open(
+      "https://calendly.com/suarezorizondocesararamis",
+      "_blank",
+      "noopener,noreferrer"
+    );
   };
 
   const handleWhatsAppClick = () => {
@@ -52,18 +60,20 @@ export function FloatingCallButton({ className = "", activeSection = "home" }: F
   return (
     <AnimatePresence>
       {isVisible && (
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, scale: 0.8, y: 20 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.8, y: 20 }}
-          transition={{ 
-            duration: 0.3, 
+          transition={{
+            duration: 0.3,
             ease: "easeInOut",
             type: "spring",
             stiffness: 300,
-            damping: 30
+            damping: 30,
           }}
-          className={`fixed z-50 ${isMobile ? "bottom-20 right-4" : "bottom-6 right-6"} ${className}`}
+          className={`fixed z-50 ${
+            isMobile ? "bottom-20 right-4" : "bottom-6 right-6"
+          } ${className}`}
         >
           <AnimatePresence>
             {isExpanded ? (
@@ -79,13 +89,13 @@ export function FloatingCallButton({ className = "", activeSection = "home" }: F
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.9 }}
                 >
-                <Button
-                  onClick={() => setIsExpanded(false)}
-                  size="icon"
-                  className="w-10 h-10 rounded-full bg-destructive hover:bg-destructive/90 text-destructive-foreground shadow-lg hover:shadow-xl transition-all duration-300"
-                >
-                  <X className="h-4 w-4" />
-                </Button>
+                  <Button
+                    onClick={() => setIsExpanded(false)}
+                    size="icon"
+                    className="w-10 h-10 rounded-full bg-destructive hover:bg-destructive/90 text-destructive-foreground shadow-lg hover:shadow-xl transition-all duration-300"
+                  >
+                    <X className="h-4 w-4" />
+                  </Button>
                 </motion.div>
 
                 {/* Calendly button */}
@@ -102,7 +112,7 @@ export function FloatingCallButton({ className = "", activeSection = "home" }: F
                   </Button>
                 </motion.div>
 
-                {/* WhatsApp button */}
+                {/* WhatsApp button
                 <motion.div
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
@@ -114,13 +124,10 @@ export function FloatingCallButton({ className = "", activeSection = "home" }: F
                   >
                     <MessageCircle className="h-4 w-4" />
                   </Button>
-                </motion.div>
+                </motion.div> */}
               </motion.div>
             ) : (
-              <motion.div
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.9 }}
-              >
+              <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
                 <Button
                   onClick={() => setIsExpanded(true)}
                   size="icon"

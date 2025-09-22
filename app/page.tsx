@@ -85,7 +85,7 @@ export default function Home() {
   if (!mounted) return null;
 
   return (
-    <main ref={ref} className="min-h-screen relative pt-16" style={{ position: 'relative' }}>
+    <main ref={ref} className="min-h-screen relative pt-12" style={{ position: 'relative' }}>
       {/* Global background for the entire application */}
       <GlobalBackground />
 
