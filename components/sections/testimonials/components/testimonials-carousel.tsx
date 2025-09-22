@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import { Testimonial } from "@/types/testimonials";
 import { TestimonialCard } from "./testimonial-card";
@@ -10,51 +10,56 @@ interface TestimonialsCarouselProps {
   readonly testimonials: Testimonial[];
 }
 
-export function TestimonialsCarousel({ testimonials }: TestimonialsCarouselProps) {
+export function TestimonialsCarousel({
+  testimonials,
+}: TestimonialsCarouselProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [isAutoPlaying, setIsAutoPlaying] = useState(true);
+  const [isHovered, setIsHovered] = useState(false);
+  const intervalRef = useRef<NodeJS.Timeout | null>(null);
 
-  // Auto-play functionality - one testimonial at a time
+  // Simple auto-play functionality
   useEffect(() => {
-    if (!isAutoPlaying) return;
+    if (isHovered) return;
 
-    const interval = setInterval(() => {
-      setCurrentIndex((prevIndex) => 
+    intervalRef.current = setInterval(() => {
+      setCurrentIndex((prevIndex) =>
         prevIndex === testimonials.length - 1 ? 0 : prevIndex + 1
       );
-    }, 4000); // Change slide every 4 seconds
+    }, 4000);
 
-    return () => clearInterval(interval);
-  }, [isAutoPlaying, testimonials.length]);
+    return () => {
+      if (intervalRef.current) clearInterval(intervalRef.current);
+    };
+  }, [isHovered, testimonials.length]);
 
   const goToPrevious = () => {
-    setCurrentIndex((prevIndex) => 
+    setCurrentIndex((prevIndex) =>
       prevIndex === 0 ? testimonials.length - 1 : prevIndex - 1
     );
-    setIsAutoPlaying(false);
   };
 
   const goToNext = () => {
-    setCurrentIndex((prevIndex => 
+    setCurrentIndex((prevIndex) =>
       prevIndex === testimonials.length - 1 ? 0 : prevIndex + 1
-    ));
-    setIsAutoPlaying(false);
+    );
   };
 
-  // Resume auto-play after 8 seconds of inactivity
-  useEffect(() => {
-    if (!isAutoPlaying) {
-      const timer = setTimeout(() => {
-        setIsAutoPlaying(true);
-      }, 8000);
-      return () => clearTimeout(timer);
-    }
-  }, [isAutoPlaying]);
+  const goToSlide = (index: number) => {
+    setCurrentIndex(index);
+  };
+
+  // Calculate statistics
+  const totalTestimonials = testimonials.length;
 
   return (
-    <div className="relative max-w-4xl mx-auto">
+    <div className="relative max-w-6xl mx-auto">
       {/* Main carousel container */}
-      <div className="relative overflow-hidden">
+      <section
+        className="relative overflow-hidden rounded-2xl p-6"
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
+        aria-label="Testimonials carousel"
+      >
         {/* Navigation buttons */}
         <div className="absolute inset-y-0 left-0 right-0 flex items-center justify-between p-4 pointer-events-none z-10">
           {/* Previous button */}
@@ -84,55 +89,107 @@ export function TestimonialsCarousel({ testimonials }: TestimonialsCarouselProps
           </motion.button>
         </div>
 
-        {/* Cards container with preview effect */}
-        <div className="relative h-[380px] md:h-[400px]">
+        {/* Mobile: Single card with sliding effect */}
+        <div className="relative h-[420px] md:hidden overflow-hidden">
           <motion.div
             animate={{ x: `-${currentIndex * 100}%` }}
-            transition={{ 
+            transition={{
               duration: 0.7,
-              ease: [0.4, 0.0, 0.2, 1]
+              ease: [0.4, 0.0, 0.2, 1],
             }}
             className="flex h-full"
           >
-            {testimonials.map((testimonial, index) => {
-              const isActive = index === currentIndex;
-              const isPrev = index === (currentIndex - 1 + testimonials.length) % testimonials.length;
-              const isNext = index === (currentIndex + 1) % testimonials.length;
-              
-              return (
-                <div
-                  key={testimonial.id}
-                  className="flex-shrink-0 w-full px-8 md:px-12"
-                >
-                  <motion.div
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    animate={{ 
-                      opacity: isActive ? 1 : (isPrev || isNext) ? 0.3 : 0,
-                      scale: isActive ? 1 : 0.85,
-                      y: isActive ? 0 : 20
-                    }}
-                    transition={{ duration: 0.5 }}
-                    className="h-full flex items-center justify-center"
-                  >
-                    <TestimonialCard 
-                      testimonial={testimonial} 
-                      isActive={isActive}
-                    />
-                  </motion.div>
+            {testimonials.map((testimonial, index) => (
+              <div key={testimonial.id} className="flex-shrink-0 w-full px-4">
+                <div className="h-full flex items-center justify-center">
+                  <TestimonialCard testimonial={testimonial} isActive={true} />
                 </div>
-              );
-            })}
+              </div>
+            ))}
           </motion.div>
         </div>
-      </div>
 
-      {/* Progress indicator */}
-      <div className="mt-8 flex justify-center">
+        {/* Desktop: Three cards with side preview effect */}
+        <div className="relative h-[420px] hidden md:block overflow-hidden">
+          <div className="flex h-full items-center justify-center gap-6 px-8">
+            {/* Previous testimonial */}
+            <motion.div
+              key={`prev-${currentIndex}`}
+              initial={{ opacity: 0, scale: 0.7, x: -80 }}
+              animate={{ opacity: 0.7, scale: 0.9, x: 0 }}
+              transition={{
+                duration: 0.8,
+                ease: [0.25, 0.46, 0.45, 0.94],
+                delay: 0.1,
+              }}
+              className="flex-shrink-0 w-80"
+            >
+              <TestimonialCard
+                testimonial={
+                  testimonials[
+                    (currentIndex - 1 + testimonials.length) %
+                      testimonials.length
+                  ]
+                }
+                isActive={false}
+              />
+            </motion.div>
+
+            {/* Current testimonial */}
+            <motion.div
+              key={`current-${currentIndex}`}
+              initial={{ opacity: 0, scale: 0.8, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              transition={{
+                duration: 0.8,
+                ease: [0.25, 0.46, 0.45, 0.94],
+                delay: 0.2,
+              }}
+              className="flex-shrink-0 w-80 z-10"
+            >
+              <TestimonialCard
+                testimonial={testimonials[currentIndex]}
+                isActive={true}
+              />
+            </motion.div>
+
+            {/* Next testimonial */}
+            <motion.div
+              key={`next-${currentIndex}`}
+              initial={{ opacity: 0, scale: 0.7, x: 80 }}
+              animate={{ opacity: 0.7, scale: 0.9, x: 0 }}
+              transition={{
+                duration: 0.8,
+                ease: [0.25, 0.46, 0.45, 0.94],
+                delay: 0.1,
+              }}
+              className="flex-shrink-0 w-80"
+            >
+              <TestimonialCard
+                testimonial={
+                  testimonials[(currentIndex + 1) % testimonials.length]
+                }
+                isActive={false}
+              />
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Enhanced progress indicator */}
+      <div className="flex flex-col items-center gap-4">
+        {/* Testimonial counter */}
+        <div className="text-center">
+          <span className="text-sm font-medium text-muted-foreground">
+            Testimonio {currentIndex + 1} de {totalTestimonials}
+          </span>
+        </div>
+
         <div className="flex space-x-2">
-          {testimonials.map((_, index) => (
+          {testimonials.map((testimonial, index) => (
             <button
-              key={index}
-              onClick={() => setCurrentIndex(index)}
+              key={`progress-${testimonial.id}`}
+              onClick={() => goToSlide(index)}
               className={`w-3 h-3 rounded-full transition-all duration-300 ${
                 index === currentIndex
                   ? "bg-primary scale-125"
@@ -141,6 +198,23 @@ export function TestimonialsCarousel({ testimonials }: TestimonialsCarouselProps
               aria-label={`Go to testimonial ${index + 1}`}
             />
           ))}
+        </div>
+
+        {/* Company logos or names */}
+        <div className="flex flex-wrap justify-center gap-3 max-w-2xl">
+          {Array.from(new Set(testimonials.map((t) => t.company))).map(
+            (company, index) => (
+              <motion.div
+                key={company}
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ delay: index * 0.1 }}
+                className="px-3 py-1 rounded-full bg-muted/50 text-xs font-medium text-muted-foreground hover:bg-primary/10 hover:text-primary transition-all duration-300"
+              >
+                {company}
+              </motion.div>
+            )
+          )}
         </div>
       </div>
     </div>

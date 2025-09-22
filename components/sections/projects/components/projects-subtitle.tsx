@@ -14,7 +14,7 @@ export function ProjectsSubtitle() {
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, delay: 0.2 }}
-      viewport={{ once: false, margin: "-50px" }}
+      viewport={{ once: true, margin: "-50px" }}
       className="text-center mb-12 relative"
     >
       {/* Background gradient effect */}
@@ -32,6 +32,7 @@ export function ProjectsSubtitle() {
               initial={{ width: 0 }}
               whileInView={{ width: "100%" }}
               transition={{ duration: 0.8, delay: 0.5 }}
+              viewport={{ once: true }}
               className="absolute -bottom-1 left-0 h-0.5 bg-gradient-to-r from-primary to-primary-400"
             />
           </span>{" "}

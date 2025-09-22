@@ -7,7 +7,6 @@ import {
   Github,
   Linkedin,
   Mail,
-  ChevronDown,
 } from "lucide-react";
 import Link from "next/link";
 import { Button } from "@/components/ui/display/button";
@@ -17,16 +16,6 @@ export function HeroButtons() {
   const handleOpenCV = () => {
     // Abrir el CV directamente en una nueva pestaña
     window.open(CV_DOWNLOAD.href, "_blank", "noopener,noreferrer");
-  };
-
-  const handleScrollToServices = () => {
-    const section = document.getElementById("services");
-    if (section) {
-      window.scrollTo({
-        top: section.offsetTop,
-        behavior: "smooth",
-      });
-    }
   };
 
   return (

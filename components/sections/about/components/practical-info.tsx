@@ -19,8 +19,8 @@ export function PracticalInfo() {
     },
     {
       icon: <Globe className="h-4 w-4" />,
-      label: "Disponibilidad",
-      value: "Remoto / Presencial",
+      label: "Nacionalidad",
+      value: "Sueca",
       color: "bg-purple-500/10 text-purple-600 dark:text-purple-400"
     },
     {

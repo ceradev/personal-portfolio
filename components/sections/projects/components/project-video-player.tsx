@@ -1,224 +1,90 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
-import Image from "next/image";
-import { motion, AnimatePresence } from "framer-motion";
+import { useEffect } from "react";
 import { AllInOneFrame, MobileFrame } from "@/components/ui/display";
 import { VideoControls } from "./video-controls";
 import { PlaylistSidebar } from "./playlist-sidebar";
 import { ProjectDetailsModal } from "./project-details-modal";
-import { VideoOverlay } from "./video-overlay";
+import { VideoContent } from "./video-content";
 import { useMobile } from "@/hooks/use-mobile";
+import { useTouchGestures } from "@/hooks/use-touch-gestures";
+import { useSlideshow } from "@/hooks/use-slideshow";
+import { useVideoControls } from "@/hooks/use-video-controls";
 import { type Project } from "@/types/projects";
 
 interface ProjectVideoPlayerProps {
   readonly projects: Project[];
   readonly onViewDetails: (project: Project) => void;
+  readonly onProjectChange?: (index: number) => void;
 }
 
 export function ProjectVideoPlayer({
   projects,
   onViewDetails,
+  onProjectChange,
 }: ProjectVideoPlayerProps) {
-  const [currentProjectIndex, setCurrentProjectIndex] = useState(0);
-  const [isPlaying, setIsPlaying] = useState(false);
-  const [volume, setVolume] = useState(50);
-  const [isMuted, setIsMuted] = useState(false);
-  const [currentTime, setCurrentTime] = useState(0);
-  const [duration, setDuration] = useState(16); // Duración dinámica basada en imágenes
-  const [showPlaylist, setShowPlaylist] = useState(false);
-  const [showDetailsModal, setShowDetailsModal] = useState(false);
-  const [isTransitioning, setIsTransitioning] = useState(false);
-
-  // Nuevos estados para el slideshow de imágenes
-  const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const progressRef = useRef<HTMLDivElement>(null);
-  const touchStartX = useRef<number>(0);
-  const touchEndX = useRef<number>(0);
-  const touchStartY = useRef<number>(0);
-  const touchEndY = useRef<number>(0);
   const isMobile = useMobile();
+  
+  const {
+    isPlaying,
+    volume,
+    isMuted,
+    showPlaylist,
+    showDetailsModal,
+    currentProjectIndex,
+    handlePrevious,
+    handleNext,
+    handleSelectProject,
+    handlePlayPause,
+    handleVolumeChange,
+    handleMute,
+    handleProgressClick,
+    handleFullscreen,
+    togglePlaylist,
+    closePlaylist,
+    closeDetailsModal,
+  } = useVideoControls({
+    onProjectChange: (index) => onProjectChange?.(index),
+    totalProjects: projects.length,
+  });
 
   const currentProject = projects[currentProjectIndex];
-
-  // Obtener las imágenes disponibles para el proyecto actual
+  
+  // Get project images
   const getProjectImages = () => {
-    if (currentProject.images && currentProject.images.length > 0) {
+    if (currentProject?.images && currentProject.images.length > 0) {
       return currentProject.images;
     }
-    return [currentProject.image];
+    return currentProject?.image ? [currentProject.image] : [];
   };
 
   const projectImages = getProjectImages();
 
-  // Calcular duración dinámica basada en el número de imágenes
+  const {
+    currentTime,
+    duration,
+    currentImageIndex,
+    updateTime,
+    resetSlideshow,
+  } = useSlideshow({
+    projectImages,
+    isPlaying,
+    onNext: handleNext,
+  });
+
+  const { handleTouchStart, handleTouchMove, handleTouchEnd } = useTouchGestures({
+    onSwipeLeft: handleNext,
+    onSwipeRight: handlePrevious,
+  });
+
+  // Reset slideshow when project changes
   useEffect(() => {
-    const timePerImage = 2; // 2 segundos por imagen
-    const newDuration = projectImages.length * timePerImage;
-    setDuration(newDuration);
-  }, [projectImages.length]);
+    resetSlideshow();
+  }, [currentProjectIndex, resetSlideshow]);
 
-  // Enhanced touch gesture handlers for mobile
-  const handleTouchStart = (e: React.TouchEvent) => {
-    if (!isMobile) return;
-    e.preventDefault();
-    touchStartX.current = e.touches[0].clientX;
-    touchStartY.current = e.touches[0].clientY;
-  };
-
-  const handleTouchMove = (e: React.TouchEvent) => {
-    if (!isMobile) return;
-    e.preventDefault();
-  };
-
-  const handleTouchEnd = (e: React.TouchEvent) => {
-    if (!isMobile) return;
-    e.preventDefault();
-    touchEndX.current = e.changedTouches[0].clientX;
-    touchEndY.current = e.changedTouches[0].clientY;
-    handleSwipe();
-  };
-
-  const handleSwipe = () => {
-    if (!isMobile) return;
-
-    const swipeThreshold = 80; // Increased threshold for better control
-    const verticalThreshold = 100; // Prevent accidental swipes when scrolling
-    const diffX = touchStartX.current - touchEndX.current;
-    const diffY = Math.abs(touchStartY.current - touchEndY.current);
-
-    // Only process horizontal swipes if vertical movement is minimal
-    if (Math.abs(diffX) > swipeThreshold && diffY < verticalThreshold) {
-      if (diffX > 0) {
-        // Swipe left - next project
-        handleNext();
-      } else {
-        // Swipe right - previous project
-        handlePrevious();
-      }
-    }
-  };
-
-  // Auto-play functionality y slideshow de imágenes
-  useEffect(() => {
-    if (!isPlaying) return;
-
-    const interval = setInterval(() => {
-      setCurrentTime((prev) => {
-        if (prev >= duration) {
-          handleNext();
-          return 0;
-        }
-        return prev + 0.1;
-      });
-    }, 100);
-
-    return () => clearInterval(interval);
-  }, [isPlaying, duration]);
-
-  // Sincronizar el índice de imagen con el progreso del video
-  useEffect(() => {
-    if (projectImages.length <= 1) return;
-
-    const timePerImage = duration / projectImages.length;
-    const newImageIndex = Math.floor(currentTime / timePerImage);
-
-    if (
-      newImageIndex !== currentImageIndex &&
-      newImageIndex < projectImages.length
-    ) {
-      setCurrentImageIndex(newImageIndex);
-    }
-  }, [currentTime, duration, projectImages.length, currentImageIndex]);
-
-  // Resetear el índice de imagen cuando cambia el proyecto
-  useEffect(() => {
-    setCurrentImageIndex(0);
-  }, [currentProjectIndex]);
-
-  const handlePlayPause = () => {
-    setIsPlaying(!isPlaying);
-  };
-
-  const handlePrevious = () => {
-    if (isTransitioning) return;
-
-    setIsTransitioning(true);
-
-    setTimeout(
-      () => {
-        setCurrentProjectIndex((prev) =>
-          prev === 0 ? projects.length - 1 : prev - 1
-        );
-        setCurrentTime(0);
-        setIsTransitioning(false);
-      },
-      isMobile ? 100 : 150
-    );
-  };
-
-  const handleNext = () => {
-    if (isTransitioning) return;
-
-    setIsTransitioning(true);
-
-    setTimeout(
-      () => {
-        setCurrentProjectIndex((prev) =>
-          prev === projects.length - 1 ? 0 : prev + 1
-        );
-        setCurrentTime(0);
-        setIsTransitioning(false);
-      },
-      isMobile ? 100 : 150
-    );
-  };
-
-  const handleVolumeChange = (value: number[]) => {
-    setVolume(value[0]);
-    setIsMuted(value[0] === 0);
-  };
-
-  const handleMute = () => {
-    setIsMuted(!isMuted);
-  };
-
-  const handleProgressClick = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (!progressRef.current) return;
-
-    const rect = progressRef.current.getBoundingClientRect();
-    const clickX = e.clientX - rect.left;
-    const percentage = clickX / rect.width;
-    const newTime = percentage * duration;
-    setCurrentTime(newTime);
-
-    // Actualizar la imagen correspondiente al tiempo seleccionado
-    if (projectImages.length > 1) {
-      const timePerImage = duration / projectImages.length;
-      const newImageIndex = Math.floor(newTime / timePerImage);
-      if (newImageIndex < projectImages.length) {
-        setCurrentImageIndex(newImageIndex);
-      }
-    }
-  };
-
-  const handleFullscreen = () => {
-    setShowDetailsModal(true);
-  };
-
-  const handleSelectProject = (index: number) => {
-    if (isTransitioning) return;
-
-    setIsTransitioning(true);
-
-    setTimeout(
-      () => {
-        setCurrentProjectIndex(index);
-        setCurrentTime(0);
-        setIsTransitioning(false);
-      },
-      isMobile ? 100 : 150
-    );
+  // Handle progress click with duration
+  const handleProgressClickWithDuration = (e: React.MouseEvent<HTMLButtonElement>) => {
+    handleProgressClick(e, duration, updateTime);
   };
 
   if (projects.length === 0) {
@@ -241,65 +107,27 @@ export function ProjectVideoPlayer({
     >
       {/* Responsive Frame with Video Player */}
       {isMobile ? (
-        <MobileFrame className="w-full" size="large">
-          {/* Main Video Player */}
-          <div className={`relative ${isMobile ? "bg-gradient-to-br from-gray-900 to-black" : "bg-black"} rounded-lg overflow-hidden w-full h-full`}>
-            {/* Video Content */}
-            <div
-              className={`relative w-full h-full overflow-hidden ${isMobile ? "p-2" : ""}`}
+        <MobileFrame 
+          className="w-full" 
+          size="large"
+          currentProjectIndex={currentProjectIndex}
+          totalProjects={projects.length}
+        >
+          <div className="relative bg-gradient-to-br from-gray-900 to-black rounded-lg overflow-hidden w-full h-full">
+            <VideoContent
+              projectImages={projectImages}
+              currentProject={currentProject}
+              currentImageIndex={currentImageIndex}
+              isPlaying={isPlaying}
+              duration={duration}
+              currentTime={currentTime}
+              isMobile={isMobile}
+              onPlayPause={handlePlayPause}
               onTouchStart={handleTouchStart}
               onTouchMove={handleTouchMove}
               onTouchEnd={handleTouchEnd}
-            >
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={`${currentProjectIndex}-${currentImageIndex}`}
-                  initial={{
-                    opacity: 0,
-                  }}
-                  animate={{
-                    opacity: 1,
-                  }}
-                  exit={{
-                    opacity: 0,
-                  }}
-                  transition={{
-                    duration: 0.5,
-                    ease: "easeInOut",
-                  }}
-                  className="absolute inset-0"
-                >
-                  <Image
-                    src={
-                      projectImages[currentImageIndex] ||
-                      "/placeholders/placeholder.svg"
-                    }
-                    alt={`${currentProject.title} - Vista ${
-                      currentImageIndex + 1
-                    }`}
-                    fill
-                    className={isMobile ? "object-contain bg-black/20" : "object-cover"}
-                    priority={currentImageIndex === 0}
-                    quality={isMobile ? 90 : 75}
-                    sizes={isMobile ? "(max-width: 768px) 100vw" : "(max-width: 1200px) 50vw"}
-                  />
-                </motion.div>
-              </AnimatePresence>
+            />
 
-              {/* Video Overlay */}
-              <VideoOverlay
-                project={currentProject}
-                isPlaying={isPlaying}
-                duration={duration}
-                onPlayPause={handlePlayPause}
-                currentImageIndex={currentImageIndex}
-                totalImages={projectImages.length}
-                currentTime={currentTime}
-                isMobile={isMobile}
-              />
-            </div>
-
-            {/* Video Controls */}
             <VideoControls
               isPlaying={isPlaying}
               currentTime={currentTime}
@@ -314,72 +142,43 @@ export function ProjectVideoPlayer({
               onNext={handleNext}
               onVolumeChange={handleVolumeChange}
               onMute={handleMute}
-              onProgressClick={handleProgressClick}
-              onTogglePlaylist={() => setShowPlaylist(!showPlaylist)}
+              onProgressClick={handleProgressClickWithDuration}
+              onTogglePlaylist={togglePlaylist}
               onShowDetails={handleFullscreen}
+            />
+
+            {/* Playlist Sidebar - Inside Mobile Frame */}
+            <PlaylistSidebar
+              showPlaylist={showPlaylist}
+              projects={projects}
+              currentProjectIndex={currentProjectIndex}
+              isPlaying={isPlaying}
+              isMobile={isMobile}
+              onClose={closePlaylist}
+              onSelectProject={handleSelectProject}
             />
           </div>
         </MobileFrame>
       ) : (
-        <AllInOneFrame>
-          {/* Main Video Player */}
+        <AllInOneFrame 
+          currentProjectIndex={currentProjectIndex}
+          totalProjects={projects.length}
+        >
           <div className="relative bg-black rounded-lg overflow-hidden w-full h-full">
-            {/* Video Content */}
-            <div
-              className="relative w-full h-full overflow-hidden"
+            <VideoContent
+              projectImages={projectImages}
+              currentProject={currentProject}
+              currentImageIndex={currentImageIndex}
+              isPlaying={isPlaying}
+              duration={duration}
+              currentTime={currentTime}
+              isMobile={isMobile}
+              onPlayPause={handlePlayPause}
               onTouchStart={handleTouchStart}
               onTouchMove={handleTouchMove}
               onTouchEnd={handleTouchEnd}
-            >
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={`${currentProjectIndex}-${currentImageIndex}`}
-                  initial={{
-                    opacity: 0,
-                  }}
-                  animate={{
-                    opacity: 1,
-                  }}
-                  exit={{
-                    opacity: 0,
-                  }}
-                  transition={{
-                    duration: 0.5,
-                    ease: "easeInOut",
-                  }}
-                  className="absolute inset-0"
-                >
-                  <Image
-                    src={
-                      projectImages[currentImageIndex] ||
-                      "/placeholders/placeholder.svg"
-                    }
-                    alt={`${currentProject.title} - Vista ${
-                      currentImageIndex + 1
-                    }`}
-                    fill
-                    className={isMobile ? "object-contain bg-black/20" : "object-cover"}
-                    priority={currentImageIndex === 0}
-                    quality={isMobile ? 90 : 75}
-                    sizes={isMobile ? "(max-width: 768px) 100vw" : "(max-width: 1200px) 50vw"}
-                  />
-                </motion.div>
-              </AnimatePresence>
+            />
 
-              {/* Video Overlay */}
-              <VideoOverlay
-                project={currentProject}
-                isPlaying={isPlaying}
-                duration={duration}
-                onPlayPause={handlePlayPause}
-                currentImageIndex={currentImageIndex}
-                totalImages={projectImages.length}
-                currentTime={currentTime}
-                isMobile={isMobile}
-              />
-            </div>
-
-            {/* Video Controls */}
             <VideoControls
               isPlaying={isPlaying}
               currentTime={currentTime}
@@ -394,30 +193,30 @@ export function ProjectVideoPlayer({
               onNext={handleNext}
               onVolumeChange={handleVolumeChange}
               onMute={handleMute}
-              onProgressClick={handleProgressClick}
-              onTogglePlaylist={() => setShowPlaylist(!showPlaylist)}
+              onProgressClick={handleProgressClickWithDuration}
+              onTogglePlaylist={togglePlaylist}
               onShowDetails={handleFullscreen}
+            />
+
+            {/* Playlist Sidebar - Inside Desktop Frame */}
+            <PlaylistSidebar
+              showPlaylist={showPlaylist}
+              projects={projects}
+              currentProjectIndex={currentProjectIndex}
+              isPlaying={isPlaying}
+              isMobile={isMobile}
+              onClose={closePlaylist}
+              onSelectProject={handleSelectProject}
             />
           </div>
         </AllInOneFrame>
       )}
 
-      {/* Playlist Sidebar */}
-      <PlaylistSidebar
-        showPlaylist={showPlaylist}
-        projects={projects}
-        currentProjectIndex={currentProjectIndex}
-        isPlaying={isPlaying}
-        isMobile={isMobile}
-        onClose={() => setShowPlaylist(false)}
-        onSelectProject={handleSelectProject}
-      />
-
       {/* Project Details Modal */}
       <ProjectDetailsModal
         showModal={showDetailsModal}
         project={currentProject}
-        onClose={() => setShowDetailsModal(false)}
+        onClose={closeDetailsModal}
       />
     </div>
   );

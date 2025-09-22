@@ -21,7 +21,7 @@ export function ScrollDownButton({
   };
 
   return (
-    <div className="flex justify-center mt-6 px-4">
+    <div className="flex justify-center mt-6 md:mt-0 lg:mt-0 px-4">
       <motion.button
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}

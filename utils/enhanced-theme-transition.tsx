@@ -68,7 +68,7 @@ export function EnhancedThemeTransition() {
           <div className="absolute inset-0 overflow-hidden">
             {Array.from({ length: 8 }).map((_, i) => (
               <motion.div
-                key={`particle-${i}`}
+                key={`particle-${i}` + i}
                 initial={{ opacity: 0, scale: 0, x: "50%", y: "50%" }}
                 animate={{
                   opacity: [0, 0.3, 0],

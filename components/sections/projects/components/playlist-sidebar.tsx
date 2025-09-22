@@ -134,78 +134,94 @@ export function PlaylistSidebar({
     );
   }
 
-  // Desktop version - Sidebar style
+  // Desktop version - Inside frame overlay
   return (
     <AnimatePresence>
       {showPlaylist && (
-        <motion.div
-          initial={{ x: "100%", opacity: 0 }}
-          animate={{ x: 0, opacity: 1 }}
-          exit={{ x: "100%", opacity: 0 }}
-          className="absolute top-6 right-6 w-80 max-h-[60vh] bg-background/95 backdrop-blur-xl border border-border rounded-xl p-4 overflow-y-auto shadow-2xl z-40"
-        >
-          <div className="flex items-center justify-between mb-4">
-            <h3 className="text-lg font-bold text-foreground">Proyectos</h3>
-            <Button
-              size="icon"
-              variant="ghost"
-              onClick={onClose}
-              className="h-8 w-8 text-muted-foreground hover:text-foreground"
-            >
-              ×
-            </Button>
-          </div>
+        <>
+          {/* Backdrop */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="absolute inset-0 bg-black/60 backdrop-blur-sm z-30"
+            onClick={onClose}
+          />
           
-          <div className="space-y-3">
-            {projects.map((project, index) => (
-              <motion.div
-                key={project.id}
-                whileHover={{ scale: 1.02 }}
-                className={`p-3 rounded-lg cursor-pointer transition-all ${
-                  index === currentProjectIndex
-                    ? 'bg-primary/20 border border-primary/50 shadow-lg'
-                    : 'bg-muted/50 hover:bg-muted border border-border'
-                }`}
-                onClick={() => onSelectProject(index)}
+          {/* Playlist Overlay */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.95 }}
+            transition={{ type: "spring", damping: 25, stiffness: 300 }}
+            className="absolute inset-4 bg-background/95 backdrop-blur-xl border border-border/50 rounded-lg p-4 overflow-hidden shadow-2xl z-40 flex flex-col"
+          >
+            <div className="flex items-center justify-between mb-4 flex-shrink-0">
+              <h3 className="text-lg font-bold text-foreground">Proyectos</h3>
+              <Button
+                size="icon"
+                variant="ghost"
+                onClick={onClose}
+                className="h-8 w-8 text-muted-foreground hover:text-foreground"
               >
-                <div className="flex gap-3">
-                  <div className="relative w-16 h-12 rounded-md overflow-hidden flex-shrink-0">
-                    <Image
-                      src={project.image || "/placeholders/placeholder.svg"}
-                      alt={project.title}
-                      fill
-                      className="object-cover"
-                    />
-                    {index === currentProjectIndex && (
-                      <div className="absolute inset-0 bg-primary/30 flex items-center justify-center backdrop-blur-sm">
-                        {isPlaying ? (
-                          <Pause className="h-4 w-4 text-white" />
-                        ) : (
-                          <Play className="h-4 w-4 text-white ml-0.5" />
-                        )}
+                ×
+              </Button>
+            </div>
+            
+            <div className="space-y-2 overflow-y-auto flex-1 pr-2">
+              {projects.map((project, index) => (
+                <motion.div
+                  key={project.id}
+                  initial={{ opacity: 0, x: 20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: index * 0.05 }}
+                  whileHover={{ scale: 1.02 }}
+                  className={`p-3 rounded-lg cursor-pointer transition-all ${
+                    index === currentProjectIndex
+                      ? 'bg-primary/20 border border-primary/50 shadow-lg'
+                      : 'bg-muted/50 hover:bg-muted border border-border'
+                  }`}
+                  onClick={() => onSelectProject(index)}
+                >
+                  <div className="flex gap-3">
+                    <div className="relative w-16 h-12 rounded-md overflow-hidden flex-shrink-0">
+                      <Image
+                        src={project.image || "/placeholders/placeholder.svg"}
+                        alt={project.title}
+                        fill
+                        className="object-cover"
+                      />
+                      {index === currentProjectIndex && (
+                        <div className="absolute inset-0 bg-primary/30 flex items-center justify-center backdrop-blur-sm">
+                          {isPlaying ? (
+                            <Pause className="h-4 w-4 text-white" />
+                          ) : (
+                            <Play className="h-4 w-4 text-white ml-0.5" />
+                          )}
+                        </div>
+                      )}
+                    </div>
+                    
+                    <div className="flex-1 min-w-0">
+                      <h4 className="text-sm font-semibold text-foreground truncate mb-1">
+                        {project.title}
+                      </h4>
+                      <p className="text-xs text-muted-foreground truncate mb-2">
+                        {project.description}
+                      </p>
+                      <div className="flex items-center gap-1">
+                        {renderCategoryIcon(project.category as string)}
+                        <span className="text-xs text-muted-foreground">
+                          {project.category}
+                        </span>
                       </div>
-                    )}
-                  </div>
-                  
-                  <div className="flex-1 min-w-0">
-                    <h4 className="text-sm font-semibold text-foreground truncate mb-1">
-                      {project.title}
-                    </h4>
-                    <p className="text-xs text-muted-foreground truncate mb-2">
-                      {project.description}
-                    </p>
-                    <div className="flex items-center gap-1">
-                      {renderCategoryIcon(project.category as string)}
-                      <span className="text-xs text-muted-foreground">
-                        {project.category}
-                      </span>
                     </div>
                   </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </motion.div>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
+        </>
       )}
     </AnimatePresence>
   );

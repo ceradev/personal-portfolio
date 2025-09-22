@@ -7,12 +7,16 @@ interface MobileFrameProps {
   readonly children: ReactNode;
   readonly className?: string;
   readonly size?: "small" | "medium" | "large";
+  readonly currentProjectIndex?: number;
+  readonly totalProjects?: number;
 }
 
 export function MobileFrame({
   children,
   className = "",
   size = "medium",
+  currentProjectIndex,
+  totalProjects,
 }: MobileFrameProps) {
   // Enhanced size configurations for more realistic mobile appearance
   const sizeConfig = {
@@ -76,8 +80,30 @@ export function MobileFrame({
       <div className={`${config.width} ${config.height} mx-auto relative bg-gradient-to-b from-card via-card/95 to-card ${config.containerPadding} ${config.borderRadius} ${config.shadowSize} ${config.borderWidth} border-border flex flex-col justify-center`}>
         {/* Screen Bezel with more realistic proportions */}
         <div className={`bg-black ${config.bezelPadding} ${config.screenRadius} h-full`}>
-          {/* Dynamic Island / Notch - more realistic */}
-          <div className={`${config.notchWidth} ${config.notchHeight} bg-black ${config.notchRadius} mx-auto mt-3 mb-2`}></div>
+          {/* Dynamic Island / Notch with Project Counter */}
+          <div className="flex justify-center mt-3 mb-2">
+            {currentProjectIndex !== undefined && totalProjects ? (
+              <div className="flex items-center gap-2 bg-black rounded-full px-3 py-1.5 border border-gray-600">
+                <span className="text-xs font-medium text-white">
+                  {currentProjectIndex + 1}/{totalProjects}
+                </span>
+                <div className="flex items-center gap-1">
+                  {Array.from({ length: totalProjects }, (_, index) => (
+                    <div
+                      key={index}
+                      className={`w-1 h-1 rounded-full transition-colors duration-200 ${
+                        index === currentProjectIndex 
+                          ? 'bg-red-500' 
+                          : 'bg-gray-400'
+                      }`}
+                    />
+                  ))}
+                </div>
+              </div>
+            ) : (
+              <div className={`${config.notchWidth} ${config.notchHeight} bg-black ${config.notchRadius}`}></div>
+            )}
+          </div>
           
           {/* Screen Content Area - better aspect ratio */}
           <div className={`relative bg-gradient-to-br from-background to-muted ${config.screenRadius} overflow-hidden h-[calc(100%-4rem)] shadow-inner`}>
@@ -115,6 +141,8 @@ export function ModernMobileFrame({
   children,
   className = "",
   size = "medium",
+  currentProjectIndex,
+  totalProjects,
 }: MobileFrameProps) {
   const sizeConfig = {
     small: {
@@ -162,8 +190,30 @@ export function ModernMobileFrame({
       <div className={`${config.width} ${config.height} mx-auto bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900 ${config.padding} ${config.borderRadius} shadow-2xl border border-gray-700`}>
         {/* Screen Area */}
         <div className="relative h-full bg-black rounded-2xl overflow-hidden">
-          {/* Dynamic Island */}
-          <div className={`${config.notchWidth} ${config.notchHeight} bg-black rounded-full mx-auto mt-2 mb-1`}></div>
+          {/* Dynamic Island with Project Counter */}
+          <div className="flex justify-center mt-2 mb-1">
+            {currentProjectIndex !== undefined && totalProjects ? (
+              <div className="flex items-center gap-2 bg-black rounded-full px-3 py-1.5 border border-gray-600">
+                <span className="text-xs font-medium text-white">
+                  {currentProjectIndex + 1}/{totalProjects}
+                </span>
+                <div className="flex items-center gap-1">
+                  {Array.from({ length: totalProjects }, (_, index) => (
+                    <div
+                      key={index}
+                      className={`w-1 h-1 rounded-full transition-colors duration-200 ${
+                        index === currentProjectIndex 
+                          ? 'bg-red-500' 
+                          : 'bg-gray-400'
+                      }`}
+                    />
+                  ))}
+                </div>
+              </div>
+            ) : (
+              <div className={`${config.notchWidth} ${config.notchHeight} bg-black rounded-full`}></div>
+            )}
+          </div>
           
           {/* Screen Content */}
           <div className="relative h-[calc(100%-3rem)] bg-gradient-to-br from-background to-muted rounded-b-2xl overflow-hidden">

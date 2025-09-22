@@ -7,7 +7,7 @@ import { Heart } from "lucide-react";
 
 export function TestimonialsSubtitle() {
   return (
-    <div className="text-center mb-20">
+    <div className="text-center mb-10">
       <SectionTitle title="Testimonios" />
       <motion.div
         initial={{ opacity: 0, y: 20 }}

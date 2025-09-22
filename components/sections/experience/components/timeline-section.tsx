@@ -31,7 +31,7 @@ export function TimelineSection({ experiences, activeExperience, onNodeClick }: 
               {/* Vertical line connector */}
               {index < experiences.length - 1 && (
                 <motion.div
-                  className="absolute left-8 top-16 w-0.5 h-12 bg-gradient-to-b from-red-500/60 to-gray-300/40 dark:to-gray-600/40"
+                  className="absolute left-8 top-16 w-0.5 h-12 bg-gradient-to-b from-gray-500/60 to-gray-300/40 dark:to-gray-600/40"
                   initial={{ height: 0 }}
                   whileInView={{ height: 48 }}
                   transition={{ delay: index * 0.1 + 0.3, duration: 0.8 }}
@@ -139,7 +139,7 @@ export function TimelineSection({ experiences, activeExperience, onNodeClick }: 
     <div className="relative">
       {/* Enhanced Timeline line */}
       <motion.div
-        className="absolute top-10 left-4 right-4 md:left-8 md:right-8 h-1 bg-gradient-to-r from-gray-300/40 dark:from-gray-600/40 via-red-500/60 to-gray-300/40 dark:to-gray-600/40 rounded-full shadow-lg shadow-gray-400/15 dark:shadow-gray-600/15 backdrop-blur-sm"
+        className="absolute top-10 left-4 right-4 md:left-8 md:right-8 h-1 bg-gradient-to-r from-gray-300/40 dark:from-gray-600/40 via-gray-200/60 to-gray-300/40 dark:to-gray-600/40 rounded-full shadow-lg shadow-gray-400/15 dark:shadow-gray-600/15 backdrop-blur-sm"
         initial={{ scaleX: 0 }}
         whileInView={{ scaleX: 1 }}
         transition={{ 

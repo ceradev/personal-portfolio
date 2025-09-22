@@ -5,11 +5,15 @@ import { ReactNode } from "react";
 interface AllInOneFrameProps {
   readonly children: ReactNode;
   readonly className?: string;
+  readonly currentProjectIndex?: number;
+  readonly totalProjects?: number;
 }
 
 export function AllInOneFrame({
   children,
   className = "",
+  currentProjectIndex,
+  totalProjects,
 }: AllInOneFrameProps) {
   // Desktop-only configuration - fixed size
   const config = {
@@ -17,7 +21,7 @@ export function AllInOneFrame({
     screenPadding: "p-5",
     bezelPadding: "p-5",
     cameraSize: "w-4 h-4",
-    cameraTop: "top-6",
+    cameraTop: "top-2",
     barPadding: "p-6",
     barMargin: "mb-5",
     accentWidth: "w-32",
@@ -39,6 +43,31 @@ export function AllInOneFrame({
         >
           {/* Screen Bezel */}
           <div className={`bg-card rounded-md ${config.bezelPadding}`}>
+            {/* Webcam/Counter Area */}
+            <div className="flex justify-center mb-4">
+              {currentProjectIndex !== undefined && totalProjects ? (
+                <div className="flex items-center gap-2 bg-white dark:bg-black rounded-full px-3 py-1.5 shadow-sm border border-gray-200 dark:border-gray-400">
+                  <span className="text-xs font-medium text-gray-700 dark:text-white">
+                    Proyecto {currentProjectIndex + 1} de {totalProjects}
+                  </span>
+                  <div className="flex items-center gap-1">
+                    {Array.from({ length: totalProjects }, (_, index) => (
+                      <div
+                        key={index}
+                        className={`w-1.5 h-1.5 rounded-full transition-colors duration-200 ${
+                          index === currentProjectIndex 
+                            ? 'bg-red-500' 
+                            : 'bg-gray-300'
+                        }`}
+                      />
+                    ))}
+                  </div>
+                </div>
+              ) : (
+                <div className={`${config.cameraSize} bg-muted-foreground/20 rounded-full`}></div>
+              )}
+            </div>
+            
             {/* Screen Content Area */}
             <div className="relative bg-gradient-to-br from-background to-muted rounded-sm overflow-hidden aspect-video shadow-lg">
               {children}
@@ -65,7 +94,8 @@ export function AllInOneFrame({
             style={{
               clipPath: "polygon(20% 0%, 80% 0%, 100% 100%, 0% 100%)",
             }}
-          ></div>
+          >
+          </div>
         </div>
 
         {/* Shadow */}

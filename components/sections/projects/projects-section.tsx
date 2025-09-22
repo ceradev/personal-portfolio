@@ -5,13 +5,12 @@ import { motion } from "framer-motion";
 import { SectionTitle } from "@/components/ui/display/section-title";
 import { SectionTransition } from "@/utils/section-transition";
 import { projects, type Project } from "@/types/projects";
-import { DeviceIndicator, MobileGestureHint } from "@/components/ui/display";
+import { DeviceIndicator } from "@/components/ui/display";
 import { useMobile } from "@/hooks/use-mobile";
 import {
   ProjectVideoPlayer,
   ProjectDetailsModal,
   ProjectsSubtitle,
-  MobileProjectIndicator,
 } from "./components";
 
 export function ProjectsSection() {
@@ -65,25 +64,6 @@ export function ProjectsSection() {
         {/* Enhanced Subtitle with Instructions */}
         <ProjectsSubtitle />
 
-        {/* Mobile gesture hints and project indicator */}
-        {isMobile && (
-          <div className="flex flex-col items-center gap-4 mb-8">
-            <MobileProjectIndicator
-              currentProjectIndex={0}
-              totalProjects={projects.length}
-            />
-            <div className="flex justify-center gap-4">
-              <MobileGestureHint 
-                gesture="swipe" 
-                message="Desliza para cambiar proyectos" 
-              />
-              <MobileGestureHint 
-                gesture="tap" 
-                message="Toca para reproducir" 
-              />
-            </div>
-          </div>
-        )}
 
         {/* Projects Video Player */}
         <div className="mt-12 flex justify-center">
