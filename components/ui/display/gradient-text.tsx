@@ -8,7 +8,7 @@ interface GradientTextProps {
   className?: string;
 }
 
-export function GradientText({ text, delay = 0, className = "" }: GradientTextProps) {
+export function GradientText({ text, delay = 0, className = "" }: Readonly<GradientTextProps>) {
   return (
     <motion.span 
       className={`inline-block bg-gradient-to-r from-foreground via-primary to-foreground bg-clip-text text-transparent ${className}`}

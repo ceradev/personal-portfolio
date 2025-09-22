@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Calendar, Phone, X, MessageCircle } from "lucide-react";
+import { Calendar, Phone, X } from "lucide-react";
 import { Button } from "./button";
 
 interface FloatingCallButtonProps {
@@ -53,9 +53,9 @@ export function FloatingCallButton({
     );
   };
 
-  const handleWhatsAppClick = () => {
-    window.open("https://wa.me/1234567890", "_blank", "noopener,noreferrer");
-  };
+  // const handleWhatsAppClick = () => {
+  //   window.open("https://wa.me/1234567890", "_blank", "noopener,noreferrer");
+  // };
 
   return (
     <AnimatePresence>

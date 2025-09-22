@@ -9,7 +9,7 @@ import {
 } from "@/components/sections/hero/components";
 import { HeroSectionProps } from "@/types/hero";
 
-export function HeroSection(props: Readonly<HeroSectionProps>) {
+export function HeroSection(props: HeroSectionProps) {
   return (
     <section id="home" className="relative min-h-screen flex flex-col justify-center pb-8 md:pb-16">
       {/* Split content layout with improved laptop spacing */}
