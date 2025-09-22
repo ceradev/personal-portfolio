@@ -1,4 +1,4 @@
-# 🚀 Personal Portfolio - César Rodríguez
+# 🚀 Personal Portfolio - Ceradev
 
 Un portfolio personal moderno y completamente responsive construido con Next.js 15, React 19, TypeScript y Tailwind CSS. Incluye animaciones fluidas, modo oscuro/claro, y un sistema de contacto funcional.
 
@@ -285,15 +285,6 @@ El proyecto utiliza una paleta de colores consistente definida en `COLOR_PALETTE
 3. **Commit** tus cambios (`git commit -m 'Añadir nueva funcionalidad'`)
 4. **Push** a la rama (`git push origin feature/nueva-funcionalidad`)
 5. **Abre** un Pull Request
-
-## 📞 Contacto
-
-**César Rodríguez**
-- 📧 Email: [tu-email@ejemplo.com](mailto:tu-email@ejemplo.com)
-- 💼 LinkedIn: [linkedin.com/in/tu-perfil](https://linkedin.com/in/tu-perfil)
-- 🐙 GitHub: [github.com/tu-usuario](https://github.com/tu-usuario)
-- 🌐 Portfolio: [tu-portfolio.com](https://tu-portfolio.com)
-
 ---
 
 ⭐ **¡Si te gusta este proyecto, no olvides darle una estrella!** ⭐
