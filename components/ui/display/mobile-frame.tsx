@@ -77,7 +77,7 @@ export function MobileFrame({
       transition={{ duration: 0.5, ease: "easeOut" }}
     >
       {/* Enhanced Mobile Device Container */}
-      <div className={`${config.width} ${config.height} mx-auto relative bg-gradient-to-b from-card via-card/95 to-card ${config.containerPadding} ${config.borderRadius} ${config.shadowSize} ${config.borderWidth} border-border flex flex-col justify-center`}>
+      <div className={`${config.width} ${config.height} mx-auto relative bg-gradient-to-b from-card via-card/95 to-card ${config.containerPadding} ${config.borderRadius} ${config.shadowSize} ${config.borderWidth} border-border flex flex-col justify-center max-w-full overflow-hidden`}>
         {/* Screen Bezel with more realistic proportions */}
         <div className={`bg-black ${config.bezelPadding} ${config.screenRadius} h-full`}>
           {/* Dynamic Island / Notch with Project Counter */}
